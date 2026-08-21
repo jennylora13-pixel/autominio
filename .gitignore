@@ -12,3 +12,6 @@ yarn-error.log*
 *.tsbuildinfo
 vite.config.d.ts
 vite.config.js
+
+# single-file build output
+dist-html/
