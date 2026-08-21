@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- open book -->
+  <path d="M256 150c-34-24-78-30-118-24-12 2-20 12-20 24v184c0 14 12 24 26 22 36-6 74 0 104 20 30-20 68-26 104-20 14 2 26-8 26-22V150c0-12-8-22-20-24-40-6-84 0-118 24z" fill="#ffffff" opacity="0.96"/>
+  <path d="M256 150v226" stroke="#c7d2fe" stroke-width="10" stroke-linecap="round"/>
+  <!-- bookmark ribbon -->
+  <path d="M300 120h44v104l-22-16-22 16z" fill="#fbbf24"/>
+  <!-- cross accent lines -->
+  <g stroke="#a5b4fc" stroke-width="8" stroke-linecap="round">
+    <path d="M170 210h58M170 244h58M170 278h44"/>
+    <path d="M286 210h56M286 244h56M286 278h44"/>
+  </g>
+</svg>

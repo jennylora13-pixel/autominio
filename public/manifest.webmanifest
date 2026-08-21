@@ -1,0 +1,19 @@
+{
+  "name": "Notas de Sermão",
+  "short_name": "Notas",
+  "description": "Anote pregações, guarde versículos e organize seus estudos bíblicos.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f5f0",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
