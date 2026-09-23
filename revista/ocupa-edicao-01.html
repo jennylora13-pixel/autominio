@@ -185,6 +185,24 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
 .slide .s-foot{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#A9BFB4;margin-top:16px;display:flex;justify-content:space-between}
 .ig-hint{max-width:980px;margin:6px auto 0;color:var(--soft);font-size:.9rem}
 
+
+/* PODCAST */
+.pod{margin-top:56px;background:var(--teal);color:var(--teal-ink);padding:clamp(22px,5vw,40px);display:grid;grid-template-columns:auto 1fr;gap:24px 32px;align-items:start}
+.pod .eyebrow{color:var(--gold)}
+.pod h3{font-size:clamp(2.2rem,7vw,3.4rem);font-weight:900;letter-spacing:-.03em;line-height:.95;margin-bottom:14px}
+.pod h3 em{font-style:italic;font-weight:500;color:var(--gold)}
+.pod p{max-width:56ch}
+.pod-disc{width:clamp(96px,22vw,150px);aspect-ratio:1;border-radius:50%;max-width:100%;
+  background:radial-gradient(circle,var(--gold) 0 9%,var(--teal) 9.5% 12%,transparent 12.5%),
+  repeating-radial-gradient(circle,rgba(255,255,255,.07) 0 2px,transparent 2px 6px),#10241C;border:3px solid var(--gold)}
+.pod-steps{list-style:none;padding:0;margin:18px 0 0;grid-column:1 / -1}
+.pod-steps li+li{margin-top:10px}
+.pod-steps li{border-top:1px solid color-mix(in srgb,var(--teal-ink) 25%,transparent);padding-top:10px;display:grid;grid-template-columns:2rem 1fr;gap:10px}
+.pod-steps b{font-family:var(--serif);font-weight:900;color:var(--gold);font-size:1.3rem;line-height:1.2}
+.pod-cta{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pod-cta > span{font-family:var(--mono);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;border:1px solid var(--gold);padding:12px 16px}
+.pod-cta > span:first-child{background:var(--gold);color:#17201B}
+@media (max-width:560px){.pod{grid-template-columns:1fr}}
 @media (max-width:720px){
   .wheel{grid-template-columns:1fr}
   .brand{font-size:1.7rem}
@@ -211,7 +229,7 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
       <a href="#sessao"><span data-l="pt">Sessão TO</span><span data-l="en">OT Session</span><span data-l="es">Sesión TO</span></a>
       <a href="#estudo"><span data-l="pt">Estudo</span><span data-l="en">Study</span><span data-l="es">Estudio</span></a>
       <a href="#negocios"><span data-l="pt">Negócios do Reino</span><span data-l="en">Kingdom Business</span><span data-l="es">Negocios del Reino</span></a>
-      <a href="#entrevista"><span data-l="pt">Entrevista</span><span data-l="en">Interview</span><span data-l="es">Entrevista</span></a>
+      <a href="#entrevista"><span data-l="pt">Entrevista &amp; Pod</span><span data-l="en">Interview &amp; Pod</span><span data-l="es">Entrevista &amp; Pod</span></a>
       <a href="#roda"><span data-l="pt">Roda</span><span data-l="en">Wheel</span><span data-l="es">Rueda</span></a>
       <a href="#caderno"><span data-l="pt">Caderno</span><span data-l="en">Workbook</span><span data-l="es">Cuaderno</span></a>
     </div>
@@ -249,7 +267,7 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
         <span data-l="pt">2 Reis 4 como plano de negócio.</span><span data-l="en">2 Kings 4 as a business plan.</span><span data-l="es">2 Reyes 4 como plan de negocio.</span></a>
       <a class="line" href="#entrevista"><span class="mono">05</span>
         <b data-l="pt">Do plantão à clínica própria</b><b data-l="en">From night shifts to her own clinic</b><b data-l="es">De la guardia a la clínica propia</b>
-        <span data-l="pt">Entrevista da edição.</span><span data-l="en">This issue's interview.</span><span data-l="es">Entrevista de la edición.</span></a>
+        <span data-l="pt">Entrevista da edição e o podcast Fuxicar.</span><span data-l="en">This issue's interview and the Fuxicar podcast.</span><span data-l="es">Entrevista de la edición y el podcast Fuxicar.</span></a>
     </div>
   </div>
 </section>
@@ -478,6 +496,35 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
       <dt>¿Y para quien sigue en la guardia?</dt><dd>Fíjate en lo que ya haces sin que nadie te lo pida. Ahí hay negocio. Y no salgas corriendo: la guardia puede financiar la puerta cerrada.</dd>
     </dl>
     <p class="note"><span data-l="pt">Ana Clara é uma personagem composta para esta edição-modelo. Substitua pela sua entrevistada real e use as cinco perguntas como roteiro fixo.</span><span data-l="en">Ana Clara is a composite character created for this sample issue. Replace her with your real guest and keep the five questions as the standing format.</span><span data-l="es">Ana Clara es un personaje compuesto para esta edición modelo. Reemplázala por tu entrevistada real y usa las cinco preguntas como guion fijo.</span></p>
+    <aside class="pod" id="fuxicar" aria-label="Podcast Fuxicar">
+      <div class="pod-disc" role="img" aria-label="Disco do podcast"></div>
+      <div>
+        <span class="eyebrow">Podcast · <span data-l="pt">Testemunhos</span><span data-l="en">Testimonies</span><span data-l="es">Testimonios</span></span>
+        <h3>Fuxi<em>car</em></h3>
+        <p data-l="pt">Fuxico é conversa de comadre. E é também aquele retalho redondo costurado à mão que, junto com outros, vira colcha. O Fuxicar é o podcast da Ocupa: mulheres contando, sem roteiro bonito, como Deus usou o que ocupava as mãos delas pra virar provisão. Cada história é um retalho. Juntas, cobrem muita gente.</p>
+        <p data-l="en">In Brazil, a fuxico is a chat between close friends. It is also the small round patch sewn by hand that, joined with others, becomes a quilt. Fuxicar is Ocupa's podcast: women telling, without a polished script, how God used what filled their hands to become provision. Each story is a patch. Together they cover a lot of people.</p>
+        <p data-l="es">Fuxico es charla de comadres. Y también es ese retazo redondo cosido a mano que, junto a otros, se vuelve colcha. Fuxicar es el podcast de Ocupa: mujeres contando, sin guion bonito, cómo Dios usó lo que ocupaba sus manos para volverlo provisión. Cada historia es un retazo. Juntas cubren a mucha gente.</p>
+      </div>
+      <ol class="pod-steps" data-l="pt">
+        <li><b>1</b><span>Manda uma mensagem contando em três frases o que tava na tua mão e o que Deus fez com isso.</span></li>
+        <li><b>2</b><span>A gente marca uma conversa de 15 minutos pra ouvir tua história antes da gravação.</span></li>
+        <li><b>3</b><span>Gravamos o episódio e o melhor trecho entra na aba Entrevista da próxima edição.</span></li>
+      </ol>
+      <ol class="pod-steps" data-l="en">
+        <li><b>1</b><span>Send a message telling in three sentences what was in your hand and what God did with it.</span></li>
+        <li><b>2</b><span>We set up a 15-minute call to hear your story before recording.</span></li>
+        <li><b>3</b><span>We record the episode, and the best excerpt goes into the next issue's Interview tab.</span></li>
+      </ol>
+      <ol class="pod-steps" data-l="es">
+        <li><b>1</b><span>Envía un mensaje contando en tres frases qué había en tu mano y qué hizo Dios con eso.</span></li>
+        <li><b>2</b><span>Agendamos una charla de 15 minutos para escuchar tu historia antes de grabar.</span></li>
+        <li><b>3</b><span>Grabamos el episodio y el mejor fragmento entra en la pestaña Entrevista de la próxima edición.</span></li>
+      </ol>
+      <div class="pod-cta">
+        <span><span data-l="pt">Quero testemunhar</span><span data-l="en">I want to share my story</span><span data-l="es">Quiero testificar</span> · WhatsApp (+00) 00000-0000</span>
+        <span><span data-l="pt">Ouvir no Spotify</span><span data-l="en">Listen on Spotify</span><span data-l="es">Escuchar en Spotify</span> · link</span>
+      </div>
+    </aside>
   </div>
 </section>
 
