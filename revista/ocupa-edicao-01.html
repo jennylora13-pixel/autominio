@@ -2,30 +2,38 @@
 <meta name="description" content="Revista Ocupa, edição 01: terapia ocupacional de alta performance e empreendedorismo cristão, por Integrally Well.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Archivo+Narrow:wght@500;600;700&display=swap">
 <style>
-/* Dark-first, like the reference. The ◎ button switches to the paper look. */
+/* Palette and type from edição 01 v1: myrtle, saffron, plum on green-tinted paper. */
 :root{
-  color-scheme:dark;
-  --bg:#0D0F0F;
-  --surface:#151818;
-  --surface-2:#1C2020;
-  --rule:#2A2F2F;
-  --text:#ECEAE4;
-  --soft:#9BA29F;
-  --teal:#5EC4BA;
-  --teal-ink:#0D0F0F;
-  --gold:#D8B46A;
-  --serif:"Playfair Display","Didot","Bodoni 72",Georgia,serif;
+  --bg:#F5F6F1;
+  --surface:#FFFFFF;
+  --surface-2:#E9ECE3;
+  --rule:#C9CFC3;
+  --text:#17201B;
+  --soft:#4A554E;
+  --teal:#1F4A3D;
+  --teal-ink:#F5F6F1;
+  --gold:#C98A12;
+  --plum:#5A2748;
+  --photo-a:#2A5E4E;
+  --photo-b:#13291F;
+  --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
   --body:"Source Serif 4","Iowan Old Style",Georgia,serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --mono:"Archivo Narrow","Arial Narrow","Helvetica Neue",Arial,sans-serif;
   --scale:1;
 }
-:root[data-look="paper"]{
-  color-scheme:light;
-  --bg:#F2F0EA;--surface:#FFFFFF;--surface-2:#E8E5DC;--rule:#D3D0C6;
-  --text:#131515;--soft:#5B615E;--teal:#1C8479;--teal-ink:#FFFFFF;--gold:#8E6A1F;
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-look="paper"]){color-scheme:dark;
+  --bg:#111814;--surface:#17201B;--surface-2:#18221D;--rule:#2E3A33;
+  --text:#E8ECE4;--soft:#A9B3AB;--teal:#4F9C84;--teal-ink:#F2F4EE;--gold:#E3A93A;--plum:#C98AB4;
+  --photo-a:#2C6A57;--photo-b:#0C1a15;}
 }
+:root[data-theme="dark"]:not([data-look="paper"]),:root[data-look="ink"]{color-scheme:dark;
+  --bg:#111814;--surface:#17201B;--surface-2:#18221D;--rule:#2E3A33;
+  --text:#E8ECE4;--soft:#A9B3AB;--teal:#4F9C84;--teal-ink:#F2F4EE;--gold:#E3A93A;--plum:#C98AB4;
+  --photo-a:#2C6A57;--photo-b:#0C1a15;}
+:root[data-look="paper"]{color-scheme:light}
 *{box-sizing:border-box}
 html{font-size:calc(17px * var(--scale))}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.62}
@@ -34,8 +42,8 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.08;text-wrap:balance}
 p{margin:0 0 1em}
 .wrap{max-width:980px;margin:0 auto;padding-inline:clamp(16px,5vw,40px)}
-.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.78rem}
-.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.8rem;color:var(--teal);margin-bottom:14px;display:block}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:600}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:600;color:var(--plum);margin-bottom:14px;display:block}
 .measure{max-width:64ch}
 [data-l]{display:none}
 html:not([data-lang]) [data-l="pt"],html[data-lang="pt"] [data-l="pt"],html[data-lang="en"] [data-l="en"],html[data-lang="es"] [data-l="es"]{display:revert}
@@ -44,8 +52,9 @@ html[data-lang="pt"] span[data-l="pt"],html[data-lang="en"] span[data-l="en"],ht
 /* HEADER */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 .brandrow{display:flex;align-items:baseline;gap:18px;padding-block:18px 12px}
-.brand{font-family:var(--serif);font-style:italic;font-size:2rem;line-height:1}
-.brand-sub{font-family:var(--mono);color:var(--teal);letter-spacing:.2em;font-size:.9rem}
+.brand{font-family:var(--serif);font-weight:900;font-size:2rem;line-height:1;letter-spacing:-.02em}
+.brand em,.cover-hero h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.brand-sub{font-family:var(--mono);color:var(--plum);text-transform:uppercase;font-weight:600;letter-spacing:.2em;font-size:.8rem}
 .controls{display:flex;gap:8px;padding-bottom:14px;flex-wrap:wrap}
 .chip{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;background:transparent;color:var(--soft);border:1px solid var(--rule);padding:10px 14px;cursor:pointer;min-width:58px}
 .chip:hover{color:var(--text);border-color:var(--soft)}
@@ -62,30 +71,30 @@ html[data-lang="pt"] span[data-l="pt"],html[data-lang="en"] span[data-l="en"],ht
 /* TABS CONTENT */
 .tab{display:none;padding-block:56px 120px}
 .tab.active{display:block}
-.title{font-size:clamp(2.3rem,6.4vw,3.8rem);margin-bottom:22px}
+.title{font-size:clamp(2.3rem,6.4vw,3.8rem);font-weight:700;letter-spacing:-.02em;margin-bottom:22px}
 .title i{color:var(--teal)}
 .deck{font-size:1.15rem;font-style:italic;color:var(--soft);max-width:52ch;margin-bottom:28px}
 hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
-.dropcap::first-letter{font-family:var(--serif);float:left;font-size:4.4em;line-height:.82;padding:6px 10px 0 0;color:var(--teal)}
-.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.25;border-left:4px solid var(--teal);padding-left:20px;margin:36px 0;max-width:32ch}
+.dropcap::first-letter{font-family:var(--serif);font-weight:900;float:left;font-size:4.4em;line-height:.82;padding:6px 10px 0 0;color:var(--teal)}
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.25;border-left:0;border-top:3px solid var(--gold);padding-top:14px;margin:36px 0;max-width:32ch}
 
 /* PHOTO PANELS (grain + duotone, no external images) */
-.photo{position:relative;border-left:6px solid var(--teal);aspect-ratio:1/1;max-width:100%;overflow:hidden;
+.photo{position:relative;border-left:6px solid var(--gold);aspect-ratio:1/1;max-width:100%;overflow:hidden;
   background:
    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-   radial-gradient(ellipse at 70% 85%,#6d6a66 0 14%,transparent 40%),
-   radial-gradient(ellipse at 30% 20%,#4a4845 0 20%,transparent 60%),
-   linear-gradient(160deg,#3b3a38,#1b1b1a 75%)}
+   radial-gradient(ellipse at 70% 85%,rgba(201,138,18,.35) 0 12%,transparent 42%),
+   radial-gradient(ellipse at 30% 20%,rgba(245,246,241,.12) 0 20%,transparent 60%),
+   linear-gradient(160deg,var(--photo-a),var(--photo-b) 78%)}
 .photo.wide{aspect-ratio:16/10}
-.photo .year{position:absolute;top:26px;left:30px;font-family:var(--mono);color:var(--teal);font-size:1.15rem;letter-spacing:.06em}
-.photo .glyph{position:absolute;right:6%;bottom:-6%;font-family:var(--serif);font-style:italic;font-size:clamp(9rem,34vw,20rem);line-height:1;color:#EDEBE5;opacity:.13}
+.photo .year{position:absolute;top:26px;left:30px;font-family:var(--mono);font-weight:600;color:var(--gold);font-size:1.15rem;letter-spacing:.08em}
+.photo .glyph{position:absolute;right:6%;bottom:-6%;font-family:var(--serif);font-style:italic;font-size:clamp(9rem,34vw,20rem);line-height:1;color:#F5F6F1;opacity:.12}
 .photo .cap{position:absolute;left:30px;bottom:24px;right:30px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#D9D6CF;opacity:.85}
 
 /* CAPA */
 .cover-hero{margin-bottom:36px}
 .cover-hero .photo{aspect-ratio:4/5;max-height:78vh}
-.cover-hero h1{position:absolute;left:30px;right:24px;bottom:84px;font-size:clamp(4.6rem,20vw,10rem);line-height:.85;color:#F1EFE9;font-style:italic;letter-spacing:-.02em}
-.cover-hero .tagline{position:absolute;left:30px;right:24px;bottom:30px;font-family:var(--mono);color:var(--teal);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+.cover-hero h1{position:absolute;left:30px;right:24px;bottom:84px;font-size:clamp(4.6rem,20vw,10rem);line-height:.85;color:#F5F6F1;font-weight:900;letter-spacing:-.045em}
+.cover-hero .tagline{position:absolute;left:30px;right:24px;bottom:30px;font-family:var(--mono);font-weight:600;color:var(--gold);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
 .lines{display:grid;gap:0}
 .line{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;border-top:1px solid var(--rule);padding:18px 0;text-decoration:none}
 .line .mono{color:var(--teal);grid-row:span 2;padding-top:4px}
@@ -96,7 +105,7 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
 /* CASES */
 .case{margin-bottom:64px}
 .case-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:14px;margin-top:22px}
-.case-head .mono{color:var(--teal)}
+.case-head .mono{color:var(--plum)}
 .case h3{font-size:clamp(2rem,5.6vw,3rem);font-style:italic;margin:12px 0 16px}
 .lesson{background:var(--surface);border:1px solid var(--rule);padding:18px 20px;margin-top:8px}
 .lesson .mono{color:var(--gold);display:block;margin-bottom:6px}
@@ -104,14 +113,14 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
 /* TIMELINE */
 .tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--rule)}
 .tl li{position:relative;padding:0 0 38px 30px}
-.tl li::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;background:var(--teal)}
+.tl li::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;background:var(--gold)}
 .tl .when{font-family:var(--mono);color:var(--teal);font-size:.95rem;letter-spacing:.06em}
 .tl h3{font-size:1.6rem;margin:6px 0 8px}
 .tl p{color:var(--soft);max-width:60ch;margin:0}
 
 /* PROTOCOLS */
 .protocols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:10px}
-.protocol{background:var(--surface);border:1px solid var(--rule);padding:22px}
+.protocol{background:var(--surface);border:1px solid var(--rule);border-top:6px solid var(--teal);padding:22px}
 .protocol .mono{color:var(--teal)}
 .protocol h3{font-size:1.55rem;margin:10px 0 12px}
 .protocol ol{padding-left:1.2em;margin:0}
@@ -157,23 +166,23 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
 
 /* FLOATING */
 .floaters{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;z-index:20}
-.floaters button{width:58px;height:58px;background:var(--surface);color:var(--text);border:1px solid var(--rule);cursor:pointer;font-family:var(--serif);font-style:italic;font-size:1.4rem;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.floaters button{width:58px;height:58px;background:var(--surface);font-weight:500;color:var(--text);border:1px solid var(--rule);cursor:pointer;font-family:var(--serif);font-style:italic;font-size:1.4rem;box-shadow:0 6px 20px rgba(23,32,27,.18)}
 .floaters svg{width:26px;height:26px;display:block;margin:auto}
 
 /* IG SLIDES */
 .ig-view{position:fixed;inset:0;z-index:30;background:var(--bg);overflow:auto;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
 .ig-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:980px;margin:0 auto 18px}
 .ig-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;max-width:980px;margin:0 auto}
-.slide{flex:0 0 min(86vw,420px);aspect-ratio:4/5;scroll-snap-align:center;position:relative;overflow:hidden;background:#0D0F0F;color:#ECEAE4;border:1px solid #2A2F2F;padding:8% 8% 7%;display:flex;flex-direction:column}
+.slide{flex:0 0 min(86vw,420px);aspect-ratio:4/5;scroll-snap-align:center;position:relative;overflow:hidden;background:#1F4A3D;color:#F5F6F1;border:1px solid #1F4A3D;padding:8% 8% 7%;display:flex;flex-direction:column}
 .slide.photoish{background:
-   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(160deg,#3b3a38,#141414 80%);border-left:8px solid #5EC4BA}
-.slide .s-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#5EC4BA}
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(160deg,#2A5E4E,#13291F 80%);border-left:8px solid #C98A12}
+.slide .s-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#C98A12}
 .slide .s-body{margin-top:auto}
-.slide .s-eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#5EC4BA;margin-bottom:10px;display:block}
-.slide h4{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,7vw,2.2rem);line-height:1.08;margin:0 0 12px}
-.slide h4 i{color:#5EC4BA}
-.slide p{font-size:.92rem;line-height:1.5;color:#C9C8C2;margin:0}
-.slide .s-foot{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#8E9592;margin-top:16px;display:flex;justify-content:space-between}
+.slide .s-eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#C98A12;margin-bottom:10px;display:block}
+.slide h4{font-family:var(--serif);font-weight:700;font-size:clamp(1.6rem,7vw,2.2rem);line-height:1.08;margin:0 0 12px}
+.slide h4 i{color:#C98A12}
+.slide p{font-size:.92rem;line-height:1.5;color:#DDE3DA;margin:0}
+.slide .s-foot{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#A9BFB4;margin-top:16px;display:flex;justify-content:space-between}
 .ig-hint{max-width:980px;margin:6px auto 0;color:var(--soft);font-size:.9rem}
 
 @media (max-width:720px){
@@ -186,7 +195,7 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
 
 <header class="top">
   <div class="wrap">
-    <div class="brandrow"><span class="brand">Ocupa</span><span class="brand-sub">Magazine</span></div>
+    <div class="brandrow"><span class="brand">Ocu<em>pa</em></span><span class="brand-sub">Magazine</span></div>
     <div class="controls">
       <button class="chip ig" type="button" id="igOpen">IG Slides</button>
       <button class="chip" type="button" data-set-lang="pt" aria-pressed="true">PT</button>
@@ -216,7 +225,7 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
     <div class="cover-hero">
       <div class="photo">
         <span class="year">Ed. 01 · 2026</span>
-        <h1>Ocupa</h1>
+        <h1>Ocu<em>pa</em></h1>
         <span class="tagline"><span data-l="pt">Lucas 19:13 · Ocupa-te até que eu volte</span><span data-l="en">Luke 19:13 · Occupy till I come</span><span data-l="es">Lucas 19:13 · Negociad entre tanto que vengo</span></span>
       </div>
     </div>
@@ -509,7 +518,7 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
 
 <div class="ig-view" id="igView" hidden>
   <div class="ig-bar">
-    <span class="brand">Ocupa <span class="brand-sub">IG Slides</span></span>
+    <span class="brand">Ocu<em>pa</em> <span class="brand-sub">IG Slides</span></span>
     <button class="chip" type="button" id="igClose"><span data-l="pt">Fechar</span><span data-l="en">Close</span><span data-l="es">Cerrar</span></button>
   </div>
   <div class="ig-track" id="igTrack"></div>
@@ -530,9 +539,10 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
   document.querySelectorAll("[data-set-lang]").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.setLang)})});
 
   /* look + size */
-  if(load("ocupa-look","ink")==="paper")root.dataset.look="paper";
-  document.getElementById("lookBtn").addEventListener("click",function(){
-    if(root.dataset.look==="paper"){delete root.dataset.look;save("ocupa-look","ink")}else{root.dataset.look="paper";save("ocupa-look","paper")}});
+  var look=load("ocupa-look",null);if(look==="paper"||look==="ink")root.dataset.look=look;
+  var mq=window.matchMedia?window.matchMedia("(prefers-color-scheme: dark)"):{matches:false};
+  function isDark(){if(root.dataset.look)return root.dataset.look==="ink";if(root.dataset.theme)return root.dataset.theme==="dark";return mq.matches}
+  document.getElementById("lookBtn").addEventListener("click",function(){var n=isDark()?"paper":"ink";root.dataset.look=n;save("ocupa-look",n)});
   var sizes=[1,1.12,1.25],si=load("ocupa-size",0);root.style.setProperty("--scale",sizes[si]||1);
   document.getElementById("sizeBtn").addEventListener("click",function(){si=(si+1)%sizes.length;root.style.setProperty("--scale",sizes[si]);save("ocupa-size",si)});
 
@@ -579,11 +589,11 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
   document.getElementById("resetWeek").addEventListener("click",function(){state={};save("ocupa-caderno",state);buildWeek()});
 
   /* IG slides */
-  var S={pt:[["photo","Edição 01","Ocupa","Terapia ocupacional de alta performance e empreendedorismo cristão."],["","Lucas 19:13","O que ocupa as tuas mãos é onde Deus escondeu o teu <i>dom</i>.","Occupy till I come. Ocupa-te até que eu volte."],["","Protocolo 1 · Pessoa","Mapa de <i>energia</i>","Anote tua energia de hora em hora por 5 dias. Coloque o trabalho que gera dinheiro nos picos."],["","Protocolo 2 · Atividade","Análise de <i>atividade</i>","Quebre a tarefa que você adia em passos de 15 minutos. Ache o passo que trava."],["","Protocolo 3 · Ambiente","Uma estação, uma <i>função</i>","Um lugar só pro trabalho profundo. Celular em outro cômodo. Salmo 90:17 na entrada."],["photo","Case · 1946","O restaurante que fecha aos <i>domingos</i>","Descanso também é estratégia de negócio."],["","2 Reis 4","O azeite já tava na <i>despensa</i>","O que você tem em casa? Nomeie. Junte os vasos. Feche a porta. Venda e pague."],["","Edição completa","Lê a revista <i>Ocupa</i>","Link na bio · Integrally Well"]],
-    en:[["photo","Issue 01","Ocupa","High-performance occupational therapy and Christian entrepreneurship."],["","Luke 19:13","What fills your hands is where God hid your <i>gift</i>.","Occupy till I come."],["","Protocol 1 · Person","Energy <i>map</i>","Log your energy every hour for 5 days. Put money-making work in the peaks."],["","Protocol 2 · Activity","Activity <i>analysis</i>","Break the task you delay into 15-minute steps. Find the one that stalls."],["","Protocol 3 · Environment","One station, one <i>purpose</i>","A spot only for deep work. Phone in another room. Psalm 90:17 at the start."],["photo","Case · 1946","The restaurant closed on <i>Sundays</i>","Rest is business strategy too."],["","2 Kings 4","The oil was already in the <i>pantry</i>","What do you have in the house? Name it. Gather vessels. Shut the door. Sell and pay."],["","Full issue","Read <i>Ocupa</i> magazine","Link in bio · Integrally Well"]],
-    es:[["photo","Edición 01","Ocupa","Terapia ocupacional de alto rendimiento y emprendimiento cristiano."],["","Lucas 19:13","Lo que ocupa tus manos es donde Dios escondió tu <i>don</i>.","Negociad entre tanto que vengo."],["","Protocolo 1 · Persona","Mapa de <i>energía</i>","Anota tu energía cada hora por 5 días. Pon el trabajo que genera dinero en los picos."],["","Protocolo 2 · Actividad","Análisis de <i>actividad</i>","Divide la tarea que pospones en pasos de 15 minutos. Encuentra el que se traba."],["","Protocolo 3 · Ambiente","Una estación, una <i>función</i>","Un lugar solo para trabajo profundo. Celular en otro cuarto. Salmo 90:17 al entrar."],["photo","Caso · 1946","El restaurante que cierra los <i>domingos</i>","El descanso también es estrategia."],["","2 Reyes 4","El aceite ya estaba en la <i>despensa</i>","¿Qué tienes en casa? Nómbralo. Junta vasijas. Cierra la puerta. Vende y paga."],["","Edición completa","Lee la revista <i>Ocupa</i>","Link en la bio · Integrally Well"]]};
+  var S={pt:[["photo","Edição 01","Ocu<i>pa</i>","Terapia ocupacional de alta performance e empreendedorismo cristão."],["","Lucas 19:13","O que ocupa as tuas mãos é onde Deus escondeu o teu <i>dom</i>.","Occupy till I come. Ocupa-te até que eu volte."],["","Protocolo 1 · Pessoa","Mapa de <i>energia</i>","Anote tua energia de hora em hora por 5 dias. Coloque o trabalho que gera dinheiro nos picos."],["","Protocolo 2 · Atividade","Análise de <i>atividade</i>","Quebre a tarefa que você adia em passos de 15 minutos. Ache o passo que trava."],["","Protocolo 3 · Ambiente","Uma estação, uma <i>função</i>","Um lugar só pro trabalho profundo. Celular em outro cômodo. Salmo 90:17 na entrada."],["photo","Case · 1946","O restaurante que fecha aos <i>domingos</i>","Descanso também é estratégia de negócio."],["","2 Reis 4","O azeite já tava na <i>despensa</i>","O que você tem em casa? Nomeie. Junte os vasos. Feche a porta. Venda e pague."],["","Edição completa","Lê a revista <i>Ocupa</i>","Link na bio · Integrally Well"]],
+    en:[["photo","Issue 01","Ocu<i>pa</i>","High-performance occupational therapy and Christian entrepreneurship."],["","Luke 19:13","What fills your hands is where God hid your <i>gift</i>.","Occupy till I come."],["","Protocol 1 · Person","Energy <i>map</i>","Log your energy every hour for 5 days. Put money-making work in the peaks."],["","Protocol 2 · Activity","Activity <i>analysis</i>","Break the task you delay into 15-minute steps. Find the one that stalls."],["","Protocol 3 · Environment","One station, one <i>purpose</i>","A spot only for deep work. Phone in another room. Psalm 90:17 at the start."],["photo","Case · 1946","The restaurant closed on <i>Sundays</i>","Rest is business strategy too."],["","2 Kings 4","The oil was already in the <i>pantry</i>","What do you have in the house? Name it. Gather vessels. Shut the door. Sell and pay."],["","Full issue","Read <i>Ocupa</i> magazine","Link in bio · Integrally Well"]],
+    es:[["photo","Edición 01","Ocu<i>pa</i>","Terapia ocupacional de alto rendimiento y emprendimiento cristiano."],["","Lucas 19:13","Lo que ocupa tus manos es donde Dios escondió tu <i>don</i>.","Negociad entre tanto que vengo."],["","Protocolo 1 · Persona","Mapa de <i>energía</i>","Anota tu energía cada hora por 5 días. Pon el trabajo que genera dinero en los picos."],["","Protocolo 2 · Actividad","Análisis de <i>actividad</i>","Divide la tarea que pospones en pasos de 15 minutos. Encuentra el que se traba."],["","Protocolo 3 · Ambiente","Una estación, una <i>función</i>","Un lugar solo para trabajo profundo. Celular en otro cuarto. Salmo 90:17 al entrar."],["photo","Caso · 1946","El restaurante que cierra los <i>domingos</i>","El descanso también es estrategia."],["","2 Reyes 4","El aceite ya estaba en la <i>despensa</i>","¿Qué tienes en casa? Nómbralo. Junta vasijas. Cierra la puerta. Vende y paga."],["","Edición completa","Lee la revista <i>Ocupa</i>","Link en la bio · Integrally Well"]]};
   var track=document.getElementById("igTrack");
-  function buildSlides(){var arr=S[lang],h="";arr.forEach(function(s,i){var big=i===0;h+='<div class="slide'+(s[0]?" photoish":"")+'"><div class="s-top"><span>Ocupa Magazine</span><span>'+(i+1)+'/'+arr.length+'</span></div><div class="s-body"><span class="s-eyebrow">'+s[1]+'</span><h4'+(big?' style="font-size:clamp(3.4rem,16vw,5rem);font-style:italic"':'')+'>'+s[2]+'</h4><p>'+s[3]+'</p></div><div class="s-foot"><span>Integrally Well</span><span>'+(i<arr.length-1?"→":"✦")+'</span></div></div>'});track.innerHTML=h}
+  function buildSlides(){var arr=S[lang],h="";arr.forEach(function(s,i){var big=i===0;h+='<div class="slide'+(s[0]?" photoish":"")+'"><div class="s-top"><span>Ocupa Magazine</span><span>'+(i+1)+'/'+arr.length+'</span></div><div class="s-body"><span class="s-eyebrow">'+s[1]+'</span><h4'+(big?' style="font-size:clamp(3.4rem,16vw,5rem);font-weight:900;letter-spacing:-.04em"':'')+'>'+s[2]+'</h4><p>'+s[3]+'</p></div><div class="s-foot"><span>Integrally Well</span><span>'+(i<arr.length-1?"→":"✦")+'</span></div></div>'});track.innerHTML=h}
   var ig=document.getElementById("igView");
   document.getElementById("igOpen").addEventListener("click",function(){ig.hidden=false;document.getElementById("igClose").focus()});
   document.getElementById("igClose").addEventListener("click",function(){ig.hidden=true;document.getElementById("igOpen").focus()});
