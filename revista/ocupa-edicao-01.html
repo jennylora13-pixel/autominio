@@ -1,0 +1,516 @@
+<title>Revista Ocupa</title>
+<meta name="description" content="Revista Ocupa, edição 01: terapia ocupacional de alta performance e empreendedorismo cristão, por Integrally Well.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,500;1,6..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Archivo+Narrow:wght@500;600;700&display=swap">
+<style>
+:root{
+  --paper:#F5F6F1;
+  --paper-2:#E9ECE3;
+  --ink:#17201B;
+  --ink-soft:#4A554E;
+  --myrtle:#1F4A3D;
+  --myrtle-ink:#F5F6F1;
+  --saffron:#C98A12;
+  --plum:#5A2748;
+  --rule:#C9CFC3;
+  --card:#FFFFFF;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --label:"Archivo Narrow","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#111814;--paper-2:#18221D;--ink:#E8ECE4;--ink-soft:#A9B3AB;
+    --myrtle:#2C6A57;--myrtle-ink:#F2F4EE;--saffron:#E3A93A;--plum:#C98AB4;
+    --rule:#2E3A33;--card:#17201B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#111814;--paper-2:#18221D;--ink:#E8ECE4;--ink-soft:#A9B3AB;
+  --myrtle:#2C6A57;--myrtle-ink:#F2F4EE;--saffron:#E3A93A;--plum:#C98AB4;
+  --rule:#2E3A33;--card:#17201B;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px}
+.label{font-family:var(--label);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.02}
+p{margin:0 0 1em}
+.measure{max-width:65ch}
+
+/* NAV */
+.masthead-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+.masthead-bar .wrap{display:flex;align-items:center;gap:20px;padding-block:10px;overflow-x:auto;scrollbar-width:none}
+.masthead-bar .brand{font-family:var(--display);font-weight:900;font-size:1.25rem;letter-spacing:-.01em;white-space:nowrap}
+.masthead-bar nav{display:flex;gap:18px}
+.masthead-bar nav a{text-decoration:none;white-space:nowrap;color:var(--ink-soft)}
+.masthead-bar nav a:hover{color:var(--ink)}
+
+/* CAPA */
+.cover{background:var(--myrtle);color:var(--myrtle-ink);position:relative;overflow:hidden}
+.cover .wrap{padding-block:28px 40px;display:grid;gap:24px}
+.cover-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid color-mix(in srgb,var(--myrtle-ink) 30%,transparent);padding-bottom:10px}
+.logo{font-family:var(--display);font-weight:900;font-size:clamp(5.5rem,22vw,15rem);line-height:.8;letter-spacing:-.045em;margin:6px 0 0}
+.logo em{font-style:italic;font-weight:500;color:var(--saffron)}
+.cover-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:end}
+.cover-thesis{font-family:var(--display);font-style:italic;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.12;max-width:20ch}
+.cover-thesis small{display:block;font-family:var(--label);font-style:normal;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-top:14px;color:var(--saffron)}
+.cover-lines{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.cover-lines li{border-top:1px solid color-mix(in srgb,var(--myrtle-ink) 30%,transparent);padding-top:10px}
+.cover-lines b{display:block;font-family:var(--display);font-size:1.25rem;line-height:1.15}
+.cover-lines span{font-size:.95rem;opacity:.85}
+.verse-strip{font-family:var(--label);letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;white-space:nowrap;overflow:hidden;opacity:.7}
+
+/* SECTIONS */
+section.spread{padding-block:72px;border-bottom:1px solid var(--rule)}
+.kicker{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;color:var(--plum)}
+.kicker .page{font-family:var(--display);font-style:italic;font-size:1rem;color:var(--ink-soft)}
+.headline{font-size:clamp(2.2rem,5.4vw,4.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:18px;max-width:18ch}
+.deck{font-size:1.2rem;font-style:italic;color:var(--ink-soft);max-width:48ch;margin-bottom:36px}
+.cols{columns:2 320px;column-gap:48px}
+.cols p{break-inside:avoid-column}
+.dropcap::first-letter{font-family:var(--display);font-weight:900;float:left;font-size:4.6em;line-height:.8;padding:6px 10px 0 0;color:var(--myrtle)}
+.pull{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;border-top:3px solid var(--saffron);padding-top:14px;margin:36px 0;max-width:30ch}
+
+/* SUMÁRIO */
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 40px}
+.toc a{display:grid;grid-template-columns:3.2rem 1fr;gap:12px;text-decoration:none;border-top:1px solid var(--rule);padding:16px 0}
+.toc .num{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1;color:var(--saffron);font-variant-numeric:tabular-nums}
+.toc b{font-family:var(--display);font-size:1.2rem;display:block;line-height:1.2}
+.toc span{font-size:.95rem;color:var(--ink-soft)}
+.toc a:hover b{text-decoration:underline;text-decoration-color:var(--saffron)}
+
+/* CARTA */
+.letter{display:grid;grid-template-columns:220px 1fr;gap:40px}
+.sig{font-family:var(--display);font-style:italic;font-size:1.6rem;margin-top:8px}
+.portrait{aspect-ratio:3/4;max-width:100%;background:
+  radial-gradient(circle at 50% 36%,var(--saffron) 0 18%,transparent 18.5%),
+  radial-gradient(ellipse at 50% 100%,var(--myrtle) 0 46%,transparent 46.5%),var(--paper-2);
+  border:1px solid var(--rule)}
+.portrait-cap{font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+
+/* PROTOCOLOS TO */
+.protocols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:12px}
+.protocol{border-top:6px solid var(--myrtle);padding-top:18px}
+.protocol h3{font-size:1.6rem;margin:8px 0 12px}
+.protocol ol{padding-left:1.2em;margin:0}
+.protocol li{margin-bottom:.5em}
+.protocol .dose{font-family:var(--label);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--plum);margin-top:12px;display:block}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:4px;color:var(--ink-soft)}
+
+/* ESTUDO */
+.study{background:var(--paper-2)}
+.greek{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:32px 0}
+.greek div{background:var(--paper-2);padding:18px}
+.greek b{font-family:var(--display);font-size:1.5rem;display:block}
+.greek i{color:var(--ink-soft);font-size:.95rem}
+
+/* NEGÓCIOS */
+.biz-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+.sidebar{background:var(--card);border:1px solid var(--rule);padding:24px;align-self:start}
+.sidebar h3{font-size:1.4rem;margin-bottom:12px}
+.sidebar table{width:100%;border-collapse:collapse;font-size:.95rem;font-variant-numeric:tabular-nums}
+.sidebar td{border-top:1px solid var(--rule);padding:8px 0;vertical-align:top}
+.sidebar td:last-child{text-align:right;white-space:nowrap;padding-left:12px}
+
+/* ENTREVISTA */
+.interview{background:var(--plum);color:#F7EEF3}
+:root[data-theme="dark"] .interview{color:#1A0F16}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .interview{color:#1A0F16}}
+.interview .kicker,.interview .kicker .page{color:inherit;opacity:.85}
+.interview .deck{color:inherit;opacity:.85}
+.qa{max-width:70ch}
+.qa dt{font-family:var(--label);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.9rem;margin-top:28px}
+.qa dd{margin:8px 0 0}
+.note{font-size:.82rem;opacity:.75;margin-top:36px;border-top:1px solid currentColor;padding-top:10px;max-width:70ch}
+
+/* RODA */
+.wheel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.sliders{display:grid;gap:14px}
+.sliders label{display:grid;grid-template-columns:1fr 2.5rem;gap:4px 12px;align-items:center;font-size:.98rem}
+.sliders input{grid-column:1 / -1;width:100%;accent-color:var(--myrtle)}
+.sliders output{font-family:var(--display);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+#radar{width:100%;max-width:440px;height:auto;display:block;margin:0 auto}
+.verdict{background:var(--card);border:1px solid var(--rule);padding:18px 20px;margin-top:20px}
+.verdict b{font-family:var(--display);font-size:1.2rem}
+
+/* CADERNO */
+.week{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.day{border:1px solid var(--rule);background:var(--card);padding:16px}
+.day h3{font-size:1.2rem;margin-bottom:10px}
+.day label{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;margin-bottom:8px;cursor:pointer}
+.day input{margin-top:.35em;accent-color:var(--myrtle)}
+.progress{display:flex;align-items:center;gap:14px;margin:0 0 24px}
+.bar{flex:1;height:8px;background:var(--paper-2);border:1px solid var(--rule)}
+.bar i{display:block;height:100%;background:var(--saffron);width:0;transition:width .3s}
+.btn{font-family:var(--label);text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:700;background:none;border:1px solid var(--ink);color:var(--ink);padding:8px 14px;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--paper)}
+
+/* AGENDA */
+.agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0 40px}
+.agenda article{border-top:1px solid var(--rule);padding:18px 0}
+.agenda h3{font-size:1.3rem;margin:6px 0}
+.agenda p{font-size:.98rem;color:var(--ink-soft);margin:0}
+
+/* ÚLTIMA */
+.last{background:var(--ink);color:var(--paper);text-align:left}
+.last .headline{max-width:22ch}
+.last .kicker{color:var(--saffron)}
+.last .kicker .page{color:inherit;opacity:.7}
+.colophon{font-size:.85rem;opacity:.7;margin-top:40px;display:flex;flex-wrap:wrap;gap:8px 24px}
+
+@media (max-width:760px){
+  .cover-grid,.letter,.biz-grid,.wheel{grid-template-columns:1fr}
+  .letter .portrait{max-width:200px}
+  section.spread{padding-block:52px}
+  body{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="masthead-bar">
+  <div class="wrap">
+    <span class="brand">Ocupa</span>
+    <nav class="label" aria-label="Seções">
+      <a href="#sumario">Sumário</a>
+      <a href="#sessao">Sessão TO</a>
+      <a href="#estudo">Estudo</a>
+      <a href="#negocios">Negócios do Reino</a>
+      <a href="#entrevista">Entrevista</a>
+      <a href="#roda">Roda</a>
+      <a href="#caderno">Caderno</a>
+      <a href="#agenda">Agenda</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CAPA -->
+<section class="cover" id="capa" aria-label="Capa">
+  <div class="wrap">
+    <div class="cover-top label">
+      <span>Integrally Well apresenta</span>
+      <span>Edição 01 · Outono 2026</span>
+      <span>Terapia ocupacional · Fé · Negócios</span>
+    </div>
+    <h1 class="logo">Ocu<em>pa</em></h1>
+    <div class="cover-grid">
+      <p class="cover-thesis">O que ocupa as tuas mãos todo dia é onde Deus escondeu o que te deu pra prosperar.
+        <small>Lucas 19:13 · "Occupy till I come"</small></p>
+      <ul class="cover-lines">
+        <li><b>Sessão de alta performance</b><span>Três protocolos de terapia ocupacional pra quem lidera, vende e ainda cuida da casa.</span></li>
+        <li><b>O azeite já tá na despensa</b><span>2 Reis 4 como plano de negócios pra mulher que começa do pouco.</span></li>
+        <li><b>Entrevista</b><span>A fisioterapeuta que transformou o turno da noite numa clínica.</span></li>
+        <li><b>Roda ocupacional</b><span>Faça o teste e descubra qual área está roubando o teu desempenho.</span></li>
+      </ul>
+    </div>
+    <div class="verse-strip" aria-hidden="true">Lavrar e guardar · Gênesis 2:15 · Bezalel cheio do Espírito · Êxodo 31 · Considera um campo e compra-o · Provérbios 31 · Ocupa-te até que eu volte · Lucas 19:13 ·</div>
+  </div>
+</section>
+
+<!-- SUMÁRIO -->
+<section class="spread" id="sumario">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Nesta edição</span><span class="page">p. 2</span></div>
+    <h2 class="headline">Sumário</h2>
+    <div class="toc">
+      <a href="#carta"><span class="num">04</span><div><b>Carta da editora</b><span>Por que uma revista chamada Ocupa</span></div></a>
+      <a href="#sessao"><span class="num">08</span><div><b>Sessão TO de alta performance</b><span>Energia, rotina e análise de atividade</span></div></a>
+      <a href="#estudo"><span class="num">18</span><div><b>Estudo da edição</b><span>A palavra que a King James escolheu</span></div></a>
+      <a href="#negocios"><span class="num">24</span><div><b>Negócios do Reino</b><span>O que você tem em casa?</span></div></a>
+      <a href="#entrevista"><span class="num">32</span><div><b>Entrevista</b><span>Do plantão à clínica própria</span></div></a>
+      <a href="#roda"><span class="num">40</span><div><b>Roda ocupacional</b><span>Autoavaliação interativa</span></div></a>
+      <a href="#caderno"><span class="num">44</span><div><b>Caderno da semana</b><span>Sete dias, uma ocupação por vez</span></div></a>
+      <a href="#agenda"><span class="num">50</span><div><b>Agenda e recursos</b><span>Encontros, leituras, mentoria</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="spread" id="carta">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Carta da editora</span><span class="page">p. 4</span></div>
+    <div class="letter">
+      <div>
+        <div class="portrait" role="img" aria-label="Espaço para foto da editora"></div>
+        <p class="portrait-cap">Troque este bloco pela sua foto de capa da carta.</p>
+      </div>
+      <div class="measure">
+        <h2 class="headline" style="font-size:clamp(2rem,4.4vw,3.4rem)">Eu levei anos pra entender uma palavra.</h2>
+        <p class="dropcap">Na faculdade de terapia ocupacional me ensinaram que ocupação é tudo aquilo que enche as mãos e o tempo de uma pessoa. Tomar banho, fazer o café, dirigir até o trabalho, atender um cliente, colocar o filho pra dormir. A gente avalia isso com escala, com observação, com análise de atividade. É ciência.</p>
+        <p>Anos depois, lendo Lucas 19 numa Bíblia em inglês, parei no versículo 13. O senhor entrega as minas aos servos e diz: <i>occupy till I come</i>. Ocupa-te até que eu volte. A mesma palavra da minha profissão, dentro da parábola sobre multiplicar o que se recebeu.</p>
+        <p>Esta revista nasceu dali. Ela é pra mulher que empreende, que atende, que lidera, que atravessou fronteira e recomeçou do zero, e que desconfia que a resposta pra prosperar não está numa fórmula nova. Está no que já ocupa as mãos dela.</p>
+        <p>Cada edição traz uma sessão de terapia ocupacional aplicada à performance, um estudo bíblico, um caderno de negócios, uma entrevista e ferramentas pra você usar na segunda-feira de manhã. Lê com caneta.</p>
+        <p class="sig">Jen</p>
+        <p class="label" style="color:var(--ink-soft)">Editora · Terapeuta ocupacional · Integrally Well</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSÃO TO -->
+<section class="spread" id="sessao">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Sessão TO de alta performance</span><span class="page">p. 8</span></div>
+    <h2 class="headline">Performance mora na rotina, e rotina se trata.</h2>
+    <p class="deck">Três protocolos tirados do consultório de terapia ocupacional e adaptados pra quem toca negócio, casa e ministério ao mesmo tempo.</p>
+
+    <div class="cols measure" style="max-width:none">
+      <p class="dropcap">Sexta-feira, seis da tarde. A empresária abre o notebook pra responder os e-mails que não respondeu de manhã porque passou a manhã respondendo mensagens. Ela chama isso de falta de disciplina. Na avaliação ocupacional a gente chama de outra coisa: desequilíbrio entre demanda da atividade e capacidade de desempenho naquele contexto.</p>
+      <p>A diferença importa. Disciplina vira culpa. Desequilíbrio vira plano. A terapia ocupacional olha três coisas juntas: a pessoa, a atividade e o ambiente. Quando uma delas muda, o desempenho muda. Por isso o protocolo abaixo raramente pede força de vontade. Ele pede ajuste.</p>
+      <p>Os três exercícios foram pensados pra caber numa semana comum. Faça um de cada vez. Anote o que aconteceu. Performance alta se constrói com dado, não com empolgação de domingo à noite.</p>
+    </div>
+
+    <div class="protocols">
+      <article class="protocol">
+        <span class="label" style="color:var(--myrtle)">Protocolo 1 · Pessoa</span>
+        <h3>Mapa de energia</h3>
+        <ol>
+          <li>Durante 5 dias, anote de hora em hora sua energia de 1 a 5.</li>
+          <li>Ao lado, escreva a atividade que estava fazendo.</li>
+          <li>Circule os dois blocos de maior energia de cada dia.</li>
+          <li>Na semana seguinte, coloque ali a tarefa que gera dinheiro ou decisão. E-mail e WhatsApp vão pros blocos baixos.</li>
+        </ol>
+        <span class="dose">Dose: 5 dias de registro · 10 min por dia</span>
+      </article>
+      <article class="protocol">
+        <span class="label" style="color:var(--myrtle)">Protocolo 2 · Atividade</span>
+        <h3>Análise de atividade do teu produto</h3>
+        <ol>
+          <li>Escolha a tarefa que você mais adia no negócio.</li>
+          <li>Quebre em passos tão pequenos que cada um leve menos de 15 minutos.</li>
+          <li>Marque o passo que trava. Quase sempre é um só.</li>
+          <li>Pergunte: esse passo pede habilidade que eu não tenho, ferramenta que eu não tenho, ou coragem? Cada resposta tem um remédio diferente.</li>
+        </ol>
+        <span class="dose">Dose: 1 tarefa por semana · 30 min</span>
+      </article>
+      <article class="protocol">
+        <span class="label" style="color:var(--myrtle)">Protocolo 3 · Ambiente</span>
+        <h3>Estação de trabalho com uma função só</h3>
+        <ol>
+          <li>Defina um lugar da casa só pra trabalho profundo, mesmo que seja uma ponta da mesa.</li>
+          <li>Deixe ali apenas o que a tarefa pede. Celular fica em outro cômodo.</li>
+          <li>Crie um gesto de entrada: acender uma vela, abrir a Bíblia no Salmo 90:17, colocar o fone.</li>
+          <li>Ao sair, deixe anotado o próximo passo. Amanhã você começa sem aquecimento.</li>
+        </ol>
+        <span class="dose">Dose: blocos de 50 min · 2 por dia</span>
+      </article>
+    </div>
+
+    <blockquote class="pull">"Confirma, ó Senhor, a obra das nossas mãos." Salmo 90:17. Até Moisés pedia ajuda com a rotina.</blockquote>
+  </div>
+</section>
+
+<!-- ESTUDO -->
+<section class="spread study" id="estudo">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Estudo da edição</span><span class="page">p. 18</span></div>
+    <h2 class="headline">Ocupa-te até que eu volte.</h2>
+    <p class="deck">Lucas 19:11-27. A parábola das minas lida com olhos de terapeuta ocupacional.</p>
+
+    <div class="cols">
+      <p class="dropcap">Repara numa coisa comigo. O senhor não entrega um plano de negócios. Entrega uma mina pra cada servo e uma instrução de duas palavras. Na tradução grega o verbo é <i>pragmateusasthe</i>, de onde vem a nossa palavra pragmático: negociai, fazei render, colocai pra trabalhar. A King James escolheu <i>occupy</i>.</p>
+      <p>O servo que falhou não perdeu a mina. Guardou num lenço. Ele não foi desonesto, foi desocupado. Tinha o recurso e não deixou o recurso entrar na rotina dele.</p>
+      <p>Isso conversa com Gênesis 2:15. Antes de qualquer queda, Deus coloca Adão no jardim pra lavrar e guardar. Trabalho já estava no projeto original. Em Êxodo 31, Bezalel é cheio do Espírito pra lapidar pedra e talhar madeira. A habilidade das mãos aparece como dom espiritual, com nome e sobrenome.</p>
+      <p>Então a pergunta da semana é concreta: qual é a tua mina que está no lenço? Talvez seja a receita que todo mundo pede. O jeito que você organiza a agenda da igreja. O inglês que você aprendeu na marra quando chegou em outro país. Aquilo que é fácil pra você costuma ser exatamente o que você despreza.</p>
+    </div>
+
+    <div class="greek">
+      <div><span class="label">Grego</span><b>pragmateuomai</b><i>fazer negócio, colocar em operação</i></div>
+      <div><span class="label">King James</span><b>occupy</b><i>ocupar, manter em uso, negociar</i></div>
+      <div><span class="label">Terapia ocupacional</span><b>ocupação</b><i>atividade com sentido que preenche o tempo e as mãos</i></div>
+    </div>
+
+    <p class="label" style="color:var(--plum)">Para o seu grupo</p>
+    <ol class="measure">
+      <li>O que o servo do lenço pensava sobre o senhor (v. 21)? Como a imagem que você tem de Deus afeta sua coragem de empreender?</li>
+      <li>Liste três coisas que ocupam suas mãos toda semana. Qual delas alguém pagaria pra aprender?</li>
+      <li>O que precisa sair do lenço até o próximo encontro?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- NEGÓCIOS DO REINO -->
+<section class="spread" id="negocios">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Negócios do Reino</span><span class="page">p. 24</span></div>
+    <h2 class="headline">O azeite já tava na despensa.</h2>
+    <p class="deck">2 Reis 4:1-7 como roteiro de negócio pra quem começa com pouco e com dívida.</p>
+    <div class="biz-grid">
+      <div class="cols" style="columns:1">
+        <p class="dropcap">Uma viúva, dois filhos e um credor batendo na porta. Eliseu faz uma pergunta antes de fazer qualquer milagre: o que você tem em casa? Ela responde que não tem nada, e depois corrige. Só uma botija de azeite.</p>
+        <p>Toda empreendedora cristã conhece essa correção. A gente diz que não tem nada e esquece do que está na mão. Olha a sequência que o texto dá, porque ela funciona como plano.</p>
+        <p><b>Inventário.</b> Nomeie o recurso. Uma habilidade, um produto, um público que já confia em você.</p>
+        <p><b>Vasos emprestados.</b> Ela pede vasilhas aos vizinhos, "e não poucas". Isso é rede, é parceria, é lista de espera. A capacidade de receber foi preparada antes do azeite correr.</p>
+        <p><b>Porta fechada.</b> Ela enche os vasos dentro de casa, com os filhos. Tem fase do negócio que é bastidor: produzir, testar, errar sem plateia.</p>
+        <p><b>Vende e paga.</b> O profeta manda vender, quitar a dívida e viver do resto. Nada de espiritualizar a planilha. O milagre terminou numa conta que fechou.</p>
+        <blockquote class="pull">O azeite parou quando acabaram os vasos. A provisão respeitou o tamanho da preparação.</blockquote>
+      </div>
+      <aside class="sidebar" aria-label="Planilha da viúva">
+        <span class="label" style="color:var(--plum)">Ferramenta</span>
+        <h3>Planilha da viúva</h3>
+        <p style="font-size:.95rem;color:var(--ink-soft)">Preencha antes de lançar qualquer oferta.</p>
+        <table>
+          <tr><td>O que eu tenho em casa</td><td>1 habilidade</td></tr>
+          <tr><td>Vasos: pessoas que já pediram isso</td><td>meta 30</td></tr>
+          <tr><td>Parceiros que emprestam alcance</td><td>meta 3</td></tr>
+          <tr><td>Tempo de porta fechada</td><td>21 dias</td></tr>
+          <tr><td>Primeira dívida a quitar</td><td>R$ ____</td></tr>
+          <tr><td>Dízimo e reserva</td><td>10% + 10%</td></tr>
+        </table>
+        <p style="font-size:.85rem;color:var(--ink-soft);margin-top:14px">Dica de TO: escreva cada linha num post-it e cole na estação de trabalho do Protocolo 3.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREVISTA -->
+<section class="spread interview" id="entrevista">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Entrevista</span><span class="page">p. 32</span></div>
+    <h2 class="headline">"Eu achava que o plantão era castigo. Era escola."</h2>
+    <p class="deck">Ana Clara Moreira atendeu doze anos no turno da noite. Hoje dirige uma clínica de reabilitação com sete profissionais e um culto de quinze minutos toda segunda antes do primeiro paciente.</p>
+    <dl class="qa">
+      <dt>Ocupa · Quando você percebeu que queria empreender?</dt>
+      <dd>Numa madrugada, organizando a escala do hospital pela terceira vez porque ninguém mais sabia fazer. Pensei: eu sei gerir gente e sei tratar gente. Por que isso só acontece aqui dentro, de graça?</dd>
+      <dt>Qual foi a botija de azeite?</dt>
+      <dd>Uma lista de WhatsApp com 40 famílias de pacientes que me pediam atendimento domiciliar. Eu recusava por culpa. Um dia uma paciente disse: "você está enterrando isso". Doeu, porque ela tinha razão.</dd>
+      <dt>Como a fé entra na gestão, na prática?</dt>
+      <dd>Contrato com cláusula clara, salário no dia certo e ninguém atendendo cansado. Pra mim isso é mais testemunho do que versículo na parede. A gente ora, sim. E paga em dia.</dd>
+      <dt>O que a terapia ocupacional te ensinou sobre produtividade?</dt>
+      <dd>Que ninguém melhora sem rotina adaptada. Eu aplico com a equipe o mesmo que aplico com paciente: primeiro entendo o dia real da pessoa, depois ajusto a tarefa. Parei de cobrar produtividade de quem estava com o ambiente todo contra.</dd>
+      <dt>Um erro caro.</dt>
+      <dd>Abrir a segunda sala antes de ter os vasos. Contratei antes de ter fila. Fiquei seis meses pagando aluguel de sala vazia. Hoje eu só expando com lista de espera na mão.</dd>
+      <dt>O que você diria pra mulher que ainda está no plantão?</dt>
+      <dd>Que ela preste atenção no que já faz sem ninguém pedir. Ali tem negócio. E que não saia correndo: o plantão pode financiar a porta fechada.</dd>
+    </dl>
+    <p class="note">Ana Clara é uma personagem composta para esta edição-modelo, criada a partir de padrões comuns do público da revista. Substitua pela sua entrevistada real e use as seis perguntas como roteiro fixo da seção.</p>
+  </div>
+</section>
+
+<!-- RODA -->
+<section class="spread" id="roda">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Roda ocupacional</span><span class="page">p. 40</span></div>
+    <h2 class="headline">Onde o teu desempenho está vazando?</h2>
+    <p class="deck">Dê uma nota de 0 a 10 pra satisfação em cada área da tua vida nas últimas duas semanas. A roda se desenha sozinha.</p>
+    <div class="wheel">
+      <form class="sliders" id="wheelForm" onsubmit="return false">
+        <label for="w0">Sono e descanso <output for="w0" id="o0">6</output><input type="range" id="w0" min="0" max="10" value="6"></label>
+        <label for="w1">Trabalho que gera renda <output for="w1" id="o1">7</output><input type="range" id="w1" min="0" max="10" value="7"></label>
+        <label for="w2">Autocuidado e corpo <output for="w2" id="o2">4</output><input type="range" id="w2" min="0" max="10" value="4"></label>
+        <label for="w3">Casa e família <output for="w3" id="o3">6</output><input type="range" id="w3" min="0" max="10" value="6"></label>
+        <label for="w4">Lazer e criatividade <output for="w4" id="o4">3</output><input type="range" id="w4" min="0" max="10" value="3"></label>
+        <label for="w5">Vida com Deus <output for="w5" id="o5">7</output><input type="range" id="w5" min="0" max="10" value="7"></label>
+        <label for="w6">Comunidade e serviço <output for="w6" id="o6">5</output><input type="range" id="w6" min="0" max="10" value="5"></label>
+        <label for="w7">Finanças <output for="w7" id="o7">5</output><input type="range" id="w7" min="0" max="10" value="5"></label>
+      </form>
+      <div>
+        <svg id="radar" viewBox="0 0 440 440" role="img" aria-label="Gráfico radar da roda ocupacional"></svg>
+        <div class="verdict" id="verdict" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CADERNO -->
+<section class="spread" id="caderno">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Caderno da semana</span><span class="page">p. 44</span></div>
+    <h2 class="headline">Sete dias, uma ocupação por vez.</h2>
+    <p class="deck">Marque conforme for fazendo. Suas marcações ficam salvas neste navegador.</p>
+    <div class="progress"><span class="label" id="progLabel">0 de 21</span><div class="bar"><i id="progBar"></i></div><button class="btn" type="button" id="resetWeek">Recomeçar</button></div>
+    <div class="week" id="week"></div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="spread" id="agenda">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Agenda e recursos</span><span class="page">p. 50</span></div>
+    <h2 class="headline">Pra continuar depois da última página</h2>
+    <div class="agenda">
+      <article><span class="label" style="color:var(--plum)">Encontro online</span><h3>Sessão coletiva: mapa de energia</h3><p>Revisão ao vivo dos registros do Protocolo 1. Traga suas anotações. Data e link no perfil da Integrally Well.</p></article>
+      <article><span class="label" style="color:var(--plum)">Mentoria</span><h3>Negócios do Reino em 6 semanas</h3><p>Da botija de azeite à primeira oferta vendida, com análise de atividade do seu produto.</p></article>
+      <article><span class="label" style="color:var(--plum)">Leitura</span><h3>Provérbios 31, um por dia</h3><p>Leia um versículo por dia deste mês e anote qual ocupação da mulher virtuosa aparece.</p></article>
+      <article><span class="label" style="color:var(--plum)">Próxima edição</span><h3>Descanso como estratégia</h3><p>Sábado, sono e recuperação ocupacional. E uma entrevista com uma empresária imigrante.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ÚLTIMA PÁGINA -->
+<section class="spread last" id="ultima">
+  <div class="wrap">
+    <div class="kicker"><span class="label">Última página</span><span class="page">p. 52</span></div>
+    <h2 class="headline">O que é isso na tua mão?</h2>
+    <div class="measure">
+      <p>Deus fez essa pergunta pra Moisés antes de abrir o mar. Ele tinha um cajado de pastor, madeira comum, gasta de tanto uso. Foi aquilo que Deus usou.</p>
+      <p>Fecha a revista e olha pras tuas mãos. O que elas fizeram hoje? Escreve uma frase sobre isso num papel e deixa na estação de trabalho. Amanhã você começa por ali.</p>
+    </div>
+    <div class="colophon label">
+      <span>Ocupa · Edição 01</span>
+      <span>Editora: Jen · Integrally Well</span>
+      <span>Textos bíblicos: ARA e King James</span>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  // Roda ocupacional
+  var names=["Sono","Renda","Autocuidado","Casa","Lazer","Deus","Comunidade","Finanças"];
+  var tips=[
+    "Comece pelo sono. Defina um horário de desligar telas e proteja 7 horas por 14 dias antes de mexer em qualquer outra coisa.",
+    "Use o Protocolo 2 na tarefa que mais gera renda e você mais adia. Um passo travado costuma segurar o mês inteiro.",
+    "Coloque o autocuidado na agenda como atendimento: 30 minutos, 3 vezes na semana, com horário e nome.",
+    "Escolha uma refeição por semana sem celular à mesa. Ambiente muda desempenho em casa também.",
+    "Lazer é ocupação. Reserve duas horas por semana pra algo que você faz com as mãos só pelo prazer.",
+    "Faça do gesto de entrada do Protocolo 3 um momento com a Palavra. Salmo 90:17 antes do primeiro bloco.",
+    "Sirva em algo pequeno e fixo. Uma hora por semana num lugar só vale mais do que muitas promessas.",
+    "Preencha a Planilha da viúva e nomeie a primeira dívida a quitar. Clareza vem antes de estratégia."
+  ];
+  var svg=document.getElementById("radar"),cx=220,cy=220,R=150,n=names.length;
+  var inputs=[];for(var i=0;i<n;i++)inputs.push(document.getElementById("w"+i));
+  try{var saved=JSON.parse(localStorage.getItem("ocupa-roda")||"null");if(saved&&saved.length===n)saved.forEach(function(v,i){inputs[i].value=v});}catch(e){}
+  function pt(i,r){var a=-Math.PI/2+i*2*Math.PI/n;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
+  function draw(){
+    var vals=inputs.map(function(el){return +el.value});
+    vals.forEach(function(v,i){document.getElementById("o"+i).textContent=v});
+    try{localStorage.setItem("ocupa-roda",JSON.stringify(vals))}catch(e){}
+    var s="";
+    [2,4,6,8,10].forEach(function(l){var p=[];for(var i=0;i<n;i++)p.push(pt(i,R*l/10).join(","));s+='<polygon points="'+p.join(" ")+'" fill="none" stroke="var(--rule)" stroke-width="1"/>'});
+    for(var i=0;i<n;i++){var e=pt(i,R);s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+e[0]+'" y2="'+e[1]+'" stroke="var(--rule)"/>';
+      var t=pt(i,R+30);s+='<text x="'+t[0]+'" y="'+t[1]+'" text-anchor="middle" dominant-baseline="middle" fill="var(--ink-soft)" style="font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase">'+names[i]+'</text>'}
+    var poly=vals.map(function(v,i){return pt(i,R*v/10).join(",")}).join(" ");
+    s+='<polygon points="'+poly+'" fill="var(--myrtle)" fill-opacity=".28" stroke="var(--myrtle)" stroke-width="2.5"/>';
+    vals.forEach(function(v,i){var p=pt(i,R*v/10);s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4.5" fill="var(--saffron)"/>'});
+    svg.innerHTML=s;
+    var min=Math.min.apply(null,vals),idx=vals.indexOf(min),avg=(vals.reduce(function(a,b){return a+b},0)/n).toFixed(1);
+    document.getElementById("verdict").innerHTML='<span class="label" style="color:var(--plum)">Média '+avg.replace(".",",")+' · área mais baixa</span><br><b>'+names[idx]+' ('+min+')</b><p style="margin:.4em 0 0">'+tips[idx]+'</p>';
+  }
+  inputs.forEach(function(el){el.addEventListener("input",draw)});draw();
+
+  // Caderno da semana
+  var days=[
+    ["Segunda","Registrar energia de hora em hora","Ler Lucas 19:11-27","Montar a estação de trabalho"],
+    ["Terça","Registrar energia","Escolher a tarefa mais adiada","Quebrar a tarefa em passos de 15 min"],
+    ["Quarta","Registrar energia","Nomear a botija de azeite","Listar 10 vasos: quem já pediu isso"],
+    ["Quinta","Registrar energia","Dois blocos de 50 min de trabalho profundo","Convidar 1 parceiro"],
+    ["Sexta","Circular os picos de energia da semana","Preencher a Planilha da viúva","Refazer a roda ocupacional"],
+    ["Sábado","Duas horas de lazer com as mãos","Refeição sem celular"," Descansar sem culpa"],
+    ["Domingo","Culto e comunhão","Escrever a frase da última página","Planejar a semana nos picos de energia"]
+  ];
+  var week=document.getElementById("week"),state={};
+  try{state=JSON.parse(localStorage.getItem("ocupa-caderno")||"{}")||{}}catch(e){state={}}
+  var html="";days.forEach(function(d,di){html+='<div class="day"><h3>'+d[0]+'</h3>';for(var k=1;k<d.length;k++){var id="d"+di+"t"+k;html+='<label for="'+id+'"><input type="checkbox" id="'+id+'"'+(state[id]?" checked":"")+'><span>'+d[k].trim()+'</span></label>'}html+='</div>'});
+  week.innerHTML=html;
+  function prog(){var boxes=week.querySelectorAll("input"),c=0;boxes.forEach(function(b){if(b.checked)c++});document.getElementById("progLabel").textContent=c+" de "+boxes.length;document.getElementById("progBar").style.width=(100*c/boxes.length)+"%"}
+  week.addEventListener("change",function(e){state[e.target.id]=e.target.checked;try{localStorage.setItem("ocupa-caderno",JSON.stringify(state))}catch(err){}prog()});
+  document.getElementById("resetWeek").addEventListener("click",function(){state={};try{localStorage.removeItem("ocupa-caderno")}catch(e){}week.querySelectorAll("input").forEach(function(b){b.checked=false});prog()});
+  prog();
+})();
+</script>
