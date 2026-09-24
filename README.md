@@ -47,3 +47,7 @@ src/
 ```
 
 > Privacidade: nenhum dado é enviado para servidores. Tudo fica salvo apenas no navegador do dispositivo.
+
+## Instagram agent (skills de Claude)
+
+Este repositório também traz as 13 skills `/ig-*` do pacote instagram-agent-skill (MIT) em `.claude/skills/`. Veja [instagram/README.md](instagram/README.md).
