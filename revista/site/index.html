@@ -196,6 +196,27 @@ hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
 .ig-hint{max-width:980px;margin:6px auto 0;color:var(--soft);font-size:.9rem}
 
 
+/* v1 editorial pieces */
+.cover-thesis{font-style:italic;font-weight:500;max-width:22ch}
+.verse-strip{color:var(--soft);margin-top:28px;letter-spacing:.2em}
+.letter{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+.photo.portrait{aspect-ratio:3/4}
+.sig{font-family:var(--serif);font-style:italic;font-size:1.8rem;margin:8px 0 2px}
+.cols{columns:2 300px;column-gap:44px;margin-bottom:28px}
+.cols p{break-inside:avoid-column}
+.biz-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:start}
+.sidebar h3{margin-top:10px}
+.agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 40px}
+.agenda article{border-top:1px solid var(--rule);padding:18px 0}
+.agenda .mono{color:var(--plum)}
+.agenda h3{font-size:1.35rem;font-weight:700;margin:6px 0}
+.agenda p{color:var(--soft);font-size:.98rem;margin:0}
+.last{background:var(--text);color:var(--bg);margin-top:56px;padding:clamp(24px,5vw,48px)}
+.last .eyebrow{color:var(--gold)}
+.last .title i{color:var(--gold)}
+.colophon{opacity:.7;margin-top:30px}
+@media (max-width:760px){.letter,.biz-grid{grid-template-columns:1fr}.letter .photo{max-width:220px}}
+
 /* PODCAST */
 .pod{margin-top:56px;background:var(--teal);color:var(--teal-ink);padding:clamp(22px,5vw,40px);display:grid;grid-template-columns:auto 1fr;gap:24px 32px;align-items:start}
 .pod .eyebrow{color:var(--gold)}
@@ -248,14 +269,14 @@ img{max-width:100%}
   <nav class="tabs" aria-label="Seções">
     <div class="wrap" id="tabnav">
       <a href="#capa"><span data-l="pt">Capa</span><span data-l="en">Cover</span><span data-l="es">Portada</span></a>
-      <a href="#cases"><span data-l="pt">Cases &amp; Mulheres</span><span data-l="en">Cases &amp; Builders</span><span data-l="es">Casos &amp; Mujeres</span></a>
-      <a href="#historia"><span data-l="pt">Contexto histórico</span><span data-l="en">Historical context</span><span data-l="es">Contexto histórico</span></a>
+      <a href="#carta"><span data-l="pt">Carta</span><span data-l="en">Letter</span><span data-l="es">Carta</span></a>
       <a href="#sessao"><span data-l="pt">Sessão TO</span><span data-l="en">OT Session</span><span data-l="es">Sesión TO</span></a>
       <a href="#estudo"><span data-l="pt">Estudo</span><span data-l="en">Study</span><span data-l="es">Estudio</span></a>
       <a href="#negocios"><span data-l="pt">Negócios do Reino</span><span data-l="en">Kingdom Business</span><span data-l="es">Negocios del Reino</span></a>
       <a href="#entrevista"><span data-l="pt">Entrevista &amp; Pod</span><span data-l="en">Interview &amp; Pod</span><span data-l="es">Entrevista &amp; Pod</span></a>
       <a href="#roda"><span data-l="pt">Roda</span><span data-l="en">Wheel</span><span data-l="es">Rueda</span></a>
       <a href="#caderno"><span data-l="pt">Caderno</span><span data-l="en">Workbook</span><span data-l="es">Cuaderno</span></a>
+      <a href="#agenda"><span data-l="pt">Agenda</span><span data-l="en">Calendar</span><span data-l="es">Agenda</span></a>
     </div>
   </nav>
 </header>
@@ -266,227 +287,202 @@ img{max-width:100%}
   <div class="wrap">
     <div class="cover-hero">
       <div class="photo">
-        <span class="year">Ed. 01 · 2026</span>
+        <span class="year"><span data-l="pt">Edição 01 · Outono 2026</span><span data-l="en">Issue 01 · Fall 2026</span><span data-l="es">Edición 01 · Otoño 2026</span></span>
         <h1>Ocu<em>pa</em></h1>
-        <span class="tagline"><span data-l="pt">Lucas 19:13 · Ocupa-te até que eu volte</span><span data-l="en">Luke 19:13 · Occupy till I come</span><span data-l="es">Lucas 19:13 · Negociad entre tanto que vengo</span></span>
+        <span class="tagline"><span data-l="pt">Lucas 19:13 · "Occupy till I come"</span><span data-l="en">Luke 19:13 · "Occupy till I come"</span><span data-l="es">Lucas 19:13 · "Occupy till I come"</span></span>
       </div>
     </div>
-    <span class="eyebrow"><span data-l="pt">Nesta edição</span><span data-l="en">In this issue</span><span data-l="es">En esta edición</span></span>
-    <h2 class="title" data-l="pt">O que ocupa as tuas mãos é onde Deus escondeu o teu <i>dom</i>.</h2>
-    <h2 class="title" data-l="en">What fills your hands every day is where God hid your <i>gift</i>.</h2>
-    <h2 class="title" data-l="es">Lo que ocupa tus manos cada día es donde Dios escondió tu <i>don</i>.</h2>
+    <span class="eyebrow"><span data-l="pt">Integrally Well apresenta</span><span data-l="en">Integrally Well presents</span><span data-l="es">Integrally Well presenta</span></span>
+    <h2 class="title cover-thesis" data-l="pt">O que ocupa as tuas mãos todo dia é onde Deus escondeu o que te deu pra <i>prosperar</i>.</h2>
+    <h2 class="title cover-thesis" data-l="en">What fills your hands every day is where God hid what He gave you to <i>prosper</i>.</h2>
+    <h2 class="title cover-thesis" data-l="es">Lo que ocupa tus manos cada día es donde Dios escondió lo que te dio para <i>prosperar</i>.</h2>
     <hr>
     <div class="lines">
-      <a class="line" href="#cases"><span class="mono">01</span>
-        <b data-l="pt">Mulheres e marcas que ocuparam bem</b><b data-l="en">Builders who occupied well</b><b data-l="es">Mujeres y marcas que ocuparon bien</b>
-        <span data-l="pt">De Lídia de Tiatira ao restaurante que fecha aos domingos.</span><span data-l="en">From Lydia of Thyatira to the restaurant closed on Sundays.</span><span data-l="es">De Lidia de Tiatira al restaurante que cierra los domingos.</span></a>
-      <a class="line" href="#historia"><span class="mono">02</span>
-        <b data-l="pt">Como a ocupação virou tratamento</b><b data-l="en">How occupation became treatment</b><b data-l="es">Cómo la ocupación se volvió tratamiento</b>
-        <span data-l="pt">Duzentos anos de terapia ocupacional em uma linha do tempo.</span><span data-l="en">Two hundred years of occupational therapy on one timeline.</span><span data-l="es">Doscientos años de terapia ocupacional en una línea de tiempo.</span></a>
-      <a class="line" href="#sessao"><span class="mono">03</span>
-        <b data-l="pt">Sessão TO de alta performance</b><b data-l="en">High-performance OT session</b><b data-l="es">Sesión de TO de alto rendimiento</b>
-        <span data-l="pt">Três protocolos para quem lidera, vende e cuida da casa.</span><span data-l="en">Three protocols for women who lead, sell and run a home.</span><span data-l="es">Tres protocolos para quien lidera, vende y cuida la casa.</span></a>
-      <a class="line" href="#negocios"><span class="mono">04</span>
-        <b data-l="pt">O azeite já tava na despensa</b><b data-l="en">The oil was already in the pantry</b><b data-l="es">El aceite ya estaba en la despensa</b>
-        <span data-l="pt">2 Reis 4 como plano de negócio.</span><span data-l="en">2 Kings 4 as a business plan.</span><span data-l="es">2 Reyes 4 como plan de negocio.</span></a>
-      <a class="line" href="#entrevista"><span class="mono">05</span>
-        <b data-l="pt">Do plantão à clínica própria</b><b data-l="en">From night shifts to her own clinic</b><b data-l="es">De la guardia a la clínica propia</b>
-        <span data-l="pt">Entrevista da edição e o podcast Fuxicar.</span><span data-l="en">This issue's interview and the Fuxicar podcast.</span><span data-l="es">Entrevista de la edición y el podcast Fuxicar.</span></a>
+      <a class="line" href="#sessao"><span class="mono">p. 8</span>
+        <b data-l="pt">Sessão de alta performance</b><b data-l="en">High-performance session</b><b data-l="es">Sesión de alto rendimiento</b>
+        <span data-l="pt">Três protocolos de terapia ocupacional pra quem lidera, vende e ainda cuida da casa.</span><span data-l="en">Three occupational therapy protocols for women who lead, sell and still run a home.</span><span data-l="es">Tres protocolos de terapia ocupacional para quien lidera, vende y además cuida la casa.</span></a>
+      <a class="line" href="#negocios"><span class="mono">p. 24</span>
+        <b data-l="pt">O azeite já tá na despensa</b><b data-l="en">The oil is already in the pantry</b><b data-l="es">El aceite ya está en la despensa</b>
+        <span data-l="pt">2 Reis 4 como plano de negócios pra mulher que começa do pouco.</span><span data-l="en">2 Kings 4 as a business plan for the woman starting with little.</span><span data-l="es">2 Reyes 4 como plan de negocios para la mujer que empieza con poco.</span></a>
+      <a class="line" href="#entrevista"><span class="mono">p. 32</span>
+        <b data-l="pt">Entrevista &amp; Fuxicar</b><b data-l="en">Interview &amp; Fuxicar</b><b data-l="es">Entrevista &amp; Fuxicar</b>
+        <span data-l="pt">A fisioterapeuta que transformou o turno da noite numa clínica. E o convite pra você testemunhar no pod.</span><span data-l="en">The physical therapist who turned the night shift into a clinic. And an invitation to share your story on the podcast.</span><span data-l="es">La fisioterapeuta que convirtió el turno de noche en una clínica. Y la invitación a testificar en el pódcast.</span></a>
+      <a class="line" href="#roda"><span class="mono">p. 40</span>
+        <b data-l="pt">Roda ocupacional</b><b data-l="en">Occupational wheel</b><b data-l="es">Rueda ocupacional</b>
+        <span data-l="pt">Faça o teste e descubra qual área está roubando o teu desempenho.</span><span data-l="en">Take the test and find out which area is draining your performance.</span><span data-l="es">Haz la prueba y descubre qué área te está robando el rendimiento.</span></a>
     </div>
+    <p class="verse-strip mono" aria-hidden="true">Lavrar e guardar · Gn 2:15 · Bezalel · Êx 31 · Pv 31 · Lc 19:13</p>
   </div>
 </section>
 
-<!-- CASES -->
-<section class="tab" id="cases" aria-label="Cases">
+<!-- CARTA -->
+<section class="tab" id="carta" aria-label="Carta da editora">
   <div class="wrap">
-    <span class="eyebrow"><span data-l="pt">Cases &amp; Mulheres</span><span data-l="en">Cases &amp; Builders</span><span data-l="es">Casos &amp; Mujeres</span></span>
-    <h2 class="title"><span data-l="pt">Gente que ocupou bem até Ele voltar</span><span data-l="en">People who occupied well</span><span data-l="es">Gente que ocupó bien hasta que Él vuelva</span></h2>
-    <hr>
-
-    <article class="case">
-      <div class="photo"><span class="year">c. 50 d.C.</span><span class="glyph">L</span><span class="cap">Filipos · Atos 16:14-15</span></div>
-      <div class="case-head"><span class="mono">Case</span><span class="mono"><span data-l="pt">Comércio &amp; hospitalidade</span><span data-l="en">Trade &amp; hospitality</span><span data-l="es">Comercio &amp; hospitalidad</span></span></div>
-      <h3><span data-l="pt">Lídia, a vendedora de púrpura</span><span data-l="en">Lydia, the purple-cloth dealer</span><span data-l="es">Lidia, la vendedora de púrpura</span></h3>
-      <div class="measure">
-        <p data-l="pt">Uma empresária de Tiatira trabalhando em Filipos, com um dos produtos mais caros do mundo antigo. Ela ouve Paulo à beira do rio, é batizada com toda a casa e na mesma hora oferece essa casa como base. A primeira igreja da Europa se reuniu no endereço de um negócio.</p>
-        <p data-l="en">A businesswoman from Thyatira working in Philippi, trading one of the most expensive goods of the ancient world. She hears Paul by the river, is baptized with her household and offers that house as a base the same day. The first church in Europe met at a business address.</p>
-        <p data-l="es">Una empresaria de Tiatira trabajando en Filipos, con uno de los productos más caros del mundo antiguo. Escucha a Pablo junto al río, es bautizada con toda su casa y ese mismo día ofrece la casa como base. La primera iglesia de Europa se reunió en la dirección de un negocio.</p>
+    <span class="eyebrow"><span data-l="pt">Carta da editora · p. 4</span><span data-l="en">Editor's letter · p. 4</span><span data-l="es">Carta de la editora · p. 4</span></span>
+    <div class="letter">
+      <div>
+        <div class="photo portrait"><span class="glyph">J</span><span class="cap"><span data-l="pt">Espaço para sua foto</span><span data-l="en">Space for your photo</span><span data-l="es">Espacio para tu foto</span></span></div>
       </div>
-      <div class="lesson"><span class="mono"><span data-l="pt">Lição de ocupação</span><span data-l="en">Occupation lesson</span><span data-l="es">Lección de ocupación</span></span>
-        <span data-l="pt">O negócio dela virou casa aberta. Pergunte o que o teu espaço de trabalho pode hospedar além da venda.</span><span data-l="en">Her business became an open house. Ask what your workspace could host besides the sale.</span><span data-l="es">Su negocio se volvió casa abierta. Pregúntate qué puede hospedar tu espacio de trabajo además de la venta.</span></div>
-    </article>
-
-    <article class="case">
-      <div class="photo"><span class="year">1902</span><span class="glyph">G</span><span class="cap">Kemmerer, Wyoming</span></div>
-      <div class="case-head"><span class="mono">Case</span><span class="mono"><span data-l="pt">Ética &amp; varejo</span><span data-l="en">Ethics &amp; retail</span><span data-l="es">Ética &amp; comercio</span></span></div>
-      <h3><span data-l="pt">A loja chamada Regra de Ouro</span><span data-l="en">The store called Golden Rule</span><span data-l="es">La tienda llamada Regla de Oro</span></h3>
       <div class="measure">
-        <p data-l="pt">James Cash Penney, filho de pastor, abriu sua primeira loja numa cidade mineira do Wyoming e deu a ela o nome de The Golden Rule. Mateus 7:12 como política comercial: preço justo e o mesmo tratamento pra qualquer cliente. A rede que nasceu dali ganhou o sobrenome dele.</p>
-        <p data-l="en">James Cash Penney, a pastor's son, opened his first store in a Wyoming mining town and named it The Golden Rule. Matthew 7:12 as store policy: fair prices and the same treatment for every customer. The chain that grew from it took his last name.</p>
-        <p data-l="es">James Cash Penney, hijo de pastor, abrió su primera tienda en un pueblo minero de Wyoming y la llamó The Golden Rule. Mateo 7:12 como política comercial: precio justo y el mismo trato para cualquier cliente. La cadena que nació de ahí tomó su apellido.</p>
+        <h2 class="title"><span data-l="pt">Eu levei anos pra entender uma palavra.</span><span data-l="en">It took me years to understand one word.</span><span data-l="es">Me tomó años entender una palabra.</span></h2>
+        <div data-l="pt">
+          <p class="dropcap">Na faculdade de terapia ocupacional me ensinaram que ocupação é tudo aquilo que enche as mãos e o tempo de uma pessoa. Tomar banho, fazer o café, dirigir até o trabalho, atender um cliente, colocar o filho pra dormir. A gente avalia isso com escala, com observação, com análise de atividade. É ciência.</p>
+          <p>Anos depois, lendo Lucas 19 numa Bíblia em inglês, parei no versículo 13. O senhor entrega as minas aos servos e diz: <i>occupy till I come</i>. Ocupa-te até que eu volte. A mesma palavra da minha profissão, dentro da parábola sobre multiplicar o que se recebeu.</p>
+          <p>Esta revista nasceu dali. Ela é pra mulher que empreende, que atende, que lidera, que atravessou fronteira e recomeçou do zero, e que desconfia que a resposta pra prosperar não está numa fórmula nova. Está no que já ocupa as mãos dela.</p>
+          <p>Cada edição traz uma sessão de terapia ocupacional aplicada à performance, um estudo bíblico, um caderno de negócios, uma entrevista e ferramentas pra você usar na segunda-feira de manhã. Lê com caneta.</p>
+        </div>
+        <div data-l="en">
+          <p class="dropcap">In occupational therapy school I learned that an occupation is anything that fills a person's hands and time. Showering, making coffee, driving to work, seeing a client, putting a child to bed. We assess it with scales, observation and activity analysis. It's science.</p>
+          <p>Years later, reading Luke 19 in an English Bible, I stopped at verse 13. The master hands out minas to his servants and says: <i>occupy till I come</i>. The same word as my profession, inside the parable about multiplying what you were given.</p>
+          <p>This magazine was born right there. It's for the woman who builds a business, serves clients, leads, crossed a border and started over from zero, and who suspects the answer to prospering isn't a new formula. It's in what already fills her hands.</p>
+          <p>Every issue brings an occupational therapy session applied to performance, a Bible study, a business section, an interview and tools you can use on Monday morning. Read it with a pen.</p>
+        </div>
+        <div data-l="es">
+          <p class="dropcap">En la facultad de terapia ocupacional me enseñaron que ocupación es todo lo que llena las manos y el tiempo de una persona. Bañarse, hacer el café, manejar al trabajo, atender a un cliente, acostar al hijo. Lo evaluamos con escalas, con observación, con análisis de actividad. Es ciencia.</p>
+          <p>Años después, leyendo Lucas 19 en una Biblia en inglés, me detuve en el versículo 13. El señor entrega las minas a los siervos y dice: <i>occupy till I come</i>. Ocúpate hasta que yo vuelva. La misma palabra de mi profesión, dentro de la parábola sobre multiplicar lo recibido.</p>
+          <p>Esta revista nació ahí. Es para la mujer que emprende, que atiende, que lidera, que cruzó una frontera y empezó de cero, y que sospecha que la respuesta para prosperar no está en una fórmula nueva. Está en lo que ya ocupa sus manos.</p>
+          <p>Cada edición trae una sesión de terapia ocupacional aplicada al rendimiento, un estudio bíblico, un cuaderno de negocios, una entrevista y herramientas para usar el lunes por la mañana. Léela con pluma en mano.</p>
+        </div>
+        <p class="sig">Jen</p>
+        <p class="mono" style="color:var(--soft)"><span data-l="pt">Editora · Terapeuta ocupacional · Integrally Well</span><span data-l="en">Editor · Occupational therapist · Integrally Well</span><span data-l="es">Editora · Terapeuta ocupacional · Integrally Well</span></p>
       </div>
-      <div class="lesson"><span class="mono"><span data-l="pt">Lição de ocupação</span><span data-l="en">Occupation lesson</span><span data-l="es">Lección de ocupación</span></span>
-        <span data-l="pt">Valor escrito na fachada obriga a rotina a obedecer. Qual versículo cabe no nome ou no contrato da tua empresa?</span><span data-l="en">A value on the storefront forces the routine to obey it. Which verse fits your company's name or contract?</span><span data-l="es">Un valor escrito en la fachada obliga a la rutina a obedecer. ¿Qué versículo cabe en el nombre o el contrato de tu empresa?</span></div>
-    </article>
-
-    <article class="case">
-      <div class="photo"><span class="year">1917</span><span class="glyph">E</span><span class="cap">Clifton Springs, New York</span></div>
-      <div class="case-head"><span class="mono">Case</span><span class="mono"><span data-l="pt">Ocupação &amp; cuidado</span><span data-l="en">Occupation &amp; care</span><span data-l="es">Ocupación &amp; cuidado</span></span></div>
-      <h3><span data-l="pt">Eleanor Clarke Slagle e o treino de hábitos</span><span data-l="en">Eleanor Clarke Slagle and habit training</span><span data-l="es">Eleanor Clarke Slagle y el entrenamiento de hábitos</span></h3>
-      <div class="measure">
-        <p data-l="pt">Assistente social de formação, ela está entre as fundadoras da sociedade que deu origem à terapia ocupacional nos Estados Unidos. Ficou conhecida pelo treino de hábitos: pacientes internados há anos voltavam a ter um dia organizado, com hora de levantar, trabalhar, comer e descansar. A rotina era o remédio.</p>
-        <p data-l="en">Trained in social work, she was among the founders of the society that launched occupational therapy in the United States. She became known for habit training: patients hospitalized for years got an ordered day back, with a time to rise, work, eat and rest. The routine was the medicine.</p>
-        <p data-l="es">Trabajadora social de formación, está entre las fundadoras de la sociedad que dio origen a la terapia ocupacional en Estados Unidos. Se hizo conocida por el entrenamiento de hábitos: pacientes internados por años volvían a tener un día ordenado, con hora de levantarse, trabajar, comer y descansar. La rutina era el remedio.</p>
-      </div>
-      <div class="lesson"><span class="mono"><span data-l="pt">Lição de ocupação</span><span data-l="en">Occupation lesson</span><span data-l="es">Lección de ocupación</span></span>
-        <span data-l="pt">Antes de estratégia, estrutura do dia. Vá pro Protocolo 1 da Sessão TO.</span><span data-l="en">Before strategy, a structured day. Go to Protocol 1 in the OT Session.</span><span data-l="es">Antes de estrategia, estructura del día. Ve al Protocolo 1 de la Sesión TO.</span></div>
-    </article>
-
-    <article class="case">
-      <div class="photo"><span class="year">1946</span><span class="glyph">S</span><span class="cap">Hapeville, Georgia</span></div>
-      <div class="case-head"><span class="mono">Case</span><span class="mono"><span data-l="pt">Descanso &amp; convicção</span><span data-l="en">Rest &amp; conviction</span><span data-l="es">Descanso &amp; convicción</span></span></div>
-      <h3><span data-l="pt">O restaurante que fecha aos domingos</span><span data-l="en">The restaurant closed on Sundays</span><span data-l="es">El restaurante que cierra los domingos</span></h3>
-      <div class="measure">
-        <p data-l="pt">Truett Cathy abriu uma lanchonete pequena perto de Atlanta e decidiu que ela não abriria aos domingos. A regra continuou quando a lanchonete virou a Chick-fil-A. Durante décadas, analistas chamaram de dinheiro deixado na mesa. A empresa trata como descanso para a equipe e dia de culto.</p>
-        <p data-l="en">Truett Cathy opened a small diner near Atlanta and decided it would not open on Sundays. The rule stayed when the diner grew into Chick-fil-A. For decades analysts called it money left on the table. The company treats it as rest for the team and a day for worship.</p>
-        <p data-l="es">Truett Cathy abrió una cafetería pequeña cerca de Atlanta y decidió que no abriría los domingos. La regla siguió cuando la cafetería se convirtió en Chick-fil-A. Por décadas los analistas lo llamaron dinero perdido. La empresa lo trata como descanso para el equipo y día de culto.</p>
-      </div>
-      <div class="lesson"><span class="mono"><span data-l="pt">Lição de ocupação</span><span data-l="en">Occupation lesson</span><span data-l="es">Lección de ocupación</span></span>
-        <span data-l="pt">Descanso faz parte do equilíbrio ocupacional. Decida teu dia fechado antes de o calendário decidir por você.</span><span data-l="en">Rest is part of occupational balance. Choose your closed day before the calendar chooses for you.</span><span data-l="es">El descanso es parte del equilibrio ocupacional. Decide tu día cerrado antes de que el calendario decida por ti.</span></div>
-    </article>
-  </div>
-</section>
-
-<!-- CONTEXTO HISTÓRICO -->
-<section class="tab" id="historia" aria-label="Contexto histórico">
-  <div class="wrap">
-    <span class="eyebrow"><span data-l="pt">Contexto histórico</span><span data-l="en">Historical context</span><span data-l="es">Contexto histórico</span></span>
-    <h2 class="title"><span data-l="pt">Quando ocupar as mãos virou tratamento</span><span data-l="en">When busy hands became treatment</span><span data-l="es">Cuando ocupar las manos se volvió tratamiento</span></h2>
-    <hr>
-    <div class="photo wide" style="margin-bottom:40px"><span class="year">1796 → 2026</span><span class="glyph">O</span><span class="cap">York · Clifton Springs · Rio de Janeiro</span></div>
-    <ol class="tl">
-      <li><span class="when">1796</span>
-        <h3><span data-l="pt">O tratamento moral</span><span data-l="en">Moral treatment</span><span data-l="es">El tratamiento moral</span></h3>
-        <p data-l="pt">Em York, na Inglaterra, o quacre William Tuke abre o York Retreat. Na França, Philippe Pinel tira correntes de pacientes. Trabalho, jardinagem e rotina entram no cuidado da saúde mental.</p>
-        <p data-l="en">In York, England, the Quaker William Tuke opens the York Retreat. In France, Philippe Pinel unchains patients. Work, gardening and routine enter mental health care.</p>
-        <p data-l="es">En York, Inglaterra, el cuáquero William Tuke abre el York Retreat. En Francia, Philippe Pinel quita cadenas a pacientes. Trabajo, jardinería y rutina entran al cuidado de la salud mental.</p></li>
-      <li><span class="when">1880–1910</span>
-        <h3>Arts &amp; Crafts</h3>
-        <p data-l="pt">O movimento Arts and Crafts reage à fábrica e defende o trabalho manual como dignidade. A ideia de que fazer com as mãos restaura a pessoa ganha força.</p>
-        <p data-l="en">The Arts and Crafts movement pushes back on the factory and defends handwork as dignity. The idea that making things restores a person gains ground.</p>
-        <p data-l="es">El movimiento Arts and Crafts reacciona contra la fábrica y defiende el trabajo manual como dignidad. Gana fuerza la idea de que hacer con las manos restaura a la persona.</p></li>
-      <li><span class="when">1917</span>
-        <h3><span data-l="pt">Nasce a profissão</span><span data-l="en">A profession is born</span><span data-l="es">Nace la profesión</span></h3>
-        <p data-l="pt">Em Clifton Springs, Nova York, é fundada a National Society for the Promotion of Occupational Therapy, com George Barton, William Rush Dunton, Eleanor Clarke Slagle, Susan Cox Johnson, Thomas Kidner e Isabel Newton.</p>
-        <p data-l="en">In Clifton Springs, New York, the National Society for the Promotion of Occupational Therapy is founded by George Barton, William Rush Dunton, Eleanor Clarke Slagle, Susan Cox Johnson, Thomas Kidner and Isabel Newton.</p>
-        <p data-l="es">En Clifton Springs, Nueva York, se funda la National Society for the Promotion of Occupational Therapy, con George Barton, William Rush Dunton, Eleanor Clarke Slagle, Susan Cox Johnson, Thomas Kidner e Isabel Newton.</p></li>
-      <li><span class="when">1918</span>
-        <h3><span data-l="pt">As auxiliares de reconstrução</span><span data-l="en">Reconstruction aides</span><span data-l="es">Las auxiliares de reconstrucción</span></h3>
-        <p data-l="pt">Na Primeira Guerra, mulheres treinadas como reconstruction aides ajudam soldados feridos a voltar às atividades. A profissão ganha escala e cara feminina.</p>
-        <p data-l="en">During World War I, women trained as reconstruction aides help wounded soldiers return to daily activity. The profession scales up, and it is mostly women.</p>
-        <p data-l="es">En la Primera Guerra, mujeres formadas como reconstruction aides ayudan a soldados heridos a volver a sus actividades. La profesión crece y tiene rostro femenino.</p></li>
-      <li><span class="when"><span data-l="pt">Anos 1950</span><span data-l="en">1950s</span><span data-l="es">Años 1950</span></span>
-        <h3><span data-l="pt">Chega ao Brasil</span><span data-l="en">It reaches Brazil</span><span data-l="es">Llega a Brasil</span></h3>
-        <p data-l="pt">Surgem os primeiros cursos de terapia ocupacional no Rio de Janeiro e em São Paulo, ligados à reabilitação.</p>
-        <p data-l="en">The first occupational therapy programs open in Rio de Janeiro and São Paulo, tied to rehabilitation.</p>
-        <p data-l="es">Surgen los primeros cursos de terapia ocupacional en Río de Janeiro y São Paulo, ligados a la rehabilitación.</p></li>
-      <li><span class="when">1969</span>
-        <h3><span data-l="pt">Profissão reconhecida</span><span data-l="en">Recognized profession</span><span data-l="es">Profesión reconocida</span></h3>
-        <p data-l="pt">O Decreto-Lei 938 reconhece fisioterapia e terapia ocupacional como profissões de nível superior no Brasil.</p>
-        <p data-l="en">Decree-Law 938 recognizes physical therapy and occupational therapy as university-level professions in Brazil.</p>
-        <p data-l="es">El Decreto-Ley 938 reconoce la fisioterapia y la terapia ocupacional como profesiones de nivel superior en Brasil.</p></li>
-      <li><span class="when">2026</span>
-        <h3><span data-l="pt">Ocupação e propósito</span><span data-l="en">Occupation and purpose</span><span data-l="es">Ocupación y propósito</span></h3>
-        <p data-l="pt">A Ocupa junta as duas pontas: a ciência da atividade diária e a ordem de Lucas 19:13. O que enche as mãos também pode encher a despensa.</p>
-        <p data-l="en">Ocupa ties both ends together: the science of daily activity and the command in Luke 19:13. What fills the hands can also fill the pantry.</p>
-        <p data-l="es">Ocupa une las dos puntas: la ciencia de la actividad diaria y la orden de Lucas 19:13. Lo que llena las manos también puede llenar la despensa.</p></li>
-    </ol>
+    </div>
   </div>
 </section>
 
 <!-- SESSÃO TO -->
 <section class="tab" id="sessao" aria-label="Sessão TO">
   <div class="wrap">
-    <span class="eyebrow"><span data-l="pt">Sessão TO de alta performance</span><span data-l="en">High-performance OT session</span><span data-l="es">Sesión TO de alto rendimiento</span></span>
-    <h2 class="title"><span data-l="pt">Performance mora na <i>rotina</i></span><span data-l="en">Performance lives in your <i>routine</i></span><span data-l="es">El rendimiento vive en la <i>rutina</i></span></h2>
-    <p class="deck"><span data-l="pt">Pessoa, atividade e ambiente. Quando uma das três muda, o desempenho muda junto.</span><span data-l="en">Person, activity, environment. Change one and performance changes with it.</span><span data-l="es">Persona, actividad y ambiente. Cuando una cambia, el rendimiento cambia con ella.</span></p>
-    <div class="measure">
-      <p class="dropcap" data-l="pt">Sexta-feira, seis da tarde. A empresária abre o notebook pra responder os e-mails que não respondeu de manhã, porque passou a manhã respondendo mensagem. Ela chama isso de falta de disciplina. Na avaliação ocupacional a gente chama de desequilíbrio entre a demanda da atividade e a capacidade de desempenho naquele contexto. Disciplina vira culpa. Desequilíbrio vira plano.</p>
-      <p class="dropcap" data-l="en">Friday, six p.m. The business owner opens her laptop to answer the emails she skipped this morning, because she spent the morning answering texts. She calls it a lack of discipline. In an occupational assessment we call it a mismatch between the demands of the activity and her capacity in that context. Discipline turns into guilt. A mismatch turns into a plan.</p>
-      <p class="dropcap" data-l="es">Viernes, seis de la tarde. La empresaria abre la laptop para responder los correos que no respondió en la mañana, porque pasó la mañana respondiendo mensajes. Ella lo llama falta de disciplina. En la evaluación ocupacional lo llamamos desequilibrio entre la demanda de la actividad y la capacidad de desempeño en ese contexto. La disciplina se vuelve culpa. El desequilibrio se vuelve plan.</p>
+    <span class="eyebrow"><span data-l="pt">Sessão TO de alta performance · p. 8</span><span data-l="en">High-performance OT session · p. 8</span><span data-l="es">Sesión TO de alto rendimiento · p. 8</span></span>
+    <h2 class="title"><span data-l="pt">Performance mora na rotina, e rotina se <i>trata</i>.</span><span data-l="en">Performance lives in routine, and routine can be <i>treated</i>.</span><span data-l="es">El rendimiento vive en la rutina, y la rutina se <i>trata</i>.</span></h2>
+    <p class="deck"><span data-l="pt">Três protocolos tirados do consultório de terapia ocupacional e adaptados pra quem toca negócio, casa e ministério ao mesmo tempo.</span><span data-l="en">Three protocols taken from the occupational therapy clinic and adapted for women running a business, a home and a ministry at the same time.</span><span data-l="es">Tres protocolos sacados del consultorio de terapia ocupacional y adaptados para quien lleva negocio, casa y ministerio al mismo tiempo.</span></p>
+    <div class="cols">
+      <div data-l="pt">
+        <p class="dropcap">Sexta-feira, seis da tarde. A empresária abre o notebook pra responder os e-mails que não respondeu de manhã porque passou a manhã respondendo mensagens. Ela chama isso de falta de disciplina. Na avaliação ocupacional a gente chama de outra coisa: desequilíbrio entre demanda da atividade e capacidade de desempenho naquele contexto.</p>
+        <p>A diferença importa. Disciplina vira culpa. Desequilíbrio vira plano. A terapia ocupacional olha três coisas juntas: a pessoa, a atividade e o ambiente. Quando uma delas muda, o desempenho muda. Por isso o protocolo abaixo raramente pede força de vontade. Ele pede ajuste.</p>
+        <p>Os três exercícios foram pensados pra caber numa semana comum. Faça um de cada vez. Anote o que aconteceu. Performance alta se constrói com dado, não com empolgação de domingo à noite.</p>
+      </div>
+      <div data-l="en">
+        <p class="dropcap">Friday, six p.m. The business owner opens her laptop to answer the emails she didn't get to this morning, because she spent the morning answering texts. She calls it a lack of discipline. In an occupational assessment we call it something else: a mismatch between the demands of the activity and her capacity to perform in that context.</p>
+        <p>The difference matters. Discipline turns into guilt. A mismatch turns into a plan. Occupational therapy looks at three things together: the person, the activity and the environment. When one of them changes, performance changes. That's why the protocols below rarely ask for willpower. They ask for adjustment.</p>
+        <p>The three exercises are designed to fit an ordinary week. Do one at a time. Write down what happened. High performance is built on data, not on Sunday-night excitement.</p>
+      </div>
+      <div data-l="es">
+        <p class="dropcap">Viernes, seis de la tarde. La empresaria abre la laptop para responder los correos que no respondió en la mañana porque pasó la mañana respondiendo mensajes. Ella lo llama falta de disciplina. En la evaluación ocupacional lo llamamos de otra forma: desequilibrio entre la demanda de la actividad y la capacidad de desempeño en ese contexto.</p>
+        <p>La diferencia importa. La disciplina se vuelve culpa. El desequilibrio se vuelve plan. La terapia ocupacional mira tres cosas juntas: la persona, la actividad y el ambiente. Cuando una cambia, el rendimiento cambia. Por eso los protocolos de abajo casi nunca piden fuerza de voluntad. Piden ajuste.</p>
+        <p>Los tres ejercicios están pensados para caber en una semana común. Haz uno a la vez. Anota lo que pasó. El alto rendimiento se construye con datos, no con el entusiasmo del domingo por la noche.</p>
+      </div>
     </div>
     <div class="protocols">
       <article class="protocol"><span class="mono"><span data-l="pt">Protocolo 1 · Pessoa</span><span data-l="en">Protocol 1 · Person</span><span data-l="es">Protocolo 1 · Persona</span></span>
         <h3><span data-l="pt">Mapa de energia</span><span data-l="en">Energy map</span><span data-l="es">Mapa de energía</span></h3>
-        <ol data-l="pt"><li>Por 5 dias, anote de hora em hora sua energia de 1 a 5.</li><li>Ao lado, escreva o que estava fazendo.</li><li>Circule os dois picos de cada dia.</li><li>Na semana seguinte, coloque ali o que gera dinheiro ou decisão. WhatsApp vai pros vales.</li></ol>
-        <ol data-l="en"><li>For 5 days, log your energy from 1 to 5 every hour.</li><li>Next to it, write what you were doing.</li><li>Circle the two peaks of each day.</li><li>Next week, put money-making or decision work in those peaks. Texts go in the dips.</li></ol>
-        <ol data-l="es"><li>Durante 5 días, anota cada hora tu energía de 1 a 5.</li><li>Al lado, escribe qué estabas haciendo.</li><li>Encierra los dos picos de cada día.</li><li>La semana siguiente, pon ahí lo que genera dinero o decisión. WhatsApp va a los valles.</li></ol>
-        <span class="dose mono"><span data-l="pt">5 dias · 10 min/dia</span><span data-l="en">5 days · 10 min/day</span><span data-l="es">5 días · 10 min/día</span></span></article>
+        <ol data-l="pt"><li>Durante 5 dias, anote de hora em hora sua energia de 1 a 5.</li><li>Ao lado, escreva a atividade que estava fazendo.</li><li>Circule os dois blocos de maior energia de cada dia.</li><li>Na semana seguinte, coloque ali a tarefa que gera dinheiro ou decisão. E-mail e WhatsApp vão pros blocos baixos.</li></ol>
+        <ol data-l="en"><li>For 5 days, log your energy from 1 to 5 every hour.</li><li>Next to it, write the activity you were doing.</li><li>Circle the two highest-energy blocks of each day.</li><li>The following week, put the work that brings money or decisions in those blocks. Email and WhatsApp go to the low blocks.</li></ol>
+        <ol data-l="es"><li>Durante 5 días, anota cada hora tu energía de 1 a 5.</li><li>Al lado, escribe la actividad que estabas haciendo.</li><li>Encierra los dos bloques de mayor energía de cada día.</li><li>La semana siguiente, pon ahí la tarea que genera dinero o decisión. Correo y WhatsApp van a los bloques bajos.</li></ol>
+        <span class="dose mono"><span data-l="pt">Dose: 5 dias de registro · 10 min por dia</span><span data-l="en">Dose: 5 days of logging · 10 min a day</span><span data-l="es">Dosis: 5 días de registro · 10 min al día</span></span></article>
       <article class="protocol"><span class="mono"><span data-l="pt">Protocolo 2 · Atividade</span><span data-l="en">Protocol 2 · Activity</span><span data-l="es">Protocolo 2 · Actividad</span></span>
-        <h3><span data-l="pt">Análise de atividade</span><span data-l="en">Activity analysis</span><span data-l="es">Análisis de actividad</span></h3>
-        <ol data-l="pt"><li>Escolha a tarefa que você mais adia no negócio.</li><li>Quebre em passos de menos de 15 minutos.</li><li>Marque o passo que trava. Quase sempre é um só.</li><li>Ele pede habilidade, ferramenta ou coragem? Cada resposta tem um remédio.</li></ol>
-        <ol data-l="en"><li>Pick the business task you delay the most.</li><li>Break it into steps under 15 minutes.</li><li>Mark the step that stalls. It is almost always one.</li><li>Does it need skill, a tool or courage? Each answer has its own remedy.</li></ol>
-        <ol data-l="es"><li>Elige la tarea que más pospones en el negocio.</li><li>Divídela en pasos de menos de 15 minutos.</li><li>Marca el paso que se traba. Casi siempre es uno.</li><li>¿Pide habilidad, herramienta o valentía? Cada respuesta tiene su remedio.</li></ol>
-        <span class="dose mono"><span data-l="pt">1 tarefa/semana · 30 min</span><span data-l="en">1 task/week · 30 min</span><span data-l="es">1 tarea/semana · 30 min</span></span></article>
+        <h3><span data-l="pt">Análise de atividade do teu produto</span><span data-l="en">Activity analysis of your product</span><span data-l="es">Análisis de actividad de tu producto</span></h3>
+        <ol data-l="pt"><li>Escolha a tarefa que você mais adia no negócio.</li><li>Quebre em passos tão pequenos que cada um leve menos de 15 minutos.</li><li>Marque o passo que trava. Quase sempre é um só.</li><li>Pergunte: esse passo pede habilidade que eu não tenho, ferramenta que eu não tenho, ou coragem? Cada resposta tem um remédio diferente.</li></ol>
+        <ol data-l="en"><li>Pick the business task you put off the most.</li><li>Break it into steps so small that each takes under 15 minutes.</li><li>Mark the step that stalls. It's almost always just one.</li><li>Ask: does this step need a skill I don't have, a tool I don't have, or courage? Each answer has a different remedy.</li></ol>
+        <ol data-l="es"><li>Elige la tarea que más pospones en el negocio.</li><li>Divídela en pasos tan pequeños que cada uno tome menos de 15 minutos.</li><li>Marca el paso que se traba. Casi siempre es uno solo.</li><li>Pregunta: ¿este paso pide una habilidad que no tengo, una herramienta que no tengo, o valentía? Cada respuesta tiene un remedio distinto.</li></ol>
+        <span class="dose mono"><span data-l="pt">Dose: 1 tarefa por semana · 30 min</span><span data-l="en">Dose: 1 task a week · 30 min</span><span data-l="es">Dosis: 1 tarea por semana · 30 min</span></span></article>
       <article class="protocol"><span class="mono"><span data-l="pt">Protocolo 3 · Ambiente</span><span data-l="en">Protocol 3 · Environment</span><span data-l="es">Protocolo 3 · Ambiente</span></span>
-        <h3><span data-l="pt">Estação com uma função só</span><span data-l="en">A single-purpose station</span><span data-l="es">Estación de una sola función</span></h3>
-        <ol data-l="pt"><li>Defina um lugar só pra trabalho profundo, mesmo que seja a ponta da mesa.</li><li>Celular fica em outro cômodo.</li><li>Crie um gesto de entrada: Salmo 90:17, uma vela, o fone.</li><li>Ao sair, anote o próximo passo.</li></ol>
-        <ol data-l="en"><li>Pick one spot only for deep work, even the end of the table.</li><li>Your phone stays in another room.</li><li>Create an entry ritual: Psalm 90:17, a candle, headphones.</li><li>When you leave, write down the next step.</li></ol>
-        <ol data-l="es"><li>Define un lugar solo para trabajo profundo, aunque sea la punta de la mesa.</li><li>El celular queda en otro cuarto.</li><li>Crea un gesto de entrada: Salmo 90:17, una vela, los audífonos.</li><li>Al salir, anota el próximo paso.</li></ol>
-        <span class="dose mono"><span data-l="pt">Blocos de 50 min · 2/dia</span><span data-l="en">50-min blocks · 2/day</span><span data-l="es">Bloques de 50 min · 2/día</span></span></article>
+        <h3><span data-l="pt">Estação de trabalho com uma função só</span><span data-l="en">A single-purpose workstation</span><span data-l="es">Estación de trabajo con una sola función</span></h3>
+        <ol data-l="pt"><li>Defina um lugar da casa só pra trabalho profundo, mesmo que seja uma ponta da mesa.</li><li>Deixe ali apenas o que a tarefa pede. Celular fica em outro cômodo.</li><li>Crie um gesto de entrada: acender uma vela, abrir a Bíblia no Salmo 90:17, colocar o fone.</li><li>Ao sair, deixe anotado o próximo passo. Amanhã você começa sem aquecimento.</li></ol>
+        <ol data-l="en"><li>Choose one spot at home only for deep work, even if it's the end of the table.</li><li>Keep only what the task needs there. Your phone stays in another room.</li><li>Create an entry ritual: light a candle, open your Bible to Psalm 90:17, put on headphones.</li><li>When you leave, write down the next step. Tomorrow you start without warming up.</li></ol>
+        <ol data-l="es"><li>Define un lugar de la casa solo para trabajo profundo, aunque sea la punta de la mesa.</li><li>Deja ahí solo lo que la tarea pide. El celular queda en otro cuarto.</li><li>Crea un gesto de entrada: prender una vela, abrir la Biblia en el Salmo 90:17, ponerte los audífonos.</li><li>Al salir, deja anotado el próximo paso. Mañana empiezas sin calentamiento.</li></ol>
+        <span class="dose mono"><span data-l="pt">Dose: blocos de 50 min · 2 por dia</span><span data-l="en">Dose: 50-min blocks · 2 a day</span><span data-l="es">Dosis: bloques de 50 min · 2 al día</span></span></article>
     </div>
-    <blockquote class="pull"><span data-l="pt">"Confirma, ó Senhor, a obra das nossas mãos." Salmo 90:17</span><span data-l="en">"Establish thou the work of our hands." Psalm 90:17</span><span data-l="es">"La obra de nuestras manos confirma." Salmo 90:17</span></blockquote>
+    <blockquote class="pull"><span data-l="pt">"Confirma, ó Senhor, a obra das nossas mãos." Salmo 90:17. Até Moisés pedia ajuda com a rotina.</span><span data-l="en">"Establish thou the work of our hands." Psalm 90:17. Even Moses asked for help with his routine.</span><span data-l="es">"La obra de nuestras manos confirma." Salmo 90:17. Hasta Moisés pedía ayuda con la rutina.</span></blockquote>
   </div>
 </section>
 
 <!-- ESTUDO -->
 <section class="tab" id="estudo" aria-label="Estudo">
   <div class="wrap">
-    <span class="eyebrow"><span data-l="pt">Estudo da edição · Lucas 19:11-27</span><span data-l="en">Bible study · Luke 19:11-27</span><span data-l="es">Estudio · Lucas 19:11-27</span></span>
-    <h2 class="title"><span data-l="pt">Ocupa-te até que eu <i>volte</i></span><span data-l="en">Occupy till I <i>come</i></span><span data-l="es">Negociad hasta que yo <i>vuelva</i></span></h2>
-    <hr>
-    <div class="measure">
-      <p class="dropcap" data-l="pt">Repara numa coisa comigo. O senhor não entrega um plano de negócios. Entrega uma mina pra cada servo e uma instrução curta. O verbo grego é <i>pragmateusasthe</i>, parente da nossa palavra pragmático. A King James escolheu <i>occupy</i>. O servo que falhou não perdeu a mina. Guardou num lenço. Tinha o recurso e não deixou o recurso entrar na rotina.</p>
-      <p data-l="pt">Qual é a tua mina no lenço? A receita que todo mundo pede. O jeito que você organiza a agenda da igreja. O inglês que você aprendeu na marra quando chegou em outro país. Aquilo que é fácil pra você costuma ser o que você despreza.</p>
-      <p class="dropcap" data-l="en">Notice something with me. The master hands out no business plan. He gives each servant a mina and a short instruction. The Greek verb is <i>pragmateusasthe</i>, a cousin of our word pragmatic. The King James chose <i>occupy</i>. The servant who failed did not lose the mina. He wrapped it in a cloth. He had the resource and never let it into his routine.</p>
-      <p data-l="en">What is your mina in the cloth? The recipe everyone asks for. The way you run the church calendar. The English you learned the hard way after you moved countries. What comes easy to you is often what you look down on.</p>
-      <p class="dropcap" data-l="es">Fíjate en algo conmigo. El señor no entrega un plan de negocios. Entrega una mina a cada siervo y una instrucción corta. El verbo griego es <i>pragmateusasthe</i>, pariente de nuestra palabra pragmático. La King James eligió <i>occupy</i>. El siervo que falló no perdió la mina. La guardó en un pañuelo. Tenía el recurso y no lo dejó entrar en su rutina.</p>
-      <p data-l="es">¿Cuál es tu mina en el pañuelo? La receta que todos piden. La forma en que organizas la agenda de la iglesia. El idioma que aprendiste a la fuerza cuando llegaste a otro país. Lo que te resulta fácil suele ser lo que desprecias.</p>
+    <span class="eyebrow"><span data-l="pt">Estudo da edição · p. 18</span><span data-l="en">Bible study · p. 18</span><span data-l="es">Estudio de la edición · p. 18</span></span>
+    <h2 class="title"><span data-l="pt">Ocupa-te até que eu <i>volte</i>.</span><span data-l="en">Occupy till I <i>come</i>.</span><span data-l="es">Ocúpate hasta que yo <i>vuelva</i>.</span></h2>
+    <p class="deck"><span data-l="pt">Lucas 19:11-27. A parábola das minas lida com olhos de terapeuta ocupacional.</span><span data-l="en">Luke 19:11-27. The parable of the minas read through an occupational therapist's eyes.</span><span data-l="es">Lucas 19:11-27. La parábola de las minas leída con ojos de terapeuta ocupacional.</span></p>
+    <div class="cols">
+      <div data-l="pt">
+        <p class="dropcap">Repara numa coisa comigo. O senhor não entrega um plano de negócios. Entrega uma mina pra cada servo e uma instrução de duas palavras. Na tradução grega o verbo é <i>pragmateusasthe</i>, de onde vem a nossa palavra pragmático: negociai, fazei render, colocai pra trabalhar. A King James escolheu <i>occupy</i>.</p>
+        <p>O servo que falhou não perdeu a mina. Guardou num lenço. Ele não foi desonesto, foi desocupado. Tinha o recurso e não deixou o recurso entrar na rotina dele.</p>
+        <p>Isso conversa com Gênesis 2:15. Antes de qualquer queda, Deus coloca Adão no jardim pra lavrar e guardar. Trabalho já estava no projeto original. Em Êxodo 31, Bezalel é cheio do Espírito pra lapidar pedra e talhar madeira. A habilidade das mãos aparece como dom espiritual, com nome e sobrenome.</p>
+        <p>Então a pergunta da semana é concreta: qual é a tua mina que está no lenço? Talvez seja a receita que todo mundo pede. O jeito que você organiza a agenda da igreja. O inglês que você aprendeu na marra quando chegou em outro país. Aquilo que é fácil pra você costuma ser exatamente o que você despreza.</p>
+      </div>
+      <div data-l="en">
+        <p class="dropcap">Notice something with me. The master doesn't hand out a business plan. He gives each servant a mina and a short instruction. The Greek verb is <i>pragmateusasthe</i>, where our word pragmatic comes from: trade, make it yield, put it to work. The King James chose <i>occupy</i>.</p>
+        <p>The servant who failed didn't lose the mina. He kept it wrapped in a cloth. He wasn't dishonest, he was unoccupied. He had the resource and never let it into his routine.</p>
+        <p>That echoes Genesis 2:15. Before any fall, God places Adam in the garden to work it and keep it. Work was part of the original design. In Exodus 31, Bezalel is filled with the Spirit to cut stone and carve wood. Skill with the hands shows up as a spiritual gift, with a first and last name.</p>
+        <p>So this week's question is concrete: what is your mina in the cloth? Maybe it's the recipe everyone asks for. The way you run the church calendar. The English you learned the hard way when you arrived in another country. What comes easy to you is often exactly what you look down on.</p>
+      </div>
+      <div data-l="es">
+        <p class="dropcap">Fíjate en algo conmigo. El señor no entrega un plan de negocios. Entrega una mina a cada siervo y una instrucción corta. En griego el verbo es <i>pragmateusasthe</i>, de donde viene nuestra palabra pragmático: negociad, haced rendir, poned a trabajar. La King James eligió <i>occupy</i>.</p>
+        <p>El siervo que falló no perdió la mina. La guardó en un pañuelo. No fue deshonesto, fue desocupado. Tenía el recurso y no lo dejó entrar en su rutina.</p>
+        <p>Eso conversa con Génesis 2:15. Antes de cualquier caída, Dios pone a Adán en el huerto para labrarlo y guardarlo. El trabajo ya estaba en el proyecto original. En Éxodo 31, Bezalel es lleno del Espíritu para labrar piedra y tallar madera. La habilidad de las manos aparece como don espiritual, con nombre y apellido.</p>
+        <p>Entonces la pregunta de la semana es concreta: ¿cuál es tu mina guardada en el pañuelo? Tal vez la receta que todos piden. La forma en que organizas la agenda de la iglesia. El idioma que aprendiste a la fuerza cuando llegaste a otro país. Lo que te resulta fácil suele ser justo lo que desprecias.</p>
+      </div>
     </div>
     <div class="words">
-      <div><span class="mono"><span data-l="pt">Grego</span><span data-l="en">Greek</span><span data-l="es">Griego</span></span><b>pragmateuomai</b><i><span data-l="pt">fazer negócio, pôr em operação</span><span data-l="en">to trade, to put to work</span><span data-l="es">negociar, poner a trabajar</span></i></div>
-      <div><span class="mono">King James</span><b>occupy</b><i><span data-l="pt">ocupar, manter em uso</span><span data-l="en">to keep in use, to trade</span><span data-l="es">ocupar, mantener en uso</span></i></div>
-      <div><span class="mono"><span data-l="pt">Terapia ocupacional</span><span data-l="en">Occupational therapy</span><span data-l="es">Terapia ocupacional</span></span><b><span data-l="pt">ocupação</span><span data-l="en">occupation</span><span data-l="es">ocupación</span></b><i><span data-l="pt">atividade com sentido que enche o tempo e as mãos</span><span data-l="en">meaningful activity that fills time and hands</span><span data-l="es">actividad con sentido que llena el tiempo y las manos</span></i></div>
+      <div><span class="mono"><span data-l="pt">Grego</span><span data-l="en">Greek</span><span data-l="es">Griego</span></span><b>pragmateuomai</b><i><span data-l="pt">fazer negócio, colocar em operação</span><span data-l="en">to do business, to put into operation</span><span data-l="es">hacer negocio, poner en operación</span></i></div>
+      <div><span class="mono">King James</span><b>occupy</b><i><span data-l="pt">ocupar, manter em uso, negociar</span><span data-l="en">to occupy, keep in use, trade</span><span data-l="es">ocupar, mantener en uso, negociar</span></i></div>
+      <div><span class="mono"><span data-l="pt">Terapia ocupacional</span><span data-l="en">Occupational therapy</span><span data-l="es">Terapia ocupacional</span></span><b><span data-l="pt">ocupação</span><span data-l="en">occupation</span><span data-l="es">ocupación</span></b><i><span data-l="pt">atividade com sentido que preenche o tempo e as mãos</span><span data-l="en">meaningful activity that fills time and hands</span><span data-l="es">actividad con sentido que llena el tiempo y las manos</span></i></div>
     </div>
     <span class="eyebrow"><span data-l="pt">Para o seu grupo</span><span data-l="en">For your group</span><span data-l="es">Para tu grupo</span></span>
-    <ol class="measure" data-l="pt"><li>O que o servo do lenço pensava sobre o senhor (v. 21)? Como a tua imagem de Deus afeta tua coragem de empreender?</li><li>Liste três coisas que ocupam tuas mãos toda semana. Qual delas alguém pagaria pra aprender?</li><li>O que sai do lenço até o próximo encontro?</li></ol>
-    <ol class="measure" data-l="en"><li>What did the servant with the cloth believe about his master (v. 21)? How does your picture of God affect your courage to build?</li><li>List three things that fill your hands every week. Which one would someone pay to learn?</li><li>What comes out of the cloth before your next meeting?</li></ol>
-    <ol class="measure" data-l="es"><li>¿Qué pensaba el siervo del pañuelo sobre su señor (v. 21)? ¿Cómo afecta tu imagen de Dios tu valentía para emprender?</li><li>Enumera tres cosas que ocupan tus manos cada semana. ¿Cuál pagaría alguien por aprender?</li><li>¿Qué sale del pañuelo antes del próximo encuentro?</li></ol>
+    <ol class="measure" data-l="pt"><li>O que o servo do lenço pensava sobre o senhor (v. 21)? Como a imagem que você tem de Deus afeta sua coragem de empreender?</li><li>Liste três coisas que ocupam suas mãos toda semana. Qual delas alguém pagaria pra aprender?</li><li>O que precisa sair do lenço até o próximo encontro?</li></ol>
+    <ol class="measure" data-l="en"><li>What did the servant with the cloth believe about his master (v. 21)? How does your picture of God affect your courage to build a business?</li><li>List three things that fill your hands every week. Which one would someone pay to learn?</li><li>What needs to come out of the cloth before your next meeting?</li></ol>
+    <ol class="measure" data-l="es"><li>¿Qué pensaba el siervo del pañuelo sobre su señor (v. 21)? ¿Cómo afecta tu imagen de Dios tu valentía para emprender?</li><li>Enumera tres cosas que ocupan tus manos cada semana. ¿Cuál pagaría alguien por aprender?</li><li>¿Qué tiene que salir del pañuelo antes del próximo encuentro?</li></ol>
   </div>
 </section>
 
 <!-- NEGÓCIOS -->
 <section class="tab" id="negocios" aria-label="Negócios do Reino">
   <div class="wrap">
-    <span class="eyebrow"><span data-l="pt">Negócios do Reino · 2 Reis 4:1-7</span><span data-l="en">Kingdom Business · 2 Kings 4:1-7</span><span data-l="es">Negocios del Reino · 2 Reyes 4:1-7</span></span>
-    <h2 class="title"><span data-l="pt">O azeite já tava na <i>despensa</i></span><span data-l="en">The oil was already in the <i>pantry</i></span><span data-l="es">El aceite ya estaba en la <i>despensa</i></span></h2>
-    <hr>
-    <div class="measure">
-      <p class="dropcap" data-l="pt">Uma viúva, dois filhos e um credor na porta. Eliseu pergunta antes de qualquer milagre: o que você tem em casa? Ela diz que nada, e depois corrige. Só uma botija de azeite. A sequência do texto funciona como plano. Primeiro, nomeie o recurso. Depois, peça vasos emprestados, "e não poucos": rede, parceria, lista de espera. Então, porta fechada: produzir e testar sem plateia. Por fim, venda e pague a dívida. O milagre terminou numa conta que fechou.</p>
-      <p class="dropcap" data-l="en">A widow, two sons and a creditor at the door. Before any miracle, Elisha asks: what do you have in the house? She says nothing, then corrects herself. Just a jar of oil. The order of the story works as a plan. First, name the resource. Next, borrow vessels, "not a few": network, partners, a waitlist. Then shut the door: produce and test with no audience. Last, sell and pay the debt. The miracle ended in numbers that added up.</p>
-      <p class="dropcap" data-l="es">Una viuda, dos hijos y un acreedor en la puerta. Eliseo pregunta antes de cualquier milagro: ¿qué tienes en casa? Ella dice que nada, y luego se corrige. Solo una vasija de aceite. El orden del texto funciona como plan. Primero, nombra el recurso. Después, pide vasijas prestadas, "no pocas": red, alianzas, lista de espera. Luego, puerta cerrada: producir y probar sin público. Al final, vende y paga la deuda. El milagro terminó en cuentas que cuadraron.</p>
-    </div>
-    <blockquote class="pull"><span data-l="pt">O azeite parou quando acabaram os vasos.</span><span data-l="en">The oil stopped when the vessels ran out.</span><span data-l="es">El aceite paró cuando se acabaron las vasijas.</span></blockquote>
-    <div class="protocol" style="max-width:560px">
-      <span class="mono"><span data-l="pt">Ferramenta</span><span data-l="en">Tool</span><span data-l="es">Herramienta</span></span>
-      <h3><span data-l="pt">Planilha da viúva</span><span data-l="en">The widow's worksheet</span><span data-l="es">Planilla de la viuda</span></h3>
-      <table class="sheet">
-        <tr><td><span data-l="pt">O que eu tenho em casa</span><span data-l="en">What I have in the house</span><span data-l="es">Lo que tengo en casa</span></td><td>1</td></tr>
-        <tr><td><span data-l="pt">Vasos: quem já pediu isso</span><span data-l="en">Vessels: people who asked for it</span><span data-l="es">Vasijas: quién ya lo pidió</span></td><td>30</td></tr>
-        <tr><td><span data-l="pt">Parceiros que emprestam alcance</span><span data-l="en">Partners who lend reach</span><span data-l="es">Aliados que prestan alcance</span></td><td>3</td></tr>
-        <tr><td><span data-l="pt">Dias de porta fechada</span><span data-l="en">Shut-door days</span><span data-l="es">Días de puerta cerrada</span></td><td>21</td></tr>
-        <tr><td><span data-l="pt">Dízimo + reserva</span><span data-l="en">Tithe + savings</span><span data-l="es">Diezmo + reserva</span></td><td>10% + 10%</td></tr>
-      </table>
+    <span class="eyebrow"><span data-l="pt">Negócios do Reino · p. 24</span><span data-l="en">Kingdom Business · p. 24</span><span data-l="es">Negocios del Reino · p. 24</span></span>
+    <h2 class="title"><span data-l="pt">O azeite já tava na <i>despensa</i>.</span><span data-l="en">The oil was already in the <i>pantry</i>.</span><span data-l="es">El aceite ya estaba en la <i>despensa</i>.</span></h2>
+    <p class="deck"><span data-l="pt">2 Reis 4:1-7 como roteiro de negócio pra quem começa com pouco e com dívida.</span><span data-l="en">2 Kings 4:1-7 as a business roadmap for women starting with little and in debt.</span><span data-l="es">2 Reyes 4:1-7 como guía de negocio para quien empieza con poco y con deudas.</span></p>
+    <div class="biz-grid">
+      <div class="measure">
+        <div data-l="pt">
+          <p class="dropcap">Uma viúva, dois filhos e um credor batendo na porta. Eliseu faz uma pergunta antes de fazer qualquer milagre: o que você tem em casa? Ela responde que não tem nada, e depois corrige. Só uma botija de azeite.</p>
+          <p>Toda empreendedora cristã conhece essa correção. A gente diz que não tem nada e esquece do que está na mão. Olha a sequência que o texto dá, porque ela funciona como plano.</p>
+          <p><b>Inventário.</b> Nomeie o recurso. Uma habilidade, um produto, um público que já confia em você.</p>
+          <p><b>Vasos emprestados.</b> Ela pede vasilhas aos vizinhos, "e não poucas". Isso é rede, é parceria, é lista de espera. A capacidade de receber foi preparada antes do azeite correr.</p>
+          <p><b>Porta fechada.</b> Ela enche os vasos dentro de casa, com os filhos. Tem fase do negócio que é bastidor: produzir, testar, errar sem plateia.</p>
+          <p><b>Vende e paga.</b> O profeta manda vender, quitar a dívida e viver do resto. Nada de espiritualizar a planilha. O milagre terminou numa conta que fechou.</p>
+        </div>
+        <div data-l="en">
+          <p class="dropcap">A widow, two sons and a creditor knocking at the door. Elisha asks one question before any miracle: what do you have in the house? She says nothing, then corrects herself. Just a jar of oil.</p>
+          <p>Every Christian businesswoman knows that correction. We say we have nothing and forget what's in our hands. Look at the sequence the text gives, because it works as a plan.</p>
+          <p><b>Inventory.</b> Name the resource. A skill, a product, an audience that already trusts you.</p>
+          <p><b>Borrowed vessels.</b> She asks her neighbors for jars, "not a few." That's your network, your partners, your waitlist. The capacity to receive was prepared before the oil flowed.</p>
+          <p><b>Shut the door.</b> She fills the jars inside the house, with her sons. Some seasons of a business happen backstage: producing, testing, failing with no audience.</p>
+          <p><b>Sell and pay.</b> The prophet tells her to sell, pay the debt and live on the rest. No spiritualizing the spreadsheet. The miracle ended with numbers that added up.</p>
+        </div>
+        <div data-l="es">
+          <p class="dropcap">Una viuda, dos hijos y un acreedor tocando la puerta. Eliseo hace una pregunta antes de cualquier milagro: ¿qué tienes en casa? Ella dice que nada, y luego se corrige. Solo una vasija de aceite.</p>
+          <p>Toda emprendedora cristiana conoce esa corrección. Decimos que no tenemos nada y olvidamos lo que está en la mano. Mira la secuencia que da el texto, porque funciona como plan.</p>
+          <p><b>Inventario.</b> Nombra el recurso. Una habilidad, un producto, un público que ya confía en ti.</p>
+          <p><b>Vasijas prestadas.</b> Ella pide vasijas a los vecinos, "no pocas". Eso es red, es alianza, es lista de espera. La capacidad de recibir se preparó antes de que corriera el aceite.</p>
+          <p><b>Puerta cerrada.</b> Ella llena las vasijas dentro de casa, con sus hijos. Hay etapas del negocio que son de bastidores: producir, probar, equivocarse sin público.</p>
+          <p><b>Vende y paga.</b> El profeta le dice que venda, pague la deuda y viva del resto. Nada de espiritualizar la planilla. El milagro terminó en cuentas que cuadraron.</p>
+        </div>
+        <blockquote class="pull"><span data-l="pt">O azeite parou quando acabaram os vasos. A provisão respeitou o tamanho da preparação.</span><span data-l="en">The oil stopped when the jars ran out. Provision matched the size of the preparation.</span><span data-l="es">El aceite paró cuando se acabaron las vasijas. La provisión respetó el tamaño de la preparación.</span></blockquote>
+      </div>
+      <aside class="protocol sidebar">
+        <span class="mono"><span data-l="pt">Ferramenta</span><span data-l="en">Tool</span><span data-l="es">Herramienta</span></span>
+        <h3><span data-l="pt">Planilha da viúva</span><span data-l="en">The widow's worksheet</span><span data-l="es">Planilla de la viuda</span></h3>
+        <p style="font-size:.95rem;color:var(--soft)"><span data-l="pt">Preencha antes de lançar qualquer oferta.</span><span data-l="en">Fill it in before launching any offer.</span><span data-l="es">Llénala antes de lanzar cualquier oferta.</span></p>
+        <table class="sheet">
+          <tr><td><span data-l="pt">O que eu tenho em casa</span><span data-l="en">What I have in the house</span><span data-l="es">Lo que tengo en casa</span></td><td><span data-l="pt">1 habilidade</span><span data-l="en">1 skill</span><span data-l="es">1 habilidad</span></td></tr>
+          <tr><td><span data-l="pt">Vasos: pessoas que já pediram isso</span><span data-l="en">Jars: people who already asked for it</span><span data-l="es">Vasijas: personas que ya lo pidieron</span></td><td><span data-l="pt">meta 30</span><span data-l="en">goal 30</span><span data-l="es">meta 30</span></td></tr>
+          <tr><td><span data-l="pt">Parceiros que emprestam alcance</span><span data-l="en">Partners who lend reach</span><span data-l="es">Aliados que prestan alcance</span></td><td><span data-l="pt">meta 3</span><span data-l="en">goal 3</span><span data-l="es">meta 3</span></td></tr>
+          <tr><td><span data-l="pt">Tempo de porta fechada</span><span data-l="en">Shut-door time</span><span data-l="es">Tiempo de puerta cerrada</span></td><td><span data-l="pt">21 dias</span><span data-l="en">21 days</span><span data-l="es">21 días</span></td></tr>
+          <tr><td><span data-l="pt">Primeira dívida a quitar</span><span data-l="en">First debt to pay off</span><span data-l="es">Primera deuda a saldar</span></td><td>$ ____</td></tr>
+          <tr><td><span data-l="pt">Dízimo e reserva</span><span data-l="en">Tithe and savings</span><span data-l="es">Diezmo y reserva</span></td><td>10% + 10%</td></tr>
+        </table>
+        <p style="font-size:.85rem;color:var(--soft);margin:14px 0 0"><span data-l="pt">Dica de TO: escreva cada linha num post-it e cole na estação de trabalho do Protocolo 3.</span><span data-l="en">OT tip: write each line on a sticky note and put it on your Protocol 3 workstation.</span><span data-l="es">Consejo de TO: escribe cada línea en un pósit y pégalo en la estación de trabajo del Protocolo 3.</span></p>
+      </aside>
     </div>
   </div>
 </section>
@@ -494,32 +490,35 @@ img{max-width:100%}
 <!-- ENTREVISTA -->
 <section class="tab" id="entrevista" aria-label="Entrevista">
   <div class="wrap">
-    <span class="eyebrow"><span data-l="pt">Entrevista</span><span data-l="en">Interview</span><span data-l="es">Entrevista</span></span>
+    <span class="eyebrow"><span data-l="pt">Entrevista · p. 32</span><span data-l="en">Interview · p. 32</span><span data-l="es">Entrevista · p. 32</span></span>
     <div class="photo wide" style="margin-bottom:28px"><span class="year">2026</span><span class="glyph">A</span><span class="cap"><span data-l="pt">Espaço para a foto da entrevistada</span><span data-l="en">Space for the guest's photo</span><span data-l="es">Espacio para la foto de la entrevistada</span></span></div>
-    <h2 class="title"><span data-l="pt">"Eu achava que o plantão era castigo. Era <i>escola</i>."</span><span data-l="en">"I thought night shifts were punishment. They were <i>school</i>."</span><span data-l="es">"Pensaba que la guardia era castigo. Era <i>escuela</i>."</span></h2>
-    <p class="deck"><span data-l="pt">Ana Clara Moreira atendeu doze anos no turno da noite. Hoje dirige uma clínica de reabilitação com sete profissionais.</span><span data-l="en">Ana Clara Moreira worked twelve years on night shifts. Today she runs a rehab clinic with seven clinicians.</span><span data-l="es">Ana Clara Moreira trabajó doce años en el turno de noche. Hoy dirige una clínica de rehabilitación con siete profesionales.</span></p>
+    <h2 class="title"><span data-l="pt">"Eu achava que o plantão era castigo. Era <i>escola</i>."</span><span data-l="en">"I thought the night shift was punishment. It was <i>school</i>."</span><span data-l="es">"Pensaba que la guardia era castigo. Era <i>escuela</i>."</span></h2>
+    <p class="deck"><span data-l="pt">Ana Clara Moreira atendeu doze anos no turno da noite. Hoje dirige uma clínica de reabilitação com sete profissionais e um culto de quinze minutos toda segunda antes do primeiro paciente.</span><span data-l="en">Ana Clara Moreira worked twelve years on the night shift. Today she runs a rehab clinic with seven clinicians and a fifteen-minute prayer service every Monday before the first patient.</span><span data-l="es">Ana Clara Moreira trabajó doce años en el turno de noche. Hoy dirige una clínica de rehabilitación con siete profesionales y un culto de quince minutos cada lunes antes del primer paciente.</span></p>
     <dl class="qa" data-l="pt">
-      <dt>Quando você percebeu que queria empreender?</dt><dd>Numa madrugada, organizando a escala do hospital pela terceira vez porque ninguém mais sabia. Pensei: eu sei gerir gente e sei tratar gente. Por que isso só acontece aqui dentro, de graça?</dd>
-      <dt>Qual foi a tua botija de azeite?</dt><dd>Uma lista de WhatsApp com 40 famílias de pacientes pedindo atendimento em casa. Eu recusava por culpa. Uma paciente disse: "você está enterrando isso". Doeu, porque ela tinha razão.</dd>
-      <dt>Como a fé entra na gestão?</dt><dd>Contrato claro, salário no dia certo e ninguém atendendo cansado. A gente ora, sim. E paga em dia.</dd>
-      <dt>Um erro caro.</dt><dd>Abrir a segunda sala antes de ter os vasos. Seis meses pagando aluguel de sala vazia. Hoje só expando com lista de espera na mão.</dd>
-      <dt>E pra quem ainda está no plantão?</dt><dd>Presta atenção no que você já faz sem ninguém pedir. Ali tem negócio. E não sai correndo: o plantão pode financiar a porta fechada.</dd>
+      <dt>Ocupa · Quando você percebeu que queria empreender?</dt><dd>Numa madrugada, organizando a escala do hospital pela terceira vez porque ninguém mais sabia fazer. Pensei: eu sei gerir gente e sei tratar gente. Por que isso só acontece aqui dentro, de graça?</dd>
+      <dt>Qual foi a botija de azeite?</dt><dd>Uma lista de WhatsApp com 40 famílias de pacientes que me pediam atendimento domiciliar. Eu recusava por culpa. Um dia uma paciente disse: "você está enterrando isso". Doeu, porque ela tinha razão.</dd>
+      <dt>Como a fé entra na gestão, na prática?</dt><dd>Contrato com cláusula clara, salário no dia certo e ninguém atendendo cansado. Pra mim isso é mais testemunho do que versículo na parede. A gente ora, sim. E paga em dia.</dd>
+      <dt>O que a terapia ocupacional te ensinou sobre produtividade?</dt><dd>Que ninguém melhora sem rotina adaptada. Eu aplico com a equipe o mesmo que aplico com paciente: primeiro entendo o dia real da pessoa, depois ajusto a tarefa. Parei de cobrar produtividade de quem estava com o ambiente todo contra.</dd>
+      <dt>Um erro caro.</dt><dd>Abrir a segunda sala antes de ter os vasos. Contratei antes de ter fila. Fiquei seis meses pagando aluguel de sala vazia. Hoje eu só expando com lista de espera na mão.</dd>
+      <dt>O que você diria pra mulher que ainda está no plantão?</dt><dd>Que ela preste atenção no que já faz sem ninguém pedir. Ali tem negócio. E que não saia correndo: o plantão pode financiar a porta fechada.</dd>
     </dl>
     <dl class="qa" data-l="en">
-      <dt>When did you know you wanted to build a business?</dt><dd>One night, redoing the hospital schedule for the third time because nobody else could. I thought: I can manage people and I can treat people. Why does that only happen in here, for free?</dd>
-      <dt>What was your jar of oil?</dt><dd>A WhatsApp list of 40 patient families asking for home visits. I kept saying no out of guilt. A patient told me, "you're burying this." It hurt because she was right.</dd>
-      <dt>How does faith show up in how you manage?</dt><dd>Clear contracts, payroll on time, nobody treating patients exhausted. Yes, we pray. And we pay on time.</dd>
-      <dt>An expensive mistake.</dt><dd>Opening a second room before I had the vessels. Six months of rent on an empty room. Now I only expand with a waitlist in hand.</dd>
-      <dt>And for the woman still on night shift?</dt><dd>Watch what you already do without being asked. There's a business in it. And don't rush out: the shift can fund your shut-door season.</dd>
+      <dt>Ocupa · When did you realize you wanted to start a business?</dt><dd>One night, reorganizing the hospital schedule for the third time because nobody else knew how. I thought: I know how to manage people and I know how to treat people. Why does that only happen in here, for free?</dd>
+      <dt>What was your jar of oil?</dt><dd>A WhatsApp list of 40 patient families asking me for home visits. I kept saying no out of guilt. One day a patient told me, "you're burying this." It hurt, because she was right.</dd>
+      <dt>How does faith show up in management, in practice?</dt><dd>Contracts with clear terms, payroll on the right day and nobody treating patients exhausted. To me that's more of a testimony than a verse on the wall. Yes, we pray. And we pay on time.</dd>
+      <dt>What did occupational therapy teach you about productivity?</dt><dd>That nobody improves without an adapted routine. I do with my team what I do with patients: first I understand the person's real day, then I adjust the task. I stopped demanding productivity from people whose whole environment was working against them.</dd>
+      <dt>An expensive mistake.</dt><dd>Opening a second room before I had the jars. I hired before there was a line. I spent six months paying rent on an empty room. Now I only expand with a waitlist in hand.</dd>
+      <dt>What would you tell the woman who's still working night shifts?</dt><dd>Pay attention to what you already do without anyone asking. There's a business there. And don't rush out: the shift can fund your shut-door season.</dd>
     </dl>
     <dl class="qa" data-l="es">
-      <dt>¿Cuándo supiste que querías emprender?</dt><dd>Una madrugada, armando por tercera vez el horario del hospital porque nadie más sabía. Pensé: sé dirigir gente y sé tratar gente. ¿Por qué eso solo pasa aquí adentro, gratis?</dd>
-      <dt>¿Cuál fue tu vasija de aceite?</dt><dd>Una lista de WhatsApp con 40 familias de pacientes pidiendo atención en casa. Yo decía que no por culpa. Una paciente me dijo: "lo estás enterrando". Dolió, porque tenía razón.</dd>
-      <dt>¿Cómo entra la fe en la gestión?</dt><dd>Contrato claro, sueldo el día correcto y nadie atendiendo cansado. Oramos, sí. Y pagamos a tiempo.</dd>
-      <dt>Un error caro.</dt><dd>Abrir la segunda sala antes de tener las vasijas. Seis meses pagando alquiler de una sala vacía. Hoy solo crezco con lista de espera en la mano.</dd>
-      <dt>¿Y para quien sigue en la guardia?</dt><dd>Fíjate en lo que ya haces sin que nadie te lo pida. Ahí hay negocio. Y no salgas corriendo: la guardia puede financiar la puerta cerrada.</dd>
+      <dt>Ocupa · ¿Cuándo te diste cuenta de que querías emprender?</dt><dd>Una madrugada, organizando por tercera vez el horario del hospital porque nadie más sabía hacerlo. Pensé: sé dirigir gente y sé tratar gente. ¿Por qué eso solo pasa aquí adentro, gratis?</dd>
+      <dt>¿Cuál fue tu vasija de aceite?</dt><dd>Una lista de WhatsApp con 40 familias de pacientes que me pedían atención a domicilio. Yo decía que no por culpa. Un día una paciente me dijo: "lo estás enterrando". Dolió, porque tenía razón.</dd>
+      <dt>¿Cómo entra la fe en la gestión, en la práctica?</dt><dd>Contrato con cláusulas claras, sueldo el día correcto y nadie atendiendo cansado. Para mí eso es más testimonio que un versículo en la pared. Oramos, sí. Y pagamos a tiempo.</dd>
+      <dt>¿Qué te enseñó la terapia ocupacional sobre productividad?</dt><dd>Que nadie mejora sin una rutina adaptada. Aplico con el equipo lo mismo que con el paciente: primero entiendo el día real de la persona, después ajusto la tarea. Dejé de exigir productividad a quien tenía todo el ambiente en contra.</dd>
+      <dt>Un error caro.</dt><dd>Abrir la segunda sala antes de tener las vasijas. Contraté antes de tener fila. Pasé seis meses pagando alquiler de una sala vacía. Hoy solo crezco con lista de espera en la mano.</dd>
+      <dt>¿Qué le dirías a la mujer que todavía está en la guardia?</dt><dd>Que preste atención a lo que ya hace sin que nadie se lo pida. Ahí hay negocio. Y que no salga corriendo: la guardia puede financiar la puerta cerrada.</dd>
     </dl>
-    <p class="note"><span data-l="pt">Ana Clara é uma personagem composta para esta edição-modelo. Substitua pela sua entrevistada real e use as cinco perguntas como roteiro fixo.</span><span data-l="en">Ana Clara is a composite character created for this sample issue. Replace her with your real guest and keep the five questions as the standing format.</span><span data-l="es">Ana Clara es un personaje compuesto para esta edición modelo. Reemplázala por tu entrevistada real y usa las cinco preguntas como guion fijo.</span></p>
+    <p class="note"><span data-l="pt">Ana Clara é uma personagem composta para esta edição-modelo, criada a partir de padrões comuns do público da revista. Substitua pela sua entrevistada real e use as seis perguntas como roteiro fixo da seção.</span><span data-l="en">Ana Clara is a composite character created for this sample issue from common patterns in the magazine's audience. Replace her with your real guest and keep the six questions as the section's standing format.</span><span data-l="es">Ana Clara es un personaje compuesto para esta edición modelo, creado a partir de patrones comunes del público de la revista. Reemplázala por tu entrevistada real y usa las seis preguntas como guion fijo de la sección.</span></p>
     <aside class="pod" id="fuxicar" aria-label="Podcast Fuxicar">
       <div class="pod-disc" role="img" aria-label="Disco do podcast"></div>
       <div>
@@ -586,11 +585,40 @@ img{max-width:100%}
     <p class="deck"><span data-l="pt">Suas marcações ficam salvas neste navegador.</span><span data-l="en">Your checkmarks stay saved in this browser.</span><span data-l="es">Tus marcas quedan guardadas en este navegador.</span></p>
     <div class="progress"><span class="mono" id="progLabel">0 / 21</span><div class="bar"><i id="progBar"></i></div><button class="chip" type="button" id="resetWeek"><span data-l="pt">Recomeçar</span><span data-l="en">Reset</span><span data-l="es">Reiniciar</span></button></div>
     <div class="week" id="week"></div>
+  </div>
+</section>
+
+<!-- AGENDA + ÚLTIMA PÁGINA -->
+<section class="tab" id="agenda" aria-label="Agenda">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Agenda e recursos · p. 50</span><span data-l="en">Calendar and resources · p. 50</span><span data-l="es">Agenda y recursos · p. 50</span></span>
+    <h2 class="title"><span data-l="pt">Pra continuar depois da última página</span><span data-l="en">To keep going after the last page</span><span data-l="es">Para seguir después de la última página</span></h2>
     <hr>
-    <span class="eyebrow"><span data-l="pt">Última página</span><span data-l="en">Last page</span><span data-l="es">Última página</span></span>
-    <h2 class="title"><span data-l="pt">O que é isso na tua <i>mão</i>?</span><span data-l="en">What is that in your <i>hand</i>?</span><span data-l="es">¿Qué es eso que tienes en la <i>mano</i>?</span></h2>
-    <p class="measure"><span data-l="pt">Deus fez essa pergunta a Moisés antes de abrir o mar. Era um cajado de pastor, gasto de tanto uso. Olha pras tuas mãos. O que elas fizeram hoje? Escreve uma frase sobre isso e deixa na tua estação de trabalho.</span><span data-l="en">God asked Moses that before the sea opened. It was a worn shepherd's staff. Look at your hands. What did they do today? Write one sentence about it and leave it at your workstation.</span><span data-l="es">Dios le hizo esa pregunta a Moisés antes de abrir el mar. Era una vara de pastor, gastada por el uso. Mira tus manos. ¿Qué hicieron hoy? Escribe una frase sobre eso y déjala en tu estación de trabajo.</span></p>
-    <p class="mono" style="color:var(--soft);margin-top:30px">Ocupa · Ed. 01 · Integrally Well · Jen</p>
+    <div class="agenda">
+      <article><span class="mono"><span data-l="pt">Encontro online</span><span data-l="en">Online meetup</span><span data-l="es">Encuentro en línea</span></span>
+        <h3><span data-l="pt">Sessão coletiva: mapa de energia</span><span data-l="en">Group session: energy map</span><span data-l="es">Sesión grupal: mapa de energía</span></h3>
+        <p><span data-l="pt">Revisão ao vivo dos registros do Protocolo 1. Traga suas anotações. Data e link no perfil da Integrally Well.</span><span data-l="en">A live review of your Protocol 1 logs. Bring your notes. Date and link on the Integrally Well profile.</span><span data-l="es">Revisión en vivo de los registros del Protocolo 1. Trae tus notas. Fecha y enlace en el perfil de Integrally Well.</span></p></article>
+      <article><span class="mono"><span data-l="pt">Mentoria</span><span data-l="en">Mentoring</span><span data-l="es">Mentoría</span></span>
+        <h3><span data-l="pt">Negócios do Reino em 6 semanas</span><span data-l="en">Kingdom Business in 6 weeks</span><span data-l="es">Negocios del Reino en 6 semanas</span></h3>
+        <p><span data-l="pt">Da botija de azeite à primeira oferta vendida, com análise de atividade do seu produto.</span><span data-l="en">From the jar of oil to your first sold offer, with an activity analysis of your product.</span><span data-l="es">De la vasija de aceite a la primera oferta vendida, con análisis de actividad de tu producto.</span></p></article>
+      <article><span class="mono"><span data-l="pt">Leitura</span><span data-l="en">Reading</span><span data-l="es">Lectura</span></span>
+        <h3><span data-l="pt">Provérbios 31, um por dia</span><span data-l="en">Proverbs 31, one a day</span><span data-l="es">Proverbios 31, uno por día</span></h3>
+        <p><span data-l="pt">Leia um versículo por dia deste mês e anote qual ocupação da mulher virtuosa aparece.</span><span data-l="en">Read one verse a day this month and note which occupation of the virtuous woman appears.</span><span data-l="es">Lee un versículo por día este mes y anota qué ocupación de la mujer virtuosa aparece.</span></p></article>
+      <article><span class="mono"><span data-l="pt">Próxima edição</span><span data-l="en">Next issue</span><span data-l="es">Próxima edición</span></span>
+        <h3><span data-l="pt">Descanso como estratégia</span><span data-l="en">Rest as strategy</span><span data-l="es">Descanso como estrategia</span></h3>
+        <p><span data-l="pt">Sábado, sono e recuperação ocupacional. E uma entrevista com uma empresária imigrante.</span><span data-l="en">Sabbath, sleep and occupational recovery. Plus an interview with an immigrant businesswoman.</span><span data-l="es">Sábado, sueño y recuperación ocupacional. Y una entrevista con una empresaria inmigrante.</span></p></article>
+    </div>
+
+    <div class="last">
+      <span class="eyebrow"><span data-l="pt">Última página · p. 52</span><span data-l="en">Last page · p. 52</span><span data-l="es">Última página · p. 52</span></span>
+      <h2 class="title"><span data-l="pt">O que é isso na tua <i>mão</i>?</span><span data-l="en">What is that in your <i>hand</i>?</span><span data-l="es">¿Qué es eso que tienes en la <i>mano</i>?</span></h2>
+      <div class="measure">
+        <div data-l="pt"><p>Deus fez essa pergunta pra Moisés antes de abrir o mar. Ele tinha um cajado de pastor, madeira comum, gasta de tanto uso. Foi aquilo que Deus usou.</p><p>Fecha a revista e olha pras tuas mãos. O que elas fizeram hoje? Escreve uma frase sobre isso num papel e deixa na estação de trabalho. Amanhã você começa por ali.</p></div>
+        <div data-l="en"><p>God asked Moses that before He parted the sea. Moses had a shepherd's staff, ordinary wood, worn from use. That was what God used.</p><p>Close the magazine and look at your hands. What did they do today? Write one sentence about it on a piece of paper and leave it at your workstation. Tomorrow you start there.</p></div>
+        <div data-l="es"><p>Dios le hizo esa pregunta a Moisés antes de abrir el mar. Tenía una vara de pastor, madera común, gastada de tanto uso. Fue eso lo que Dios usó.</p><p>Cierra la revista y mira tus manos. ¿Qué hicieron hoy? Escribe una frase sobre eso en un papel y déjala en tu estación de trabajo. Mañana empiezas por ahí.</p></div>
+      </div>
+      <p class="mono colophon">Ocupa · <span data-l="pt">Edição 01</span><span data-l="en">Issue 01</span><span data-l="es">Edición 01</span> · <span data-l="pt">Editora</span><span data-l="en">Editor</span><span data-l="es">Editora</span>: Jen · Integrally Well · ARA &amp; King James</p>
+    </div>
   </div>
 </section>
 </main>
@@ -673,9 +701,9 @@ img{max-width:100%}
   document.getElementById("resetWeek").addEventListener("click",function(){state={};save("ocupa-caderno",state);buildWeek()});
 
   /* IG slides */
-  var S={pt:[["photo","Edição 01","Ocu<i>pa</i>","Terapia ocupacional de alta performance e empreendedorismo cristão."],["","Lucas 19:13","O que ocupa as tuas mãos é onde Deus escondeu o teu <i>dom</i>.","Occupy till I come. Ocupa-te até que eu volte."],["","Protocolo 1 · Pessoa","Mapa de <i>energia</i>","Anote tua energia de hora em hora por 5 dias. Coloque o trabalho que gera dinheiro nos picos."],["","Protocolo 2 · Atividade","Análise de <i>atividade</i>","Quebre a tarefa que você adia em passos de 15 minutos. Ache o passo que trava."],["","Protocolo 3 · Ambiente","Uma estação, uma <i>função</i>","Um lugar só pro trabalho profundo. Celular em outro cômodo. Salmo 90:17 na entrada."],["photo","Case · 1946","O restaurante que fecha aos <i>domingos</i>","Descanso também é estratégia de negócio."],["","2 Reis 4","O azeite já tava na <i>despensa</i>","O que você tem em casa? Nomeie. Junte os vasos. Feche a porta. Venda e pague."],["","Edição completa","Lê a revista <i>Ocupa</i>","Link na bio · Integrally Well"]],
-    en:[["photo","Issue 01","Ocu<i>pa</i>","High-performance occupational therapy and Christian entrepreneurship."],["","Luke 19:13","What fills your hands is where God hid your <i>gift</i>.","Occupy till I come."],["","Protocol 1 · Person","Energy <i>map</i>","Log your energy every hour for 5 days. Put money-making work in the peaks."],["","Protocol 2 · Activity","Activity <i>analysis</i>","Break the task you delay into 15-minute steps. Find the one that stalls."],["","Protocol 3 · Environment","One station, one <i>purpose</i>","A spot only for deep work. Phone in another room. Psalm 90:17 at the start."],["photo","Case · 1946","The restaurant closed on <i>Sundays</i>","Rest is business strategy too."],["","2 Kings 4","The oil was already in the <i>pantry</i>","What do you have in the house? Name it. Gather vessels. Shut the door. Sell and pay."],["","Full issue","Read <i>Ocupa</i> magazine","Link in bio · Integrally Well"]],
-    es:[["photo","Edición 01","Ocu<i>pa</i>","Terapia ocupacional de alto rendimiento y emprendimiento cristiano."],["","Lucas 19:13","Lo que ocupa tus manos es donde Dios escondió tu <i>don</i>.","Negociad entre tanto que vengo."],["","Protocolo 1 · Persona","Mapa de <i>energía</i>","Anota tu energía cada hora por 5 días. Pon el trabajo que genera dinero en los picos."],["","Protocolo 2 · Actividad","Análisis de <i>actividad</i>","Divide la tarea que pospones en pasos de 15 minutos. Encuentra el que se traba."],["","Protocolo 3 · Ambiente","Una estación, una <i>función</i>","Un lugar solo para trabajo profundo. Celular en otro cuarto. Salmo 90:17 al entrar."],["photo","Caso · 1946","El restaurante que cierra los <i>domingos</i>","El descanso también es estrategia."],["","2 Reyes 4","El aceite ya estaba en la <i>despensa</i>","¿Qué tienes en casa? Nómbralo. Junta vasijas. Cierra la puerta. Vende y paga."],["","Edición completa","Lee la revista <i>Ocupa</i>","Link en la bio · Integrally Well"]]};
+  var S={pt:[["photo","Edição 01","Ocu<i>pa</i>","Terapia ocupacional de alta performance e empreendedorismo cristão."],["","Lucas 19:13","O que ocupa as tuas mãos é onde Deus escondeu o teu <i>dom</i>.","Occupy till I come. Ocupa-te até que eu volte."],["","Protocolo 1 · Pessoa","Mapa de <i>energia</i>","Anote tua energia de hora em hora por 5 dias. Coloque o trabalho que gera dinheiro nos picos."],["","Protocolo 2 · Atividade","Análise de <i>atividade</i>","Quebre a tarefa que você adia em passos de 15 minutos. Ache o passo que trava."],["","Protocolo 3 · Ambiente","Uma estação, uma <i>função</i>","Um lugar só pro trabalho profundo. Celular em outro cômodo. Salmo 90:17 na entrada."],["photo","Roda ocupacional","Onde o teu desempenho está <i>vazando</i>?","Oito áreas, nota de 0 a 10. A roda mostra onde começar."],["","2 Reis 4","O azeite já tava na <i>despensa</i>","O que você tem em casa? Nomeie. Junte os vasos. Feche a porta. Venda e pague."],["","Edição completa","Lê a revista <i>Ocupa</i>","Link na bio · Integrally Well"]],
+    en:[["photo","Issue 01","Ocu<i>pa</i>","High-performance occupational therapy and Christian entrepreneurship."],["","Luke 19:13","What fills your hands is where God hid your <i>gift</i>.","Occupy till I come."],["","Protocol 1 · Person","Energy <i>map</i>","Log your energy every hour for 5 days. Put money-making work in the peaks."],["","Protocol 2 · Activity","Activity <i>analysis</i>","Break the task you delay into 15-minute steps. Find the one that stalls."],["","Protocol 3 · Environment","One station, one <i>purpose</i>","A spot only for deep work. Phone in another room. Psalm 90:17 at the start."],["photo","Occupational wheel","Where is your performance <i>leaking</i>?","Eight areas, scored 0 to 10. The wheel shows where to start."],["","2 Kings 4","The oil was already in the <i>pantry</i>","What do you have in the house? Name it. Gather vessels. Shut the door. Sell and pay."],["","Full issue","Read <i>Ocupa</i> magazine","Link in bio · Integrally Well"]],
+    es:[["photo","Edición 01","Ocu<i>pa</i>","Terapia ocupacional de alto rendimiento y emprendimiento cristiano."],["","Lucas 19:13","Lo que ocupa tus manos es donde Dios escondió tu <i>don</i>.","Negociad entre tanto que vengo."],["","Protocolo 1 · Persona","Mapa de <i>energía</i>","Anota tu energía cada hora por 5 días. Pon el trabajo que genera dinero en los picos."],["","Protocolo 2 · Actividad","Análisis de <i>actividad</i>","Divide la tarea que pospones en pasos de 15 minutos. Encuentra el que se traba."],["","Protocolo 3 · Ambiente","Una estación, una <i>función</i>","Un lugar solo para trabajo profundo. Celular en otro cuarto. Salmo 90:17 al entrar."],["photo","Rueda ocupacional","¿Por dónde se <i>escapa</i> tu rendimiento?","Ocho áreas, nota de 0 a 10. La rueda muestra dónde empezar."],["","2 Reyes 4","El aceite ya estaba en la <i>despensa</i>","¿Qué tienes en casa? Nómbralo. Junta vasijas. Cierra la puerta. Vende y paga."],["","Edición completa","Lee la revista <i>Ocupa</i>","Link en la bio · Integrally Well"]]};
   var track=document.getElementById("igTrack");
   function buildSlides(){var arr=S[lang],h="";arr.forEach(function(s,i){var big=i===0;h+='<div class="slide'+(s[0]?" photoish":"")+'"><div class="s-top"><span>Ocupa Magazine</span><span>'+(i+1)+'/'+arr.length+'</span></div><div class="s-body"><span class="s-eyebrow">'+s[1]+'</span><h4'+(big?' style="font-size:clamp(3.4rem,16vw,5rem);font-weight:900;letter-spacing:-.04em"':'')+'>'+s[2]+'</h4><p>'+s[3]+'</p></div><div class="s-foot"><span>Integrally Well</span><span>'+(i<arr.length-1?"→":"✦")+'</span></div></div>'});track.innerHTML=h}
   var ig=document.getElementById("igView");
