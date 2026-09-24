@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Revista Ocupa · Edição 01">
+<meta property="og:description" content="Ocupa-te até que eu volte. Terapia ocupacional de alta performance e empreendedorismo cristão, por Integrally Well.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1F4A3D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231F4A3D'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23C98A12'%3EO%3C/text%3E%3C/svg%3E">
+<title>Revista Ocupa</title>
+<meta name="description" content="Revista Ocupa, edição 01: terapia ocupacional de alta performance e empreendedorismo cristão, por Integrally Well.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Archivo+Narrow:wght@500;600;700&display=swap">
+<style>
+/* Palette and type from edição 01 v1: myrtle, saffron, plum on green-tinted paper. */
+:root{
+  --bg:#F5F6F1;
+  --surface:#FFFFFF;
+  --surface-2:#E9ECE3;
+  --rule:#C9CFC3;
+  --text:#17201B;
+  --soft:#4A554E;
+  --teal:#1F4A3D;
+  --teal-ink:#F5F6F1;
+  --gold:#C98A12;
+  --plum:#5A2748;
+  --photo-a:#2A5E4E;
+  --photo-b:#13291F;
+  --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --mono:"Archivo Narrow","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --scale:1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-look="paper"]){color-scheme:dark;
+  --bg:#111814;--surface:#17201B;--surface-2:#18221D;--rule:#2E3A33;
+  --text:#E8ECE4;--soft:#A9B3AB;--teal:#4F9C84;--teal-ink:#F2F4EE;--gold:#E3A93A;--plum:#C98AB4;
+  --photo-a:#2C6A57;--photo-b:#0C1a15;}
+}
+:root[data-theme="dark"]:not([data-look="paper"]),:root[data-look="ink"]{color-scheme:dark;
+  --bg:#111814;--surface:#17201B;--surface-2:#18221D;--rule:#2E3A33;
+  --text:#E8ECE4;--soft:#A9B3AB;--teal:#4F9C84;--teal-ink:#F2F4EE;--gold:#E3A93A;--plum:#C98AB4;
+  --photo-a:#2C6A57;--photo-b:#0C1a15;}
+:root[data-look="paper"]{color-scheme:light}
+*{box-sizing:border-box}
+html{font-size:calc(17px * var(--scale))}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.62}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.08;text-wrap:balance}
+p{margin:0 0 1em}
+.wrap{max-width:980px;margin:0 auto;padding-inline:clamp(16px,5vw,40px)}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:600}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:600;color:var(--plum);margin-bottom:14px;display:block}
+.measure{max-width:64ch}
+[data-l]{display:none}
+html:not([data-lang]) [data-l="pt"],html[data-lang="pt"] [data-l="pt"],html[data-lang="en"] [data-l="en"],html[data-lang="es"] [data-l="es"]{display:revert}
+html[data-lang="pt"] span[data-l="pt"],html[data-lang="en"] span[data-l="en"],html[data-lang="es"] span[data-l="es"]{display:inline}
+
+/* HEADER */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.brandrow{display:flex;align-items:baseline;gap:18px;padding-block:18px 12px}
+.brand{font-family:var(--serif);font-weight:900;font-size:2rem;line-height:1;letter-spacing:-.02em}
+.brand em,.cover-hero h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.brand-sub{font-family:var(--mono);color:var(--plum);text-transform:uppercase;font-weight:600;letter-spacing:.2em;font-size:.8rem}
+.controls{display:flex;gap:8px;padding-bottom:14px;flex-wrap:wrap}
+.chip{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;background:transparent;color:var(--soft);border:1px solid var(--rule);padding:10px 14px;cursor:pointer;min-width:58px}
+.chip:hover{color:var(--text);border-color:var(--soft)}
+.chip[aria-pressed="true"]{background:var(--teal);color:var(--teal-ink);border-color:var(--teal)}
+.chip.ig{margin-right:auto;padding-inline:18px}
+.tabs{border-block:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs .wrap{display:flex;gap:0}
+.tabs a{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.82rem;color:var(--soft);text-decoration:none;padding:18px 20px 16px;white-space:nowrap;border-bottom:3px solid transparent}
+.tabs a:first-child{padding-left:0}
+.tabs a:hover{color:var(--text)}
+.tabs a[aria-current="page"]{color:var(--teal);border-bottom-color:var(--teal)}
+
+/* TABS CONTENT */
+.tab{display:none;padding-block:56px 120px}
+.tab.active{display:block}
+.title{font-size:clamp(2.3rem,6.4vw,3.8rem);font-weight:700;letter-spacing:-.02em;margin-bottom:22px}
+.title i{color:var(--teal)}
+.deck{font-size:1.15rem;font-style:italic;color:var(--soft);max-width:52ch;margin-bottom:28px}
+hr{border:0;border-top:1px solid var(--rule);margin:28px 0 36px}
+.dropcap::first-letter{font-family:var(--serif);font-weight:900;float:left;font-size:4.4em;line-height:.82;padding:6px 10px 0 0;color:var(--teal)}
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.25;border-left:0;border-top:3px solid var(--gold);padding-top:14px;margin:36px 0;max-width:32ch}
+
+/* PHOTO PANELS (grain + duotone, no external images) */
+.photo{position:relative;border-left:6px solid var(--gold);aspect-ratio:1/1;max-width:100%;overflow:hidden;
+  background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+   radial-gradient(ellipse at 70% 85%,rgba(201,138,18,.35) 0 12%,transparent 42%),
+   radial-gradient(ellipse at 30% 20%,rgba(245,246,241,.12) 0 20%,transparent 60%),
+   linear-gradient(160deg,var(--photo-a),var(--photo-b) 78%)}
+.photo.wide{aspect-ratio:16/10}
+.photo .year{position:absolute;top:26px;left:30px;font-family:var(--mono);font-weight:600;color:var(--gold);font-size:1.15rem;letter-spacing:.08em}
+.photo .glyph{position:absolute;right:6%;bottom:-6%;font-family:var(--serif);font-style:italic;font-size:clamp(9rem,34vw,20rem);line-height:1;color:#F5F6F1;opacity:.12}
+.photo .cap{position:absolute;left:30px;bottom:24px;right:30px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#D9D6CF;opacity:.85}
+
+/* CAPA */
+.cover-hero{margin-bottom:36px}
+.cover-hero .photo{aspect-ratio:4/5;max-height:78vh}
+.cover-hero h1{position:absolute;left:30px;right:24px;bottom:84px;font-size:clamp(4.6rem,20vw,10rem);line-height:.85;color:#F5F6F1;font-weight:900;letter-spacing:-.045em}
+.cover-hero .tagline{position:absolute;left:30px;right:24px;bottom:30px;font-family:var(--mono);font-weight:600;color:var(--gold);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+.lines{display:grid;gap:0}
+.line{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;border-top:1px solid var(--rule);padding:18px 0;text-decoration:none}
+.line .mono{color:var(--teal);grid-row:span 2;padding-top:4px}
+.line b{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.2}
+.line span{color:var(--soft)}
+.line:hover b{color:var(--teal)}
+
+/* CASES */
+.case{margin-bottom:64px}
+.case-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:14px;margin-top:22px}
+.case-head .mono{color:var(--plum)}
+.case h3{font-size:clamp(2rem,5.6vw,3rem);font-style:italic;margin:12px 0 16px}
+.lesson{background:var(--surface);border:1px solid var(--rule);padding:18px 20px;margin-top:8px}
+.lesson .mono{color:var(--gold);display:block;margin-bottom:6px}
+
+/* TIMELINE */
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--rule)}
+.tl li{position:relative;padding:0 0 38px 30px}
+.tl li::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;background:var(--gold)}
+.tl .when{font-family:var(--mono);color:var(--teal);font-size:.95rem;letter-spacing:.06em}
+.tl h3{font-size:1.6rem;margin:6px 0 8px}
+.tl p{color:var(--soft);max-width:60ch;margin:0}
+
+/* PROTOCOLS */
+.protocols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:10px}
+.protocol{background:var(--surface);border:1px solid var(--rule);border-top:6px solid var(--teal);padding:22px}
+.protocol .mono{color:var(--teal)}
+.protocol h3{font-size:1.55rem;margin:10px 0 12px}
+.protocol ol{padding-left:1.2em;margin:0}
+.protocol li{margin-bottom:.45em}
+.protocol .dose{display:block;margin-top:14px;color:var(--gold)}
+
+/* STUDY */
+.words{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:30px 0}
+.words div{background:var(--bg);padding:18px}
+.words b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.6rem;display:block;color:var(--teal)}
+.words i{color:var(--soft);font-size:.95rem}
+
+/* BUSINESS */
+.sheet{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:6px}
+.sheet td{border-top:1px solid var(--rule);padding:10px 0;vertical-align:top}
+.sheet td:last-child{text-align:right;font-family:var(--mono);color:var(--teal);white-space:nowrap;padding-left:14px;font-size:.9rem}
+
+/* INTERVIEW */
+.qa{max-width:66ch}
+.qa dt{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--teal);font-size:.85rem;margin-top:30px}
+.qa dd{margin:8px 0 0;font-size:1.08rem}
+.note{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--soft);border-top:1px solid var(--rule);padding-top:12px;margin-top:40px;max-width:66ch}
+
+/* WHEEL */
+.wheel{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.sliders{display:grid;gap:14px}
+.sliders label{display:grid;grid-template-columns:1fr 2.4rem;gap:4px 10px;align-items:center}
+.sliders input{grid-column:1 / -1;width:100%;accent-color:var(--teal)}
+.sliders output{font-family:var(--mono);color:var(--teal);text-align:right}
+#radar{width:100%;max-width:420px;height:auto;display:block;margin:0 auto}
+.verdict{background:var(--surface);border:1px solid var(--rule);padding:18px 20px;margin-top:18px}
+.verdict b{font-family:var(--serif);font-weight:400;font-size:1.4rem;font-style:italic}
+
+/* NOTEBOOK */
+.progress{display:flex;align-items:center;gap:14px;margin:0 0 22px;flex-wrap:wrap}
+.bar{flex:1;min-width:120px;height:6px;background:var(--surface-2)}
+.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.week{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.day{background:var(--surface);border:1px solid var(--rule);padding:16px}
+.day h3{font-size:1.25rem;font-style:italic;margin-bottom:10px}
+.day label{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;cursor:pointer;font-size:.95rem}
+.day input{margin-top:.35em;accent-color:var(--teal)}
+
+/* FLOATING */
+.floaters{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;z-index:20}
+.floaters button{width:58px;height:58px;background:var(--surface);font-weight:500;color:var(--text);border:1px solid var(--rule);cursor:pointer;font-family:var(--serif);font-style:italic;font-size:1.4rem;box-shadow:0 6px 20px rgba(23,32,27,.18)}
+.floaters svg{width:26px;height:26px;display:block;margin:auto}
+
+/* IG SLIDES */
+.ig-view{position:fixed;inset:0;z-index:30;background:var(--bg);overflow:auto;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.ig-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:980px;margin:0 auto 18px}
+.ig-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;max-width:980px;margin:0 auto}
+.slide{flex:0 0 min(86vw,420px);aspect-ratio:4/5;scroll-snap-align:center;position:relative;overflow:hidden;background:#1F4A3D;color:#F5F6F1;border:1px solid #1F4A3D;padding:8% 8% 7%;display:flex;flex-direction:column}
+.slide.photoish{background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(160deg,#2A5E4E,#13291F 80%);border-left:8px solid #C98A12}
+.slide .s-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#C98A12}
+.slide .s-body{margin-top:auto}
+.slide .s-eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#C98A12;margin-bottom:10px;display:block}
+.slide h4{font-family:var(--serif);font-weight:700;font-size:clamp(1.6rem,7vw,2.2rem);line-height:1.08;margin:0 0 12px}
+.slide h4 i{color:#C98A12}
+.slide p{font-size:.92rem;line-height:1.5;color:#DDE3DA;margin:0}
+.slide .s-foot{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#A9BFB4;margin-top:16px;display:flex;justify-content:space-between}
+.ig-hint{max-width:980px;margin:6px auto 0;color:var(--soft);font-size:.9rem}
+
+
+/* v1 editorial pieces */
+.cover-thesis{font-style:italic;font-weight:500;max-width:22ch}
+.verse-strip{color:var(--soft);margin-top:28px;letter-spacing:.2em}
+.letter{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+.photo.portrait{aspect-ratio:3/4}
+.sig{font-family:var(--serif);font-style:italic;font-size:1.8rem;margin:8px 0 2px}
+.cols{columns:2 300px;column-gap:44px;margin-bottom:28px}
+.cols p{break-inside:avoid-column}
+.biz-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:start}
+.sidebar h3{margin-top:10px}
+.agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 40px}
+.agenda article{border-top:1px solid var(--rule);padding:18px 0}
+.agenda .mono{color:var(--plum)}
+.agenda h3{font-size:1.35rem;font-weight:700;margin:6px 0}
+.agenda p{color:var(--soft);font-size:.98rem;margin:0}
+.last{background:var(--text);color:var(--bg);margin-top:56px;padding:clamp(24px,5vw,48px)}
+.last .eyebrow{color:var(--gold)}
+.last .title i{color:var(--gold)}
+.colophon{opacity:.7;margin-top:30px}
+@media (max-width:760px){.letter,.biz-grid{grid-template-columns:1fr}.letter .photo{max-width:220px}}
+
+/* how-to blocks */
+.howto{margin-top:56px;border-top:1px solid var(--rule);padding-top:40px}
+.how{margin-top:40px}
+.how .mono{color:var(--plum)}
+.how h3{font-size:1.8rem;font-weight:700;margin:8px 0 14px}
+.how h4,.wheel-guide h4{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.82rem;color:var(--teal);margin:22px 0 8px}
+.how ol,.how ul{padding-left:1.2em}
+.how li{margin-bottom:.4em}
+.scale{list-style:none;padding:0!important;display:grid;gap:6px;margin:14px 0}
+.scale li{display:grid;grid-template-columns:2.2rem 1fr;gap:10px;align-items:baseline}
+.scale b{font-family:var(--serif);font-weight:900;font-size:1.4rem;color:var(--gold)}
+.table-scroll{overflow-x:auto;max-width:100%}
+.energy{border-collapse:collapse;width:100%;max-width:640px;font-size:.95rem;font-variant-numeric:tabular-nums}
+.energy th{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--soft);text-align:left;padding:6px 8px 6px 0;border-bottom:1px solid var(--rule)}
+.energy td{padding:7px 8px 7px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
+.energy .h{font-family:var(--mono);font-weight:600;width:3.2rem}
+.energy .lvl{width:130px;white-space:nowrap}
+.ebar{display:inline-block;height:10px;width:calc(var(--v) * 18px);background:var(--teal);opacity:.35;margin-right:8px;vertical-align:middle}
+.energy .lvl b{font-family:var(--mono)}
+.energy tr.peak .ebar{background:var(--gold);opacity:1}
+.energy tr.peak td{font-weight:600}
+.how-read{margin-top:14px;font-style:italic;color:var(--soft)}
+.steps li.stuck{color:var(--plum);font-weight:600}
+.steps em{font-style:italic}
+.sheet-how{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--teal);margin:20px 0 6px}
+.sheet-list{padding-left:1.1em;margin:0;font-size:.92rem}
+.sheet-list li{margin-bottom:.5em}
+.wheel-guide{margin:8px 0 36px}
+.wheel-guide h3{font-size:1.6rem;font-weight:700;margin-bottom:10px}
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px 40px}
+.guide-grid ol,.guide-grid ul{padding-left:1.2em;margin:0}
+.guide-grid li{margin-bottom:.5em}
+.example-note{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--gold);padding:14px 18px;margin-top:18px;max-width:64ch}
+.caderno-how{margin-bottom:24px}
+
+/* PODCAST */
+.pod{margin-top:56px;background:var(--teal);color:var(--teal-ink);padding:clamp(22px,5vw,40px);display:grid;grid-template-columns:auto 1fr;gap:24px 32px;align-items:start}
+.pod .eyebrow{color:var(--gold)}
+.pod h3{font-size:clamp(2.2rem,7vw,3.4rem);font-weight:900;letter-spacing:-.03em;line-height:.95;margin-bottom:14px}
+.pod h3 em{font-style:italic;font-weight:500;color:var(--gold)}
+.pod p{max-width:56ch}
+.pod-disc{width:clamp(96px,22vw,150px);aspect-ratio:1;border-radius:50%;max-width:100%;
+  background:radial-gradient(circle,var(--gold) 0 9%,var(--teal) 9.5% 12%,transparent 12.5%),
+  repeating-radial-gradient(circle,rgba(255,255,255,.07) 0 2px,transparent 2px 6px),#10241C;border:3px solid var(--gold)}
+.pod-steps{list-style:none;padding:0;margin:18px 0 0;grid-column:1 / -1}
+.pod-steps li+li{margin-top:10px}
+.pod-steps li{border-top:1px solid color-mix(in srgb,var(--teal-ink) 25%,transparent);padding-top:10px;display:grid;grid-template-columns:2rem 1fr;gap:10px}
+.pod-steps b{font-family:var(--serif);font-weight:900;color:var(--gold);font-size:1.3rem;line-height:1.2}
+.pod-cta{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pod-form{grid-column:1 / -1;display:grid;gap:8px;margin-top:22px;border-top:1px solid color-mix(in srgb,var(--teal-ink) 25%,transparent);padding-top:18px;max-width:640px}
+.pod-form label{font-size:.95rem}
+.pod-form input[type=text],.pod-form textarea{width:100%;font:inherit;font-size:1rem;color:#17201B;background:#F5F6F1;border:1px solid var(--gold);padding:10px 12px;margin-bottom:8px}
+.pod-form textarea{resize:vertical}
+.pod-form .hp{position:absolute;left:-9999px}
+.pod-btn{font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;background:var(--gold);color:#17201B;border:0;padding:14px 18px;cursor:pointer}
+.pod-btn:disabled{opacity:.6;cursor:wait}
+.pod-soon{font-family:var(--mono);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;border:1px dashed var(--gold);padding:12px 16px;color:var(--teal-ink)}
+.pod-msg{min-height:1.4em;margin:6px 0 0;font-style:italic}
+@media (max-width:560px){.pod{grid-template-columns:1fr}}
+@media (max-width:720px){
+  .wheel{grid-template-columns:1fr}
+  .brand{font-size:1.7rem}
+  .tab{padding-block:40px 120px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+html,body{min-height:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+img{max-width:100%}
+.home-link{margin-left:auto;font-family:var(--mono);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--soft);text-decoration:none}.home-link:hover{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow"><span class="brand">Ocu<em>pa</em></span><span class="brand-sub">Magazine</span><a class="home-link" href="/"><span data-l="pt">← Todas as edições</span><span data-l="en">← All issues</span><span data-l="es">← Todas las ediciones</span></a></div>
+    <div class="controls">
+      <button class="chip ig" type="button" id="igOpen">IG Slides</button>
+      <button class="chip" type="button" data-set-lang="pt" aria-pressed="true">PT</button>
+      <button class="chip" type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button class="chip" type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Seções">
+    <div class="wrap" id="tabnav">
+      <a href="#capa"><span data-l="pt">Capa</span><span data-l="en">Cover</span><span data-l="es">Portada</span></a>
+      <a href="#carta"><span data-l="pt">Carta</span><span data-l="en">Letter</span><span data-l="es">Carta</span></a>
+      <a href="#sessao"><span data-l="pt">Sessão TO</span><span data-l="en">OT Session</span><span data-l="es">Sesión TO</span></a>
+      <a href="#estudo"><span data-l="pt">Estudo</span><span data-l="en">Study</span><span data-l="es">Estudio</span></a>
+      <a href="#negocios"><span data-l="pt">Negócios do Reino</span><span data-l="en">Kingdom Business</span><span data-l="es">Negocios del Reino</span></a>
+      <a href="#entrevista"><span data-l="pt">Entrevista &amp; Pod</span><span data-l="en">Interview &amp; Pod</span><span data-l="es">Entrevista &amp; Pod</span></a>
+      <a href="#roda"><span data-l="pt">Roda</span><span data-l="en">Wheel</span><span data-l="es">Rueda</span></a>
+      <a href="#caderno"><span data-l="pt">Caderno</span><span data-l="en">Workbook</span><span data-l="es">Cuaderno</span></a>
+      <a href="#agenda"><span data-l="pt">Agenda</span><span data-l="en">Calendar</span><span data-l="es">Agenda</span></a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<!-- CAPA -->
+<section class="tab active" id="capa" aria-label="Capa">
+  <div class="wrap">
+    <div class="cover-hero">
+      <div class="photo">
+        <span class="year"><span data-l="pt">Edição 01 · Outono 2026</span><span data-l="en">Issue 01 · Fall 2026</span><span data-l="es">Edición 01 · Otoño 2026</span></span>
+        <h1>Ocu<em>pa</em></h1>
+        <span class="tagline"><span data-l="pt">Lucas 19:13 · "Occupy till I come"</span><span data-l="en">Luke 19:13 · "Occupy till I come"</span><span data-l="es">Lucas 19:13 · "Occupy till I come"</span></span>
+      </div>
+    </div>
+    <span class="eyebrow"><span data-l="pt">Integrally Well apresenta</span><span data-l="en">Integrally Well presents</span><span data-l="es">Integrally Well presenta</span></span>
+    <h2 class="title cover-thesis" data-l="pt">O que ocupa as tuas mãos todo dia é onde Deus escondeu o que te deu pra <i>prosperar</i>.</h2>
+    <h2 class="title cover-thesis" data-l="en">What fills your hands every day is where God hid what He gave you to <i>prosper</i>.</h2>
+    <h2 class="title cover-thesis" data-l="es">Lo que ocupa tus manos cada día es donde Dios escondió lo que te dio para <i>prosperar</i>.</h2>
+    <hr>
+    <div class="lines">
+      <a class="line" href="#sessao"><span class="mono">p. 8</span>
+        <b data-l="pt">Sessão de alta performance</b><b data-l="en">High-performance session</b><b data-l="es">Sesión de alto rendimiento</b>
+        <span data-l="pt">Três protocolos de terapia ocupacional pra quem lidera, vende e ainda cuida da casa.</span><span data-l="en">Three occupational therapy protocols for women who lead, sell and still run a home.</span><span data-l="es">Tres protocolos de terapia ocupacional para quien lidera, vende y además cuida la casa.</span></a>
+      <a class="line" href="#negocios"><span class="mono">p. 24</span>
+        <b data-l="pt">O azeite já tá na despensa</b><b data-l="en">The oil is already in the pantry</b><b data-l="es">El aceite ya está en la despensa</b>
+        <span data-l="pt">2 Reis 4 como plano de negócios pra mulher que começa do pouco.</span><span data-l="en">2 Kings 4 as a business plan for the woman starting with little.</span><span data-l="es">2 Reyes 4 como plan de negocios para la mujer que empieza con poco.</span></a>
+      <a class="line" href="#entrevista"><span class="mono">p. 32</span>
+        <b data-l="pt">Entrevista &amp; Fuxicar</b><b data-l="en">Interview &amp; Fuxicar</b><b data-l="es">Entrevista &amp; Fuxicar</b>
+        <span data-l="pt">A fisioterapeuta que transformou o turno da noite numa clínica. E o convite pra você testemunhar no pod.</span><span data-l="en">The physical therapist who turned the night shift into a clinic. And an invitation to share your story on the podcast.</span><span data-l="es">La fisioterapeuta que convirtió el turno de noche en una clínica. Y la invitación a testificar en el pódcast.</span></a>
+      <a class="line" href="#roda"><span class="mono">p. 40</span>
+        <b data-l="pt">Roda ocupacional</b><b data-l="en">Occupational wheel</b><b data-l="es">Rueda ocupacional</b>
+        <span data-l="pt">Faça o teste e descubra qual área está roubando o teu desempenho.</span><span data-l="en">Take the test and find out which area is draining your performance.</span><span data-l="es">Haz la prueba y descubre qué área te está robando el rendimiento.</span></a>
+    </div>
+    <p class="verse-strip mono" aria-hidden="true">Lavrar e guardar · Gn 2:15 · Bezalel · Êx 31 · Pv 31 · Lc 19:13</p>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="tab" id="carta" aria-label="Carta da editora">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Carta da editora · p. 4</span><span data-l="en">Editor's letter · p. 4</span><span data-l="es">Carta de la editora · p. 4</span></span>
+    <div class="letter">
+      <div>
+        <div class="photo portrait"><span class="glyph">J</span><span class="cap"><span data-l="pt">Espaço para sua foto</span><span data-l="en">Space for your photo</span><span data-l="es">Espacio para tu foto</span></span></div>
+      </div>
+      <div class="measure">
+        <h2 class="title"><span data-l="pt">Eu levei anos pra entender uma palavra.</span><span data-l="en">It took me years to understand one word.</span><span data-l="es">Me tomó años entender una palabra.</span></h2>
+        <div data-l="pt">
+          <p class="dropcap">Na faculdade de terapia ocupacional me ensinaram que ocupação é tudo aquilo que enche as mãos e o tempo de uma pessoa. Tomar banho, fazer o café, dirigir até o trabalho, atender um cliente, colocar o filho pra dormir. A gente avalia isso com escala, com observação, com análise de atividade. É ciência.</p>
+          <p>Anos depois, lendo Lucas 19 numa Bíblia em inglês, parei no versículo 13. O senhor entrega as minas aos servos e diz: <i>occupy till I come</i>. Ocupa-te até que eu volte. A mesma palavra da minha profissão, dentro da parábola sobre multiplicar o que se recebeu.</p>
+          <p>Esta revista nasceu dali. Ela é pra mulher que empreende, que atende, que lidera, que atravessou fronteira e recomeçou do zero, e que desconfia que a resposta pra prosperar não está numa fórmula nova. Está no que já ocupa as mãos dela.</p>
+          <p>Cada edição traz uma sessão de terapia ocupacional aplicada à performance, um estudo bíblico, um caderno de negócios, uma entrevista e ferramentas pra você usar na segunda-feira de manhã. Lê com caneta.</p>
+        </div>
+        <div data-l="en">
+          <p class="dropcap">In occupational therapy school I learned that an occupation is anything that fills a person's hands and time. Showering, making coffee, driving to work, seeing a client, putting a child to bed. We assess it with scales, observation and activity analysis. It's science.</p>
+          <p>Years later, reading Luke 19 in an English Bible, I stopped at verse 13. The master hands out minas to his servants and says: <i>occupy till I come</i>. The same word as my profession, inside the parable about multiplying what you were given.</p>
+          <p>This magazine was born right there. It's for the woman who builds a business, serves clients, leads, crossed a border and started over from zero, and who suspects the answer to prospering isn't a new formula. It's in what already fills her hands.</p>
+          <p>Every issue brings an occupational therapy session applied to performance, a Bible study, a business section, an interview and tools you can use on Monday morning. Read it with a pen.</p>
+        </div>
+        <div data-l="es">
+          <p class="dropcap">En la facultad de terapia ocupacional me enseñaron que ocupación es todo lo que llena las manos y el tiempo de una persona. Bañarse, hacer el café, manejar al trabajo, atender a un cliente, acostar al hijo. Lo evaluamos con escalas, con observación, con análisis de actividad. Es ciencia.</p>
+          <p>Años después, leyendo Lucas 19 en una Biblia en inglés, me detuve en el versículo 13. El señor entrega las minas a los siervos y dice: <i>occupy till I come</i>. Ocúpate hasta que yo vuelva. La misma palabra de mi profesión, dentro de la parábola sobre multiplicar lo recibido.</p>
+          <p>Esta revista nació ahí. Es para la mujer que emprende, que atiende, que lidera, que cruzó una frontera y empezó de cero, y que sospecha que la respuesta para prosperar no está en una fórmula nueva. Está en lo que ya ocupa sus manos.</p>
+          <p>Cada edición trae una sesión de terapia ocupacional aplicada al rendimiento, un estudio bíblico, un cuaderno de negocios, una entrevista y herramientas para usar el lunes por la mañana. Léela con pluma en mano.</p>
+        </div>
+        <p class="sig">Jen</p>
+        <p class="mono" style="color:var(--soft)"><span data-l="pt">Editora · Terapeuta ocupacional · Integrally Well</span><span data-l="en">Editor · Occupational therapist · Integrally Well</span><span data-l="es">Editora · Terapeuta ocupacional · Integrally Well</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSÃO TO -->
+<section class="tab" id="sessao" aria-label="Sessão TO">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Sessão TO de alta performance · p. 8</span><span data-l="en">High-performance OT session · p. 8</span><span data-l="es">Sesión TO de alto rendimiento · p. 8</span></span>
+    <h2 class="title"><span data-l="pt">Performance mora na rotina, e rotina se <i>trata</i>.</span><span data-l="en">Performance lives in routine, and routine can be <i>treated</i>.</span><span data-l="es">El rendimiento vive en la rutina, y la rutina se <i>trata</i>.</span></h2>
+    <p class="deck"><span data-l="pt">Três protocolos tirados do consultório de terapia ocupacional e adaptados pra quem toca negócio, casa e ministério ao mesmo tempo.</span><span data-l="en">Three protocols taken from the occupational therapy clinic and adapted for women running a business, a home and a ministry at the same time.</span><span data-l="es">Tres protocolos sacados del consultorio de terapia ocupacional y adaptados para quien lleva negocio, casa y ministerio al mismo tiempo.</span></p>
+    <div class="cols">
+      <div data-l="pt">
+        <p class="dropcap">Sexta-feira, seis da tarde. A empresária abre o notebook pra responder os e-mails que não respondeu de manhã porque passou a manhã respondendo mensagens. Ela chama isso de falta de disciplina. Na avaliação ocupacional a gente chama de outra coisa: desequilíbrio entre demanda da atividade e capacidade de desempenho naquele contexto.</p>
+        <p>A diferença importa. Disciplina vira culpa. Desequilíbrio vira plano. A terapia ocupacional olha três coisas juntas: a pessoa, a atividade e o ambiente. Quando uma delas muda, o desempenho muda. Por isso o protocolo abaixo raramente pede força de vontade. Ele pede ajuste.</p>
+        <p>Os três exercícios foram pensados pra caber numa semana comum. Faça um de cada vez. Anote o que aconteceu. Performance alta se constrói com dado, não com empolgação de domingo à noite.</p>
+      </div>
+      <div data-l="en">
+        <p class="dropcap">Friday, six p.m. The business owner opens her laptop to answer the emails she didn't get to this morning, because she spent the morning answering texts. She calls it a lack of discipline. In an occupational assessment we call it something else: a mismatch between the demands of the activity and her capacity to perform in that context.</p>
+        <p>The difference matters. Discipline turns into guilt. A mismatch turns into a plan. Occupational therapy looks at three things together: the person, the activity and the environment. When one of them changes, performance changes. That's why the protocols below rarely ask for willpower. They ask for adjustment.</p>
+        <p>The three exercises are designed to fit an ordinary week. Do one at a time. Write down what happened. High performance is built on data, not on Sunday-night excitement.</p>
+      </div>
+      <div data-l="es">
+        <p class="dropcap">Viernes, seis de la tarde. La empresaria abre la laptop para responder los correos que no respondió en la mañana porque pasó la mañana respondiendo mensajes. Ella lo llama falta de disciplina. En la evaluación ocupacional lo llamamos de otra forma: desequilibrio entre la demanda de la actividad y la capacidad de desempeño en ese contexto.</p>
+        <p>La diferencia importa. La disciplina se vuelve culpa. El desequilibrio se vuelve plan. La terapia ocupacional mira tres cosas juntas: la persona, la actividad y el ambiente. Cuando una cambia, el rendimiento cambia. Por eso los protocolos de abajo casi nunca piden fuerza de voluntad. Piden ajuste.</p>
+        <p>Los tres ejercicios están pensados para caber en una semana común. Haz uno a la vez. Anota lo que pasó. El alto rendimiento se construye con datos, no con el entusiasmo del domingo por la noche.</p>
+      </div>
+    </div>
+    <div class="protocols">
+      <article class="protocol"><span class="mono"><span data-l="pt">Protocolo 1 · Pessoa</span><span data-l="en">Protocol 1 · Person</span><span data-l="es">Protocolo 1 · Persona</span></span>
+        <h3><span data-l="pt">Mapa de energia</span><span data-l="en">Energy map</span><span data-l="es">Mapa de energía</span></h3>
+        <ol data-l="pt"><li>Durante 5 dias, anote de hora em hora sua energia de 1 a 5.</li><li>Ao lado, escreva a atividade que estava fazendo.</li><li>Circule os dois blocos de maior energia de cada dia.</li><li>Na semana seguinte, coloque ali a tarefa que gera dinheiro ou decisão. E-mail e WhatsApp vão pros blocos baixos.</li></ol>
+        <ol data-l="en"><li>For 5 days, log your energy from 1 to 5 every hour.</li><li>Next to it, write the activity you were doing.</li><li>Circle the two highest-energy blocks of each day.</li><li>The following week, put the work that brings money or decisions in those blocks. Email and WhatsApp go to the low blocks.</li></ol>
+        <ol data-l="es"><li>Durante 5 días, anota cada hora tu energía de 1 a 5.</li><li>Al lado, escribe la actividad que estabas haciendo.</li><li>Encierra los dos bloques de mayor energía de cada día.</li><li>La semana siguiente, pon ahí la tarea que genera dinero o decisión. Correo y WhatsApp van a los bloques bajos.</li></ol>
+        <span class="dose mono"><span data-l="pt">Dose: 5 dias de registro · 10 min por dia</span><span data-l="en">Dose: 5 days of logging · 10 min a day</span><span data-l="es">Dosis: 5 días de registro · 10 min al día</span></span></article>
+      <article class="protocol"><span class="mono"><span data-l="pt">Protocolo 2 · Atividade</span><span data-l="en">Protocol 2 · Activity</span><span data-l="es">Protocolo 2 · Actividad</span></span>
+        <h3><span data-l="pt">Análise de atividade do teu produto</span><span data-l="en">Activity analysis of your product</span><span data-l="es">Análisis de actividad de tu producto</span></h3>
+        <ol data-l="pt"><li>Escolha a tarefa que você mais adia no negócio.</li><li>Quebre em passos tão pequenos que cada um leve menos de 15 minutos.</li><li>Marque o passo que trava. Quase sempre é um só.</li><li>Pergunte: esse passo pede habilidade que eu não tenho, ferramenta que eu não tenho, ou coragem? Cada resposta tem um remédio diferente.</li></ol>
+        <ol data-l="en"><li>Pick the business task you put off the most.</li><li>Break it into steps so small that each takes under 15 minutes.</li><li>Mark the step that stalls. It's almost always just one.</li><li>Ask: does this step need a skill I don't have, a tool I don't have, or courage? Each answer has a different remedy.</li></ol>
+        <ol data-l="es"><li>Elige la tarea que más pospones en el negocio.</li><li>Divídela en pasos tan pequeños que cada uno tome menos de 15 minutos.</li><li>Marca el paso que se traba. Casi siempre es uno solo.</li><li>Pregunta: ¿este paso pide una habilidad que no tengo, una herramienta que no tengo, o valentía? Cada respuesta tiene un remedio distinto.</li></ol>
+        <span class="dose mono"><span data-l="pt">Dose: 1 tarefa por semana · 30 min</span><span data-l="en">Dose: 1 task a week · 30 min</span><span data-l="es">Dosis: 1 tarea por semana · 30 min</span></span></article>
+      <article class="protocol"><span class="mono"><span data-l="pt">Protocolo 3 · Ambiente</span><span data-l="en">Protocol 3 · Environment</span><span data-l="es">Protocolo 3 · Ambiente</span></span>
+        <h3><span data-l="pt">Estação de trabalho com uma função só</span><span data-l="en">A single-purpose workstation</span><span data-l="es">Estación de trabajo con una sola función</span></h3>
+        <ol data-l="pt"><li>Defina um lugar da casa só pra trabalho profundo, mesmo que seja uma ponta da mesa.</li><li>Deixe ali apenas o que a tarefa pede. Celular fica em outro cômodo.</li><li>Crie um gesto de entrada: acender uma vela, abrir a Bíblia no Salmo 90:17, colocar o fone.</li><li>Ao sair, deixe anotado o próximo passo. Amanhã você começa sem aquecimento.</li></ol>
+        <ol data-l="en"><li>Choose one spot at home only for deep work, even if it's the end of the table.</li><li>Keep only what the task needs there. Your phone stays in another room.</li><li>Create an entry ritual: light a candle, open your Bible to Psalm 90:17, put on headphones.</li><li>When you leave, write down the next step. Tomorrow you start without warming up.</li></ol>
+        <ol data-l="es"><li>Define un lugar de la casa solo para trabajo profundo, aunque sea la punta de la mesa.</li><li>Deja ahí solo lo que la tarea pide. El celular queda en otro cuarto.</li><li>Crea un gesto de entrada: prender una vela, abrir la Biblia en el Salmo 90:17, ponerte los audífonos.</li><li>Al salir, deja anotado el próximo paso. Mañana empiezas sin calentamiento.</li></ol>
+        <span class="dose mono"><span data-l="pt">Dose: blocos de 50 min · 2 por dia</span><span data-l="en">Dose: 50-min blocks · 2 a day</span><span data-l="es">Dosis: bloques de 50 min · 2 al día</span></span></article>
+    </div>
+    <blockquote class="pull"><span data-l="pt">"Confirma, ó Senhor, a obra das nossas mãos." Salmo 90:17. Até Moisés pedia ajuda com a rotina.</span><span data-l="en">"Establish thou the work of our hands." Psalm 90:17. Even Moses asked for help with his routine.</span><span data-l="es">"La obra de nuestras manos confirma." Salmo 90:17. Hasta Moisés pedía ayuda con la rutina.</span></blockquote>
+    <section class="howto" aria-label="Protocolos na prática">
+      <span class="eyebrow"><span data-l="pt">Na prática</span><span data-l="en">In practice</span><span data-l="es">En la práctica</span></span>
+      <h2 class="title" style="font-size:clamp(1.9rem,4.6vw,2.8rem)"><span data-l="pt">Como usar cada protocolo, com exemplo</span><span data-l="en">How to use each protocol, with an example</span><span data-l="es">Cómo usar cada protocolo, con ejemplo</span></h2>
+
+      <article class="how">
+        <span class="mono"><span data-l="pt">Protocolo 1 · Mapa de energia</span><span data-l="en">Protocol 1 · Energy map</span><span data-l="es">Protocolo 1 · Mapa de energía</span></span>
+        <h3><span data-l="pt">O que é energia aqui</span><span data-l="en">What energy means here</span><span data-l="es">Qué es energía aquí</span></h3>
+        <div class="measure">
+          <p data-l="pt">Energia, nesse exercício, é a tua capacidade de pensar, decidir e criar naquele momento. Não é humor e não é quanto café você tomou. Na terapia ocupacional a gente usa esse registro pra encaixar a atividade certa no horário certo, do mesmo jeito que marca a fisioterapia do paciente pro horário em que ele rende mais.</p><p data-l="en">In this exercise, energy is your capacity to think, decide and create at that moment. It isn't your mood, and it isn't how much coffee you had. In occupational therapy we use this log to fit the right activity into the right time slot, the same way we schedule a patient's therapy for the hour when they do best.</p><p data-l="es">En este ejercicio, energía es tu capacidad de pensar, decidir y crear en ese momento. No es tu humor ni cuánto café tomaste. En terapia ocupacional usamos este registro para encajar la actividad correcta en el horario correcto, igual que agendamos la terapia del paciente a la hora en que más rinde.</p>
+          <ul class="scale">
+            <li><b>1</b><span data-l="pt">Só consigo tarefa automática: lavar louça, responder “ok”.</span><span data-l="en">I can only do autopilot tasks: dishes, replying “ok”.</span><span data-l="es">Solo puedo hacer tareas automáticas: lavar platos, responder “ok”.</span></li>
+            <li><b>3</b><span data-l="pt">Dou conta da rotina: e-mail, boleto, organizar.</span><span data-l="en">I can handle routine: email, bills, tidying up.</span><span data-l="es">Puedo con la rutina: correo, facturas, ordenar.</span></li>
+            <li><b>5</b><span data-l="pt">Penso com clareza, crio, decido, vendo.</span><span data-l="en">I think clearly, create, decide, sell.</span><span data-l="es">Pienso con claridad, creo, decido, vendo.</span></li>
+          </ul>
+          <h4><span data-l="pt">Como fazer</span><span data-l="en">How to do it</span><span data-l="es">Cómo hacerlo</span></h4>
+          <ol>
+            <li><span data-l="pt">Coloque um alarme de hora em hora no celular, das 7h às 18h.</span><span data-l="en">Set an hourly phone alarm from 7 a.m. to 6 p.m.</span><span data-l="es">Pon una alarma cada hora en el celular, de 7 a 18 h.</span></li>
+            <li><span data-l="pt">Quando tocar, anote só duas coisas: o número de 1 a 5 e o que você estava fazendo. Leva dez segundos.</span><span data-l="en">When it rings, write down just two things: the number from 1 to 5 and what you were doing. It takes ten seconds.</span><span data-l="es">Cuando suene, anota solo dos cosas: el número de 1 a 5 y qué estabas haciendo. Toma diez segundos.</span></li>
+            <li><span data-l="pt">Faça por cinco dias úteis. No terceiro dia o padrão já começa a aparecer.</span><span data-l="en">Do it for five workdays. By day three the pattern starts to show.</span><span data-l="es">Hazlo cinco días hábiles. Al tercer día el patrón empieza a aparecer.</span></li>
+            <li><span data-l="pt">No fim, circule os dois horários que mais tiveram 4 e 5. Esses são teus picos.</span><span data-l="en">At the end, circle the two time slots with the most 4s and 5s. Those are your peaks.</span><span data-l="es">Al final, marca los dos horarios con más 4 y 5. Esos son tus picos.</span></li>
+            <li><span data-l="pt">Na semana seguinte, proteja os picos pro que traz dinheiro ou decisão. O que é mecânico vai pros vales.</span><span data-l="en">The next week, guard your peaks for what brings money or decisions. Mechanical work goes in the dips.</span><span data-l="es">La semana siguiente, protege los picos para lo que trae dinero o decisión. Lo mecánico va a los valles.</span></li>
+          </ol>
+          <h4><span data-l="pt">Exemplo de uma terça-feira</span><span data-l="en">Example: one Tuesday</span><span data-l="es">Ejemplo de un martes</span></h4>
+        </div>
+        <div class="table-scroll"><table class="energy"><thead><tr><th><span data-l="pt">Hora</span><span data-l="en">Time</span><span data-l="es">Hora</span></th><th><span data-l="pt">Energia</span><span data-l="en">Energy</span><span data-l="es">Energía</span></th><th><span data-l="pt">O que eu fazia</span><span data-l="en">What I was doing</span><span data-l="es">Qué estaba haciendo</span></th></tr></thead><tbody><tr><td class="h">7h</td><td class="lvl"><span class="ebar" style="--v:3"></span><b>3</b></td><td><span data-l="pt">Café e crianças pra escola</span><span data-l="en">Coffee, kids off to school</span><span data-l="es">Café y niños a la escuela</span></td></tr><tr><td class="h">8h</td><td class="lvl"><span class="ebar" style="--v:4"></span><b>4</b></td><td><span data-l="pt">Devocional e lista do dia</span><span data-l="en">Devotional and daily list</span><span data-l="es">Devocional y lista del día</span></td></tr><tr class="peak"><td class="h">9h</td><td class="lvl"><span class="ebar" style="--v:5"></span><b>5</b></td><td><span data-l="pt">Proposta pra cliente</span><span data-l="en">Client proposal</span><span data-l="es">Propuesta para cliente</span></td></tr><tr class="peak"><td class="h">10h</td><td class="lvl"><span class="ebar" style="--v:5"></span><b>5</b></td><td><span data-l="pt">Gravei o vídeo da semana</span><span data-l="en">Recorded the week's video</span><span data-l="es">Grabé el video de la semana</span></td></tr><tr><td class="h">11h</td><td class="lvl"><span class="ebar" style="--v:4"></span><b>4</b></td><td><span data-l="pt">Atendimentos</span><span data-l="en">Client sessions</span><span data-l="es">Atenciones</span></td></tr><tr><td class="h">12h</td><td class="lvl"><span class="ebar" style="--v:2"></span><b>2</b></td><td><span data-l="pt">Almoço</span><span data-l="en">Lunch</span><span data-l="es">Almuerzo</span></td></tr><tr><td class="h">13h</td><td class="lvl"><span class="ebar" style="--v:2"></span><b>2</b></td><td><span data-l="pt">WhatsApp</span><span data-l="en">WhatsApp</span><span data-l="es">WhatsApp</span></td></tr><tr><td class="h">14h</td><td class="lvl"><span class="ebar" style="--v:1"></span><b>1</b></td><td><span data-l="pt">Sono pós-almoço, li tudo três vezes</span><span data-l="en">Post-lunch slump, read everything three times</span><span data-l="es">Sueño después del almuerzo, leí todo tres veces</span></td></tr><tr><td class="h">15h</td><td class="lvl"><span class="ebar" style="--v:3"></span><b>3</b></td><td><span data-l="pt">E-mails e boletos</span><span data-l="en">Emails and bills</span><span data-l="es">Correos y facturas</span></td></tr><tr><td class="h">16h</td><td class="lvl"><span class="ebar" style="--v:4"></span><b>4</b></td><td><span data-l="pt">Ligação com parceira</span><span data-l="en">Call with a partner</span><span data-l="es">Llamada con una aliada</span></td></tr><tr><td class="h">17h</td><td class="lvl"><span class="ebar" style="--v:2"></span><b>2</b></td><td><span data-l="pt">Buscar as crianças</span><span data-l="en">School pickup</span><span data-l="es">Recoger a los niños</span></td></tr></tbody></table></div>
+        <p class="measure how-read"><span data-l="pt">Lendo o exemplo: o pico dessa mulher é das 9h às 11h. É ali que entram proposta, vídeo e venda. Às 14h ela tá no 1, então não adianta marcar reunião importante depois do almoço. Esse horário é bom pra tarefa que não exige pensar.</span><span data-l="en">Reading the example: this woman's peak is from 9 to 11 a.m. That's where proposals, video and sales go. At 2 p.m. she's at a 1, so there's no point booking an important meeting right after lunch. That slot is for tasks that don't require thinking.</span><span data-l="es">Leyendo el ejemplo: el pico de esta mujer es de 9 a 11. Ahí entran propuesta, video y venta. A las 14 h está en 1, así que no sirve agendar una reunión importante después del almuerzo. Ese horario es para tareas que no exigen pensar.</span></p>
+      </article>
+
+      <article class="how">
+        <span class="mono"><span data-l="pt">Protocolo 2 · Análise de atividade</span><span data-l="en">Protocol 2 · Activity analysis</span><span data-l="es">Protocolo 2 · Análisis de actividad</span></span>
+        <h3><span data-l="pt">Achar o passo que trava</span><span data-l="en">Finding the step that stalls</span><span data-l="es">Encontrar el paso que se traba</span></h3>
+        <div class="measure">
+          <p data-l="pt">Análise de atividade é o que o terapeuta ocupacional faz quando um paciente não consegue, por exemplo, se vestir sozinho. A gente não diz “se esforça mais”. A gente quebra o vestir em passos (pegar a roupa, sentar, passar o braço, abotoar) e descobre qual deles falha. No negócio funciona igual.</p><p data-l="en">Activity analysis is what an occupational therapist does when a patient can't, say, get dressed alone. We don't say “try harder.” We break dressing into steps (grab the clothes, sit down, put an arm through, button up) and find the one that fails. It works the same way in business.</p><p data-l="es">El análisis de actividad es lo que hace el terapeuta ocupacional cuando un paciente no logra, por ejemplo, vestirse solo. No decimos “esfuérzate más”. Dividimos el vestirse en pasos (tomar la ropa, sentarse, pasar el brazo, abotonar) y descubrimos cuál falla. En el negocio funciona igual.</p>
+          <h4><span data-l="pt">Exemplo: “gravar o vídeo de vendas”, adiado há um mês</span><span data-l="en">Example: “record the sales video”, put off for a month</span><span data-l="es">Ejemplo: “grabar el video de ventas”, pospuesto hace un mes</span></h4>
+          <ol class="steps">
+            <li><span data-l="pt">Escrever três tópicos do que vou falar · 10 min</span><span data-l="en">Write three talking points · 10 min</span><span data-l="es">Escribir tres temas de lo que voy a decir · 10 min</span></li>
+            <li><span data-l="pt">Escolher o canto da casa com luz boa · 5 min</span><span data-l="en">Pick the corner of the house with good light · 5 min</span><span data-l="es">Elegir el rincón de la casa con buena luz · 5 min</span></li>
+            <li><span data-l="pt">Apoiar o celular e testar o som · 5 min</span><span data-l="en">Prop up the phone and test the sound · 5 min</span><span data-l="es">Apoyar el celular y probar el sonido · 5 min</span></li>
+            <li class="stuck"><span data-l="pt">Gravar um take · 10 min · <em>trava aqui</em></span><span data-l="en">Record one take · 10 min · <em>stalls here</em></span><span data-l="es">Grabar una toma · 10 min · <em>se traba aquí</em></span></li>
+            <li><span data-l="pt">Assistir e escolher · 10 min</span><span data-l="en">Watch and choose · 10 min</span><span data-l="es">Mirar y elegir · 10 min</span></li>
+            <li><span data-l="pt">Postar com legenda · 10 min</span><span data-l="en">Post with a caption · 10 min</span><span data-l="es">Publicar con texto · 10 min</span></li>
+          </ol>
+          <p data-l="pt">O passo 4 trava por coragem, e não por falta de habilidade ou ferramenta. O remédio pra coragem é diminuir a plateia: grave primeiro só pra uma amiga, pelo WhatsApp. Se travasse por habilidade, o remédio seria uma aula curta. Se fosse ferramenta, pedir emprestado antes de comprar.</p><p data-l="en">Step 4 stalls because of courage, not a missing skill or tool. The remedy for courage is a smaller audience: record it first just for one friend, over WhatsApp. If it stalled on skill, the remedy would be a short lesson. If it were a tool, borrow before you buy.</p><p data-l="es">El paso 4 se traba por valentía, y no por falta de habilidad o herramienta. El remedio para la valentía es achicar el público: grábalo primero solo para una amiga, por WhatsApp. Si se trabara por habilidad, el remedio sería una clase corta. Si fuera herramienta, pedir prestado antes de comprar.</p>
+        </div>
+      </article>
+
+      <article class="how">
+        <span class="mono"><span data-l="pt">Protocolo 3 · Estação de trabalho</span><span data-l="en">Protocol 3 · Workstation</span><span data-l="es">Protocolo 3 · Estación de trabajo</span></span>
+        <h3><span data-l="pt">Por que um lugar muda o hábito</span><span data-l="en">Why a place changes a habit</span><span data-l="es">Por qué un lugar cambia el hábito</span></h3>
+        <div class="measure">
+          <p data-l="pt">O cérebro liga lugar e tarefa. Quem trabalha na cama tem dificuldade pra dormir, e quem responde cliente no sofá nunca descansa de verdade. Na terapia ocupacional a gente chama isso de contexto: o ambiente dá a deixa pro comportamento. Quando a ponta da mesa vira só lugar de trabalho profundo, sentar ali já avisa o corpo que é hora de focar.</p><p data-l="en">The brain links place and task. People who work in bed struggle to sleep, and anyone who answers clients from the couch never really rests. In occupational therapy we call this context: the environment cues the behavior. When the end of the table becomes the place for deep work only, sitting there tells your body it's time to focus.</p><p data-l="es">El cerebro une lugar y tarea. Quien trabaja en la cama tiene dificultad para dormir, y quien responde clientes desde el sofá nunca descansa de verdad. En terapia ocupacional lo llamamos contexto: el ambiente le da la señal al comportamiento. Cuando la punta de la mesa se vuelve solo lugar de trabajo profundo, sentarse ahí ya le avisa al cuerpo que es hora de enfocarse.</p>
+          <p data-l="pt">Exemplo real: a ponta da mesa da cozinha, com caderno, notebook e uma caneca. Às 9h acende a vela, lê o Salmo 90:17, põe o fone. Às 9h50 anota o próximo passo num post-it e levanta. O celular passou esse tempo carregando no quarto.</p><p data-l="en">Real example: the end of the kitchen table, with a notebook, laptop and a mug. At 9 a.m. light the candle, read Psalm 90:17, put on headphones. At 9:50 write the next step on a sticky note and get up. The phone spent that time charging in the bedroom.</p><p data-l="es">Ejemplo real: la punta de la mesa de la cocina, con cuaderno, laptop y una taza. A las 9 prende la vela, lee el Salmo 90:17, se pone los audífonos. A las 9:50 anota el próximo paso en un pósit y se levanta. El celular pasó ese tiempo cargando en el cuarto.</p>
+        </div>
+      </article>
+    </section>
+  </div>
+</section>
+
+<!-- ESTUDO -->
+<section class="tab" id="estudo" aria-label="Estudo">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Estudo da edição · p. 18</span><span data-l="en">Bible study · p. 18</span><span data-l="es">Estudio de la edición · p. 18</span></span>
+    <h2 class="title"><span data-l="pt">Ocupa-te até que eu <i>volte</i>.</span><span data-l="en">Occupy till I <i>come</i>.</span><span data-l="es">Ocúpate hasta que yo <i>vuelva</i>.</span></h2>
+    <p class="deck"><span data-l="pt">Lucas 19:11-27. A parábola das minas lida com olhos de terapeuta ocupacional.</span><span data-l="en">Luke 19:11-27. The parable of the minas read through an occupational therapist's eyes.</span><span data-l="es">Lucas 19:11-27. La parábola de las minas leída con ojos de terapeuta ocupacional.</span></p>
+    <div class="cols">
+      <div data-l="pt">
+        <p class="dropcap">Repara numa coisa comigo. O senhor não entrega um plano de negócios. Entrega uma mina pra cada servo e uma instrução de duas palavras. Na tradução grega o verbo é <i>pragmateusasthe</i>, de onde vem a nossa palavra pragmático: negociai, fazei render, colocai pra trabalhar. A King James escolheu <i>occupy</i>.</p>
+        <p>O servo que falhou não perdeu a mina. Guardou num lenço. Ele não foi desonesto, foi desocupado. Tinha o recurso e não deixou o recurso entrar na rotina dele.</p>
+        <p>Isso conversa com Gênesis 2:15. Antes de qualquer queda, Deus coloca Adão no jardim pra lavrar e guardar. Trabalho já estava no projeto original. Em Êxodo 31, Bezalel é cheio do Espírito pra lapidar pedra e talhar madeira. A habilidade das mãos aparece como dom espiritual, com nome e sobrenome.</p>
+        <p>Então a pergunta da semana é concreta: qual é a tua mina que está no lenço? Talvez seja a receita que todo mundo pede. O jeito que você organiza a agenda da igreja. O inglês que você aprendeu na marra quando chegou em outro país. Aquilo que é fácil pra você costuma ser exatamente o que você despreza.</p>
+      </div>
+      <div data-l="en">
+        <p class="dropcap">Notice something with me. The master doesn't hand out a business plan. He gives each servant a mina and a short instruction. The Greek verb is <i>pragmateusasthe</i>, where our word pragmatic comes from: trade, make it yield, put it to work. The King James chose <i>occupy</i>.</p>
+        <p>The servant who failed didn't lose the mina. He kept it wrapped in a cloth. He wasn't dishonest, he was unoccupied. He had the resource and never let it into his routine.</p>
+        <p>That echoes Genesis 2:15. Before any fall, God places Adam in the garden to work it and keep it. Work was part of the original design. In Exodus 31, Bezalel is filled with the Spirit to cut stone and carve wood. Skill with the hands shows up as a spiritual gift, with a first and last name.</p>
+        <p>So this week's question is concrete: what is your mina in the cloth? Maybe it's the recipe everyone asks for. The way you run the church calendar. The English you learned the hard way when you arrived in another country. What comes easy to you is often exactly what you look down on.</p>
+      </div>
+      <div data-l="es">
+        <p class="dropcap">Fíjate en algo conmigo. El señor no entrega un plan de negocios. Entrega una mina a cada siervo y una instrucción corta. En griego el verbo es <i>pragmateusasthe</i>, de donde viene nuestra palabra pragmático: negociad, haced rendir, poned a trabajar. La King James eligió <i>occupy</i>.</p>
+        <p>El siervo que falló no perdió la mina. La guardó en un pañuelo. No fue deshonesto, fue desocupado. Tenía el recurso y no lo dejó entrar en su rutina.</p>
+        <p>Eso conversa con Génesis 2:15. Antes de cualquier caída, Dios pone a Adán en el huerto para labrarlo y guardarlo. El trabajo ya estaba en el proyecto original. En Éxodo 31, Bezalel es lleno del Espíritu para labrar piedra y tallar madera. La habilidad de las manos aparece como don espiritual, con nombre y apellido.</p>
+        <p>Entonces la pregunta de la semana es concreta: ¿cuál es tu mina guardada en el pañuelo? Tal vez la receta que todos piden. La forma en que organizas la agenda de la iglesia. El idioma que aprendiste a la fuerza cuando llegaste a otro país. Lo que te resulta fácil suele ser justo lo que desprecias.</p>
+      </div>
+    </div>
+    <div class="words">
+      <div><span class="mono"><span data-l="pt">Grego</span><span data-l="en">Greek</span><span data-l="es">Griego</span></span><b>pragmateuomai</b><i><span data-l="pt">fazer negócio, colocar em operação</span><span data-l="en">to do business, to put into operation</span><span data-l="es">hacer negocio, poner en operación</span></i></div>
+      <div><span class="mono">King James</span><b>occupy</b><i><span data-l="pt">ocupar, manter em uso, negociar</span><span data-l="en">to occupy, keep in use, trade</span><span data-l="es">ocupar, mantener en uso, negociar</span></i></div>
+      <div><span class="mono"><span data-l="pt">Terapia ocupacional</span><span data-l="en">Occupational therapy</span><span data-l="es">Terapia ocupacional</span></span><b><span data-l="pt">ocupação</span><span data-l="en">occupation</span><span data-l="es">ocupación</span></b><i><span data-l="pt">atividade com sentido que preenche o tempo e as mãos</span><span data-l="en">meaningful activity that fills time and hands</span><span data-l="es">actividad con sentido que llena el tiempo y las manos</span></i></div>
+    </div>
+    <span class="eyebrow"><span data-l="pt">Para o seu grupo</span><span data-l="en">For your group</span><span data-l="es">Para tu grupo</span></span>
+    <ol class="measure" data-l="pt"><li>O que o servo do lenço pensava sobre o senhor (v. 21)? Como a imagem que você tem de Deus afeta sua coragem de empreender?</li><li>Liste três coisas que ocupam suas mãos toda semana. Qual delas alguém pagaria pra aprender?</li><li>O que precisa sair do lenço até o próximo encontro?</li></ol>
+    <ol class="measure" data-l="en"><li>What did the servant with the cloth believe about his master (v. 21)? How does your picture of God affect your courage to build a business?</li><li>List three things that fill your hands every week. Which one would someone pay to learn?</li><li>What needs to come out of the cloth before your next meeting?</li></ol>
+    <ol class="measure" data-l="es"><li>¿Qué pensaba el siervo del pañuelo sobre su señor (v. 21)? ¿Cómo afecta tu imagen de Dios tu valentía para emprender?</li><li>Enumera tres cosas que ocupan tus manos cada semana. ¿Cuál pagaría alguien por aprender?</li><li>¿Qué tiene que salir del pañuelo antes del próximo encuentro?</li></ol>
+  </div>
+</section>
+
+<!-- NEGÓCIOS -->
+<section class="tab" id="negocios" aria-label="Negócios do Reino">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Negócios do Reino · p. 24</span><span data-l="en">Kingdom Business · p. 24</span><span data-l="es">Negocios del Reino · p. 24</span></span>
+    <h2 class="title"><span data-l="pt">O azeite já tava na <i>despensa</i>.</span><span data-l="en">The oil was already in the <i>pantry</i>.</span><span data-l="es">El aceite ya estaba en la <i>despensa</i>.</span></h2>
+    <p class="deck"><span data-l="pt">2 Reis 4:1-7 como roteiro de negócio pra quem começa com pouco e com dívida.</span><span data-l="en">2 Kings 4:1-7 as a business roadmap for women starting with little and in debt.</span><span data-l="es">2 Reyes 4:1-7 como guía de negocio para quien empieza con poco y con deudas.</span></p>
+    <div class="biz-grid">
+      <div class="measure">
+        <div data-l="pt">
+          <p class="dropcap">Uma viúva, dois filhos e um credor batendo na porta. Eliseu faz uma pergunta antes de fazer qualquer milagre: o que você tem em casa? Ela responde que não tem nada, e depois corrige. Só uma botija de azeite.</p>
+          <p>Toda empreendedora cristã conhece essa correção. A gente diz que não tem nada e esquece do que está na mão. Olha a sequência que o texto dá, porque ela funciona como plano.</p>
+          <p><b>Inventário.</b> Nomeie o recurso. Uma habilidade, um produto, um público que já confia em você.</p>
+          <p><b>Vasos emprestados.</b> Ela pede vasilhas aos vizinhos, "e não poucas". Isso é rede, é parceria, é lista de espera. A capacidade de receber foi preparada antes do azeite correr.</p>
+          <p><b>Porta fechada.</b> Ela enche os vasos dentro de casa, com os filhos. Tem fase do negócio que é bastidor: produzir, testar, errar sem plateia.</p>
+          <p><b>Vende e paga.</b> O profeta manda vender, quitar a dívida e viver do resto. Nada de espiritualizar a planilha. O milagre terminou numa conta que fechou.</p>
+        </div>
+        <div data-l="en">
+          <p class="dropcap">A widow, two sons and a creditor knocking at the door. Elisha asks one question before any miracle: what do you have in the house? She says nothing, then corrects herself. Just a jar of oil.</p>
+          <p>Every Christian businesswoman knows that correction. We say we have nothing and forget what's in our hands. Look at the sequence the text gives, because it works as a plan.</p>
+          <p><b>Inventory.</b> Name the resource. A skill, a product, an audience that already trusts you.</p>
+          <p><b>Borrowed vessels.</b> She asks her neighbors for jars, "not a few." That's your network, your partners, your waitlist. The capacity to receive was prepared before the oil flowed.</p>
+          <p><b>Shut the door.</b> She fills the jars inside the house, with her sons. Some seasons of a business happen backstage: producing, testing, failing with no audience.</p>
+          <p><b>Sell and pay.</b> The prophet tells her to sell, pay the debt and live on the rest. No spiritualizing the spreadsheet. The miracle ended with numbers that added up.</p>
+        </div>
+        <div data-l="es">
+          <p class="dropcap">Una viuda, dos hijos y un acreedor tocando la puerta. Eliseo hace una pregunta antes de cualquier milagro: ¿qué tienes en casa? Ella dice que nada, y luego se corrige. Solo una vasija de aceite.</p>
+          <p>Toda emprendedora cristiana conoce esa corrección. Decimos que no tenemos nada y olvidamos lo que está en la mano. Mira la secuencia que da el texto, porque funciona como plan.</p>
+          <p><b>Inventario.</b> Nombra el recurso. Una habilidad, un producto, un público que ya confía en ti.</p>
+          <p><b>Vasijas prestadas.</b> Ella pide vasijas a los vecinos, "no pocas". Eso es red, es alianza, es lista de espera. La capacidad de recibir se preparó antes de que corriera el aceite.</p>
+          <p><b>Puerta cerrada.</b> Ella llena las vasijas dentro de casa, con sus hijos. Hay etapas del negocio que son de bastidores: producir, probar, equivocarse sin público.</p>
+          <p><b>Vende y paga.</b> El profeta le dice que venda, pague la deuda y viva del resto. Nada de espiritualizar la planilla. El milagro terminó en cuentas que cuadraron.</p>
+        </div>
+        <blockquote class="pull"><span data-l="pt">O azeite parou quando acabaram os vasos. A provisão respeitou o tamanho da preparação.</span><span data-l="en">The oil stopped when the jars ran out. Provision matched the size of the preparation.</span><span data-l="es">El aceite paró cuando se acabaron las vasijas. La provisión respetó el tamaño de la preparación.</span></blockquote>
+      </div>
+      <aside class="protocol sidebar">
+        <span class="mono"><span data-l="pt">Ferramenta</span><span data-l="en">Tool</span><span data-l="es">Herramienta</span></span>
+        <h3><span data-l="pt">Planilha da viúva</span><span data-l="en">The widow's worksheet</span><span data-l="es">Planilla de la viuda</span></h3>
+        <p style="font-size:.95rem;color:var(--soft)"><span data-l="pt">Preencha antes de lançar qualquer oferta.</span><span data-l="en">Fill it in before launching any offer.</span><span data-l="es">Llénala antes de lanzar cualquier oferta.</span></p>
+        <table class="sheet">
+          <tr><td><span data-l="pt">O que eu tenho em casa</span><span data-l="en">What I have in the house</span><span data-l="es">Lo que tengo en casa</span></td><td><span data-l="pt">1 habilidade</span><span data-l="en">1 skill</span><span data-l="es">1 habilidad</span></td></tr>
+          <tr><td><span data-l="pt">Vasos: pessoas que já pediram isso</span><span data-l="en">Jars: people who already asked for it</span><span data-l="es">Vasijas: personas que ya lo pidieron</span></td><td><span data-l="pt">meta 30</span><span data-l="en">goal 30</span><span data-l="es">meta 30</span></td></tr>
+          <tr><td><span data-l="pt">Parceiros que emprestam alcance</span><span data-l="en">Partners who lend reach</span><span data-l="es">Aliados que prestan alcance</span></td><td><span data-l="pt">meta 3</span><span data-l="en">goal 3</span><span data-l="es">meta 3</span></td></tr>
+          <tr><td><span data-l="pt">Tempo de porta fechada</span><span data-l="en">Shut-door time</span><span data-l="es">Tiempo de puerta cerrada</span></td><td><span data-l="pt">21 dias</span><span data-l="en">21 days</span><span data-l="es">21 días</span></td></tr>
+          <tr><td><span data-l="pt">Primeira dívida a quitar</span><span data-l="en">First debt to pay off</span><span data-l="es">Primera deuda a saldar</span></td><td>$ ____</td></tr>
+          <tr><td><span data-l="pt">Dízimo e reserva</span><span data-l="en">Tithe and savings</span><span data-l="es">Diezmo y reserva</span></td><td>10% + 10%</td></tr>
+        </table>
+        <p style="font-size:.85rem;color:var(--soft);margin:14px 0 0"><span data-l="pt">Dica de TO: escreva cada linha num post-it e cole na estação de trabalho do Protocolo 3.</span><span data-l="en">OT tip: write each line on a sticky note and put it on your Protocol 3 workstation.</span><span data-l="es">Consejo de TO: escribe cada línea en un pósit y pégalo en la estación de trabajo del Protocolo 3.</span></p>
+        <h4 class="sheet-how"><span data-l="pt">Como preencher</span><span data-l="en">How to fill it in</span><span data-l="es">Cómo llenarla</span></h4>
+        <ul class="sheet-list">
+          <li><span data-l="pt"><b>O que eu tenho em casa:</b> uma coisa só. A que as pessoas já te pedem sem você oferecer.</span><span data-l="en"><b>What I have in the house:</b> just one thing. The one people already ask you for without you offering.</span><span data-l="es"><b>Lo que tengo en casa:</b> una sola cosa. La que la gente ya te pide sin que la ofrezcas.</span></li>
+          <li><span data-l="pt"><b>Vasos:</b> escreva nomes de verdade, com telefone. Se não chegar a 30, a fase ainda é de juntar vasos.</span><span data-l="en"><b>Jars:</b> write real names with phone numbers. If you don't reach 30, you're still in the jar-gathering stage.</span><span data-l="es"><b>Vasijas:</b> escribe nombres reales, con teléfono. Si no llegas a 30, todavía estás en la etapa de juntar vasijas.</span></li>
+          <li><span data-l="pt"><b>Parceiros:</b> quem já fala com o teu público e pode te apresentar. Uma igreja, uma loja, outra profissional.</span><span data-l="en"><b>Partners:</b> people who already talk to your audience and can introduce you. A church, a shop, another professional.</span><span data-l="es"><b>Aliados:</b> quien ya habla con tu público y puede presentarte. Una iglesia, una tienda, otra profesional.</span></li>
+          <li><span data-l="pt"><b>Porta fechada:</b> 21 dias pra produzir e testar com poucas pessoas antes de anunciar.</span><span data-l="en"><b>Shut door:</b> 21 days to produce and test with a few people before you announce.</span><span data-l="es"><b>Puerta cerrada:</b> 21 días para producir y probar con pocas personas antes de anunciar.</span></li>
+          <li><span data-l="pt"><b>Primeira dívida:</b> o valor exato. Saber o número tira o medo do tamanho.</span><span data-l="en"><b>First debt:</b> the exact amount. Knowing the number takes the fear out of its size.</span><span data-l="es"><b>Primera deuda:</b> el monto exacto. Saber el número le quita el miedo al tamaño.</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREVISTA -->
+<section class="tab" id="entrevista" aria-label="Entrevista">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Entrevista · p. 32</span><span data-l="en">Interview · p. 32</span><span data-l="es">Entrevista · p. 32</span></span>
+    <div class="photo wide" style="margin-bottom:28px"><span class="year">2026</span><span class="glyph">A</span><span class="cap"><span data-l="pt">Espaço para a foto da entrevistada</span><span data-l="en">Space for the guest's photo</span><span data-l="es">Espacio para la foto de la entrevistada</span></span></div>
+    <h2 class="title"><span data-l="pt">"Eu achava que o plantão era castigo. Era <i>escola</i>."</span><span data-l="en">"I thought the night shift was punishment. It was <i>school</i>."</span><span data-l="es">"Pensaba que la guardia era castigo. Era <i>escuela</i>."</span></h2>
+    <p class="deck"><span data-l="pt">Ana Clara Moreira passou doze anos no turno da noite de um hospital de reabilitação. Hoje tem uma clínica com sete profissionais. A gente conversou numa segunda de manhã, logo depois dos quinze minutos de oração que ela faz com a equipe antes do primeiro paciente. Ela chegou com a caneca de café na mão e o crachá antigo do hospital ainda pendurado no retrovisor do carro.</span><span data-l="en">Ana Clara Moreira spent twelve years on the night shift at a rehab hospital. Today she owns a clinic with seven clinicians. We talked on a Monday morning, right after the fifteen minutes of prayer she holds with her team before the first patient. She walked in with a coffee mug in her hand, and her old hospital badge still hangs from the rearview mirror of her car.</span><span data-l="es">Ana Clara Moreira pasó doce años en el turno de noche de un hospital de rehabilitación. Hoy tiene una clínica con siete profesionales. Conversamos un lunes por la mañana, justo después de los quince minutos de oración que hace con el equipo antes del primer paciente. Llegó con la taza de café en la mano, y su viejo gafete del hospital todavía cuelga del retrovisor de su carro.</span></p>
+    <dl class="qa" data-l="pt">
+      <dt>Quando você percebeu que queria empreender?</dt><dd>Foi numa madrugada de agosto, umas três da manhã. Eu tava com um café frio do lado, refazendo a escala do setor pela terceira vez porque duas colegas tinham trocado plantão e ninguém mais sabia mexer naquela planilha. Me deu um estalo meio bravo, sabe? Eu sei organizar gente. Eu sei tratar gente. Por que isso só acontece aqui dentro, de madrugada, sem ninguém perceber? Fui pra casa com essa pergunta martelando. Levei dois anos pra ter coragem de responder.</dd>
+      <dt>Qual foi a tua botija de azeite?</dt><dd>Uma lista de WhatsApp. Sério. Quarenta famílias de pacientes que tinham recebido alta e me mandavam mensagem: “Ana, você não atende em casa?”. E eu dizia que não. Achava feio, parecia que eu tava roubando paciente do hospital, e eu não tinha estrutura nenhuma. Até que a dona Lurdes, 78 anos, que eu acompanhei depois de um AVC, segurou minha mão na última sessão e falou: “minha filha, você tá enterrando isso”. Eu fui chorando até o carro. Porque ela tinha razão, e eu sabia.</dd>
+      <dt>Como a fé entra na gestão, na prática?</dt><dd>Olha, eu já trabalhei em lugar com versículo na parede e salário atrasado. Então pra mim começa no básico. Contrato claro. Pagamento no dia cinco, sem desculpa. Ninguém atende cansado: se a fisio dobrou turno, ela não pega paciente na manhã seguinte. E toda segunda a gente para quinze minutos antes de abrir a porta. Às vezes é um salmo, às vezes é só oração pela semana, às vezes alguém chora e a gente segura a mão. A gente ora, sim. E paga em dia. Pra mim as duas coisas contam como testemunho.</dd>
+      <dt>O que a terapia ocupacional te ensinou sobre produtividade?</dt><dd>Que ninguém melhora na marra. Na reabilitação você não manda o paciente andar e pronto. Você vai na casa dele, olha o tapete solto, a altura da cama, o degrau do banheiro. Com equipe é igual. Eu tinha uma recepcionista que eu achava desorganizada. Um dia sentei do lado dela uma manhã inteira. Telefone, WhatsApp, porta e sistema, tudo ao mesmo tempo, num balcão de um metro. Mudei o telefone de lugar e separei horário pro WhatsApp. Em duas semanas ela parecia outra pessoa. E era a mesma. O balcão é que parou de brigar com ela.</dd>
+      <dt>Um erro caro.</dt><dd>Ai, esse dói até hoje. Abri a segunda sala no embalo, porque tinha tido um mês muito bom. Contratei, comprei maca, pintei a parede de verde. E a fila não veio. Foram seis meses pagando aluguel de sala vazia. Eu passava na porta e nem acendia a luz, de vergonha. Aprendi com a viúva de 2 Reis do jeito difícil: primeiro os vasos, depois o azeite. Hoje só expando com lista de espera na mão, com nome e telefone de cada pessoa.</dd>
+      <dt>O que você diria pra mulher que ainda está no plantão?</dt><dd>Presta atenção no que você faz sem ninguém pedir. Aquilo que você resolve no automático, que as colegas vêm te perguntar no corredor, que você acha bobo porque é fácil pra você. Ali mora um negócio. E não pede demissão amanhã, pelo amor de Deus. O plantão pode pagar a tua fase de porta fechada. Eu fiquei um ano e meio atendendo em casa nas folgas antes de sair. Foi cansativo, teve dia que eu dormi no sofá de sapato. Mas eu saí com cliente, e não só com esperança.</dd>
+    </dl>
+    <dl class="qa" data-l="en">
+      <dt>When did you realize you wanted to start a business?</dt><dd>It was an August night, around three in the morning. I had a cold coffee next to me and I was redoing the unit schedule for the third time, because two coworkers had swapped shifts and nobody else knew how to work that spreadsheet. Something clicked, and I was kind of mad about it. I know how to organize people. I know how to treat people. Why does that only happen in here, in the middle of the night, where nobody even notices? I drove home with that question pounding in my head. It took me two years to find the courage to answer it.</dd>
+      <dt>What was your jar of oil?</dt><dd>A WhatsApp list. Really. Forty families of discharged patients texting me, “Ana, don't you do home visits?” And I kept saying no. It felt wrong, like I was stealing patients from the hospital, and I had no setup at all. Then Mrs. Lurdes, 78, who I'd treated after a stroke, held my hand at our last session and said, “honey, you're burying this.” I cried all the way to my car. Because she was right, and I knew it.</dd>
+      <dt>How does faith show up in how you run the clinic?</dt><dd>Look, I've worked in places with a Bible verse on the wall and late paychecks. So for me it starts with the basics. Clear contracts. Payday on the fifth, no excuses. Nobody treats patients exhausted: if a therapist pulled a double, she doesn't see anyone the next morning. And every Monday we stop for fifteen minutes before we open the door. Sometimes it's a psalm, sometimes just prayer for the week, sometimes someone cries and we hold her hand. Yes, we pray. And we pay on time. To me both count as a testimony.</dd>
+      <dt>What did occupational therapy teach you about productivity?</dt><dd>That nobody gets better by force. In rehab you don't just tell a patient to walk. You go to their house and look at the loose rug, the height of the bed, the step into the bathroom. A team works the same way. I had a receptionist I thought was disorganized. One day I sat next to her for a whole morning. Phone, WhatsApp, the door and the scheduling system, all at once, at a three-foot counter. I moved the phone and set specific times for WhatsApp. Two weeks later she seemed like a different person. She was the same person. The counter just stopped fighting her.</dd>
+      <dt>An expensive mistake.</dt><dd>Oh, that one still hurts. I opened a second room on a high, because I'd had one really good month. I hired, bought a treatment table, painted the wall green. And the patients didn't come. I paid rent on an empty room for six months. I'd walk past the door and wouldn't even turn the light on, I was so embarrassed. I learned the widow's lesson from 2 Kings the hard way: first the jars, then the oil. Now I only expand with a waitlist in hand, with every person's name and number.</dd>
+      <dt>What would you tell the woman who's still working night shifts?</dt><dd>Pay attention to what you do without anyone asking. The thing you handle on autopilot, the thing coworkers stop you in the hallway to ask about, the thing you think is silly because it's easy for you. There's a business living there. And please, don't quit tomorrow. The shift can pay for your shut-door season. I spent a year and a half doing home visits on my days off before I left. It was exhausting, some nights I fell asleep on the couch with my shoes on. But I left with clients, and not just with hope.</dd>
+    </dl>
+    <dl class="qa" data-l="es">
+      <dt>¿Cuándo te diste cuenta de que querías emprender?</dt><dd>Fue una madrugada de agosto, como a las tres. Tenía un café frío al lado y estaba rehaciendo el horario del área por tercera vez, porque dos compañeras habían cambiado de guardia y nadie más sabía mover esa planilla. Me dio un chispazo medio enojado, ¿sabes? Yo sé organizar gente. Yo sé tratar gente. ¿Por qué eso solo pasa aquí adentro, de madrugada, sin que nadie lo note? Me fui a casa con esa pregunta martillando. Tardé dos años en tener el valor de responderla.</dd>
+      <dt>¿Cuál fue tu vasija de aceite?</dt><dd>Una lista de WhatsApp. En serio. Cuarenta familias de pacientes dados de alta que me escribían: “Ana, ¿no atiendes a domicilio?”. Y yo decía que no. Me parecía feo, como si le estuviera robando pacientes al hospital, y no tenía ninguna estructura. Hasta que doña Lurdes, de 78 años, a quien acompañé después de un derrame, me tomó la mano en la última sesión y me dijo: “mija, lo estás enterrando”. Me fui llorando hasta el carro. Porque tenía razón, y yo lo sabía.</dd>
+      <dt>¿Cómo entra la fe en la gestión, en la práctica?</dt><dd>Mira, yo ya trabajé en lugares con versículo en la pared y sueldo atrasado. Así que para mí empieza por lo básico. Contrato claro. Pago el día cinco, sin excusas. Nadie atiende cansado: si la fisio dobló turno, no toma pacientes a la mañana siguiente. Y cada lunes paramos quince minutos antes de abrir la puerta. A veces es un salmo, a veces solo oración por la semana, a veces alguien llora y le tomamos la mano. Oramos, sí. Y pagamos a tiempo. Para mí las dos cosas cuentan como testimonio.</dd>
+      <dt>¿Qué te enseñó la terapia ocupacional sobre productividad?</dt><dd>Que nadie mejora a la fuerza. En rehabilitación no le ordenas al paciente que camine y ya. Vas a su casa, miras la alfombra suelta, la altura de la cama, el escalón del baño. Con el equipo es igual. Tenía una recepcionista que me parecía desorganizada. Un día me senté a su lado una mañana entera. Teléfono, WhatsApp, la puerta y el sistema, todo al mismo tiempo, en un mostrador de un metro. Cambié el teléfono de lugar y separé horario para el WhatsApp. En dos semanas parecía otra persona. Y era la misma. El mostrador dejó de pelear con ella.</dd>
+      <dt>Un error caro.</dt><dd>Ay, ese todavía duele. Abrí la segunda sala en caliente, porque había tenido un mes muy bueno. Contraté, compré camilla, pinté la pared de verde. Y la fila no llegó. Fueron seis meses pagando alquiler de una sala vacía. Pasaba por la puerta y ni prendía la luz, de la vergüenza. Aprendí lo de la viuda de 2 Reyes por las malas: primero las vasijas, después el aceite. Hoy solo crezco con lista de espera en la mano, con nombre y teléfono de cada persona.</dd>
+      <dt>¿Qué le dirías a la mujer que todavía está en la guardia?</dt><dd>Que ponga atención a lo que hace sin que nadie se lo pida. Eso que resuelve en automático, que las compañeras le vienen a preguntar en el pasillo, que le parece tonto porque le resulta fácil. Ahí vive un negocio. Y no renuncies mañana, por favor. La guardia puede pagar tu etapa de puerta cerrada. Yo pasé un año y medio atendiendo a domicilio en mis días libres antes de salir. Fue agotador, hubo noches que me dormí en el sofá con zapatos. Pero salí con clientes, y no solo con esperanza.</dd>
+    </dl>
+    <p class="note"><span data-l="pt">Ana Clara é uma personagem composta para esta edição-modelo, criada a partir de padrões comuns do público da revista. Substitua pela sua entrevistada real e use as seis perguntas como roteiro fixo da seção.</span><span data-l="en">Ana Clara is a composite character created for this sample issue from common patterns in the magazine's audience. Replace her with your real guest and keep the six questions as the section's standing format.</span><span data-l="es">Ana Clara es un personaje compuesto para esta edición modelo, creado a partir de patrones comunes del público de la revista. Reemplázala por tu entrevistada real y usa las seis preguntas como guion fijo de la sección.</span></p>
+    <aside class="pod" id="fuxicar" aria-label="Podcast Fuxicar">
+      <div class="pod-disc" role="img" aria-label="Disco do podcast"></div>
+      <div>
+        <span class="eyebrow">Podcast · <span data-l="pt">Testemunhos</span><span data-l="en">Testimonies</span><span data-l="es">Testimonios</span></span>
+        <h3>Fuxi<em>car</em></h3>
+        <p data-l="pt">Fuxico é conversa de comadre. E é também aquele retalho redondo costurado à mão que, junto com outros, vira colcha. O Fuxicar é o podcast da Ocupa: mulheres contando, sem roteiro bonito, como Deus usou o que ocupava as mãos delas pra virar provisão. Cada história é um retalho. Juntas, cobrem muita gente.</p>
+        <p data-l="en">In Brazil, a fuxico is a chat between close friends. It is also the small round patch sewn by hand that, joined with others, becomes a quilt. Fuxicar is Ocupa's podcast: women telling, without a polished script, how God used what filled their hands to become provision. Each story is a patch. Together they cover a lot of people.</p>
+        <p data-l="es">Fuxico es charla de comadres. Y también es ese retazo redondo cosido a mano que, junto a otros, se vuelve colcha. Fuxicar es el podcast de Ocupa: mujeres contando, sin guion bonito, cómo Dios usó lo que ocupaba sus manos para volverlo provisión. Cada historia es un retazo. Juntas cubren a mucha gente.</p>
+      </div>
+      <ol class="pod-steps" data-l="pt">
+        <li><b>1</b><span>Manda uma mensagem contando em três frases o que tava na tua mão e o que Deus fez com isso.</span></li>
+        <li><b>2</b><span>A gente marca uma conversa de 15 minutos pra ouvir tua história antes da gravação.</span></li>
+        <li><b>3</b><span>Gravamos o episódio e o melhor trecho entra na aba Entrevista da próxima edição.</span></li>
+      </ol>
+      <ol class="pod-steps" data-l="en">
+        <li><b>1</b><span>Send a message telling in three sentences what was in your hand and what God did with it.</span></li>
+        <li><b>2</b><span>We set up a 15-minute call to hear your story before recording.</span></li>
+        <li><b>3</b><span>We record the episode, and the best excerpt goes into the next issue's Interview tab.</span></li>
+      </ol>
+      <ol class="pod-steps" data-l="es">
+        <li><b>1</b><span>Envía un mensaje contando en tres frases qué había en tu mano y qué hizo Dios con eso.</span></li>
+        <li><b>2</b><span>Agendamos una charla de 15 minutos para escuchar tu historia antes de grabar.</span></li>
+        <li><b>3</b><span>Grabamos el episodio y el mejor fragmento entra en la pestaña Entrevista de la próxima edición.</span></li>
+      </ol>
+      <form class="pod-form" name="fuxicar" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="fuxForm">
+        <input type="hidden" name="form-name" value="fuxicar">
+        <p class="hp" aria-hidden="true"><label>Não preencha <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <span class="eyebrow"><span data-l="pt">Quero testemunhar</span><span data-l="en">I want to share my story</span><span data-l="es">Quiero testificar</span></span>
+        <label for="fx-nome"><span data-l="pt">Seu nome</span><span data-l="en">Your name</span><span data-l="es">Tu nombre</span></label>
+        <input id="fx-nome" name="nome" type="text" required autocomplete="name">
+        <label for="fx-contato"><span data-l="pt">WhatsApp ou Instagram pra gente te chamar</span><span data-l="en">WhatsApp or Instagram so we can reach you</span><span data-l="es">WhatsApp o Instagram para contactarte</span></label>
+        <input id="fx-contato" name="contato" type="text" required>
+        <label for="fx-historia"><span data-l="pt">Em três frases: o que tava na tua mão e o que Deus fez com isso?</span><span data-l="en">In three sentences: what was in your hand, and what did God do with it?</span><span data-l="es">En tres frases: ¿qué había en tu mano y qué hizo Dios con eso?</span></label>
+        <textarea id="fx-historia" name="historia" rows="4" required></textarea>
+        <input type="hidden" name="idioma" id="fx-idioma" value="pt">
+        <div class="pod-cta">
+          <button type="submit" class="pod-btn"><span data-l="pt">Enviar minha história</span><span data-l="en">Send my story</span><span data-l="es">Enviar mi historia</span></button>
+          <span class="pod-soon"><span data-l="pt">Em breve no Spotify</span><span data-l="en">Coming soon to Spotify</span><span data-l="es">Pronto en Spotify</span></span>
+        </div>
+        <p class="pod-msg" id="fxMsg" role="status" aria-live="polite"></p>
+      </form>
+    </aside>
+  </div>
+</section>
+
+<!-- RODA -->
+<section class="tab" id="roda" aria-label="Roda ocupacional">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Roda ocupacional</span><span data-l="en">Occupational wheel</span><span data-l="es">Rueda ocupacional</span></span>
+    <h2 class="title"><span data-l="pt">Onde o teu desempenho está <i>vazando</i>?</span><span data-l="en">Where is your performance <i>leaking</i>?</span><span data-l="es">¿Por dónde se está <i>escapando</i> tu rendimiento?</span></h2>
+    <p class="deck"><span data-l="pt">Nota de 0 a 10 pra cada área nas últimas duas semanas.</span><span data-l="en">Score each area from 0 to 10 for the last two weeks.</span><span data-l="es">Nota de 0 a 10 para cada área en las últimas dos semanas.</span></p>
+    <div class="wheel-guide">
+      <div class="measure">
+        <h3><span data-l="pt">O que é a roda ocupacional</span><span data-l="en">What the occupational wheel is</span><span data-l="es">Qué es la rueda ocupacional</span></h3>
+        <p data-l="pt">Na terapia ocupacional existe um conceito chamado equilíbrio ocupacional: a forma como a gente distribui tempo e energia entre as áreas da vida. Quando uma área fica muito tempo vazia, ela começa a puxar as outras pra baixo. A mulher que dorme mal vende pior, e quem nunca tem lazer perde a criatividade no trabalho. A roda é um retrato rápido desse equilíbrio. Ela não é diagnóstico nem prova. Serve pra você enxergar onde começar.</p><p data-l="en">Occupational therapy has a concept called occupational balance: how we spread our time and energy across the areas of life. When one area stays empty for too long, it starts pulling the others down. A woman who sleeps poorly sells worse, and someone with no leisure loses creativity at work. The wheel is a quick snapshot of that balance. It isn't a diagnosis or a test. It helps you see where to start.</p><p data-l="es">En terapia ocupacional existe un concepto llamado equilibrio ocupacional: cómo repartimos tiempo y energía entre las áreas de la vida. Cuando un área queda vacía mucho tiempo, empieza a jalar a las demás hacia abajo. La mujer que duerme mal vende peor, y quien nunca tiene ocio pierde creatividad en el trabajo. La rueda es un retrato rápido de ese equilibrio. No es diagnóstico ni examen. Sirve para ver por dónde empezar.</p>
+      </div>
+      <div class="guide-grid">
+        <div>
+          <h4><span data-l="pt">Como usar</span><span data-l="en">How to use it</span><span data-l="es">Cómo usarla</span></h4>
+          <ol>
+            <li><span data-l="pt">Separe dez minutos quietos. Pode ser com café, sem celular apitando.</span><span data-l="en">Set aside ten quiet minutes. Coffee is fine, phone notifications are not.</span><span data-l="es">Aparta diez minutos tranquilos. Con café, sin el celular sonando.</span></li>
+            <li><span data-l="pt">Pense só nas últimas duas semanas. Nada de “no geral” ou “quando as coisas melhorarem”.</span><span data-l="en">Think only about the last two weeks. No “in general” or “once things settle down.”</span><span data-l="es">Piensa solo en las últimas dos semanas. Nada de “en general” ni “cuando las cosas mejoren”.</span></li>
+            <li><span data-l="pt">A nota mede o quanto você está satisfeita com aquela área, e não quantas horas gasta nela. 0 é “tá abandonada”, 10 é “tá do jeito que eu queria”.</span><span data-l="en">The score measures how satisfied you are with that area, not how many hours you spend on it. 0 means “it's abandoned,” 10 means “it's exactly how I want it.”</span><span data-l="es">La nota mide qué tan satisfecha estás con esa área, y no cuántas horas le dedicas. 0 es “está abandonada”, 10 es “está como yo quería”.</span></li>
+            <li><span data-l="pt">Arraste cada barra. A roda se desenha sozinha e aparece a área mais baixa com uma sugestão.</span><span data-l="en">Drag each slider. The wheel draws itself and shows your lowest area with a suggestion.</span><span data-l="es">Mueve cada barra. La rueda se dibuja sola y aparece el área más baja con una sugerencia.</span></li>
+          </ol>
+        </div>
+        <div>
+          <h4><span data-l="pt">Como ler o resultado</span><span data-l="en">How to read the result</span><span data-l="es">Cómo leer el resultado</span></h4>
+          <ul>
+            <li><span data-l="pt"><b>Roda redonda, mesmo que pequena:</b> tua vida tá equilibrada, só com pouca energia no geral. Comece pelo sono.</span><span data-l="en"><b>A round wheel, even a small one:</b> your life is balanced, just low on energy overall. Start with sleep.</span><span data-l="es"><b>Rueda redonda, aunque sea pequeña:</b> tu vida está equilibrada, solo con poca energía en general. Empieza por el sueño.</span></li>
+            <li><span data-l="pt"><b>Roda com pontas e buracos:</b> tem área sustentando as outras. O buraco mostra onde tá vazando.</span><span data-l="en"><b>A wheel with spikes and dents:</b> some areas are carrying the others. The dent shows where it's leaking.</span><span data-l="es"><b>Rueda con picos y huecos:</b> hay áreas cargando a las otras. El hueco muestra por dónde se escapa.</span></li>
+            <li><span data-l="pt"><b>Escolha uma área só.</b> A mais baixa, ou aquela que, se melhorar, puxa as outras. Aplique a sugestão por 14 dias.</span><span data-l="en"><b>Pick just one area.</b> The lowest one, or the one that would lift the others if it improved. Apply the suggestion for 14 days.</span><span data-l="es"><b>Elige una sola área.</b> La más baja, o la que al mejorar jala a las demás. Aplica la sugerencia por 14 días.</span></li>
+            <li><span data-l="pt"><b>Refaça todo mês,</b> quando sair a edição nova. Tire um print pra comparar.</span><span data-l="en"><b>Redo it every month</b> when the new issue comes out. Take a screenshot to compare.</span><span data-l="es"><b>Rehazla cada mes,</b> cuando salga la edición nueva. Toma una captura para comparar.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="example-note"><span data-l="pt">Exemplo: Renda 8 e Sono 3. Ela tá produzindo às custas do descanso, e isso não se sustenta. A primeira ação dela é o sono, mesmo que pareça menos urgente que o dinheiro.</span><span data-l="en">Example: Income 8 and Sleep 3. She's producing at the cost of rest, and that won't last. Her first action is sleep, even if it feels less urgent than money.</span><span data-l="es">Ejemplo: Ingreso 8 y Sueño 3. Está produciendo a costa del descanso, y eso no se sostiene. Su primera acción es el sueño, aunque parezca menos urgente que el dinero.</span></p>
+    </div>
+    <div class="wheel">
+      <form class="sliders" id="wheelForm" onsubmit="return false"></form>
+      <div><svg id="radar" viewBox="0 0 440 440" role="img" aria-label="Radar"></svg><div class="verdict" id="verdict" aria-live="polite"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CADERNO -->
+<section class="tab" id="caderno" aria-label="Caderno">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Caderno da semana</span><span data-l="en">Weekly workbook</span><span data-l="es">Cuaderno de la semana</span></span>
+    <h2 class="title"><span data-l="pt">Sete dias, uma ocupação por vez</span><span data-l="en">Seven days, one occupation at a time</span><span data-l="es">Siete días, una ocupación a la vez</span></h2>
+    <p class="deck"><span data-l="pt">Suas marcações ficam salvas neste navegador.</span><span data-l="en">Your checkmarks stay saved in this browser.</span><span data-l="es">Tus marcas quedan guardadas en este navegador.</span></p>
+    <div class="measure caderno-how">
+      <p data-l="pt">Cada dia tem três tarefas pequenas, ligadas às seções da revista: um protocolo da Sessão TO, um passo de Negócios do Reino ou do Estudo, e um cuidado com você. Nenhuma leva mais de meia hora. Marque quando fizer. Se perder um dia, não recomece do zero. Siga de onde parou, porque a ideia é criar rotina, e rotina aguenta tropeço.</p><p data-l="en">Each day has three small tasks tied to the magazine's sections: a protocol from the OT Session, a step from Kingdom Business or the Study, and something that takes care of you. None takes more than half an hour. Check them off as you go. If you miss a day, don't start over. Pick up where you left off, because the goal is building a routine, and a routine can handle a stumble.</p><p data-l="es">Cada día tiene tres tareas pequeñas, ligadas a las secciones de la revista: un protocolo de la Sesión TO, un paso de Negocios del Reino o del Estudio, y un cuidado para ti. Ninguna toma más de media hora. Márcalas cuando las hagas. Si pierdes un día, no empieces de cero. Sigue desde donde quedaste, porque la idea es crear rutina, y la rutina aguanta tropiezos.</p>
+    </div>
+    <div class="progress"><span class="mono" id="progLabel">0 / 21</span><div class="bar"><i id="progBar"></i></div><button class="chip" type="button" id="resetWeek"><span data-l="pt">Recomeçar</span><span data-l="en">Reset</span><span data-l="es">Reiniciar</span></button></div>
+    <div class="week" id="week"></div>
+  </div>
+</section>
+
+<!-- AGENDA + ÚLTIMA PÁGINA -->
+<section class="tab" id="agenda" aria-label="Agenda">
+  <div class="wrap">
+    <span class="eyebrow"><span data-l="pt">Agenda e recursos · p. 50</span><span data-l="en">Calendar and resources · p. 50</span><span data-l="es">Agenda y recursos · p. 50</span></span>
+    <h2 class="title"><span data-l="pt">Pra continuar depois da última página</span><span data-l="en">To keep going after the last page</span><span data-l="es">Para seguir después de la última página</span></h2>
+    <hr>
+    <div class="agenda">
+      <article><span class="mono"><span data-l="pt">Encontro online</span><span data-l="en">Online meetup</span><span data-l="es">Encuentro en línea</span></span>
+        <h3><span data-l="pt">Sessão coletiva: mapa de energia</span><span data-l="en">Group session: energy map</span><span data-l="es">Sesión grupal: mapa de energía</span></h3>
+        <p><span data-l="pt">Revisão ao vivo dos registros do Protocolo 1. Traga suas anotações. Data e link no perfil da Integrally Well.</span><span data-l="en">A live review of your Protocol 1 logs. Bring your notes. Date and link on the Integrally Well profile.</span><span data-l="es">Revisión en vivo de los registros del Protocolo 1. Trae tus notas. Fecha y enlace en el perfil de Integrally Well.</span></p></article>
+      <article><span class="mono"><span data-l="pt">Mentoria</span><span data-l="en">Mentoring</span><span data-l="es">Mentoría</span></span>
+        <h3><span data-l="pt">Negócios do Reino em 6 semanas</span><span data-l="en">Kingdom Business in 6 weeks</span><span data-l="es">Negocios del Reino en 6 semanas</span></h3>
+        <p><span data-l="pt">Da botija de azeite à primeira oferta vendida, com análise de atividade do seu produto.</span><span data-l="en">From the jar of oil to your first sold offer, with an activity analysis of your product.</span><span data-l="es">De la vasija de aceite a la primera oferta vendida, con análisis de actividad de tu producto.</span></p></article>
+      <article><span class="mono"><span data-l="pt">Leitura</span><span data-l="en">Reading</span><span data-l="es">Lectura</span></span>
+        <h3><span data-l="pt">Provérbios 31, um por dia</span><span data-l="en">Proverbs 31, one a day</span><span data-l="es">Proverbios 31, uno por día</span></h3>
+        <p><span data-l="pt">Leia um versículo por dia deste mês e anote qual ocupação da mulher virtuosa aparece.</span><span data-l="en">Read one verse a day this month and note which occupation of the virtuous woman appears.</span><span data-l="es">Lee un versículo por día este mes y anota qué ocupación de la mujer virtuosa aparece.</span></p></article>
+      <article><span class="mono"><span data-l="pt">Próxima edição</span><span data-l="en">Next issue</span><span data-l="es">Próxima edición</span></span>
+        <h3><span data-l="pt">Descanso como estratégia</span><span data-l="en">Rest as strategy</span><span data-l="es">Descanso como estrategia</span></h3>
+        <p><span data-l="pt">Sábado, sono e recuperação ocupacional. E uma entrevista com uma empresária imigrante.</span><span data-l="en">Sabbath, sleep and occupational recovery. Plus an interview with an immigrant businesswoman.</span><span data-l="es">Sábado, sueño y recuperación ocupacional. Y una entrevista con una empresaria inmigrante.</span></p></article>
+    </div>
+
+    <div class="last">
+      <span class="eyebrow"><span data-l="pt">Última página · p. 52</span><span data-l="en">Last page · p. 52</span><span data-l="es">Última página · p. 52</span></span>
+      <h2 class="title"><span data-l="pt">O que é isso na tua <i>mão</i>?</span><span data-l="en">What is that in your <i>hand</i>?</span><span data-l="es">¿Qué es eso que tienes en la <i>mano</i>?</span></h2>
+      <div class="measure">
+        <div data-l="pt"><p>Deus fez essa pergunta pra Moisés antes de abrir o mar. Ele tinha um cajado de pastor, madeira comum, gasta de tanto uso. Foi aquilo que Deus usou.</p><p>Fecha a revista e olha pras tuas mãos. O que elas fizeram hoje? Escreve uma frase sobre isso num papel e deixa na estação de trabalho. Amanhã você começa por ali.</p></div>
+        <div data-l="en"><p>God asked Moses that before He parted the sea. Moses had a shepherd's staff, ordinary wood, worn from use. That was what God used.</p><p>Close the magazine and look at your hands. What did they do today? Write one sentence about it on a piece of paper and leave it at your workstation. Tomorrow you start there.</p></div>
+        <div data-l="es"><p>Dios le hizo esa pregunta a Moisés antes de abrir el mar. Tenía una vara de pastor, madera común, gastada de tanto uso. Fue eso lo que Dios usó.</p><p>Cierra la revista y mira tus manos. ¿Qué hicieron hoy? Escribe una frase sobre eso en un papel y déjala en tu estación de trabajo. Mañana empiezas por ahí.</p></div>
+      </div>
+      <p class="mono colophon">Ocupa · <span data-l="pt">Edição 01</span><span data-l="en">Issue 01</span><span data-l="es">Edición 01</span> · <span data-l="pt">Editora</span><span data-l="en">Editor</span><span data-l="es">Editora</span>: Jen · Integrally Well · ARA &amp; King James</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="floaters">
+  <button type="button" id="lookBtn" aria-label="Trocar tema claro ou escuro"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="13" cy="13" r="11"/><circle cx="13" cy="13" r="6.5"/></svg></button>
+  <button type="button" id="sizeBtn" aria-label="Tamanho do texto">Aa</button>
+</div>
+
+<div class="ig-view" id="igView" hidden>
+  <div class="ig-bar">
+    <span class="brand">Ocu<em>pa</em> <span class="brand-sub">IG Slides</span></span>
+    <button class="chip" type="button" id="igClose"><span data-l="pt">Fechar</span><span data-l="en">Close</span><span data-l="es">Cerrar</span></button>
+  </div>
+  <div class="ig-track" id="igTrack"></div>
+  <p class="ig-hint"><span data-l="pt">Formato 4:5 do feed. Arraste pro lado e tire print de cada slide pra montar o carrossel.</span><span data-l="en">4:5 feed format. Swipe sideways and screenshot each slide to build the carousel.</span><span data-l="es">Formato 4:5 del feed. Desliza y haz captura de cada slide para armar el carrusel.</span></p>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function load(k,d){try{var v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+  /* language */
+  var lang=load("ocupa-lang","pt");
+  function setLang(l){lang=l;root.dataset.lang=l;root.lang=l==="pt"?"pt-BR":l;save("ocupa-lang",l);
+    document.querySelectorAll("[data-set-lang]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.setLang===l?"true":"false")});
+    buildWheel();buildWeek();buildSlides();}
+  document.querySelectorAll("[data-set-lang]").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.setLang)})});
+
+  /* look + size */
+  var look=load("ocupa-look",null);if(look==="paper"||look==="ink")root.dataset.look=look;
+  var mq=window.matchMedia?window.matchMedia("(prefers-color-scheme: dark)"):{matches:false};
+  function isDark(){if(root.dataset.look)return root.dataset.look==="ink";if(root.dataset.theme)return root.dataset.theme==="dark";return mq.matches}
+  document.getElementById("lookBtn").addEventListener("click",function(){var n=isDark()?"paper":"ink";root.dataset.look=n;save("ocupa-look",n)});
+  var sizes=[1,1.12,1.25],si=load("ocupa-size",0);root.style.setProperty("--scale",sizes[si]||1);
+  document.getElementById("sizeBtn").addEventListener("click",function(){si=(si+1)%sizes.length;root.style.setProperty("--scale",sizes[si]);save("ocupa-size",si)});
+
+  /* tabs */
+  var tabs=[].slice.call(document.querySelectorAll(".tab")),links=[].slice.call(document.querySelectorAll("#tabnav a"));
+  function show(id,scroll){if(!document.getElementById(id)||!document.getElementById(id).classList.contains("tab"))id="capa";
+    tabs.forEach(function(t){t.classList.toggle("active",t.id===id)});
+    links.forEach(function(a){if(a.getAttribute("href")==="#"+id){a.setAttribute("aria-current","page");a.scrollIntoView({block:"nearest",inline:"nearest"})}else a.removeAttribute("aria-current")});
+    if(scroll)window.scrollTo(0,0);}
+  document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute("href").slice(1);
+    if(document.getElementById(id)&&document.getElementById(id).classList.contains("tab")){e.preventDefault();show(id,true);try{history.replaceState(null,"","#"+id)}catch(err){}}});
+  show((location.hash||"#capa").slice(1),false);
+
+  /* wheel */
+  var W={pt:{names:["Sono e descanso","Trabalho que gera renda","Autocuidado e corpo","Casa e família","Lazer e criatividade","Vida com Deus","Comunidade e serviço","Finanças"],short:["Sono","Renda","Corpo","Casa","Lazer","Deus","Serviço","Finanças"],avg:"Média",low:"Área mais baixa",
+      tips:["Proteja 7 horas de sono por 14 dias antes de mexer em qualquer outra coisa.","Aplique o Protocolo 2 na tarefa de renda que você mais adia.","Coloque o autocuidado na agenda como atendimento: 30 min, 3 vezes na semana.","Uma refeição por semana sem celular à mesa.","Duas horas por semana fazendo algo com as mãos só pelo prazer.","Use o Salmo 90:17 como gesto de entrada do Protocolo 3.","Sirva em algo pequeno e fixo, uma hora por semana.","Preencha a Planilha da viúva e nomeie a primeira dívida."]},
+    en:{names:["Sleep and rest","Income-producing work","Self-care and body","Home and family","Leisure and creativity","Life with God","Community and service","Finances"],short:["Sleep","Income","Body","Home","Leisure","God","Service","Money"],avg:"Average",low:"Lowest area",
+      tips:["Protect 7 hours of sleep for 14 days before changing anything else.","Run Protocol 2 on the income task you delay the most.","Book self-care like an appointment: 30 min, 3 times a week.","One meal a week with no phones at the table.","Two hours a week making something with your hands just for joy.","Use Psalm 90:17 as your Protocol 3 entry ritual.","Serve somewhere small and steady, one hour a week.","Fill in the widow's worksheet and name the first debt."]},
+    es:{names:["Sueño y descanso","Trabajo que genera ingresos","Autocuidado y cuerpo","Casa y familia","Ocio y creatividad","Vida con Dios","Comunidad y servicio","Finanzas"],short:["Sueño","Ingreso","Cuerpo","Casa","Ocio","Dios","Servicio","Finanzas"],avg:"Promedio",low:"Área más baja",
+      tips:["Protege 7 horas de sueño por 14 días antes de cambiar cualquier otra cosa.","Aplica el Protocolo 2 a la tarea de ingresos que más pospones.","Agenda el autocuidado como una cita: 30 min, 3 veces por semana.","Una comida por semana sin celular en la mesa.","Dos horas por semana haciendo algo con las manos solo por gusto.","Usa el Salmo 90:17 como gesto de entrada del Protocolo 3.","Sirve en algo pequeño y fijo, una hora por semana.","Llena la planilla de la viuda y nombra la primera deuda."]}};
+  var vals=load("ocupa-roda",[6,7,4,6,3,7,5,5]);if(!Array.isArray(vals)||vals.length!==8)vals=[6,7,4,6,3,7,5,5];
+  var form=document.getElementById("wheelForm"),svg=document.getElementById("radar"),cx=220,cy=220,R=140,n=8;
+  function pt(i,r){var a=-Math.PI/2+i*2*Math.PI/n;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]}
+  function buildWheel(){var t=W[lang],h="";t.names.forEach(function(nm,i){h+='<label for="w'+i+'">'+nm+' <output id="o'+i+'" for="w'+i+'">'+vals[i]+'</output><input type="range" id="w'+i+'" min="0" max="10" value="'+vals[i]+'"></label>'});form.innerHTML=h;drawWheel()}
+  form.addEventListener("input",function(e){var i=+e.target.id.slice(1);vals[i]=+e.target.value;document.getElementById("o"+i).textContent=vals[i];save("ocupa-roda",vals);drawWheel()});
+  function drawWheel(){var t=W[lang],s="";
+    [2,4,6,8,10].forEach(function(l){var p=[];for(var i=0;i<n;i++)p.push(pt(i,R*l/10).join(","));s+='<polygon points="'+p.join(" ")+'" fill="none" stroke="var(--rule)"/>'});
+    for(var i=0;i<n;i++){var e=pt(i,R);s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+e[0]+'" y2="'+e[1]+'" stroke="var(--rule)"/>';var q=pt(i,R+34);
+      s+='<text x="'+q[0]+'" y="'+q[1]+'" text-anchor="middle" dominant-baseline="middle" fill="var(--soft)" style="font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase">'+t.short[i]+'</text>'}
+    s+='<polygon points="'+vals.map(function(v,i){return pt(i,R*v/10).join(",")}).join(" ")+'" fill="var(--teal)" fill-opacity=".22" stroke="var(--teal)" stroke-width="2"/>';
+    vals.forEach(function(v,i){var p=pt(i,R*v/10);s+='<rect x="'+(p[0]-4)+'" y="'+(p[1]-4)+'" width="8" height="8" fill="var(--teal)"/>'});
+    svg.innerHTML=s;
+    var min=Math.min.apply(null,vals),idx=vals.indexOf(min),avg=(vals.reduce(function(a,b){return a+b},0)/n).toFixed(1);if(lang!=="en")avg=avg.replace(".",",");
+    document.getElementById("verdict").innerHTML='<span class="mono" style="color:var(--teal)">'+t.avg+' '+avg+' · '+t.low+'</span><br><b>'+t.names[idx]+' ('+min+')</b><p style="margin:.4em 0 0">'+t.tips[idx]+'</p>'}
+
+  /* workbook */
+  var D={pt:[["Segunda","Registrar energia de hora em hora","Ler Lucas 19:11-27","Montar a estação de trabalho"],["Terça","Registrar energia","Escolher a tarefa mais adiada","Quebrar em passos de 15 min"],["Quarta","Registrar energia","Nomear a botija de azeite","Listar 10 vasos"],["Quinta","Registrar energia","Dois blocos de 50 min","Convidar 1 parceiro"],["Sexta","Circular os picos da semana","Preencher a Planilha da viúva","Refazer a roda"],["Sábado","Duas horas de lazer com as mãos","Refeição sem celular","Descansar sem culpa"],["Domingo","Culto e comunhão","Escrever a frase da última página","Planejar a semana nos picos"]],
+    en:[["Monday","Log energy every hour","Read Luke 19:11-27","Set up your workstation"],["Tuesday","Log energy","Pick the most delayed task","Break it into 15-min steps"],["Wednesday","Log energy","Name your jar of oil","List 10 vessels"],["Thursday","Log energy","Two 50-min blocks","Invite 1 partner"],["Friday","Circle the week's peaks","Fill in the widow's worksheet","Redo the wheel"],["Saturday","Two hours of handmade leisure","A meal with no phones","Rest without guilt"],["Sunday","Worship and fellowship","Write the last-page sentence","Plan the week around your peaks"]],
+    es:[["Lunes","Registrar energía cada hora","Leer Lucas 19:11-27","Armar la estación de trabajo"],["Martes","Registrar energía","Elegir la tarea más pospuesta","Dividirla en pasos de 15 min"],["Miércoles","Registrar energía","Nombrar tu vasija de aceite","Enumerar 10 vasijas"],["Jueves","Registrar energía","Dos bloques de 50 min","Invitar a 1 aliado"],["Viernes","Marcar los picos de la semana","Llenar la planilla de la viuda","Rehacer la rueda"],["Sábado","Dos horas de ocio con las manos","Comida sin celular","Descansar sin culpa"],["Domingo","Culto y comunión","Escribir la frase de la última página","Planear la semana en los picos"]]};
+  var week=document.getElementById("week"),state=load("ocupa-caderno",{})||{};
+  function buildWeek(){var h="";D[lang].forEach(function(d,di){h+='<div class="day"><h3>'+d[0]+'</h3>';for(var k=1;k<d.length;k++){var id="d"+di+"t"+k;h+='<label for="'+id+'"><input type="checkbox" id="'+id+'"'+(state[id]?" checked":"")+'><span>'+d[k]+'</span></label>'}h+='</div>'});week.innerHTML=h;prog()}
+  function prog(){var b=week.querySelectorAll("input"),c=0;b.forEach(function(x){if(x.checked)c++});document.getElementById("progLabel").textContent=c+" / "+b.length;document.getElementById("progBar").style.width=(100*c/b.length)+"%"}
+  week.addEventListener("change",function(e){state[e.target.id]=e.target.checked;save("ocupa-caderno",state);prog()});
+  document.getElementById("resetWeek").addEventListener("click",function(){state={};save("ocupa-caderno",state);buildWeek()});
+
+  /* IG slides */
+  var S={pt:[["photo","Edição 01","Ocu<i>pa</i>","Terapia ocupacional de alta performance e empreendedorismo cristão."],["","Lucas 19:13","O que ocupa as tuas mãos é onde Deus escondeu o teu <i>dom</i>.","Occupy till I come. Ocupa-te até que eu volte."],["","Protocolo 1 · Pessoa","Mapa de <i>energia</i>","Anote tua energia de hora em hora por 5 dias. Coloque o trabalho que gera dinheiro nos picos."],["","Protocolo 2 · Atividade","Análise de <i>atividade</i>","Quebre a tarefa que você adia em passos de 15 minutos. Ache o passo que trava."],["","Protocolo 3 · Ambiente","Uma estação, uma <i>função</i>","Um lugar só pro trabalho profundo. Celular em outro cômodo. Salmo 90:17 na entrada."],["photo","Roda ocupacional","Onde o teu desempenho está <i>vazando</i>?","Oito áreas, nota de 0 a 10. A roda mostra onde começar."],["","2 Reis 4","O azeite já tava na <i>despensa</i>","O que você tem em casa? Nomeie. Junte os vasos. Feche a porta. Venda e pague."],["","Edição completa","Lê a revista <i>Ocupa</i>","Link na bio · Integrally Well"]],
+    en:[["photo","Issue 01","Ocu<i>pa</i>","High-performance occupational therapy and Christian entrepreneurship."],["","Luke 19:13","What fills your hands is where God hid your <i>gift</i>.","Occupy till I come."],["","Protocol 1 · Person","Energy <i>map</i>","Log your energy every hour for 5 days. Put money-making work in the peaks."],["","Protocol 2 · Activity","Activity <i>analysis</i>","Break the task you delay into 15-minute steps. Find the one that stalls."],["","Protocol 3 · Environment","One station, one <i>purpose</i>","A spot only for deep work. Phone in another room. Psalm 90:17 at the start."],["photo","Occupational wheel","Where is your performance <i>leaking</i>?","Eight areas, scored 0 to 10. The wheel shows where to start."],["","2 Kings 4","The oil was already in the <i>pantry</i>","What do you have in the house? Name it. Gather vessels. Shut the door. Sell and pay."],["","Full issue","Read <i>Ocupa</i> magazine","Link in bio · Integrally Well"]],
+    es:[["photo","Edición 01","Ocu<i>pa</i>","Terapia ocupacional de alto rendimiento y emprendimiento cristiano."],["","Lucas 19:13","Lo que ocupa tus manos es donde Dios escondió tu <i>don</i>.","Negociad entre tanto que vengo."],["","Protocolo 1 · Persona","Mapa de <i>energía</i>","Anota tu energía cada hora por 5 días. Pon el trabajo que genera dinero en los picos."],["","Protocolo 2 · Actividad","Análisis de <i>actividad</i>","Divide la tarea que pospones en pasos de 15 minutos. Encuentra el que se traba."],["","Protocolo 3 · Ambiente","Una estación, una <i>función</i>","Un lugar solo para trabajo profundo. Celular en otro cuarto. Salmo 90:17 al entrar."],["photo","Rueda ocupacional","¿Por dónde se <i>escapa</i> tu rendimiento?","Ocho áreas, nota de 0 a 10. La rueda muestra dónde empezar."],["","2 Reyes 4","El aceite ya estaba en la <i>despensa</i>","¿Qué tienes en casa? Nómbralo. Junta vasijas. Cierra la puerta. Vende y paga."],["","Edición completa","Lee la revista <i>Ocupa</i>","Link en la bio · Integrally Well"]]};
+  var track=document.getElementById("igTrack");
+  function buildSlides(){var arr=S[lang],h="";arr.forEach(function(s,i){var big=i===0;h+='<div class="slide'+(s[0]?" photoish":"")+'"><div class="s-top"><span>Ocupa Magazine</span><span>'+(i+1)+'/'+arr.length+'</span></div><div class="s-body"><span class="s-eyebrow">'+s[1]+'</span><h4'+(big?' style="font-size:clamp(3.4rem,16vw,5rem);font-weight:900;letter-spacing:-.04em"':'')+'>'+s[2]+'</h4><p>'+s[3]+'</p></div><div class="s-foot"><span>Integrally Well</span><span>'+(i<arr.length-1?"→":"✦")+'</span></div></div>'});track.innerHTML=h}
+  var ig=document.getElementById("igView");
+  document.getElementById("igOpen").addEventListener("click",function(){ig.hidden=false;document.getElementById("igClose").focus()});
+  document.getElementById("igClose").addEventListener("click",function(){ig.hidden=true;document.getElementById("igOpen").focus()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!ig.hidden)ig.hidden=true});
+
+
+  /* Fuxicar form: Netlify Forms via fetch */
+  var fx=document.getElementById("fuxForm"),fxMsg=document.getElementById("fxMsg");
+  var FX={pt:["Enviando…","Recebemos tua história. A gente te chama em breve.","Não deu pra enviar daqui. Abra a revista pelo site oficial e tente de novo."],
+          en:["Sending…","We got your story. We'll reach out soon.","It couldn't be sent from here. Open the magazine on the official site and try again."],
+          es:["Enviando…","Recibimos tu historia. Te contactamos pronto.","No se pudo enviar desde aquí. Abre la revista en el sitio oficial e inténtalo de nuevo."]};
+  fx.addEventListener("submit",function(e){e.preventDefault();var t=FX[lang],btn=fx.querySelector("button");
+    document.getElementById("fx-idioma").value=lang;btn.disabled=true;fxMsg.textContent=t[0];
+    fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(fx)).toString()})
+      .then(function(r){if(!r.ok)throw 0;fx.reset();fxMsg.textContent=t[1]})
+      .catch(function(){fxMsg.textContent=t[2]})
+      .then(function(){btn.disabled=false})});
+  setLang(lang==="en"||lang==="es"?lang:"pt");
+})();
+</script>
+
+</body>
+</html>

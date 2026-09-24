@@ -1,13 +1,3 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta property="og:title" content="Revista Ocupa">
-<meta property="og:description" content="Terapia ocupacional de alta performance e empreendedorismo cristão. Uma edição por mês, por Integrally Well.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#1F4A3D">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231F4A3D'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23C98A12'%3EO%3C/text%3E%3C/svg%3E">
 <title>Revista Ocupa</title>
 <meta name="description" content="Revista Ocupa: terapia ocupacional de alta performance e empreendedorismo cristão, uma edição por mês. Por Integrally Well.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,14 +86,7 @@ section.block{padding-block:56px}
 footer{padding-block:36px;color:var(--soft);font-size:.9rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 @media (max-width:760px){.hero .wrap,.pod .wrap{grid-template-columns:1fr}}
-
-html,body{min-height:100%}
-:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-[hidden]{display:none!important}
-img{max-width:100%}
 </style>
-</head>
-<body>
 
 <header class="top">
   <div class="wrap">
@@ -126,7 +109,7 @@ img{max-width:100%}
     </div>
     <div class="hero-copy">
       <p><span data-l="pt">Terapia ocupacional de alta performance e empreendedorismo cristão, pra mulher que lidera, vende, cuida da casa e quer fazer render o que Deus colocou na mão dela. Uma edição nova por mês, com protocolos, estudo bíblico, negócios, entrevista e o podcast Fuxicar.</span><span data-l="en">High-performance occupational therapy and Christian entrepreneurship for the woman who leads, sells, runs a home and wants to multiply what God put in her hands. A new issue every month, with protocols, Bible study, business, an interview and the Fuxicar podcast.</span><span data-l="es">Terapia ocupacional de alto rendimiento y emprendimiento cristiano para la mujer que lidera, vende, cuida su casa y quiere hacer rendir lo que Dios puso en su mano. Una edición nueva cada mes, con protocolos, estudio bíblico, negocios, entrevista y el pódcast Fuxicar.</span></p>
-      <a class="btn" href="/edicao-01/"><span data-l="pt">Ler a edição 01</span><span data-l="en">Read issue 01</span><span data-l="es">Leer la edición 01</span></a>
+      {{LATEST_BUTTON}}
     </div>
   </div>
 </section>
@@ -136,24 +119,7 @@ img{max-width:100%}
     <span class="label eyebrow"><span data-l="pt">Arquivo</span><span data-l="en">Archive</span><span data-l="es">Archivo</span></span>
     <h2><span data-l="pt">Todas as edições</span><span data-l="en">All issues</span><span data-l="es">Todas las ediciones</span></h2>
     <div class="issues">
-      <div class="issue soon">
-        <div class="cover">
-          <span class="num"><span data-l="pt">Edição 02</span><span data-l="en">Issue 02</span><span data-l="es">Edición 02</span> · <span data-l="pt">Próximo mês</span><span data-l="en">Next month</span><span data-l="es">Próximo mes</span></span>
-          <span class="c-logo">Ocu<em>pa</em></span>
-          <span class="c-theme"><span data-l="pt">Descanso como estratégia</span><span data-l="en">Rest as strategy</span><span data-l="es">Descanso como estrategia</span></span>
-        </div>
-        <span class="badge"><span data-l="pt">Em breve</span><span data-l="en">Coming soon</span><span data-l="es">Próximamente</span></span>
-        <div class="meta"><b><span data-l="pt">Descanso como estratégia</span><span data-l="en">Rest as strategy</span><span data-l="es">Descanso como estrategia</span></b><span><span data-l="pt">Sábado, sono e recuperação ocupacional.</span><span data-l="en">Sabbath, sleep and occupational recovery.</span><span data-l="es">Sábado, sueño y recuperación ocupacional.</span></span></div>
-      </div>
-      <a class="issue" href="/edicao-01/">
-        <div class="cover">
-          <span class="num"><span data-l="pt">Edição 01</span><span data-l="en">Issue 01</span><span data-l="es">Edición 01</span> · <span data-l="pt">Outono 2026</span><span data-l="en">Fall 2026</span><span data-l="es">Otoño 2026</span></span>
-          <span class="c-logo">Ocu<em>pa</em></span>
-          <span class="c-theme"><span data-l="pt">Ocupa-te até que eu volte</span><span data-l="en">Occupy till I come</span><span data-l="es">Ocúpate hasta que yo vuelva</span></span>
-        </div>
-        
-        <div class="meta"><b><span data-l="pt">Ocupa-te até que eu volte</span><span data-l="en">Occupy till I come</span><span data-l="es">Ocúpate hasta que yo vuelva</span></b><span><span data-l="pt">Mapa de energia, a parábola das minas e o azeite da viúva.</span><span data-l="en">Energy map, the parable of the minas and the widow&#x27;s oil.</span><span data-l="es">Mapa de energía, la parábola de las minas y el aceite de la viuda.</span></span></div>
-      </a>
+{{ISSUES}}
     </div>
   </div>
 </section>
@@ -178,7 +144,7 @@ img{max-width:100%}
       <h2>Fuxi<em>car</em></h2>
       <p><span data-l="pt">Fuxico é conversa de comadre e também o retalho costurado à mão que, junto com outros, vira colcha. Conta pra gente o que tava na tua mão e o que Deus fez com isso.</span><span data-l="en">In Brazil a fuxico is a chat between close friends, and also the hand-sewn patch that, joined with others, becomes a quilt. Tell us what was in your hand and what God did with it.</span><span data-l="es">Fuxico es charla de comadres y también el retazo cosido a mano que, junto a otros, se vuelve colcha. Cuéntanos qué había en tu mano y qué hizo Dios con eso.</span></p>
     </div>
-    <a class="btn" href="/edicao-01/#entrevista"><span data-l="pt">Quero testemunhar</span><span data-l="en">Share my story</span><span data-l="es">Quiero testificar</span></a>
+    {{POD_BUTTON}}
   </div>
 </section>
 </main>
@@ -201,6 +167,3 @@ img{max-width:100%}
   var l=load("ocupa-lang","pt");setLang(l==="en"||l==="es"?l:"pt");
 })();
 </script>
-
-</body>
-</html>
