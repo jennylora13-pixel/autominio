@@ -10,6 +10,7 @@ Funciona no navegador, guarda tudo **no seu dispositivo** e pode ser instalado c
 - **Para você** — orações prontas a partir das respostas: por quem a pessoa ama (pelo nome), pelos temas escolhidos, pelo pedido maior e para entregar o passado.
 - **Orações com nome e gênero certos** — "Eu Te agradeço pela vida de Calebe…"; "cansada" / "cansado". O gênero nunca é deduzido do nome: vem da resposta da pessoa.
 - **Orar** — escreva a situação ("estou ansiosa com uma entrevista amanhã") ou escolha um dos 22 temas. O app traz versículos, uma declaração em primeira pessoa para cada um, e uma oração guiada com eles.
+- **Oração em áudio** — a oração é lida pela voz do próprio celular (grátis, funciona sem internet), com fundo sonoro suave opcional, destaque do parágrafo atual, pausar/continuar e parar. As referências são lidas por extenso ("Filipenses, capítulo 4, versículos 6 a 7").
 - **Personalizar com IA** (opcional) — o Claude escolhe versículos e escreve uma oração sobre a sua situação específica.
 - **Declarar** — uma declaração bíblica por dia, com contador de dias seguidos, e declarações por tema.
 - **Diário de oração** — salve orações e marque quando forem respondidas.
@@ -47,6 +48,8 @@ src/
   lib/gender.ts    # ajusta "(a)" conforme o tratamento escolhido
   lib/prayer.ts    # monta a oração e escolhe a declaração do dia
   lib/ai.ts        # chama o servidor de IA
+  lib/speech.ts    # leitura em voz alta (Web Speech API)
+  lib/ambient.ts   # fundo sonoro gerado no próprio app (Web Audio)
   pages/           # Onboarding, Pray, Declare, Journal, Settings
   store.tsx        # estado + localStorage
 server/server.mjs  # API /api/orar (Claude) + arquivos do app

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useStore } from '../store'
 import TopBar from '../components/TopBar'
 import {
@@ -15,6 +15,8 @@ import { personalizeWithAi } from '../lib/ai'
 import { share } from '../lib/share'
 import type { GuidedPrayer, Theme } from '../types'
 import CareNotice from '../components/CareNotice'
+import AudioPlayer from '../components/AudioPlayer'
+import { usePrayerAudio } from '../lib/speech'
 import { genderize } from '../lib/gender'
 
 export default function Pray() {
@@ -30,6 +32,15 @@ export default function Pray() {
   const [aiLoading, setAiLoading] = useState(false)
   const [aiError, setAiError] = useState('')
   const [shareMsg, setShareMsg] = useState('')
+  const paragraphs = useMemo(() => result?.paragraphs ?? [], [result])
+  const audio = usePrayerAudio(paragraphs, data.settings.audioMusic)
+  const prayerRef = useRef<HTMLDivElement>(null)
+
+  // keep the paragraph being read in view
+  useEffect(() => {
+    if (audio.current < 0) return
+    prayerRef.current?.children[audio.current]?.scrollIntoView?.({ behavior: 'smooth', block: 'center' })
+  }, [audio.current])
 
   function show(prayer: GuidedPrayer | null) {
     setResult(prayer)
@@ -93,6 +104,14 @@ export default function Pray() {
         <div className="content">
           {crisis && <CareNotice gender={profile?.gender} />}
 
+          <AudioPlayer
+            paragraphs={paragraphs}
+            state={audio.state}
+            onPlay={audio.play}
+            onPause={audio.pause}
+            onStop={audio.stop}
+          />
+
           <div className="sec-title" style={{ marginTop: 4 }}>
             Versículos para você
           </div>
@@ -105,14 +124,16 @@ export default function Pray() {
           ))}
 
           <div className="sec-title">Sua oração</div>
-          <div className="prayer-text">
-            {result.source === 'ia' && (
-              <span className="source-tag">
-                <IconSparkle /> Personalizada com IA
-              </span>
-            )}
+          {result.source === 'ia' && (
+            <span className="source-tag">
+              <IconSparkle /> Personalizada com IA
+            </span>
+          )}
+          <div className="prayer-text" ref={prayerRef}>
             {result.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i} className={i === audio.current ? 'reading' : ''}>
+                {p}
+              </p>
             ))}
           </div>
           {result.source === 'ia' && (

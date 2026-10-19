@@ -12,7 +12,7 @@ import { isoDate, todayISO } from './lib/format'
 
 const STORAGE_KEY = 'ore-a-palavra/v1'
 
-const DEFAULT_SETTINGS: Settings = { aiEnabled: false, aiEndpoint: '/api/orar' }
+const DEFAULT_SETTINGS: Settings = { aiEnabled: false, aiEndpoint: '/api/orar', audioMusic: true }
 
 const EMPTY: AppData = { profile: null, prayers: [], declaredDays: [], settings: DEFAULT_SETTINGS }
 

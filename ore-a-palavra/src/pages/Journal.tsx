@@ -6,6 +6,8 @@ import { relativeDate } from '../lib/format'
 import { prayerToText } from '../lib/prayer'
 import { share } from '../lib/share'
 import type { SavedPrayer } from '../types'
+import AudioPlayer from '../components/AudioPlayer'
+import { usePrayerAudio } from '../lib/speech'
 
 export default function Journal() {
   const { data } = useStore()
@@ -48,11 +50,14 @@ export default function Journal() {
   )
 }
 
+const NO_PARAGRAPHS: string[] = []
+
 function JournalCard({ prayer }: { prayer: SavedPrayer }) {
-  const { toggleAnswered, deletePrayer } = useStore()
+  const { data, toggleAnswered, deletePrayer } = useStore()
   const [expanded, setExpanded] = useState(false)
   const [shareMsg, setShareMsg] = useState('')
   const done = !!prayer.answeredAt
+  const audio = usePrayerAudio(expanded ? prayer.paragraphs : NO_PARAGRAPHS, data.settings.audioMusic)
 
   return (
     <div className="journal-card">
@@ -77,8 +82,17 @@ function JournalCard({ prayer }: { prayer: SavedPrayer }) {
       </div>
       {expanded && (
         <div className="body">
+          <AudioPlayer
+            paragraphs={prayer.paragraphs}
+            state={audio.state}
+            onPlay={audio.play}
+            onPause={audio.pause}
+            onStop={audio.stop}
+          />
           {prayer.paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
+            <p key={i} className={i === audio.current ? 'reading' : ''}>
+              {p}
+            </p>
           ))}
           {shareMsg && <div className="notice info">{shareMsg}</div>}
           <div className="btn-row" style={{ marginBottom: 0 }}>

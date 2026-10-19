@@ -41,6 +41,8 @@ export interface Settings {
   aiEnabled: boolean
   /** URL of the prayer server (see server/server.mjs) */
   aiEndpoint: string
+  /** Soft background sound while a prayer is read aloud */
+  audioMusic: boolean
 }
 
 /** Woman or man; 'n' only until the person answers in the questionnaire. */
