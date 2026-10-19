@@ -99,11 +99,10 @@ const STEPS: Step[] = [
   {
     id: 'tratamento',
     kind: 'choice',
-    question: (d) => `${firstName(d)}, como você prefere que eu fale com você?`,
+    question: (d) => `${firstName(d)}, você é…`,
     options: [
-      { value: 'f', label: 'No feminino (amada)' },
-      { value: 'm', label: 'No masculino (amado)' },
-      { value: 'n', label: 'Sem marcar gênero' },
+      { value: 'f', label: 'Mulher' },
+      { value: 'm', label: 'Homem' },
     ],
     set: (d, v) => ({ ...d, gender: v as Gender }),
   },

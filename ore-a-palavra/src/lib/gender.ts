@@ -3,7 +3,7 @@ import type { Gender } from '../types'
 /**
  * Resolves "(a)" markers in library texts for how the person wants to be addressed:
  * "cansado(a)" -> "cansada" / "cansado"; "vencedor(a)" -> "vencedora" / "vencedor".
- * Neutral keeps the marker, which reads naturally in Portuguese.
+ * Before the person answers ('n'), the marker stays as is.
  */
 export function genderize(text: string, gender: Gender): string {
   if (gender === 'n') return text

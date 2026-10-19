@@ -6,9 +6,9 @@ Funciona no navegador, guarda tudo **no seu dispositivo** e pode ser instalado c
 
 ## Funcionalidades
 
-- **Boas-vindas em conversa** — uma pergunta por tela: nome, como prefere ser tratado(a) (feminino, masculino ou sem marcar gênero), caminhada com Deus, temas, o que está no caminho, cônjuge, filhos, pessoas por quem ora, trabalho e o "pedido maior". As respostas principais recebem um versículo de volta. Tudo fica só no aparelho.
+- **Boas-vindas em conversa** — uma pergunta por tela: nome, se é mulher ou homem, caminhada com Deus, temas, o que está no caminho, cônjuge, filhos, pessoas por quem ora, trabalho e o "pedido maior". As respostas principais recebem um versículo de volta. Tudo fica só no aparelho.
 - **Para você** — orações prontas a partir das respostas: por quem a pessoa ama (pelo nome), pelos temas escolhidos, pelo pedido maior e para entregar o passado.
-- **Orações com nome e gênero certos** — "Eu Te agradeço pela vida de Calebe…"; "cansada" / "cansado" / "cansado(a)". O gênero nunca é deduzido do nome: vem da resposta da pessoa.
+- **Orações com nome e gênero certos** — "Eu Te agradeço pela vida de Calebe…"; "cansada" / "cansado". O gênero nunca é deduzido do nome: vem da resposta da pessoa.
 - **Orar** — escreva a situação ("estou ansiosa com uma entrevista amanhã") ou escolha um dos 22 temas. O app traz versículos, uma declaração em primeira pessoa para cada um, e uma oração guiada com eles.
 - **Personalizar com IA** (opcional) — o Claude escolhe versículos e escreve uma oração sobre a sua situação específica.
 - **Declarar** — uma declaração bíblica por dia, com contador de dias seguidos, e declarações por tema.

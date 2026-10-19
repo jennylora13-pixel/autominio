@@ -43,7 +43,7 @@ export interface Settings {
   aiEndpoint: string
 }
 
-/** How the person wants to be addressed: feminine, masculine or neutral. */
+/** Woman or man; 'n' only until the person answers in the questionnaire. */
 export type Gender = 'f' | 'm' | 'n'
 
 export type Walk = 'firme' | 'buscando' | 'distante' | 'recomecando'
