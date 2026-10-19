@@ -47,3 +47,7 @@ src/
 ```
 
 > Privacidade: nenhum dado é enviado para servidores. Tudo fica salvo apenas no navegador do dispositivo.
+
+## Outros apps neste repositório
+
+- [`ore-a-palavra/`](ore-a-palavra/) — **Ore a Palavra**: encontra versículos para a sua situação e ajuda a orar e declarar a Bíblia (com IA opcional).
