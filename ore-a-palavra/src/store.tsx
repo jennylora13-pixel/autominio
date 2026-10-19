@@ -6,7 +6,8 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-import type { AppData, GuidedPrayer, Profile, SavedPrayer, Settings } from './types'
+import type { AppData, GuidedPrayer, Premium, Profile, SavedPrayer, Settings } from './types'
+import { FREE_USES, type PremiumFeature } from './lib/premium'
 import { THEME_BY_ID } from './data/themes'
 import { isoDate, todayISO } from './lib/format'
 
@@ -14,7 +15,16 @@ const STORAGE_KEY = 'ore-a-palavra/v1'
 
 const DEFAULT_SETTINGS: Settings = { aiEnabled: false, aiEndpoint: '/api/orar', audioMusic: true }
 
-const EMPTY: AppData = { profile: null, prayers: [], declaredDays: [], settings: DEFAULT_SETTINGS }
+const NO_PREMIUM: Premium = { active: false, plan: null, test: false }
+
+const EMPTY: AppData = {
+  profile: null,
+  premium: NO_PREMIUM,
+  freeUses: {},
+  prayers: [],
+  declaredDays: [],
+  settings: DEFAULT_SETTINGS,
+}
 
 function uid(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
@@ -23,6 +33,8 @@ function uid(): string {
 function sanitize(parsed: Partial<AppData>): AppData {
   return {
     profile: parsed.profile ?? null,
+    premium: { ...NO_PREMIUM, ...parsed.premium },
+    freeUses: parsed.freeUses ?? {},
     prayers: parsed.prayers ?? [],
     declaredDays: parsed.declaredDays ?? [],
     settings: { ...DEFAULT_SETTINGS, ...parsed.settings },
@@ -66,6 +78,18 @@ interface Store {
   deletePrayer: (id: string) => void
   toggleDeclaredToday: () => void
   updateSettings: (s: Partial<Settings>) => void
+  /** Why the paywall is open, or null when closed (not persisted) */
+  paywall: PremiumFeature | 'ajustes' | null
+  openPaywall: (reason: PremiumFeature | 'ajustes') => void
+  closePaywall: () => void
+  /**
+   * Call when a paid feature is about to be used: returns true and counts the use
+   * if allowed (premium or still within the free uses), otherwise opens the paywall.
+   */
+  tryPremium: (feature: PremiumFeature) => boolean
+  /** True when this use is the free gift (to thank and explain what Premium adds) */
+  isGift: (feature: PremiumFeature) => boolean
+  setPremium: (p: Premium) => void
   replaceAll: (data: AppData) => void
   clearAll: () => void
 }
@@ -74,6 +98,7 @@ const StoreContext = createContext<Store | null>(null)
 
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<AppData>(load)
+  const [paywall, setPaywall] = useState<Store['paywall']>(null)
 
   useEffect(() => {
     try {
@@ -123,6 +148,25 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             : [...d.declaredDays, today],
         }))
       },
+      paywall,
+      openPaywall: setPaywall,
+      closePaywall: () => setPaywall(null),
+      tryPremium(feature) {
+        if (data.premium.active) return true
+        const used = data.freeUses[feature] ?? 0
+        if (used >= FREE_USES) {
+          setPaywall(feature)
+          return false
+        }
+        setData((d) => ({ ...d, freeUses: { ...d.freeUses, [feature]: used + 1 } }))
+        return true
+      },
+      isGift(feature) {
+        return !data.premium.active && (data.freeUses[feature] ?? 0) === FREE_USES
+      },
+      setPremium(premium) {
+        setData((d) => ({ ...d, premium }))
+      },
       updateSettings(s) {
         setData((d) => ({ ...d, settings: { ...d.settings, ...s } }))
       },
@@ -130,10 +174,16 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         setData(sanitize(next))
       },
       clearAll() {
-        setData((d) => ({ ...EMPTY, profile: d.profile, settings: d.settings }))
+        setData((d) => ({
+          ...EMPTY,
+          profile: d.profile,
+          premium: d.premium,
+          freeUses: d.freeUses,
+          settings: d.settings,
+        }))
       },
     }
-  }, [data])
+  }, [data, paywall])
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }

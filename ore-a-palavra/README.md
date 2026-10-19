@@ -14,6 +14,7 @@ Funciona no navegador, guarda tudo **no seu dispositivo** e pode ser instalado c
 - **Personalizar com IA** (opcional) — o Claude escolhe versículos e escreve uma oração sobre a sua situação específica.
 - **Declarar** — uma declaração bíblica por dia, com contador de dias seguidos, e declarações por tema.
 - **Declaração como imagem** — a declaração do dia (ou qualquer declaração por tema) vira imagem para Stories (9:16) ou Feed (4:5), em três estilos (Céu, Noite, Aurora), respeitando a área segura dos Stories. No celular abre o compartilhamento direto (Instagram, WhatsApp…); onde não há, a imagem é baixada.
+- **Premium** — "Para você", oração em áudio e IA são do Premium, cada um com o primeiro uso de presente. A tela de assinatura mostra plano anual e mensal, 7 dias grátis, "cancele quando quiser" e sempre permite continuar no plano gratuito (orar por situação ou tema, declaração do dia, imagem e diário). Em Ajustes há um modo de teste que libera o Premium sem cobrança.
 - **Diário de oração** — salve orações e marque quando forem respondidas.
 - **Cuidado em crise** — se o texto indicar risco de suicídio ou autolesão, o app mostra contatos de ajuda (CVV 188, SNS 24).
 - **Modo claro / escuro / automático**, **backup** em JSON, **compartilhar** orações.
@@ -39,6 +40,12 @@ npm run dev          # em outro terminal; /api é redirecionado para o servidor
 Depois, em **Ajustes → Oração com IA**, escolha **Sim**.
 
 Para produção, `npm start` gera o app e o servidor serve o app e a API no mesmo endereço.
+
+### Premium e pagamento
+
+Preços, dias de teste e benefícios ficam em `src/lib/premium.ts` (valores provisórios). Para ativar a cobrança, copie `.env.example` para `.env` e cole os links de checkout (Stripe Payment Link, Hotmart, Kiwify…).
+
+**Ainda falta para cobrar de verdade:** confirmar o pagamento. Hoje o app só leva a pessoa ao checkout; para liberar o Premium depois da compra é preciso um servidor que receba a confirmação do meio de pagamento (webhook) e uma conta de usuário, ou, como app de loja, a compra dentro do app da Apple/Google.
 
 ## Estrutura
 

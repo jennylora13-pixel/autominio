@@ -6,6 +6,7 @@ import Declare from './pages/Declare'
 import Journal from './pages/Journal'
 import Settings from './pages/Settings'
 import Onboarding from './pages/Onboarding'
+import Paywall from './components/Paywall'
 import { useStore } from './store'
 import { useTheme } from './lib/useTheme'
 
@@ -24,6 +25,7 @@ function MainLayout({ theme }: { theme: ThemeCtx }) {
     <div className="app">
       <Outlet context={theme} />
       <TabBar />
+      <Paywall />
     </div>
   )
 }

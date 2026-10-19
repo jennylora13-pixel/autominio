@@ -78,8 +78,18 @@ export interface Profile {
   completedAt: number
 }
 
+export interface Premium {
+  active: boolean
+  plan: string | null
+  /** Unlocked from Ajustes for testing, not by a real purchase */
+  test: boolean
+}
+
 export interface AppData {
   profile: Profile | null
+  premium: Premium
+  /** How many times each paid feature was used for free */
+  freeUses: Record<string, number>
   prayers: SavedPrayer[]
   /** ISO dates (YYYY-MM-DD) on which the daily declaration was made */
   declaredDays: string[]

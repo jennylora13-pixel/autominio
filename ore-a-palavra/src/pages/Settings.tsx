@@ -12,7 +12,7 @@ interface Ctx {
 }
 
 export default function Settings() {
-  const { data, replaceAll, clearAll, updateSettings, resetProfile } = useStore()
+  const { data, replaceAll, clearAll, updateSettings, resetProfile, openPaywall, setPremium } = useStore()
   const { mode, setMode } = useOutletContext<Ctx>()
   const fileRef = useRef<HTMLInputElement>(null)
   const [msg, setMsg] = useState('')
@@ -107,6 +107,47 @@ export default function Settings() {
             <button className="btn subtle" style={{ padding: '9px 14px' }} onClick={resetProfile}>
               Refazer
             </button>
+          </div>
+        </div>
+
+        <div className="sec-title">Premium</div>
+        <div className="settings-group">
+          <div className="settings-row">
+            <div>
+              <div className="lbl">{data.premium.active ? 'Premium ativo' : 'Plano gratuito'}</div>
+              <div className="desc">
+                {data.premium.test
+                  ? 'Liberado no modo de teste, sem pagamento'
+                  : data.premium.active
+                    ? 'Obrigado por apoiar o Ore a Palavra'
+                    : '“Para você”, áudio e IA no Premium'}
+              </div>
+            </div>
+            {!data.premium.active && (
+              <button className="btn subtle" style={{ padding: '9px 14px' }} onClick={() => openPaywall('ajustes')}>
+                Conhecer
+              </button>
+            )}
+          </div>
+          <div className="settings-row">
+            <div>
+              <div className="lbl">Modo de teste</div>
+              <div className="desc">Libera o Premium neste celular para testar, sem cobrança</div>
+            </div>
+            <div className="seg">
+              <button
+                className={data.premium.test ? 'active' : ''}
+                onClick={() => setPremium({ active: true, plan: 'teste', test: true })}
+              >
+                Sim
+              </button>
+              <button
+                className={!data.premium.test ? 'active' : ''}
+                onClick={() => setPremium({ active: false, plan: null, test: false })}
+              >
+                Não
+              </button>
+            </div>
           </div>
         </div>
 

@@ -11,7 +11,7 @@ interface Props {
 
 /** "Ouvir oração" card: play/pause, stop and the soft background toggle. */
 export default function AudioPlayer({ paragraphs, state, onPlay, onPause, onStop }: Props) {
-  const { data, updateSettings } = useStore()
+  const { data, updateSettings, tryPremium } = useStore()
   if (!speechSupported) return null
   const music = data.settings.audioMusic
 
@@ -19,7 +19,7 @@ export default function AudioPlayer({ paragraphs, state, onPlay, onPause, onStop
     <div className="player">
       <button
         className="player-main"
-        onClick={state === 'playing' ? onPause : onPlay}
+        onClick={state === 'playing' ? onPause : () => (state === 'paused' || tryPremium('audio')) && onPlay()}
         aria-label={state === 'playing' ? 'Pausar' : 'Ouvir oração'}
       >
         {state === 'playing' ? '❚❚' : '▶'}

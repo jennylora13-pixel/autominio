@@ -20,7 +20,7 @@ import { usePrayerAudio } from '../lib/speech'
 import { genderize } from '../lib/gender'
 
 export default function Pray() {
-  const { data, savePrayer } = useStore()
+  const { data, savePrayer, tryPremium, openPaywall } = useStore()
   const { aiEnabled, aiEndpoint } = data.settings
   const profile = data.profile
   const cards = useMemo(() => (profile ? forYou(profile) : []), [profile])
@@ -32,6 +32,8 @@ export default function Pray() {
   const [aiLoading, setAiLoading] = useState(false)
   const [aiError, setAiError] = useState('')
   const [shareMsg, setShareMsg] = useState('')
+  // the free "Para você" prayer, thanked and explained on the result screen
+  const [gift, setGift] = useState(false)
   const paragraphs = useMemo(() => result?.paragraphs ?? [], [result])
   const audio = usePrayerAudio(paragraphs, data.settings.audioMusic)
   const prayerRef = useRef<HTMLDivElement>(null)
@@ -43,6 +45,7 @@ export default function Pray() {
   }, [audio.current])
 
   function show(prayer: GuidedPrayer | null) {
+    setGift(false)
     setResult(prayer)
     setSaved(false)
     setAiError('')
@@ -62,6 +65,7 @@ export default function Pray() {
   }
 
   async function withAi() {
+    if (!tryPremium('ia')) return
     const themeNames = (result?.themeIds ?? [])
       .map((id) => THEMES.find((t) => t.id === id)?.name)
       .filter((n): n is string => !!n)
@@ -142,6 +146,15 @@ export default function Pray() {
             </p>
           )}
 
+          {gift && (
+            <div className="gift">
+              <b>Esta oração foi um presente para você 💛</b>
+              <span>Com o Premium você recebe orações assim, com o nome de quem você ama, todos os dias.</span>
+              <button className="btn subtle" onClick={() => openPaywall('paraVoce')}>
+                Conhecer o Premium
+              </button>
+            </div>
+          )}
           {aiError && <div className="notice error">{aiError}</div>}
           {shareMsg && <div className="notice info">{shareMsg}</div>}
 
@@ -221,8 +234,10 @@ export default function Pray() {
                   key={c.key}
                   className="fy-card"
                   onClick={() => {
+                    if (!tryPremium('paraVoce')) return
                     setNoMatch(false)
                     show(c.build())
+                    setGift(!data.premium.active)
                   }}
                 >
                   <span className="emo">{c.emoji}</span>
