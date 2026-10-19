@@ -6,9 +6,11 @@ import { THEMES } from '../data/themes'
 import { capitalize, declarationOfDay } from '../lib/prayer'
 import { todayISO } from '../lib/format'
 import { share } from '../lib/share'
+import { genderize } from '../lib/gender'
 
 export default function Declare() {
   const { data, toggleDeclaredToday } = useStore()
+  const g = (s: string) => genderize(s, data.profile?.gender ?? 'n')
   const [themeId, setThemeId] = useState(THEMES[0].id)
   const [shareMsg, setShareMsg] = useState('')
 
@@ -21,7 +23,7 @@ export default function Declare() {
     setShareMsg(
       await share(
         'Declaração de hoje',
-        `${capitalize(today.declaration)}\n\n"${today.text}" (${today.ref})\n\n— Ore a Palavra`,
+        `${g(capitalize(today.declaration))}\n\n"${today.text}" (${today.ref})\n\n— Ore a Palavra`,
       ),
     )
   }
@@ -40,7 +42,7 @@ export default function Declare() {
       <div className="content">
         <div className="today-card">
           <div className="kicker">Declaração de hoje</div>
-          <div className="big">{capitalize(today.declaration)}</div>
+          <div className="big">{g(capitalize(today.declaration))}</div>
           <div className="verse">
             “{today.text}”<b>{today.ref}</b>
           </div>
@@ -75,7 +77,7 @@ export default function Declare() {
         </div>
         {theme.verses.map((v) => (
           <div className="verse-card" key={v.ref}>
-            <div className="vtext">{capitalize(v.declaration)}</div>
+            <div className="vtext">{g(capitalize(v.declaration))}</div>
             <div className="vnote">
               {v.ref} · “{v.text}”
             </div>

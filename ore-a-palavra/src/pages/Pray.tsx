@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useStore } from '../store'
 import TopBar from '../components/TopBar'
 import {
@@ -10,14 +10,18 @@ import {
 } from '../components/icons'
 import { THEMES } from '../data/themes'
 import { findThemes, looksLikeCrisis } from '../lib/search'
-import { buildPrayer, prayerToText } from '../lib/prayer'
+import { buildPrayer, forYou, prayerToText } from '../lib/prayer'
 import { personalizeWithAi } from '../lib/ai'
 import { share } from '../lib/share'
 import type { GuidedPrayer, Theme } from '../types'
+import CareNotice from '../components/CareNotice'
+import { genderize } from '../lib/gender'
 
 export default function Pray() {
   const { data, savePrayer } = useStore()
   const { aiEnabled, aiEndpoint } = data.settings
+  const profile = data.profile
+  const cards = useMemo(() => (profile ? forYou(profile) : []), [profile])
   const [text, setText] = useState('')
   const [result, setResult] = useState<GuidedPrayer | null>(null)
   const [noMatch, setNoMatch] = useState(false)
@@ -38,12 +42,12 @@ export default function Pray() {
   function search() {
     const themes = findThemes(text)
     setNoMatch(themes.length === 0)
-    show(themes.length ? buildPrayer(text, themes) : null)
+    show(themes.length ? buildPrayer(text, themes, profile) : null)
   }
 
   function pickTheme(theme: Theme) {
     setNoMatch(false)
-    show(buildPrayer(text, [theme]))
+    show(buildPrayer(text, [theme], profile))
   }
 
   async function withAi() {
@@ -53,7 +57,7 @@ export default function Pray() {
     setAiLoading(true)
     setAiError('')
     try {
-      const prayer = await personalizeWithAi(aiEndpoint, text.trim(), themeNames)
+      const prayer = await personalizeWithAi(aiEndpoint, text.trim(), themeNames, profile)
       setNoMatch(false)
       show({ ...prayer, themeIds: result?.themeIds ?? [] })
     } catch (e) {
@@ -87,7 +91,7 @@ export default function Pray() {
           }
         />
         <div className="content">
-          {crisis && <CareNotice />}
+          {crisis && <CareNotice gender={profile?.gender} />}
 
           <div className="sec-title" style={{ marginTop: 4 }}>
             Versículos para você
@@ -152,7 +156,9 @@ export default function Pray() {
       <TopBar title="Ore a Palavra" subtitle="Ore com a Bíblia sobre o que você está vivendo" />
       <div className="content">
         <div className="ask">
-          <label htmlFor="situacao">Pelo que você quer orar?</label>
+          <label htmlFor="situacao">
+            {profile ? `${profile.name.split(' ')[0]}, pelo que você quer orar hoje?` : 'Pelo que você quer orar?'}
+          </label>
           <textarea
             id="situacao"
             value={text}
@@ -160,14 +166,14 @@ export default function Pray() {
               setText(e.target.value)
               setNoMatch(false)
             }}
-            placeholder="Ex.: estou ansiosa com uma entrevista de emprego amanhã"
+            placeholder={genderize('Ex.: estou ansioso(a) com uma entrevista de emprego amanhã', profile?.gender ?? 'n')}
           />
           <button className="btn primary" onClick={search} disabled={!text.trim()}>
             Encontrar versículos e orar
           </button>
         </div>
 
-        {crisis && noMatch && <CareNotice />}
+        {crisis && noMatch && <CareNotice gender={profile?.gender} />}
 
         {noMatch && (
           <div className="notice info">
@@ -185,6 +191,28 @@ export default function Pray() {
           </>
         )}
 
+        {cards.length > 0 && (
+          <>
+            <div className="sec-title">Para você</div>
+            <div className="foryou">
+              {cards.map((c) => (
+                <button
+                  key={c.key}
+                  className="fy-card"
+                  onClick={() => {
+                    setNoMatch(false)
+                    show(c.build())
+                  }}
+                >
+                  <span className="emo">{c.emoji}</span>
+                  <span className="fy-title">{c.title}</span>
+                  <span className="fy-sub">{c.subtitle}</span>
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+
         <div className="sec-title">Ou escolha um tema</div>
         <div className="theme-grid">
           {THEMES.map((t) => (
@@ -196,16 +224,5 @@ export default function Pray() {
         </div>
       </div>
     </>
-  )
-}
-
-function CareNotice() {
-  return (
-    <div className="notice care">
-      <b>Você não está sozinho(a).</b> Se você está pensando em tirar a própria vida ou se
-      machucar, fale com alguém agora: <b>CVV 188</b> (Brasil, 24h, gratuito) ou{' '}
-      <b>SNS 24 808 24 24</b> (Portugal). Em perigo imediato, ligue <b>192</b> / <b>112</b>.
-      Deus se importa com você, e há pessoas prontas para ajudar.
-    </div>
   )
 }

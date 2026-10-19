@@ -30,6 +30,9 @@ A pessoa descreve uma situação da vida dela. Você:
    - declara as promessas com fé, sem prometer resultados específicos que a Bíblia não promete;
    - termina com "Em nome de Jesus, amém."
 Escreva em português do Brasil, com linguagem acessível, sem jargão e sem sermão.
+Se vier um perfil: faça a concordância de gênero conforme o "tratamento" (feminino, masculino ou,
+se neutro, construa as frases sem marcar gênero) e, quando a situação envolver a família, ore pelo
+cônjuge e pelos filhos pelo nome. Nunca invente detalhes sobre essas pessoas.
 Se a situação indicar risco de suicídio ou autolesão, inclua na oração um pedido de cuidado e
 encoraje com carinho a pessoa a procurar ajuda agora (CVV 188 no Brasil; SNS 24 808 24 24 em Portugal).`
 
@@ -55,9 +58,11 @@ const SCHEMA = {
   additionalProperties: false,
 }
 
-async function gerarOracao(situacao, temas) {
+async function gerarOracao(situacao, temas, perfil) {
   const pedido =
-    `Situação: ${situacao}` + (temas.length ? `\nTemas sugeridos pelo app: ${temas.join(', ')}` : '')
+    `Situação: ${situacao}` +
+    (temas.length ? `\nTemas sugeridos pelo app: ${temas.join(', ')}` : '') +
+    (perfil ? `\nPerfil: ${JSON.stringify(perfil)}` : '')
 
   let response
   try {
@@ -109,12 +114,23 @@ async function readBody(req) {
   }
 }
 
+/** Keeps only the expected profile fields, with bounded sizes. */
+function lerPerfil(p) {
+  if (!p || typeof p !== 'object') return null
+  const nome = (x) => String(x ?? '').trim().slice(0, 60)
+  return {
+    tratamento: ['feminino', 'masculino', 'neutro'].includes(p.tratamento) ? p.tratamento : 'neutro',
+    conjuge: nome(p.conjuge),
+    filhos: Array.isArray(p.filhos) ? p.filhos.slice(0, 10).map(nome).filter(Boolean) : [],
+  }
+}
+
 async function handleOrar(req, res) {
   const body = await readBody(req)
   const situacao = String(body.situacao ?? '').trim().slice(0, MAX_SITUACAO)
   const temas = Array.isArray(body.temas) ? body.temas.map(String).slice(0, 5) : []
   if (!situacao && !temas.length) throw new HttpError(400, 'Escreva pelo que você quer orar.')
-  sendJson(res, 200, await gerarOracao(situacao, temas))
+  sendJson(res, 200, await gerarOracao(situacao, temas, lerPerfil(body.perfil)))
 }
 
 const TYPES = {

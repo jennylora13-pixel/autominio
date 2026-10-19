@@ -5,6 +5,8 @@ import Pray from './pages/Pray'
 import Declare from './pages/Declare'
 import Journal from './pages/Journal'
 import Settings from './pages/Settings'
+import Onboarding from './pages/Onboarding'
+import { useStore } from './store'
 import { useTheme } from './lib/useTheme'
 
 function ScrollToTop() {
@@ -28,6 +30,8 @@ function MainLayout({ theme }: { theme: ThemeCtx }) {
 
 export default function App() {
   const theme = useTheme()
+  const { data } = useStore()
+  if (!data.profile) return <Onboarding />
   return (
     <HashRouter>
       <ScrollToTop />

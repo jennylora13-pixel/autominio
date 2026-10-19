@@ -1,4 +1,4 @@
-import type { GuidedPrayer } from '../types'
+import type { GuidedPrayer, Profile } from '../types'
 
 interface AiResponse {
   verses: { reference: string; text: string; declaration: string }[]
@@ -10,11 +10,18 @@ export async function personalizeWithAi(
   endpoint: string,
   situation: string,
   themeNames: string[],
+  profile: Profile | null,
 ): Promise<GuidedPrayer> {
+  // only what helps the prayer read right: how to address the person and family names
+  const perfil = profile && {
+    tratamento: { f: 'feminino', m: 'masculino', n: 'neutro' }[profile.gender],
+    conjuge: profile.partner,
+    filhos: profile.children,
+  }
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ situacao: situation, temas: themeNames }),
+    body: JSON.stringify({ situacao: situation, temas: themeNames, perfil }),
   })
   if (!res.ok) {
     const body = (await res.json().catch(() => null)) as { erro?: string } | null

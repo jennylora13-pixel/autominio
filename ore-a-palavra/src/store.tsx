@@ -6,7 +6,7 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-import type { AppData, GuidedPrayer, SavedPrayer, Settings } from './types'
+import type { AppData, GuidedPrayer, Profile, SavedPrayer, Settings } from './types'
 import { THEME_BY_ID } from './data/themes'
 import { isoDate, todayISO } from './lib/format'
 
@@ -14,7 +14,7 @@ const STORAGE_KEY = 'ore-a-palavra/v1'
 
 const DEFAULT_SETTINGS: Settings = { aiEnabled: false, aiEndpoint: '/api/orar' }
 
-const EMPTY: AppData = { prayers: [], declaredDays: [], settings: DEFAULT_SETTINGS }
+const EMPTY: AppData = { profile: null, prayers: [], declaredDays: [], settings: DEFAULT_SETTINGS }
 
 function uid(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
@@ -22,6 +22,7 @@ function uid(): string {
 
 function sanitize(parsed: Partial<AppData>): AppData {
   return {
+    profile: parsed.profile ?? null,
     prayers: parsed.prayers ?? [],
     declaredDays: parsed.declaredDays ?? [],
     settings: { ...DEFAULT_SETTINGS, ...parsed.settings },
@@ -58,6 +59,8 @@ export function streak(days: string[]): number {
 
 interface Store {
   data: AppData
+  saveProfile: (p: Profile) => void
+  resetProfile: () => void
   savePrayer: (p: GuidedPrayer) => SavedPrayer
   toggleAnswered: (id: string) => void
   deletePrayer: (id: string) => void
@@ -83,6 +86,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const store = useMemo<Store>(() => {
     return {
       data,
+      saveProfile(profile) {
+        setData((d) => ({ ...d, profile }))
+      },
+      resetProfile() {
+        setData((d) => ({ ...d, profile: null }))
+      },
       savePrayer(p) {
         const saved: SavedPrayer = {
           ...p,
@@ -121,7 +130,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         setData(sanitize(next))
       },
       clearAll() {
-        setData((d) => ({ ...EMPTY, settings: d.settings }))
+        setData((d) => ({ ...EMPTY, profile: d.profile, settings: d.settings }))
       },
     }
   }, [data])

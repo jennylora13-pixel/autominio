@@ -126,7 +126,7 @@ export const THEMES: Theme[] = [
       {
         ref: 'Salmos 37:25',
         text: 'Fui moço e agora sou velho; mas nunca vi desamparado o justo, nem a sua descendência a mendigar o pão.',
-        declaration: 'eu não sou desamparado; Tu sustentas a mim e à minha casa.',
+        declaration: 'eu não sou desamparado(a); Tu sustentas a mim e à minha casa.',
       },
     ],
   },

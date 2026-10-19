@@ -14,7 +14,7 @@ function apply(mode: ThemeMode) {
   const dark = mode === 'dark' || (mode === 'system' && prefersDark)
   root.dataset.theme = dark ? 'dark' : 'light'
   const meta = document.querySelector('meta[name="theme-color"]')
-  if (meta) meta.setAttribute('content', dark ? '#141a19' : '#0f766e')
+  if (meta) meta.setAttribute('content', dark ? '#0d151d' : '#2f6fa3')
 }
 
 export function useTheme() {

@@ -43,7 +43,41 @@ export interface Settings {
   aiEndpoint: string
 }
 
+/** How the person wants to be addressed: feminine, masculine or neutral. */
+export type Gender = 'f' | 'm' | 'n'
+
+export type Walk = 'firme' | 'buscando' | 'distante' | 'recomecando'
+
+export type Relationship = 'solteiro' | 'namorando' | 'casado' | 'complicado'
+
+export interface Person {
+  name: string
+  /** Why the person prays for them */
+  note: string
+}
+
+/** Answers from the welcome questionnaire. Stays on the device. */
+export interface Profile {
+  name: string
+  gender: Gender
+  walk: Walk | null
+  themeIds: string[]
+  why: string
+  obstacle: string
+  past: string
+  bigAsk: string
+  relationship: Relationship | null
+  partner: string
+  partnerNote: string
+  children: string[]
+  people: Person[]
+  work: string
+  prayerTime: string
+  completedAt: number
+}
+
 export interface AppData {
+  profile: Profile | null
   prayers: SavedPrayer[]
   /** ISO dates (YYYY-MM-DD) on which the daily declaration was made */
   declaredDays: string[]

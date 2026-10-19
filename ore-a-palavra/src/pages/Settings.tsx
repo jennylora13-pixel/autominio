@@ -12,7 +12,7 @@ interface Ctx {
 }
 
 export default function Settings() {
-  const { data, replaceAll, clearAll, updateSettings } = useStore()
+  const { data, replaceAll, clearAll, updateSettings, resetProfile } = useStore()
   const { mode, setMode } = useOutletContext<Ctx>()
   const fileRef = useRef<HTMLInputElement>(null)
   const [msg, setMsg] = useState('')
@@ -97,6 +97,19 @@ export default function Settings() {
           </div>
         </div>
 
+        <div className="sec-title">Seu perfil</div>
+        <div className="settings-group">
+          <div className="settings-row">
+            <div>
+              <div className="lbl">{data.profile?.name}</div>
+              <div className="desc">Suas respostas personalizam as orações e ficam só neste celular</div>
+            </div>
+            <button className="btn subtle" style={{ padding: '9px 14px' }} onClick={resetProfile}>
+              Refazer
+            </button>
+          </div>
+        </div>
+
         <div className="sec-title">Oração com IA</div>
         <div className="settings-group">
           <div className="settings-row">
@@ -129,7 +142,7 @@ export default function Settings() {
                   onChange={(e) => updateSettings({ aiEndpoint: e.target.value })}
                 />
                 <div className="hint">
-                  O texto que você escrever é enviado a este servidor para gerar a oração.
+                  O texto que você escrever é enviado a este servidor para gerar a oração, junto com a forma de tratamento e os nomes do cônjuge e dos filhos.
                 </div>
               </div>
             </div>
