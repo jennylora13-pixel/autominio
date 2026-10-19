@@ -1387,3 +1387,48 @@ a {
   z-index: 15;
   background: linear-gradient(135deg, var(--primary-weak), var(--bg-elev)) var(--bg-elev);
 }
+
+/* ---------- compartilhar como imagem ---------- */
+.decl-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.decl-row .vtext {
+  flex: 1;
+}
+.decl-row .iconbtn {
+  width: 34px;
+  height: 34px;
+  color: var(--text-dim);
+  margin: -4px -6px 0 0;
+}
+.share-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.share-preview {
+  display: grid;
+  place-items: center;
+  background: var(--bg-soft);
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 14px;
+  min-height: 200px;
+  color: var(--text-dim);
+}
+.share-preview img {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+}
+.share-preview.story img {
+  max-height: 46vh;
+}
+.share-preview.feed img {
+  max-height: 40vh;
+}

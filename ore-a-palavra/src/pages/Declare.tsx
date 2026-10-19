@@ -5,27 +5,24 @@ import { IconCheck, IconShare } from '../components/icons'
 import { THEMES } from '../data/themes'
 import { capitalize, declarationOfDay } from '../lib/prayer'
 import { todayISO } from '../lib/format'
-import { share } from '../lib/share'
 import { genderize } from '../lib/gender'
+import ShareImageSheet from '../components/ShareImageSheet'
+import type { DeclarationCard } from '../lib/declarationImage'
+import type { ThemeVerse } from '../types'
 
 export default function Declare() {
   const { data, toggleDeclaredToday } = useStore()
   const g = (s: string) => genderize(s, data.profile?.gender ?? 'n')
   const [themeId, setThemeId] = useState(THEMES[0].id)
-  const [shareMsg, setShareMsg] = useState('')
+  const [sharing, setSharing] = useState<DeclarationCard | null>(null)
 
   const today = declarationOfDay(todayISO())
   const declared = data.declaredDays.includes(todayISO())
   const days = useMemo(() => streak(data.declaredDays), [data.declaredDays])
   const theme = THEMES.find((t) => t.id === themeId) ?? THEMES[0]
 
-  async function onShare() {
-    setShareMsg(
-      await share(
-        'Declaração de hoje',
-        `${g(capitalize(today.declaration))}\n\n"${today.text}" (${today.ref})\n\n— Ore a Palavra`,
-      ),
-    )
+  function shareAsImage(v: ThemeVerse, kicker: string) {
+    setSharing({ kicker, declaration: g(capitalize(v.declaration)), verse: v.text, reference: v.ref })
   }
 
   return (
@@ -34,7 +31,11 @@ export default function Declare() {
         title="Declarar"
         subtitle="Fale a Palavra sobre a sua vida"
         right={
-          <button className="iconbtn" onClick={onShare} aria-label="Compartilhar declaração">
+          <button
+            className="iconbtn"
+            onClick={() => shareAsImage(today, 'Declaração de hoje')}
+            aria-label="Compartilhar declaração de hoje como imagem"
+          >
             <IconShare width={20} />
           </button>
         }
@@ -61,7 +62,6 @@ export default function Declare() {
             </div>
           )}
         </div>
-        {shareMsg && <div className="notice info">{shareMsg}</div>}
 
         <div className="sec-title">Declarações por tema</div>
         <div className="chips">
@@ -77,13 +77,23 @@ export default function Declare() {
         </div>
         {theme.verses.map((v) => (
           <div className="verse-card" key={v.ref}>
-            <div className="vtext">{g(capitalize(v.declaration))}</div>
+            <div className="decl-row">
+              <div className="vtext">{g(capitalize(v.declaration))}</div>
+              <button
+                className="iconbtn ghost"
+                onClick={() => shareAsImage(v, `Declaração · ${theme.name}`)}
+                aria-label="Compartilhar como imagem"
+              >
+                <IconShare width={18} />
+              </button>
+            </div>
             <div className="vnote">
               {v.ref} · “{v.text}”
             </div>
           </div>
         ))}
       </div>
+      {sharing && <ShareImageSheet card={sharing} onClose={() => setSharing(null)} />}
     </>
   )
 }

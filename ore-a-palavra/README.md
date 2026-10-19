@@ -13,6 +13,7 @@ Funciona no navegador, guarda tudo **no seu dispositivo** e pode ser instalado c
 - **Oração em áudio** — a oração é lida pela voz do próprio celular (grátis, funciona sem internet), com fundo sonoro suave opcional, destaque do parágrafo atual, pausar/continuar e parar. As referências são lidas por extenso ("Filipenses, capítulo 4, versículos 6 a 7").
 - **Personalizar com IA** (opcional) — o Claude escolhe versículos e escreve uma oração sobre a sua situação específica.
 - **Declarar** — uma declaração bíblica por dia, com contador de dias seguidos, e declarações por tema.
+- **Declaração como imagem** — a declaração do dia (ou qualquer declaração por tema) vira imagem para Stories (9:16) ou Feed (4:5), em três estilos (Céu, Noite, Aurora), respeitando a área segura dos Stories. No celular abre o compartilhamento direto (Instagram, WhatsApp…); onde não há, a imagem é baixada.
 - **Diário de oração** — salve orações e marque quando forem respondidas.
 - **Cuidado em crise** — se o texto indicar risco de suicídio ou autolesão, o app mostra contatos de ajuda (CVV 188, SNS 24).
 - **Modo claro / escuro / automático**, **backup** em JSON, **compartilhar** orações.
@@ -50,6 +51,7 @@ src/
   lib/ai.ts        # chama o servidor de IA
   lib/speech.ts    # leitura em voz alta (Web Speech API)
   lib/ambient.ts   # fundo sonoro gerado no próprio app (Web Audio)
+  lib/declarationImage.ts  # desenha a declaração como imagem (canvas)
   pages/           # Onboarding, Pray, Declare, Journal, Settings
   store.tsx        # estado + localStorage
 server/server.mjs  # API /api/orar (Claude) + arquivos do app
