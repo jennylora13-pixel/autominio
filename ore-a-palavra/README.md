@@ -47,6 +47,14 @@ Preços, dias de teste e benefícios ficam em `src/lib/premium.ts` (valores prov
 
 **Ainda falta para cobrar de verdade:** confirmar o pagamento. Hoje o app só leva a pessoa ao checkout; para liberar o Premium depois da compra é preciso um servidor que receba a confirmação do meio de pagamento (webhook) e uma conta de usuário, ou, como app de loja, a compra dentro do app da Apple/Google.
 
+### Apps de iPhone e Android
+
+O app também existe como app de loja, feito com [Capacitor](https://capacitorjs.com) a partir do mesmo código (`ios/`, `android/`, `capacitor.config.ts`). Nos apps de loja há **lembrete diário** com a declaração do dia, no horário escolhido no questionário. A compilação é feita na nuvem pelo Codemagic (`codemagic.yaml`), sem precisar de Mac. Passo a passo: **[PUBLICAR.md](PUBLICAR.md)**.
+
+```bash
+npm run build && npx cap sync   # copia o app para os projetos de iPhone e Android
+```
+
 ## Estrutura
 
 ```
@@ -59,6 +67,7 @@ src/
   lib/speech.ts    # leitura em voz alta (Web Speech API)
   lib/ambient.ts   # fundo sonoro gerado no próprio app (Web Audio)
   lib/declarationImage.ts  # desenha a declaração como imagem (canvas)
+  lib/notifications.ts  # lembrete diário nos apps de loja
   pages/           # Onboarding, Pray, Declare, Journal, Settings
   store.tsx        # estado + localStorage
 server/server.mjs  # API /api/orar (Claude) + arquivos do app

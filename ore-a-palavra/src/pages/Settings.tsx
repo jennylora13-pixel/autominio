@@ -4,6 +4,7 @@ import { useStore } from '../store'
 import TopBar from '../components/TopBar'
 import { IconDownload, IconShare } from '../components/icons'
 import { todayISO } from '../lib/format'
+import { reminderTime, remindersSupported, scheduleReminders } from '../lib/notifications'
 import type { AppData, ThemeMode } from '../types'
 
 interface Ctx {
@@ -12,7 +13,8 @@ interface Ctx {
 }
 
 export default function Settings() {
-  const { data, replaceAll, clearAll, updateSettings, resetProfile, openPaywall, setPremium } = useStore()
+  const { data, replaceAll, clearAll, updateSettings, resetProfile, openPaywall, setPremium, saveProfile } =
+    useStore()
   const { mode, setMode } = useOutletContext<Ctx>()
   const fileRef = useRef<HTMLInputElement>(null)
   const [msg, setMsg] = useState('')
@@ -109,6 +111,59 @@ export default function Settings() {
             </button>
           </div>
         </div>
+
+        {remindersSupported && data.profile && (
+          <>
+            <div className="sec-title">Lembrete diário</div>
+            <div className="settings-group">
+              <div className="settings-row">
+                <div>
+                  <div className="lbl">Declaração do dia</div>
+                  <div className="desc">
+                    {data.settings.reminders ? `Todos os dias às ${reminderTime(data.profile.prayerTime)}` : 'Desligado'}
+                  </div>
+                </div>
+                <div className="seg">
+                  <button
+                    className={data.settings.reminders ? 'active' : ''}
+                    onClick={async () => {
+                      updateSettings({ reminders: true })
+                      if (data.profile && (await scheduleReminders(data.profile, true, true)) === 'denied') {
+                        flash('Permita as notificações do Ore a Palavra nos ajustes do celular.')
+                      }
+                    }}
+                  >
+                    Sim
+                  </button>
+                  <button
+                    className={!data.settings.reminders ? 'active' : ''}
+                    onClick={() => updateSettings({ reminders: false })}
+                  >
+                    Não
+                  </button>
+                </div>
+              </div>
+              <div className="settings-row">
+                <div className="lbl">Horário</div>
+                <div className="seg">
+                  {[
+                    ['manha', 'Manhã'],
+                    ['tarde', 'Tarde'],
+                    ['noite', 'Noite'],
+                  ].map(([key, label]) => (
+                    <button
+                      key={key}
+                      className={data.profile?.prayerTime === key ? 'active' : ''}
+                      onClick={() => data.profile && saveProfile({ ...data.profile, prayerTime: key })}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
 
         <div className="sec-title">Premium</div>
         <div className="settings-group">

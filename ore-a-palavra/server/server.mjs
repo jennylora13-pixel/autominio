@@ -154,10 +154,26 @@ async function serveStatic(req, res) {
   }
 }
 
+// The store apps load the page from these origins (iOS and Android) and call the API across origins
+const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost'])
+
+function allowAppOrigin(req, res) {
+  const origin = req.headers.origin
+  if (!origin || !APP_ORIGINS.has(origin)) return
+  res.setHeader('Access-Control-Allow-Origin', origin)
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Vary', 'Origin')
+}
+
 http
   .createServer(async (req, res) => {
     try {
-      if (req.method === 'POST' && req.url === '/api/orar') await handleOrar(req, res)
+      allowAppOrigin(req, res)
+      if (req.method === 'OPTIONS' && req.url === '/api/orar') {
+        res.writeHead(204)
+        res.end()
+      } else if (req.method === 'POST' && req.url === '/api/orar') await handleOrar(req, res)
       else if (req.method === 'GET') await serveStatic(req, res)
       else throw new HttpError(405, 'Método não permitido.')
     } catch (err) {

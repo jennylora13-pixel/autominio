@@ -8,6 +8,7 @@ import Settings from './pages/Settings'
 import Onboarding from './pages/Onboarding'
 import Paywall from './components/Paywall'
 import { useStore } from './store'
+import { listenReminderTaps, scheduleReminders } from './lib/notifications'
 import { useTheme } from './lib/useTheme'
 
 function ScrollToTop() {
@@ -30,9 +31,20 @@ function MainLayout({ theme }: { theme: ThemeCtx }) {
   )
 }
 
+listenReminderTaps()
+
 export default function App() {
   const theme = useTheme()
   const { data } = useStore()
+  const { profile } = data
+  const { reminders } = data.settings
+
+  // keep the next weeks of reminders scheduled (and ask permission right after the questionnaire)
+  const justFinished = !!profile && Date.now() - profile.completedAt < 60_000
+  useEffect(() => {
+    if (profile) void scheduleReminders(profile, reminders, justFinished)
+  }, [profile, reminders, justFinished])
+
   if (!data.profile) return <Onboarding />
   return (
     <HashRouter>

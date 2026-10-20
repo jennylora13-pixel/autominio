@@ -1,0 +1,79 @@
+# Compilação na nuvem do app Ore a Palavra (pasta ore-a-palavra/) para as lojas.
+# Não precisa de Mac: o Codemagic usa máquinas macOS próprias para o iPhone.
+# Passo a passo de configuração: ore-a-palavra/PUBLICAR.md
+#
+# Nomes que precisam existir na interface do Codemagic (Team settings / app settings):
+#   - grupo de variáveis "ore_a_palavra": VITE_API_URL e VITE_CHECKOUT_* (opcionais)
+#   - chave de assinatura Android "ore_a_palavra_upload"
+#   - integração App Store Connect "Ore a Palavra"
+#   - variáveis APP_STORE_APPLE_ID (no grupo) e GCLOUD_SERVICE_ACCOUNT_CREDENTIALS (para publicar no Google Play)
+
+workflows:
+  android:
+    name: Android (Google Play)
+    instance_type: linux_x2
+    max_build_duration: 45
+    working_directory: ore-a-palavra
+    environment:
+      groups:
+        - ore_a_palavra
+      android_signing:
+        - ore_a_palavra_upload
+      node: 22
+      java: 21
+    scripts:
+      - name: Instalar dependências
+        script: npm ci
+      - name: Gerar o app e copiar para o Android
+        script: |
+          npm run build
+          npx cap sync android
+      - name: Compilar o pacote para a Play Store (AAB)
+        script: |
+          cd android
+          chmod +x gradlew
+          ./gradlew bundleRelease
+    artifacts:
+      - ore-a-palavra/android/app/build/outputs/**/*.aab
+    publishing:
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
+        submit_as_draft: true
+
+  ios:
+    name: iPhone (App Store / TestFlight)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    working_directory: ore-a-palavra
+    integrations:
+      app_store_connect: Ore a Palavra
+    environment:
+      groups:
+        - ore_a_palavra
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.oreapalavra.app
+      node: 22
+      xcode: latest
+    scripts:
+      - name: Instalar dependências
+        script: npm ci
+      - name: Gerar o app e copiar para o iPhone
+        script: |
+          npm run build
+          npx cap sync ios
+      - name: Usar os certificados e perfis do Codemagic
+        script: xcode-project use-profiles --project ios/App/App.xcodeproj
+      - name: Número da versão (um a mais que o último no TestFlight)
+        script: |
+          LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" || echo 0)
+          cd ios/App && agvtool new-version -all $((LATEST + 1))
+      - name: Compilar o app (IPA)
+        script: xcode-project build-ipa --project ios/App/App.xcodeproj --scheme App
+    artifacts:
+      - ore-a-palavra/build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true

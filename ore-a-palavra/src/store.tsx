@@ -13,7 +13,13 @@ import { isoDate, todayISO } from './lib/format'
 
 const STORAGE_KEY = 'ore-a-palavra/v1'
 
-const DEFAULT_SETTINGS: Settings = { aiEnabled: false, aiEndpoint: '/api/orar', audioMusic: true }
+const DEFAULT_SETTINGS: Settings = {
+  aiEnabled: false,
+  // the store apps don't run next to the server, so they need its full address
+  aiEndpoint: import.meta.env.VITE_API_URL ?? '/api/orar',
+  audioMusic: true,
+  reminders: true,
+}
 
 const NO_PREMIUM: Premium = { active: false, plan: null, test: false }
 

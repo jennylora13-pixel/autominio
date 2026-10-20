@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Capacitor } from '@capacitor/core'
 import { useStore } from '../store'
 import { IconCheck, IconClose } from './icons'
 import { BENEFITS, PLANS, TRIAL_DAYS, type PlanId } from '../lib/premium'
@@ -21,7 +22,8 @@ export default function Paywall() {
   const selected = PLANS.find((p) => p.id === plan)!
 
   function subscribe() {
-    if (selected.checkoutUrl) {
+    // inside the store apps, Apple and Google require their own in-app purchase, not outside links
+    if (selected.checkoutUrl && !Capacitor.isNativePlatform()) {
       window.location.href = selected.checkoutUrl
       return
     }

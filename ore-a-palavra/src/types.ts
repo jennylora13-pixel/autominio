@@ -43,6 +43,8 @@ export interface Settings {
   aiEndpoint: string
   /** Soft background sound while a prayer is read aloud */
   audioMusic: boolean
+  /** Daily reminder with the declaration, at the prayer time (store apps only) */
+  reminders: boolean
 }
 
 /** Woman or man; 'n' only until the person answers in the questionnaire. */

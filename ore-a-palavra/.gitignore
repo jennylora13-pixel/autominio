@@ -1,2 +1,6 @@
 vite.config.single.d.ts
 vite.config.single.js
+
+# Capacitor config build output
+capacitor.config.d.ts
+capacitor.config.js
