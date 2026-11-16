@@ -1,0 +1,762 @@
+<title>Escolinha do Trade</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: caderno quadriculado de escola; abas no topo, lição como folha de caderno, simulador como lousa de mercado */
+:root{
+  --paper:#F4F7FC; --grid:#DCE4F2; --sheet:#FFFFFF; --ink:#1B2440; --soft:#5A6585; --line:#CBD5E8;
+  --accent:#2F4FD8; --accent-ink:#FFFFFF; --accent-soft:#E3E9FF;
+  --up:#159A57; --up-soft:#DDF4E7; --down:#D93D3D; --down-soft:#FBE3E3;
+  --marker:#FFD84A; --marker-ink:#3A2E00; --shadow:0 1px 0 #CBD5E8, 0 8px 24px -12px rgba(27,36,64,.25);
+  --f-display:"Fredoka","Baloo 2",system-ui,sans-serif; --f-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif; --f-num:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1430; --grid:#1A2246; --sheet:#151D3E; --ink:#E8ECFA; --soft:#A3ADCF; --line:#2B3666;
+  --accent:#7D95FF; --accent-ink:#0E1430; --accent-soft:#233063;
+  --up:#3DD18A; --up-soft:#16392E; --down:#FF6E6E; --down-soft:#43202A;
+  --marker:#FFD84A; --marker-ink:#2A2100; --shadow:0 1px 0 #2B3666, 0 8px 24px -12px rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1430; --grid:#1A2246; --sheet:#151D3E; --ink:#E8ECFA; --soft:#A3ADCF; --line:#2B3666;
+  --accent:#7D95FF; --accent-ink:#0E1430; --accent-soft:#233063;
+  --up:#3DD18A; --up-soft:#16392E; --down:#FF6E6E; --down-soft:#43202A;
+  --marker:#FFD84A; --marker-ink:#2A2100; --shadow:0 1px 0 #2B3666, 0 8px 24px -12px rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700}
+h2{font-size:1.5rem;font-weight:600}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55%);color:inherit;padding:0 2px}
+:root:not([data-theme="light"]) .hl{color:inherit}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+header.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+.brand{display:flex;gap:14px;align-items:center}
+.brand p{color:var(--soft);max-width:46ch}
+.wallet{display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:var(--sheet);border:1.5px solid var(--line);border-radius:12px;padding:6px 12px;display:flex;flex-direction:column;min-width:120px}
+.chip small{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);font-weight:700}
+.chip b{font-family:var(--f-num);font-size:1.05rem}
+
+nav.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 18px;border-bottom:2px solid var(--line)}
+nav.tabs button{background:none;border:0;border-bottom:4px solid transparent;margin-bottom:-2px;padding:10px 14px;font-family:var(--f-display);font-weight:600;font-size:1.05rem;color:var(--soft)}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs .badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-family:var(--f-num);font-size:.75rem;padding:1px 7px;border-radius:99px;margin-left:6px;vertical-align:2px}
+
+.sheet{background:var(--sheet);border:1.5px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.btn{border:2px solid var(--ink);background:var(--sheet);color:var(--ink);border-radius:12px;padding:9px 16px;font-weight:800;transition:transform .08s}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.up{background:var(--up);border-color:var(--up);color:#fff}
+.btn.down{background:var(--down);border-color:var(--down);color:#fff}
+.btn.ghost{border-color:var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.small{padding:5px 10px;font-size:.9rem;border-radius:9px}
+
+/* Aprender */
+.learn{display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start}
+.path{display:flex;flex-direction:column;gap:6px;padding:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+.path h3{margin:2px 4px 8px}
+.path button{display:flex;gap:10px;align-items:center;text-align:left;background:none;border:1.5px solid transparent;border-radius:10px;padding:7px 8px;color:var(--ink);font-weight:700;font-size:.95rem}
+.path button:hover{background:var(--accent-soft)}
+.path button[aria-current="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.dot{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--f-num);font-size:.78rem;color:var(--soft)}
+.done .dot{background:var(--up);border-color:var(--up);color:#fff}
+.lesson{padding:24px clamp(18px,4vw,40px) 28px;min-width:0}
+.lesson .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--accent)}
+.lesson h2{font-size:clamp(1.5rem,3.4vw,2rem);margin:4px 0 14px}
+.lesson .body{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.lesson .body ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.example{border-left:5px solid var(--marker);background:var(--paper);padding:12px 16px;border-radius:0 12px 12px 0}
+.example b{font-family:var(--f-display);font-weight:600}
+.figure{overflow-x:auto;margin:4px 0}
+.figure svg{display:block;max-width:100%;height:auto}
+.quiz{margin-top:22px;border-top:2px dashed var(--line);padding-top:18px;display:flex;flex-direction:column;gap:10px;max-width:66ch}
+.quiz .opts{display:flex;flex-direction:column;gap:8px}
+.quiz .opt{text-align:left;background:var(--sheet);border:2px solid var(--line);border-radius:12px;padding:10px 14px;color:var(--ink);font-weight:700}
+.quiz .opt:hover{border-color:var(--accent)}
+.quiz .opt.right{border-color:var(--up);background:var(--up-soft)}
+.quiz .opt.wrong{border-color:var(--down);background:var(--down-soft)}
+.feedback{padding:10px 14px;border-radius:12px;font-weight:600}
+.feedback.ok{background:var(--up-soft)} .feedback.no{background:var(--down-soft)}
+.lesson-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* Coruja */
+.coach{display:flex;gap:12px;align-items:flex-start}
+.coach svg{flex:none}
+.bubble{position:relative;background:var(--sheet);border:2px solid var(--ink);border-radius:14px;padding:10px 14px;font-weight:600;min-width:0}
+.bubble.bom{border-color:var(--up)} .bubble.alerta{border-color:var(--down)}
+.bubble small{display:block;font-family:var(--f-display);font-weight:600;color:var(--soft);font-size:.8rem}
+
+/* Simulador */
+.sim{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
+.board{padding:14px;min-width:0}
+.board-head{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.ticker{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ticker .px{font-family:var(--f-num);font-size:1.9rem;font-weight:700}
+.ticker .chg{font-family:var(--f-num);font-weight:700}
+.pos{color:var(--up)} .neg{color:var(--down)}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{background:var(--sheet);border:0;padding:6px 11px;font-weight:800;color:var(--soft);font-size:.88rem}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.canvas-box{position:relative;width:100%;height:clamp(260px,46vw,420px)}
+canvas{display:block;width:100%;height:100%;cursor:crosshair;touch-action:pan-y}
+.candle-info{margin-top:10px;background:var(--paper);border-radius:12px;padding:10px 14px;font-size:.93rem;min-height:5.2em}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.85rem;color:var(--soft);margin-top:8px}
+.legend i{display:inline-block;width:18px;height:0;border-top:2px dashed;vertical-align:middle;margin-right:5px}
+.panel{display:flex;flex-direction:column;gap:14px}
+.card{padding:16px}
+.card h3{margin-bottom:10px}
+.field{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.field label{font-size:.82rem;font-weight:800;color:var(--soft)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.field input,.field select{font:inherit;font-family:var(--f-num);border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:7px 10px;width:100%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.riskbox{background:var(--paper);border-radius:12px;padding:10px 12px;font-size:.9rem;display:flex;flex-direction:column;gap:4px}
+.riskbox .meter{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.riskbox .meter span{display:block;height:100%;background:var(--up);width:0}
+.trade-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.lock{font-size:.78rem;color:var(--soft);text-align:center;margin-top:4px}
+.open-pos{display:flex;flex-direction:column;gap:6px;font-size:.95rem}
+.open-pos .big{font-family:var(--f-num);font-size:1.5rem;font-weight:700}
+.kv{display:flex;justify-content:space-between;gap:10px}
+.kv span:first-child{color:var(--soft)}
+.journal{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft)}
+td.num{text-align:right} th.r{text-align:right}
+.pill{display:inline-block;padding:1px 9px;border-radius:99px;font-size:.78rem;font-weight:800}
+.pill.up{background:var(--up-soft);color:var(--up)} .pill.down{background:var(--down-soft);color:var(--down)} .pill.n{background:var(--accent-soft);color:var(--accent)}
+.below{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;margin-top:18px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--paper);border-radius:12px;padding:8px 12px}
+.stat small{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);font-weight:800}
+.stat b{font-family:var(--f-num);font-size:1.15rem}
+
+/* Missões */
+.missions{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mission{padding:16px;display:flex;gap:12px;align-items:flex-start}
+.mission .star{flex:none;width:40px;height:40px}
+.mission.got{border-color:var(--up)}
+.mission p{color:var(--soft);font-size:.92rem}
+.mission.got h3::after{content:" ✓";color:var(--up)}
+
+/* Dicionário */
+.dict{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.term{padding:14px 16px}
+.term h3{font-size:1.05rem;margin-bottom:4px}
+.term p{color:var(--soft);font-size:.95rem}
+.term em{font-style:normal;font-weight:800;color:var(--ink)}
+
+.note{margin-top:28px;font-size:.88rem;color:var(--soft);max-width:80ch}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:12px;font-weight:800;z-index:20;max-width:calc(100% - 32px);text-align:center}
+
+.spot{position:relative;z-index:5;outline:4px solid var(--marker);outline-offset:4px;border-radius:12px;animation:spot 1.2s ease-in-out infinite}
+@keyframes spot{50%{outline-color:transparent}}
+.tour-actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.tour-actions:empty{display:none}
+.step{font-family:var(--f-num);font-size:.75rem;color:var(--accent);font-weight:700}
+@media (max-width:900px){
+  .learn,.sim,.below{grid-template-columns:minmax(0,1fr)}
+  .path{position:static;flex-direction:row;flex-wrap:wrap}
+  .path h3{width:100%}
+  .path button span.t{display:none}
+  .path button{padding:4px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg width="58" height="58" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="6" y="30" width="8" height="20" rx="2" fill="var(--down)"/><line x1="10" y1="24" x2="10" y2="56" stroke="var(--down)" stroke-width="2"/>
+        <rect x="22" y="22" width="8" height="22" rx="2" fill="var(--up)"/><line x1="26" y1="16" x2="26" y2="50" stroke="var(--up)" stroke-width="2"/>
+        <rect x="38" y="14" width="8" height="18" rx="2" fill="var(--up)"/><line x1="42" y1="8" x2="42" y2="38" stroke="var(--up)" stroke-width="2"/>
+        <rect x="54" y="6" width="6" height="14" rx="2" fill="var(--accent)"/>
+      </svg>
+      <div>
+        <h1>Escolinha do Trade</h1>
+        <p>Aprenda trade do zero, no seu ritmo, com dinheiro fictício. Cada termo é explicado na hora em que aparece, e errar aqui não custa nada.</p>
+      </div>
+    </div>
+    <div class="wallet">
+      <div class="chip"><small>Saldo</small><b id="wCash">R$ 1.000,00</b></div>
+      <div class="chip"><small>Resultado total</small><b id="wPnl">R$ 0,00</b></div>
+      <div class="chip"><small>Lições</small><b id="wLessons">0/12</b></div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="aprender" aria-selected="true">1. Aprender</button>
+    <button role="tab" data-tab="simular" aria-selected="false">2. Simular</button>
+    <button role="tab" data-tab="missoes" aria-selected="false">Missões<span class="badge" id="mBadge">0/13</span></button>
+    <button role="tab" data-tab="dicionario" aria-selected="false">Dicionário</button>
+  </nav>
+
+  <!-- APRENDER -->
+  <section id="tab-aprender">
+    <div class="learn">
+      <aside class="path sheet" id="path"><h3>Sua trilha</h3></aside>
+      <article class="lesson sheet" id="lesson"></article>
+    </div>
+  </section>
+
+  <!-- SIMULAR -->
+  <section id="tab-simular" hidden>
+    <div class="coach" style="margin-bottom:14px">
+      <svg id="owl" width="56" height="56" viewBox="0 0 64 64" aria-hidden="true">
+        <ellipse cx="32" cy="38" rx="22" ry="22" fill="var(--accent)"/>
+        <polygon points="12,20 20,10 24,22" fill="var(--accent)"/><polygon points="52,20 44,10 40,22" fill="var(--accent)"/>
+        <circle cx="24" cy="32" r="9" fill="var(--sheet)"/><circle cx="40" cy="32" r="9" fill="var(--sheet)"/>
+        <circle cx="25" cy="33" r="4" fill="var(--ink)"/><circle cx="39" cy="33" r="4" fill="var(--ink)"/>
+        <polygon points="29,40 35,40 32,46" fill="var(--marker)"/>
+        <ellipse cx="32" cy="52" rx="10" ry="6" fill="var(--sheet)" opacity=".55"/>
+      </svg>
+      <div class="bubble" id="bubble"><small>Sua mentora</small><span id="bubbleText">Olá! Este é um mercado simulado: os preços são gerados pelo computador e o dinheiro é fictício. Aperte <b>Me guie passo a passo</b> para fazer sua primeira operação comigo.</span><div class="tour-actions" id="tourActions"></div></div>
+    </div>
+
+    <div class="sim">
+      <div class="board sheet">
+        <div class="board-head">
+          <div class="ticker">
+            <div class="field" style="margin:0;min-width:200px">
+              <select id="asset" aria-label="Escolha o ativo">
+                <option value="POMR3">POMR3 · Pomar das Maçãs (oscila pouco)</option>
+                <option value="FOGT3">FOGT3 · Foguete Espacial (oscila muito)</option>
+              </select>
+            </div>
+            <span class="px" id="px">R$ 20,00</span>
+            <span class="chg" id="chg">0,00%</span>
+          </div>
+          <div class="row">
+            <button class="btn small primary" id="tourBtn">Me guie passo a passo</button>
+            <span style="font-size:.82rem;font-weight:800;color:var(--soft)">Velocidade</span>
+            <div class="seg" id="speed">
+              <button data-s="0" aria-pressed="false">Pausar</button>
+              <button data-s="1" aria-pressed="true">1x</button>
+              <button data-s="3" aria-pressed="false">3x</button>
+              <button data-s="8" aria-pressed="false">8x</button>
+            </div>
+          </div>
+        </div>
+        <div class="canvas-box"><canvas id="chart" aria-label="Gráfico de velas do preço"></canvas></div>
+        <div class="legend">
+          <span><i style="border-color:var(--accent)"></i>Seu preço de entrada</span>
+          <span><i style="border-color:var(--down)"></i>Stop (cinto de segurança)</span>
+          <span><i style="border-color:var(--up)"></i>Alvo (onde você embolsa o lucro)</span>
+          <span>Cada vela resume um período curto de tempo</span>
+        </div>
+        <div class="candle-info" id="candleInfo" aria-live="polite"></div>
+      </div>
+
+      <div class="panel">
+        <div class="card sheet" id="orderCard">
+          <h3>Montar operação</h3>
+          <div class="field">
+            <label for="qty">Quantas cotas?</label>
+            <div class="row" style="flex-wrap:nowrap">
+              <input id="qty" type="number" min="1" step="1" value="10">
+              <button class="btn small ghost" id="sizeBtn" title="Calcula as cotas para arriscar só 1% do saldo">Arriscar 1%</button>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field"><label for="stopPct">Stop: perder no máximo</label><select id="stopPct"><option value="0">Sem stop (perigo!)</option><option value="1">1%</option><option value="2" selected>2%</option><option value="3">3%</option><option value="5">5%</option><option value="10">10%</option></select></div>
+            <div class="field"><label for="alvoPct">Alvo: ganhar</label><select id="alvoPct"><option value="0">Sem alvo</option><option value="1">1%</option><option value="2">2%</option><option value="4" selected>4%</option><option value="6">6%</option><option value="10">10%</option></select></div>
+          </div>
+          <div class="riskbox" id="riskbox"></div>
+          <div class="trade-btns">
+            <button class="btn up" id="buyBtn">Comprar<br><small style="font-weight:600">aposto que sobe</small></button>
+            <button class="btn down" id="sellBtn">Vender<br><small style="font-weight:600">aposto que cai</small></button>
+          </div>
+          <p class="lock" id="shortLock">O botão "Vender" é liberado ao concluir a lição 8.</p>
+        </div>
+
+        <div class="card sheet" id="posCard" hidden>
+          <h3>Operação aberta</h3>
+          <div class="open-pos">
+            <div class="kv"><span>Lado</span><span id="pSide"></span></div>
+            <div class="kv"><span>Cotas</span><span class="num" id="pQty"></span></div>
+            <div class="kv"><span>Entrada</span><span class="num" id="pEntry"></span></div>
+            <div class="kv"><span>Stop</span><span class="num" id="pStop"></span></div>
+            <div class="kv"><span>Alvo</span><span class="num" id="pAlvo"></span></div>
+            <div class="kv"><span>Lucro ou prejuízo agora</span></div>
+            <div class="big" id="pPnl">R$ 0,00</div>
+            <button class="btn primary" id="closeBtn">Encerrar agora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="below">
+      <div class="card sheet">
+        <h3>Diário de operações</h3>
+        <p style="color:var(--soft);font-size:.9rem;margin-bottom:8px">Todo trader de verdade anota o que fez. Aqui fica tudo registrado.</p>
+        <div class="journal"><table><thead><tr><th>#</th><th>Ativo</th><th>Lado</th><th class="r">Entrada</th><th class="r">Saída</th><th>Motivo</th><th class="r">Resultado</th></tr></thead><tbody id="jBody"></tbody></table></div>
+      </div>
+      <div class="card sheet">
+        <h3>Seu desempenho</h3>
+        <div class="stats">
+          <div class="stat"><small>Operações</small><b id="sN">0</b></div>
+          <div class="stat"><small>Acertos</small><b id="sWin">–</b></div>
+          <div class="stat"><small>Maior ganho</small><b id="sBest">–</b></div>
+          <div class="stat"><small>Maior perda</small><b id="sWorst">–</b></div>
+          <div class="stat"><small>Taxas pagas</small><b id="sFees">R$ 0,00</b></div>
+          <div class="stat"><small>Usou stop</small><b id="sStop">–</b></div>
+        </div>
+        <div style="margin-top:14px"><button class="btn small ghost" id="resetBtn">Recomeçar do zero</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSÕES -->
+  <section id="tab-missoes" hidden>
+    <p style="color:var(--soft);margin-bottom:14px;max-width:70ch">Cada missão treina uma habilidade de trader. Elas são conquistadas sozinhas enquanto você estuda e pratica no simulador.</p>
+    <div class="missions" id="missions"></div>
+  </section>
+
+  <!-- DICIONÁRIO -->
+  <section id="tab-dicionario" hidden>
+    <p style="color:var(--soft);margin-bottom:14px;max-width:70ch">Os termos do mercado em linguagem simples, sem jargão. Volte aqui sempre que uma palavra aparecer e você não lembrar o que é.</p>
+    <div class="dict" id="dict"></div>
+  </section>
+
+  <p class="note">Tudo aqui é simulado: o preço é inventado por sorteio e o dinheiro não existe. Serve para aprender, não é recomendação de investimento. No mundo real, a maioria das pessoas que tenta day trade perde dinheiro. Treine bastante aqui antes de pensar em usar dinheiro de verdade, e nunca use dinheiro que você vai precisar.</p>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const brl=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const pct=v=>(v>=0?"+":"")+v.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})+"%";
+const FEE=1, START=1000, KEY="escolinha-trade-v1";
+
+/* ---------------- LIÇÕES ---------------- */
+const candleSVG=`<div class="figure"><svg viewBox="0 0 460 220" width="460" role="img" aria-label="Desenho de uma vela verde e uma vela vermelha">
+<g font-family="Nunito,system-ui,sans-serif" font-size="13" font-weight="700" fill="var(--ink)">
+<line x1="110" y1="20" x2="110" y2="200" stroke="var(--up)" stroke-width="3"/><rect x="88" y="60" width="44" height="100" rx="4" fill="var(--up)"/>
+<text x="140" y="24">Máxima (o mais alto)</text><text x="140" y="64">Fechamento (preço no fim)</text><text x="140" y="160">Abertura (preço no início)</text><text x="140" y="200">Mínima (o mais baixo)</text>
+<text x="72" y="215" fill="var(--up)">SUBIU</text>
+<line x1="390" y1="20" x2="390" y2="200" stroke="var(--down)" stroke-width="3"/><rect x="368" y="60" width="44" height="100" rx="4" fill="var(--down)"/>
+<text x="356" y="215" fill="var(--down)">CAIU</text>
+<text x="262" y="110" fill="var(--soft)">← na vermelha,</text><text x="262" y="126" fill="var(--soft)">abriu em cima e</text><text x="262" y="142" fill="var(--soft)">fechou embaixo</text>
+</g></svg></div>`;
+const trendSVG=`<div class="figure"><svg viewBox="0 0 480 130" width="480" role="img" aria-label="Três tendências: alta, baixa e lateral">
+<g fill="none" stroke-width="3" stroke-linejoin="round"><polyline stroke="var(--up)" points="10,110 40,85 55,95 85,60 100,72 130,35 145,45 150,20"/>
+<polyline stroke="var(--down)" points="170,20 200,45 215,35 245,70 260,60 290,95 305,85 315,110"/>
+<polyline stroke="var(--accent)" points="335,65 355,45 375,80 395,50 415,78 435,48 455,70 470,60"/></g>
+<g font-family="Nunito,system-ui,sans-serif" font-size="13" font-weight="800"><text x="40" y="128" fill="var(--up)">Alta: subindo a escada</text><text x="190" y="128" fill="var(--down)">Baixa: descendo</text><text x="355" y="128" fill="var(--accent)">Lateral: indeciso</text></g></svg></div>`;
+
+const axisSVG=`<div class="figure"><svg viewBox="0 0 500 215" width="500" role="img" aria-label="Gráfico de linha com o tempo embaixo e o preço à direita">
+<g font-family="Nunito,system-ui,sans-serif" font-size="13" font-weight="700">
+<line x1="20" y1="50" x2="440" y2="50" stroke="var(--line)"/><line x1="20" y1="110" x2="440" y2="110" stroke="var(--line)"/><line x1="20" y1="170" x2="440" y2="170" stroke="var(--line)"/>
+<text x="448" y="54" fill="var(--soft)">R$ 22</text><text x="448" y="114" fill="var(--soft)">R$ 20</text><text x="448" y="174" fill="var(--soft)">R$ 18</text>
+<polyline fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" points="30,150 80,130 130,140 180,100 230,110 280,70 330,85 380,50 420,60"/>
+<circle cx="130" cy="140" r="6" fill="var(--down)"/><text x="80" y="165" fill="var(--down)">aqui: R$ 19</text>
+<circle cx="380" cy="50" r="6" fill="var(--up)"/><text x="300" y="30" fill="var(--up)">aqui: R$ 22</text>
+<line x1="30" y1="195" x2="430" y2="195" stroke="var(--ink)" stroke-width="2"/><polygon points="430,190 440,195 430,200" fill="var(--ink)"/>
+<text x="30" y="212" fill="var(--ink)">passado</text><text x="370" y="212" fill="var(--ink)">agora</text><text x="190" y="212" fill="var(--soft)">tempo</text>
+<text x="448" y="30" fill="var(--ink)">preço</text>
+</g></svg></div>`;
+
+const LESSONS=[
+{t:"O que é trade?",b:`<p>Fazer <b>trade</b> é comprar algo e vender depois, tentando lucrar com a mudança de preço. A ideia é só essa.</p>
+<p>Um exemplo do dia a dia: você compra US$ 100 quando o dólar está a R$ 5,00 e paga R$ 500. Um mês depois o dólar sobe para R$ 5,40. Você vende os US$ 100 e recebe R$ 540. Lucro de <span class="hl">R$ 40</span>.</p>
+<p>Na bolsa de valores acontece o mesmo, só que com <b>ações</b>, que são pequenas partes de empresas. Cada unidade que você compra é chamada aqui de <b>cota</b>.</p>
+<div class="example"><b>A ideia central</b><br>Para lucrar comprando, você precisa vender por um preço maior do que pagou. Se vender por menos, tem prejuízo.</div>`,
+q:"Você comprou 10 cotas a R$ 10 cada e vendeu a R$ 13 cada. Qual foi o resultado?",o:["Lucro de R$ 30","Prejuízo de R$ 30","Lucro de R$ 130"],a:0,e:"Isso. Ganhou R$ 3 em cada cota. R$ 3 × 10 cotas = R$ 30."},
+{t:"Por que o preço sobe e desce?",b:`<p>O preço muda porque as pessoas mudam de ideia o tempo todo. Quando <b>muita gente quer comprar</b> e pouca gente quer vender, o preço <span class="hl">sobe</span>. Quando muita gente quer vender e pouca quer comprar, o preço <b>cai</b>.</p>
+<p>É como sorvete no verão: todo mundo quer, então fica mais caro. No inverno sobra sorvete, e o preço baixa.</p>
+<div class="example"><b>Importante desde o primeiro dia</b><br>Ninguém sabe com certeza para onde o preço vai, nem os especialistas. Por isso trade não é sobre adivinhar. É sobre <b>se proteger quando errar</b> e deixar os acertos renderem.</div>`,
+q:"Saiu uma notícia boa sobre a empresa e muita gente quer comprar a ação. O que tende a acontecer com o preço?",o:["Tende a cair","Tende a subir","Fica igual"],a:1,e:"Certo. Mais gente querendo comprar empurra o preço para cima."},
+{t:"Como ler um gráfico",b:`<p>Um gráfico de preço responde a duas perguntas ao mesmo tempo: <b>quanto custava</b> e <b>quando</b>.</p>${axisSVG}
+<ul><li><b>A linha de baixo é o tempo.</b> À esquerda está o passado; à direita, o momento atual.</li><li><b>Os números à direita são o preço.</b> Quanto mais alto o ponto no desenho, mais caro estava.</li><li>Para ler um ponto: siga até a direita para ver o preço e até embaixo para ver quando foi.</li></ul>
+<div class="example"><b>Lendo o desenho acima</b><br>No começo o preço estava perto de R$ 19. Com o tempo, a linha foi subindo até chegar a R$ 22. Resumo: <b>o preço subiu</b>. Repare que ele não subiu em linha reta: teve pequenas descidas no caminho. Isso é normal.</div>`,
+q:"Num gráfico, a linha está bem mais alta do lado direito do que do lado esquerdo. O que isso quer dizer?",o:["O preço subiu com o tempo","O preço caiu com o tempo","Não dá para saber"],a:0,e:"Exato. Direita é agora, e mais alto é mais caro. Então o preço subiu."},
+{t:"As velas do gráfico",b:`<p>O gráfico do simulador não é uma linha: ele é feito de <b>velas</b> (em inglês, <i>candles</i>). Cada vela resume o que o preço fez durante um período e mostra quatro preços de uma vez.</p>${candleSVG}
+<ul><li><b>Abertura</b>: o preço no início do período.</li><li><b>Fechamento</b>: o preço no fim do período.</li><li><b>Máxima</b>: o preço mais alto a que chegou.</li><li><b>Mínima</b>: o preço mais baixo a que chegou.</li></ul>
+<p>A parte grossa é o <b>corpo</b>: vai da abertura até o fechamento. As linhas finas acima e abaixo são os <b>pavios</b>: mostram até onde o preço foi e voltou.</p>
+<div class="example"><b>Regra das cores</b><br><b style="color:var(--up)">Verde</b>: fechou acima de onde abriu, ou seja, subiu.<br><b style="color:var(--down)">Vermelha</b>: fechou abaixo de onde abriu, ou seja, caiu.</div>
+<p>No simulador, <span class="hl">toque ou passe o mouse em qualquer vela</span> e a mentora explica o que ela mostra. É o melhor jeito de treinar a leitura.</p>`,
+q:"Uma vela vermelha quer dizer que, naquele período...",o:["O preço subiu","O preço caiu","O mercado fechou"],a:1,e:"Exato. Vermelha = fechou mais baixo do que abriu."},
+{t:"Tendência: a direção do preço",b:`<p>Olhando várias velas juntas, dá para ver a direção geral do preço. Isso se chama <b>tendência</b>.</p>${trendSVG}
+<p>Repare que nem na alta o preço sobe sem parar. Ele sobe, recua um pouco e volta a subir, como uma escada. Muitos traders seguem o ditado <span class="hl">"a tendência é sua amiga"</span>: quando o preço está em alta, eles procuram comprar, e não apostar contra.</p>`,
+q:"O preço faz topos cada vez mais altos e fundos cada vez mais altos. Que tendência é essa?",o:["Tendência de alta","Tendência de baixa","Lateral"],a:0,e:"Isso. Degraus cada vez mais altos = tendência de alta."},
+{t:"Stop: o cinto de segurança",b:`<p>Você usa cinto de segurança não porque <i>vai</i> bater o carro, mas porque <i>pode</i> bater. No trade, essa proteção se chama <b>stop</b> (ou <i>stop loss</i>, "parar a perda").</p>
+<p>O stop é um limite que você define antes de entrar: <span class="hl">"se o preço chegar aqui, eu saio, sem discutir"</span>. Assim um erro pequeno não vira um prejuízo grande.</p>
+<div class="example"><b>Exemplo</b><br>Comprei a R$ 20 com stop de 2%. Se o preço cair até R$ 19,60, o sistema vende automaticamente. Perdi um pouco, mas fiquei protegido de uma queda maior.</div>
+<p>No simulador, o stop aparece como a <b style="color:var(--down)">linha vermelha tracejada</b>.</p>`,
+q:"Para que serve o stop?",o:["Para garantir que eu sempre ganhe","Para limitar quanto eu posso perder","Para pausar o mercado"],a:1,e:"Isso. O stop não garante lucro: ele limita a perda."},
+{t:"Alvo e a regra do 1 para 2",b:`<p>Se o stop é onde você sai quando dá errado, o <b>alvo</b> (ou <i>take profit</i>) é onde você sai quando dá certo. Lá você <span class="hl">garante o lucro</span> antes que o preço volte.</p>
+<p>Uma prática comum: colocar o alvo <b>pelo menos duas vezes mais longe</b> que o stop. Você arrisca 1 para tentar ganhar 2.</p>
+<div class="example"><b>Por que isso funciona?</b><br>Faça 10 operações arriscando R$ 10 para ganhar R$ 20. Se errar 6 e acertar só 4: perde 6 × 10 = R$ 60 e ganha 4 × 20 = R$ 80. <b>Mesmo errando mais do que acertando, terminou com +R$ 20.</b></div>`,
+q:"Seu stop está a 2% de distância. Para ter a relação 1 para 2, onde fica o alvo?",o:["A 1%","A 2%","A 4%"],a:2,e:"Isso. 2% × 2 = 4%. O simulador já vem configurado assim."},
+{t:"Comprado e vendido",b:`<p>Até aqui você ganha quando o preço <b>sobe</b>. Isso se chama ficar <b>comprado</b>. Mas também é possível ganhar quando o preço <b>cai</b>: isso é ficar <b>vendido</b>.</p>
+<div class="example"><b>Como funciona na prática</b><br>A corretora te empresta 10 ações e você as vende a R$ 10 cada, recebendo R$ 100. Depois o preço cai para R$ 7. Você compra 10 ações por R$ 70 e devolve o empréstimo. Sobraram <b>R$ 30</b>.</div>
+<p>No simulador, tudo isso acontece com um clique no botão <b>Vender</b>, que agora está liberado. Atenção: vendido, se o preço <b>subir</b>, você perde. Por isso o stop é ainda mais importante.</p>`,
+q:"Você ficou vendido e o preço subiu bastante. O que aconteceu?",o:["Ganhei dinheiro","Perdi dinheiro","Nada muda"],a:1,e:"Certo. Vendido ganha na queda e perde na alta.",unlock:"short"},
+{t:"Não arrisque muito de uma vez",b:`<p>A regra mais importante de todas: <span class="hl">nunca arrisque uma parte grande do seu saldo numa única operação</span>. Traders profissionais costumam arriscar entre <b>1% e 2%</b> por operação.</p>
+<p>Por quê? Porque perder faz parte. Se você arrisca 1%, pode errar 10 vezes seguidas e ainda ter cerca de 90% do dinheiro. Se arrisca 25%, quatro erros seguidos acabam com tudo.</p>
+<div class="example"><b>Conta rápida</b><br>Saldo de R$ 1.000. Arriscar 1% = R$ 10. Se o stop fica R$ 0,40 abaixo da entrada, compre R$ 10 ÷ R$ 0,40 = <b>25 cotas</b>. O botão <b>Arriscar 1%</b> do simulador faz essa conta por você.</div>`,
+q:"Seu saldo é de R$ 1.000. Quanto é arriscar 2% em uma operação?",o:["R$ 2","R$ 20","R$ 200"],a:1,e:"Isso. 2% de R$ 1.000 = R$ 20."},
+{t:"Os custos de operar",b:`<p>Toda vez que você compra ou vende, a corretora pode cobrar uma <b>taxa</b> (corretagem), e há outros custos menores. No simulador ela é de <b>R$ 1,00</b> por ordem: R$ 1 para entrar e R$ 1 para sair.</p>
+<p>Parece pouco, mas quem entra e sai sem parar paga muita taxa. Isso se chama <span class="hl">overtrading</span>, e é um jeito comum de perder dinheiro aos poucos.</p>
+<div class="example"><b>Dica</b><br>Entre só quando tiver um motivo claro. Ficar de fora também é uma decisão.</div>`,
+q:"Você fez 20 operações num dia, cada uma com entrada e saída. Quanto pagou de taxas no simulador?",o:["R$ 20","R$ 40","R$ 2"],a:1,e:"Certo: 20 operações × 2 ordens × R$ 1 = R$ 40."},
+{t:"Medo, ganância e vingança",b:`<p>Boa parte dos erros no trade vem das emoções. Três delas atrapalham muito:</p>
+<ul><li><b>Medo</b>: sair cedo demais de uma operação boa, ou nem entrar.</li><li><b>Ganância</b>: tirar o alvo para "ganhar mais" e ver o lucro sumir.</li><li><b>Vingança</b>: perder e entrar de novo correndo, com mais cotas, para "recuperar". Quase sempre termina pior.</li></ul>
+<div class="example"><b>O remédio</b><br>Decida tudo <b>antes</b> de entrar: quantas cotas, onde fica o stop, onde fica o alvo. Depois, deixe o plano trabalhar e não mude no meio do caminho.</div>`,
+q:"Você acabou de perder numa operação. O que um bom trader faz?",o:["Entra de novo com o dobro de cotas","Respira, anota no diário e espera uma nova oportunidade clara","Desliga o stop"],a:1,e:"Exatamente. Calma e registro. A vingança é a armadilha mais comum."},
+{t:"O que ninguém conta",b:`<p>Você já conhece o básico. Agora, a parte mais séria:</p>
+<ul><li>No mundo real, <b>a maioria das pessoas que faz day trade perde dinheiro</b>. Estudos no Brasil e em outros países mostram isso.</li><li>Este simulador é como um simulador de voo: ajuda muito a treinar, mas o mercado real envolve dinheiro de verdade e emoções bem mais fortes.</li><li>Antes de usar dinheiro de verdade, faça <b>muitas</b> operações aqui, sempre com stop, risco pequeno e o diário em dia.</li><li>Nunca use dinheiro do aluguel, das contas ou da reserva de emergência.</li></ul>
+<p>Treinar bastante e respeitar as regras é o que separa quem aprende de quem aposta.</p>`,
+q:"Qual é o jeito mais seguro de começar?",o:["Colocar todo o dinheiro de uma vez","Treinar bastante no simulador, com stop e risco pequeno","Seguir dicas de grupos de mensagens"],a:1,e:"Isso mesmo. Você completou a trilha. Agora pratique no simulador e conquiste as missões."}
+];
+
+/* ---------------- MISSÕES ---------------- */
+const MISSIONS=[
+{id:"m1",t:"Primeira compra",d:"Faça sua primeira operação comprada no simulador."},
+{id:"m2",t:"Primeiro lucro",d:"Encerre uma operação com resultado positivo."},
+{id:"m3",t:"O stop me salvou",d:"Tenha uma operação encerrada pelo stop. Perder pouco também é vitória."},
+{id:"m4",t:"Na mosca",d:"Tenha uma operação encerrada no alvo."},
+{id:"m5",t:"Risco pequeno",d:"Abra uma operação arriscando no máximo 2% do saldo, com stop ligado."},
+{id:"m6",t:"Jogo do 1 para 2",d:"Abra uma operação com o alvo pelo menos o dobro do stop."},
+{id:"m7",t:"Ganhei na queda",d:"Encerre uma operação vendida com lucro."},
+{id:"m8",t:"Diário cheio",d:"Complete 10 operações e veja seu boletim."},
+{id:"m9",t:"Saldo crescendo",d:"Chegue a R$ 1.100 no saldo."},
+{id:"m10",t:"Trilha concluída",d:"Complete todas as lições da trilha."},
+{id:"m11",t:"Leitor de velas",d:"Use o explicador para ler 20 velas diferentes no gráfico. Toque ou passe o mouse sobre elas."},
+{id:"m12",t:"Disciplina",d:"Faça 5 operações seguidas, todas com stop ligado."},
+{id:"m13",t:"Cabeça fria",d:"Depois de uma perda, espere pelo menos 10 velas antes de abrir a próxima operação."}
+];
+
+const DICT=[
+["Ação","Uma pequena parte de uma empresa. Quem tem ações é sócio dela, numa fatia bem pequena."],
+["Cota","Cada unidade que você compra. 10 cotas = 10 unidades."],
+["Saldo","Quanto dinheiro você tem disponível. No simulador, começa com R$ 1.000 fictícios."],
+["Trade","Comprar e vender buscando lucro com a mudança do preço."],
+["Day trade","Comprar e vender no mesmo dia."],
+["Comprado","Você comprou e <em>ganha se o preço subir</em>."],
+["Vendido","Você vendeu primeiro e <em>ganha se o preço cair</em>."],
+["Gráfico","Desenho do preço ao longo do tempo. Esquerda = passado, direita = agora. Mais alto = mais caro."],
+["Eixo","As réguas do gráfico. A de baixo mede o tempo; a da direita mede o preço."],
+["Vela (candle)","Retângulo com linhas finas que resume um período: abertura, fechamento, máxima e mínima."],
+["Abertura e fechamento","O preço no início e no fim de um período."],
+["Máxima e mínima","O preço mais alto e o mais baixo de um período."],
+["Pavio (ou sombra)","As linhas finas da vela. Mostram até onde o preço foi e voltou."],
+["Tendência","A direção geral do preço: alta, baixa ou lateral (andando de lado)."],
+["Stop loss","Preço combinado para sair quando dá errado. <em>Limita a perda.</em>"],
+["Alvo (take profit)","Preço combinado para sair quando dá certo e garantir o lucro."],
+["Risco/retorno","Quanto você arrisca comparado a quanto quer ganhar. 1 para 2 é um bom começo."],
+["Gestão de risco","Regras para não perder muito de uma vez, como arriscar só 1% do saldo por operação."],
+["Taxa / corretagem","O que a corretora cobra a cada ordem de compra ou venda."],
+["Overtrading","Operar demais, sem motivo claro. Gasta dinheiro com taxas."],
+["Volatilidade","O quanto o preço oscila. FOGT3 é bem mais volátil que POMR3."],
+["Corretora","A empresa que leva suas ordens até a bolsa."],
+["Bolsa de valores","O mercado onde ações são compradas e vendidas. No Brasil, é a B3."],
+["Diário de trade","Registro de cada operação, para aprender com acertos e erros."]
+];
+
+/* ---------------- ESTADO ---------------- */
+let S={cash:START,trades:[],lessons:{},missions:{},fees:0,cur:0};
+try{const raw=localStorage.getItem(KEY); if(raw){S=Object.assign(S,JSON.parse(raw));if(!S.v2){const L={};Object.keys(S.lessons||{}).forEach(k=>{L[+k>=2?+k+1:+k]=1});S.lessons=L;if(S.cur>=2)S.cur++;}}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({cash:S.cash,trades:S.trades,lessons:S.lessons,missions:S.missions,fees:S.fees,cur:S.cur,tourSeen:S.tourSeen,v2:1}))}catch(e){}}
+let pos=null,lastLoss=null;
+
+/* ---------------- TOAST / CORUJA ---------------- */
+let toastT;
+function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2600)}
+function say(html,mood){const b=$("#bubble");b.className="bubble"+(mood?" "+mood:"");$("#bubbleText").innerHTML=html}
+
+/* ---------------- ABAS ---------------- */
+const TABS=["aprender","simular","missoes","dicionario"];
+let activeTab="aprender";
+function show(tab){if(!TABS.includes(tab))tab="aprender";activeTab=tab;
+  TABS.forEach(n=>{$("#tab-"+n).hidden=n!==tab});
+  $$("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab));
+  if(tab==="simular"){resize();if(!S.tourSeen&&!S.trades.length&&tour<0)setTimeout(startTour,300);}
+}
+$$("nav.tabs button").forEach(b=>b.addEventListener("click",()=>{location.hash=b.dataset.tab}));
+window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
+
+/* ---------------- TRILHA ---------------- */
+function renderPath(){
+  const p=$("#path");p.innerHTML="<h3>Sua trilha</h3>";
+  LESSONS.forEach((l,i)=>{const b=document.createElement("button");
+    b.className=S.lessons[i]?"done":"";b.setAttribute("aria-current",i===S.cur);
+    b.title=l.t;
+    b.innerHTML=`<span class="dot">${S.lessons[i]?"✓":i+1}</span><span class="t">${l.t}</span>`;
+    b.onclick=()=>{S.cur=i;save();renderPath();renderLesson();};p.appendChild(b);});
+  $("#wLessons").textContent=Object.keys(S.lessons).length+"/"+LESSONS.length;
+}
+function renderLesson(){
+  const i=S.cur,l=LESSONS[i],el=$("#lesson");
+  el.innerHTML=`<div class="eyebrow">Lição ${i+1} de ${LESSONS.length}</div><h2>${l.t}</h2><div class="body">${l.b}</div>
+  <div class="quiz"><h3>Teste rápido</h3><p>${l.q}</p><div class="opts">${l.o.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join("")}</div><div id="fb"></div></div>
+  <div class="lesson-nav">${i>0?`<button class="btn ghost" id="prevL">← Lição anterior</button>`:""}${i<LESSONS.length-1?`<button class="btn primary" id="nextL" ${S.lessons[i]?"":"disabled"}>Próxima lição →</button>`:""}<button class="btn" id="goSim">Praticar no simulador</button></div>`;
+  el.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const k=+b.dataset.k,fb=$("#fb");
+    el.querySelectorAll(".opt").forEach(x=>x.classList.remove("right","wrong"));
+    if(k===l.a){b.classList.add("right");fb.className="feedback ok";fb.textContent=l.e;
+      if(!S.lessons[i]){S.lessons[i]=1;if(l.unlock==="short")toast("Botão Vender liberado no simulador!");save();renderPath();updateShortLock();checkMissions();}
+      const n=$("#nextL");if(n)n.disabled=false;
+    }else{b.classList.add("wrong");fb.className="feedback no";fb.textContent="Quase! Leia de novo com calma e tente outra opção.";}
+  });
+  const pv=$("#prevL"),nx=$("#nextL");
+  if(pv)pv.onclick=()=>{S.cur=i-1;save();renderPath();renderLesson();window.scrollTo({top:0})};
+  if(nx)nx.onclick=()=>{S.cur=i+1;save();renderPath();renderLesson();window.scrollTo({top:0})};
+  $("#goSim").onclick=()=>{location.hash="simular"};
+}
+
+/* ---------------- MERCADO ---------------- */
+const ASSETS={POMR3:{p:20,vol:.0022},FOGT3:{p:50,vol:.0055}};
+const TPC=10; // ticks por vela
+function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+function makeMarket(code){
+  const a=ASSETS[code],m={code,vol:a.vol,price:a.p,open0:a.p,candles:[],cur:null,tick:0,reg:{d:0,left:0}};
+  m.cur={o:m.price,h:m.price,l:m.price,c:m.price};
+  for(let i=0;i<70*TPC;i++)stepMarket(m,true);
+  m.open0=m.candles[0].o; return m;
+}
+function stepMarket(m){
+  if(m.reg.left<=0){const r=Math.random();m.reg.d=r<.38?m.vol*.07:r<.76?-m.vol*.07:0;m.reg.left=TPC*(20+Math.floor(Math.random()*50));}
+  m.reg.left--;
+  let ret=m.reg.d+m.vol*gauss();
+  if(m.reg.d===0)ret+=(ASSETS[m.code].p-m.price)/ASSETS[m.code].p*.002;
+  m.price=Math.max(1,m.price*(1+ret));
+  const c=m.cur;c.c=m.price;c.h=Math.max(c.h,m.price);c.l=Math.min(c.l,m.price);
+  if(++m.tick%TPC===0){m.candles.push({...c});if(m.candles.length>400)m.candles.shift();m.cur={o:m.price,h:m.price,l:m.price,c:m.price};}
+}
+const markets={POMR3:makeMarket("POMR3"),FOGT3:makeMarket("FOGT3")};
+let M=markets.POMR3, speed=1;
+
+/* ---------------- GRÁFICO ---------------- */
+const cv=$("#chart"),ctx=cv.getContext("2d");let W=0,H=0;
+let hoverX=null,infoIdle=false,reads=0;const seen=new WeakSet();
+const INFO_IDLE="<b>Treine a leitura:</b> passe o mouse ou toque em qualquer vela do gráfico e eu explico, em português simples, o que aconteceu com o preço naquele período.";
+function pickX(e){const r=cv.getBoundingClientRect();hoverX=e.clientX-r.left;draw();}
+cv.addEventListener("pointermove",pickX);cv.addEventListener("pointerdown",pickX);
+cv.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse"){hoverX=null;draw();}});
+function explainCandle(c,last){
+  const d=c.c-c.o,up=d>=0,body=Math.abs(d),upper=c.h-Math.max(c.o,c.c),lower=Math.min(c.o,c.c)-c.l,range=(c.h-c.l)||1e-9;
+  let read;
+  if(body<range*.15)read="O corpo quase não existe: abriu e fechou quase no mesmo preço. Compradores e vendedores empataram. Isso indica <b>indecisão</b>.";
+  else if(upper>body*1.5)read="O pavio de cima é comprido: o preço tentou subir, mas foi empurrado de volta para baixo. Sinal de que apareceram vendedores lá em cima.";
+  else if(lower>body*1.5)read="O pavio de baixo é comprido: o preço tentou cair, mas os compradores o puxaram de volta para cima.";
+  else read=up?"Corpo verde e firme: quem comprava dominou este período.":"Corpo vermelho e firme: quem vendia dominou este período.";
+  return `<b>${last?"Vela atual (ainda se formando)":"Vela selecionada"}</b> · <b class="${up?"pos":"neg"}">${up?"Subiu":"Caiu"} ${brl(body)} (${pct(d/c.o*100)})</b><br>Começou em <b>${brl(c.o)}</b>, chegou no máximo a <b>${brl(c.h)}</b>, no mínimo a <b>${brl(c.l)}</b> e terminou em <b>${brl(c.c)}</b>.<br>${read}`;
+}
+function resize(){const r=cv.getBoundingClientRect();if(!r.width)return;const d=window.devicePixelRatio||1;W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);draw();}
+if(window.ResizeObserver)new ResizeObserver(resize).observe(cv);else window.addEventListener("resize",resize);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function draw(){
+  if(!W)return;
+  const C={up:css("--up"),down:css("--down"),ink:css("--ink"),soft:css("--soft"),line:css("--line"),acc:css("--accent"),sheet:css("--sheet")};
+  ctx.clearRect(0,0,W,H);
+  const axisW=64,plotW=W-axisW,n=Math.max(20,Math.min(60,Math.floor(plotW/11)));
+  const cs=M.candles.slice(-(n-1)).concat([M.cur]);
+  let hi=-Infinity,lo=Infinity;cs.forEach(c=>{hi=Math.max(hi,c.h);lo=Math.min(lo,c.l)});
+  if(pos&&pos.code===M.code){[pos.entry,pos.stop,pos.alvo].forEach(v=>{if(v){hi=Math.max(hi,v);lo=Math.min(lo,v)}})}
+  const pad=(hi-lo)*.08||1;hi+=pad;lo-=pad;
+  const top=10,bot=H-22,y=v=>top+(hi-v)/(hi-lo)*(bot-top);
+  // grade
+  ctx.font="600 11px "+css("--f-num");ctx.textBaseline="middle";
+  const step=niceStep((hi-lo)/5);
+  for(let v=Math.ceil(lo/step)*step;v<=hi;v+=step){const yy=Math.round(y(v))+.5;ctx.strokeStyle=C.line;ctx.lineWidth=1;ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(plotW,yy);ctx.stroke();ctx.fillStyle=C.soft;ctx.fillText(v.toFixed(2).replace(".",","),plotW+8,yy);}
+  ctx.fillStyle=C.soft;ctx.font="700 11px "+css("--f-body");ctx.fillText("← passado",4,H-9);ctx.textAlign="right";ctx.fillText("agora →",plotW-4,H-9);ctx.textAlign="left";ctx.fillText("Preço (R$)",plotW+6,H-9);
+  // velas
+  const cw=plotW/n,bw=Math.max(3,cw*.62);
+  cs.forEach((c,i)=>{const x=i*cw+cw/2,col=c.c>=c.o?C.up:C.down;ctx.strokeStyle=col;ctx.fillStyle=col;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(x,y(c.h));ctx.lineTo(x,y(c.l));ctx.stroke();
+    const y1=y(Math.max(c.o,c.c)),y2=y(Math.min(c.o,c.c));ctx.fillRect(x-bw/2,y1,bw,Math.max(1.5,y2-y1));});
+  const info=$("#candleInfo");
+  if(hoverX!=null&&hoverX>=0&&hoverX<plotW){const i=Math.min(cs.length-1,Math.floor(hoverX/cw)),c=cs[i];
+    ctx.globalAlpha=.14;ctx.fillStyle=C.acc;ctx.fillRect(i*cw,top,cw,bot-top);ctx.globalAlpha=1;
+    info.innerHTML=explainCandle(c,i===cs.length-1);infoIdle=false;
+    if(!seen.has(c)){seen.add(c);if(++reads>=20)grant("m11");}}
+  else if(!infoIdle){info.innerHTML=INFO_IDLE;infoIdle=true;}
+  // linhas da posição
+  if(pos&&pos.code===M.code){
+    hline(pos.entry,C.acc,"Entrada");if(pos.stop)hline(pos.stop,C.down,"Stop");if(pos.alvo)hline(pos.alvo,C.up,"Alvo");
+  }
+  // preço atual
+  const py=y(M.price);ctx.setLineDash([2,3]);ctx.strokeStyle=C.ink;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,py);ctx.lineTo(plotW,py);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=C.ink;roundRect(plotW+2,py-10,axisW-4,20,5);ctx.fill();ctx.fillStyle=C.sheet;ctx.font="700 11px "+css("--f-num");ctx.fillText(M.price.toFixed(2).replace(".",","),plotW+8,py);
+  function hline(v,col,lab){const yy=y(v);ctx.strokeStyle=col;ctx.lineWidth=2;ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(plotW,yy);ctx.stroke();ctx.setLineDash([]);
+    ctx.font="800 11px "+css("--f-body");const tw=ctx.measureText(lab).width+12;ctx.fillStyle=col;roundRect(6,yy-9,tw,18,5);ctx.fill();ctx.fillStyle="#fff";ctx.fillText(lab,12,yy);}
+}
+function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function niceStep(r){const p=Math.pow(10,Math.floor(Math.log10(r))),f=r/p;return (f<1.5?1:f<3?2:f<7?5:10)*p}
+
+/* ---------------- OPERAÇÕES ---------------- */
+function stopPct(){return +$("#stopPct").value/100}
+function alvoPct(){return +$("#alvoPct").value/100}
+function qty(){return Math.max(0,Math.floor(+$("#qty").value||0))}
+function plan(side){const e=M.price,s=stopPct(),a=alvoPct();return{entry:e,stop:s?e*(1-side*s):0,alvo:a?e*(1+side*a):0}}
+function updateRisk(){
+  const q=qty(),e=M.price,s=stopPct(),a=alvoPct(),cost=q*e,rb=$("#riskbox");
+  if(!q){rb.innerHTML="Escolha pelo menos 1 cota.";return}
+  const risk=s?q*e*s+2*FEE:null,rp=risk!=null?risk/S.cash*100:null,gain=a?q*e*a-2*FEE:null;
+  const col=rp==null?"var(--down)":rp<=2?"var(--up)":rp<=5?"var(--marker)":"var(--down)";
+  rb.innerHTML=`<div class="kv"><span>Valor da operação</span><b class="num">${brl(cost)}</b></div>
+  <div class="kv"><span>Se bater no stop, perco</span><b class="num neg">${risk!=null?brl(risk):"sem limite!"}</b></div>
+  <div class="kv"><span>Se bater no alvo, ganho</span><b class="num pos">${gain!=null?brl(gain):"–"}</b></div>
+  <div class="kv"><span>Risco do saldo</span><b class="num">${rp!=null?rp.toFixed(1).replace(".",",")+"%":"??"}</b></div>
+  <div class="meter"><span style="width:${rp==null?100:Math.min(100,rp/6*100)}%;background:${col}"></span></div>
+  ${cost>S.cash?`<b class="neg">Dinheiro insuficiente: diminua as cotas.</b>`:""}`;
+}
+function updateShortLock(){const ok=!!S.lessons[LESSONS.findIndex(l=>l.unlock==="short")];$("#sellBtn").disabled=!ok;$("#shortLock").hidden=ok}
+function open(side){
+  if(pos){say("Você já tem uma operação aberta. Encerre ela antes de abrir outra.","alerta");return}
+  const q=qty();if(!q){say("Coloque quantas cotas quer comprar.","alerta");return}
+  if(q*M.price>S.cash){say(`Essa operação custa ${brl(q*M.price)}, e seu saldo tem ${brl(S.cash)}. Diminua as cotas.`,"alerta");return}
+  const p=plan(side);pos={code:M.code,side,qty:q,...p,t:M.tick};
+  S.cash-=FEE;S.fees+=FEE;
+  const sp=stopPct(),ap=alvoPct(),risk=sp?q*M.price*sp+2*FEE:Infinity,rp=risk/(S.cash+FEE)*100;
+  if(side===1)grant("m1");
+  let rushed=false;
+  if(lastLoss){const w=lastLoss.code===M.code?Math.floor((M.tick-lastLoss.tick)/TPC):99;lastLoss=null;if(w>=10)grant("m13");else rushed=true;}
+  if(sp&&rp<=2)grant("m5");
+  if(sp&&ap&&ap>=2*sp)grant("m6");
+  if(!sp)say("Ops! Você entrou <b>sem stop</b>. Se o preço andar contra você, não tem cinto de segurança. Fique de olho e saia se precisar.","alerta");
+  else if(rp>5)say(`Você está arriscando <b>${rp.toFixed(1).replace(".",",")}%</b> do saldo. Profissionais arriscam 1% a 2%. Tente o botão <b>Arriscar 1%</b> na próxima.`,"alerta");
+  else say(side===1?`Comprado! Você ganha se o preço subir. A linha vermelha é seu stop e a verde é seu alvo. Agora deixe o plano trabalhar.`:`Vendido! Agora você ganha se o preço <b>cair</b>. Se subir até a linha vermelha, o stop te tira.`,"bom");
+  if(rushed)say("Você abriu uma nova operação logo depois de uma perda. Cuidado com a vontade de recuperar rápido. Na próxima, espere pelo menos 10 velas e entre só com um motivo claro.","alerta");
+  render();tourEvent("buy");
+}
+function pnlNow(){return pos?pos.side*pos.qty*(M.price-pos.entry):0}
+function close(reason,px){
+  if(!pos)return;const exit=px??M.price,gross=pos.side*pos.qty*(exit-pos.entry),net=gross-2*FEE;
+  S.cash+=gross-FEE;S.fees+=FEE;
+  S.trades.push({code:pos.code,side:pos.side,entry:pos.entry,exit,reason,net,hadStop:!!pos.stop});
+  const wasShort=pos.side===-1,dur=Math.floor((M.tick-pos.t)/TPC);pos=null;
+  if(net>0)grant("m2");if(reason==="stop")grant("m3");if(reason==="alvo")grant("m4");if(wasShort&&net>0)grant("m7");
+  if(S.trades.length>=10)grant("m8");if(S.cash>=1100)grant("m9");
+  if(S.trades.length>=5&&S.trades.slice(-5).every(t=>t.hadStop))grant("m12");
+  if(net<0)lastLoss={tick:M.tick,code:M.code};
+  const r=brl(Math.abs(net));
+  if(reason==="stop")say(`O stop te tirou com <b class="neg">-${r}</b>. Doeu? Faz parte! O stop impediu que fosse pior. Anote no diário e espere uma nova chance com calma.`,"bom");
+  else if(reason==="alvo")say(`Na mosca! Alvo atingido: <b class="pos">+${r}</b>. Você seguiu o plano do começo ao fim.`,"bom");
+  else if(net>0)say(`Você encerrou com lucro de <b class="pos">+${r}</b>${dur<2?" bem rapidinho. Cuidado para o medo não te fazer sair cedo demais.":"."}`,"bom");
+  else say(`Você encerrou com <b class="neg">-${r}</b>. ${net>-2.01&&net<0?"Quase zero a zero: as taxas comeram o resultado.":"Tudo bem. Não entre de novo correndo para recuperar: isso é a armadilha da vingança."}`,"alerta");
+  save();render();
+}
+function checkStops(){
+  if(!pos||pos.code!==M.code)return;const p=M.price;
+  if(pos.side===1){if(pos.stop&&p<=pos.stop)return close("stop",pos.stop);if(pos.alvo&&p>=pos.alvo)return close("alvo",pos.alvo);}
+  else{if(pos.stop&&p>=pos.stop)return close("stop",pos.stop);if(pos.alvo&&p<=pos.alvo)return close("alvo",pos.alvo);}
+}
+
+/* ---------------- MISSÕES ---------------- */
+function grant(id){if(S.missions[id])return;S.missions[id]=1;save();const m=MISSIONS.find(x=>x.id===id);toast("Missão conquistada: "+m.t);renderMissions();}
+function checkMissions(){if(Object.keys(S.lessons).length>=LESSONS.length)grant("m10");}
+function renderMissions(){
+  const box=$("#missions");box.innerHTML="";
+  MISSIONS.forEach(m=>{const g=!!S.missions[m.id],d=document.createElement("div");d.className="mission sheet"+(g?" got":"");
+    d.innerHTML=`<svg class="star" viewBox="0 0 40 40" aria-hidden="true"><polygon points="20,3 25,15 38,15 27.5,23 31.5,36 20,28 8.5,36 12.5,23 2,15 15,15" fill="${g?"var(--marker)":"var(--line)"}" stroke="${g?"var(--marker-ink)":"var(--soft)"}" stroke-width="1.5"/></svg><div><h3>${m.t}</h3><p>${m.d}</p></div>`;box.appendChild(d);});
+  $("#mBadge").textContent=Object.keys(S.missions).length+"/"+MISSIONS.length;
+}
+
+/* ---------------- RENDER ---------------- */
+const REASON={stop:"Stop",alvo:"Alvo",manual:"Na mão",reset:"Troca"};
+function render(){
+  const eq=S.cash+pnlNow(),tot=eq-START;
+  $("#wCash").textContent=brl(eq);const wp=$("#wPnl");wp.textContent=(tot>=0?"+":"")+brl(tot);wp.className=tot>0?"pos":tot<0?"neg":"";
+  const ch=(M.price/M.open0-1)*100;$("#px").textContent=brl(M.price);const c=$("#chg");c.textContent=pct(ch);c.className="chg "+(ch>=0?"pos":"neg");
+  $("#orderCard").hidden=!!pos;$("#posCard").hidden=!pos;$("#asset").disabled=!!pos;
+  if(pos){$("#pSide").innerHTML=pos.side===1?'<span class="pill up">Comprado</span>':'<span class="pill down">Vendido</span>';
+    $("#pQty").textContent=pos.qty;$("#pEntry").textContent=brl(pos.entry);$("#pStop").textContent=pos.stop?brl(pos.stop):"sem stop";$("#pAlvo").textContent=pos.alvo?brl(pos.alvo):"sem alvo";
+    const pl=pnlNow(),el=$("#pPnl");el.textContent=(pl>=0?"+":"")+brl(pl);el.className="big "+(pl>=0?"pos":"neg");}
+  else updateRisk();
+  draw();
+}
+function renderJournal(){
+  const tb=$("#jBody");
+  if(!S.trades.length){tb.innerHTML=`<tr><td colspan="7" style="white-space:normal;color:var(--soft)">Nenhuma operação ainda. Sua primeira vai aparecer aqui.</td></tr>`;}
+  else tb.innerHTML=S.trades.slice(-12).reverse().map((t,i)=>`<tr><td class="num">${S.trades.length-i}</td><td>${t.code}</td><td>${t.side===1?'<span class="pill up">Compra</span>':'<span class="pill down">Venda</span>'}</td><td class="num">${t.entry.toFixed(2).replace(".",",")}</td><td class="num">${t.exit.toFixed(2).replace(".",",")}</td><td><span class="pill n">${REASON[t.reason]}</span></td><td class="num ${t.net>=0?"pos":"neg"}">${(t.net>=0?"+":"")+brl(t.net)}</td></tr>`).join("");
+  const n=S.trades.length,w=S.trades.filter(t=>t.net>0).length;
+  $("#sN").textContent=n;$("#sWin").textContent=n?Math.round(w/n*100)+"%":"–";
+  $("#sBest").textContent=n?brl(Math.max(...S.trades.map(t=>t.net))):"–";$("#sWorst").textContent=n?brl(Math.min(...S.trades.map(t=>t.net))):"–";
+  $("#sFees").textContent=brl(S.fees);$("#sStop").textContent=n?Math.round(S.trades.filter(t=>t.hadStop).length/n*100)+"%":"–";
+}
+const _close=close;close=function(r,p){_close(r,p);renderJournal();tourEvent("close");};
+
+/* ---------------- CONTROLES ---------------- */
+$("#buyBtn").onclick=()=>open(1);
+$("#sellBtn").onclick=()=>open(-1);
+$("#closeBtn").onclick=()=>close("manual");
+["#qty","#stopPct","#alvoPct"].forEach(s=>$(s).addEventListener("input",updateRisk));
+$("#sizeBtn").onclick=()=>{const s=stopPct();if(!s){say("Para calcular o tamanho certo, primeiro escolha um stop. Sem stop não dá para saber quanto você arrisca.","alerta");return}
+  const q=Math.max(1,Math.floor((S.cash*.01-2*FEE)/(M.price*s)));$("#qty").value=Math.min(q,Math.floor(S.cash/M.price));updateRisk();
+  say(`Calculei: com stop de ${(s*100)}%, <b>${$("#qty").value} cotas</b> arriscam mais ou menos 1% do saldo. É assim que os profissionais escolhem o tamanho.`,"bom");tourEvent("size");};
+$("#asset").onchange=e=>{M=markets[e.target.value];say(e.target.value==="FOGT3"?"O Foguete Espacial oscila bem mais: velas maiores e movimentos bruscos. Use stops um pouco mais largos e menos cotas.":"Voltamos ao Pomar das Maçãs, que oscila menos e é melhor para treinar.");render();};
+function setSpeed(s){speed=s;$$("#speed button").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.s===s));}
+$$("#speed button").forEach(b=>b.onclick=()=>setSpeed(+b.dataset.s));
+let armed=false;
+$("#resetBtn").onclick=e=>{const b=e.currentTarget;if(!armed){armed=true;b.textContent="Tem certeza? Clique de novo";b.classList.add("down");setTimeout(()=>{armed=false;b.textContent="Recomeçar do zero";b.classList.remove("down")},3000);return}
+  armed=false;pos=null;S.cash=START;S.trades=[];S.fees=0;save();b.textContent="Recomeçar do zero";b.classList.remove("down");renderJournal();render();say("Saldo de volta para R$ 1.000. Suas lições e missões continuam guardadas.");};
+
+/* ---------------- GUIA PASSO A PASSO ---------------- */
+const TOUR=[
+ {sel:".ticker",txt:"Este é o <b>preço</b> de uma cota da empresa Pomar das Maçãs. Pausei o mercado para você olhar com calma. O número ao lado mostra quanto o preço já mudou: verde subiu, vermelho caiu.",next:true},
+ {sel:".canvas-box",txt:"Este é o <b>gráfico</b>. Da esquerda para a direita é o tempo: a direita é agora. Cada retângulo é uma <b>vela</b> e resume um período. <b style='color:var(--up)'>Verde</b> = o preço subiu naquele período. <b style='color:var(--down)'>Vermelha</b> = caiu. Experimente: <b>toque ou passe o mouse numa vela</b> e veja a explicação embaixo do gráfico.",next:true},
+ {sel:"#qty",txt:"Agora escolha <b>quantas cotas</b> comprar. Não precisa fazer conta: aperte o botão <b>Arriscar 1%</b> e eu calculo uma quantidade segura para você.",wait:"size"},
+ {sel:".two",txt:"Aqui ficam suas duas regras. O <b>stop</b> é o cinto de segurança: se o preço cair 2%, você sai. O <b>alvo</b> é onde você guarda o lucro: se subir 4%. Deixe assim por enquanto.",next:true},
+ {sel:"#riskbox",txt:"Este quadro mostra, <b>antes de entrar</b>, quanto você pode perder e quanto pode ganhar. Repare que o risco é pequeno perto do seu saldo. É assim que se começa.",next:true},
+ {sel:"#buyBtn",txt:"Tudo pronto! Aperte <b>Comprar</b>. Você vai ganhar se o preço subir. Quando apertar, eu ligo o mercado de novo.",wait:"buy"},
+ {sel:"#posCard",txt:"Pronto, você está <b>comprado</b>! Agora é só esperar. Se o preço tocar a linha verde, você ganha. Se tocar a vermelha, o stop encerra a operação com uma perda pequena. Você não precisa fazer nada. Quer ir mais rápido? Aperte <b>3x</b> lá em cima.",wait:"close"}
+];
+let tour=-1;
+function clearSpot(){$$(".spot").forEach(e=>e.classList.remove("spot"))}
+function tourShow(){
+  clearSpot();const st=TOUR[tour];let el=$(st.sel);if(el&&el.tagName==="INPUT")el=el.closest(".field");
+  if(el){el.classList.add("spot");try{el.scrollIntoView({block:"nearest",behavior:"smooth"})}catch(e){}}
+  say(`<span class="step">Passo ${tour+1} de ${TOUR.length}</span><br>${st.txt}`);
+  $("#tourActions").innerHTML=(st.next?`<button class="btn small primary" id="tNext">Entendi →</button>`:"")+`<button class="btn small ghost" id="tSkip">Sair do guia</button>`;
+  const n=$("#tNext");if(n)n.onclick=()=>{tour++;tourShow()};
+  $("#tSkip").onclick=()=>{endTour();setSpeed(1);say("Tudo bem! Quando quiser, aperte <b>Me guie passo a passo</b> de novo.")};
+}
+function startTour(){
+  if(pos){say("Encerre a operação aberta primeiro. Depois eu te guio desde o começo.","alerta");return}
+  S.tourSeen=1;save();
+  if($("#asset").value!=="POMR3"){$("#asset").value="POMR3";M=markets.POMR3}
+  $("#stopPct").value="2";$("#alvoPct").value="4";$("#qty").value="1";
+  setSpeed(0);tour=0;render();tourShow();
+}
+function endTour(){tour=-1;clearSpot();$("#tourActions").innerHTML="";}
+function tourEvent(ev){
+  if(tour<0||TOUR[tour].wait!==ev)return;
+  if(ev==="buy")setSpeed(1);
+  if(ev==="close"){endTour();
+    $("#bubbleText").insertAdjacentHTML("beforeend",`<br><br><b>Parabéns! Você fez sua primeira operação completa.</b> Ela está anotada no diário aqui embaixo. Agora repita algumas vezes sem o guia. Quando quiser entender o porquê de cada coisa, vá para a aba <b>Aprender</b>.`);
+    return;}
+  tour++;tourShow();
+}
+$("#tourBtn").onclick=startTour;
+
+/* ---------------- LOOP ---------------- */
+setInterval(()=>{
+  if(activeTab!=="simular"||!speed)return;
+  for(let i=0;i<speed;i++){M.tick!==undefined&&stepMarket(M);checkStops();}
+  Object.values(markets).forEach(m=>{if(m!==M&&Math.random()<.3)stepMarket(m)});
+  render();
+},140);
+
+/* ---------------- DICIONÁRIO ---------------- */
+$("#dict").innerHTML=DICT.map(([t,d])=>`<div class="term sheet"><h3>${t}</h3><p>${d}</p></div>`).join("");
+
+renderPath();renderLesson();renderMissions();renderJournal();updateShortLock();render();
+show(location.hash.slice(1)||"aprender");
+})();
+</script>

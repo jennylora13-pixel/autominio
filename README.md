@@ -51,3 +51,4 @@ src/
 ## Outros apps neste repositório
 
 - [`ore-a-palavra/`](ore-a-palavra/) — **Ore a Palavra**: encontra versículos para a sua situação e ajuda a orar e declarar a Bíblia (com IA opcional).
+- [`simulador-de-trade.html`](simulador-de-trade.html) — **Escolinha do Trade**: simulador de trade para iniciantes, com 12 lições sem jargão, leitura de gráfico, explicador de velas, guia passo a passo e missões. Arquivo único: basta abrir no navegador.
