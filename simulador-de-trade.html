@@ -199,7 +199,7 @@ td.num{text-align:right} th.r{text-align:right}
   <nav class="tabs" role="tablist">
     <button role="tab" data-tab="aprender" aria-selected="true">1. Aprender</button>
     <button role="tab" data-tab="simular" aria-selected="false">2. Simular</button>
-    <button role="tab" data-tab="missoes" aria-selected="false">Missões<span class="badge" id="mBadge">0/10</span></button>
+    <button role="tab" data-tab="missoes" aria-selected="false">Missões<span class="badge" id="mBadge">0/13</span></button>
     <button role="tab" data-tab="dicionario" aria-selected="false">Dicionário</button>
   </nav>
 
@@ -435,7 +435,10 @@ const MISSIONS=[
 {id:"m7",t:"Ganhei na queda",d:"Encerre uma operação vendida com lucro."},
 {id:"m8",t:"Diário cheio",d:"Complete 10 operações e veja seu boletim."},
 {id:"m9",t:"Saldo crescendo",d:"Chegue a R$ 1.100 no saldo."},
-{id:"m10",t:"Lição de casa feita",d:"Complete todas as lições da trilha."}
+{id:"m10",t:"Trilha concluída",d:"Complete todas as lições da trilha."},
+{id:"m11",t:"Leitor de velas",d:"Use o explicador para ler 20 velas diferentes no gráfico. Toque ou passe o mouse sobre elas."},
+{id:"m12",t:"Disciplina",d:"Faça 5 operações seguidas, todas com stop ligado."},
+{id:"m13",t:"Cabeça fria",d:"Depois de uma perda, espere pelo menos 10 velas antes de abrir a próxima operação."}
 ];
 
 const DICT=[
@@ -469,7 +472,7 @@ const DICT=[
 let S={cash:START,trades:[],lessons:{},missions:{},fees:0,cur:0};
 try{const raw=localStorage.getItem(KEY); if(raw){S=Object.assign(S,JSON.parse(raw));if(!S.v2){const L={};Object.keys(S.lessons||{}).forEach(k=>{L[+k>=2?+k+1:+k]=1});S.lessons=L;if(S.cur>=2)S.cur++;}}}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify({cash:S.cash,trades:S.trades,lessons:S.lessons,missions:S.missions,fees:S.fees,cur:S.cur,tourSeen:S.tourSeen,v2:1}))}catch(e){}}
-let pos=null;
+let pos=null,lastLoss=null;
 
 /* ---------------- TOAST / CORUJA ---------------- */
 let toastT;
@@ -540,7 +543,7 @@ let M=markets.POMR3, speed=1;
 
 /* ---------------- GRÁFICO ---------------- */
 const cv=$("#chart"),ctx=cv.getContext("2d");let W=0,H=0;
-let hoverX=null,infoIdle=false;
+let hoverX=null,infoIdle=false,reads=0;const seen=new WeakSet();
 const INFO_IDLE="<b>Treine a leitura:</b> passe o mouse ou toque em qualquer vela do gráfico e eu explico, em português simples, o que aconteceu com o preço naquele período.";
 function pickX(e){const r=cv.getBoundingClientRect();hoverX=e.clientX-r.left;draw();}
 cv.addEventListener("pointermove",pickX);cv.addEventListener("pointerdown",pickX);
@@ -580,7 +583,8 @@ function draw(){
   const info=$("#candleInfo");
   if(hoverX!=null&&hoverX>=0&&hoverX<plotW){const i=Math.min(cs.length-1,Math.floor(hoverX/cw)),c=cs[i];
     ctx.globalAlpha=.14;ctx.fillStyle=C.acc;ctx.fillRect(i*cw,top,cw,bot-top);ctx.globalAlpha=1;
-    info.innerHTML=explainCandle(c,i===cs.length-1);infoIdle=false;}
+    info.innerHTML=explainCandle(c,i===cs.length-1);infoIdle=false;
+    if(!seen.has(c)){seen.add(c);if(++reads>=20)grant("m11");}}
   else if(!infoIdle){info.innerHTML=INFO_IDLE;infoIdle=true;}
   // linhas da posição
   if(pos&&pos.code===M.code){
@@ -621,11 +625,14 @@ function open(side){
   S.cash-=FEE;S.fees+=FEE;
   const sp=stopPct(),ap=alvoPct(),risk=sp?q*M.price*sp+2*FEE:Infinity,rp=risk/(S.cash+FEE)*100;
   if(side===1)grant("m1");
+  let rushed=false;
+  if(lastLoss){const w=lastLoss.code===M.code?Math.floor((M.tick-lastLoss.tick)/TPC):99;lastLoss=null;if(w>=10)grant("m13");else rushed=true;}
   if(sp&&rp<=2)grant("m5");
   if(sp&&ap&&ap>=2*sp)grant("m6");
   if(!sp)say("Ops! Você entrou <b>sem stop</b>. Se o preço andar contra você, não tem cinto de segurança. Fique de olho e saia se precisar.","alerta");
   else if(rp>5)say(`Você está arriscando <b>${rp.toFixed(1).replace(".",",")}%</b> do saldo. Profissionais arriscam 1% a 2%. Tente o botão <b>Arriscar 1%</b> na próxima.`,"alerta");
   else say(side===1?`Comprado! Você ganha se o preço subir. A linha vermelha é seu stop e a verde é seu alvo. Agora deixe o plano trabalhar.`:`Vendido! Agora você ganha se o preço <b>cair</b>. Se subir até a linha vermelha, o stop te tira.`,"bom");
+  if(rushed)say("Você abriu uma nova operação logo depois de uma perda. Cuidado com a vontade de recuperar rápido. Na próxima, espere pelo menos 10 velas e entre só com um motivo claro.","alerta");
   render();tourEvent("buy");
 }
 function pnlNow(){return pos?pos.side*pos.qty*(M.price-pos.entry):0}
@@ -636,6 +643,8 @@ function close(reason,px){
   const wasShort=pos.side===-1,dur=Math.floor((M.tick-pos.t)/TPC);pos=null;
   if(net>0)grant("m2");if(reason==="stop")grant("m3");if(reason==="alvo")grant("m4");if(wasShort&&net>0)grant("m7");
   if(S.trades.length>=10)grant("m8");if(S.cash>=1100)grant("m9");
+  if(S.trades.length>=5&&S.trades.slice(-5).every(t=>t.hadStop))grant("m12");
+  if(net<0)lastLoss={tick:M.tick,code:M.code};
   const r=brl(Math.abs(net));
   if(reason==="stop")say(`O stop te tirou com <b class="neg">-${r}</b>. Doeu? Faz parte! O stop impediu que fosse pior. Anote no diário e espere uma nova chance com calma.`,"bom");
   else if(reason==="alvo")say(`Na mosca! Alvo atingido: <b class="pos">+${r}</b>. Você seguiu o plano do começo ao fim.`,"bom");
