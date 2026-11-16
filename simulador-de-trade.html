@@ -159,6 +159,11 @@ td.num{text-align:right} th.r{text-align:right}
 .note{margin-top:28px;font-size:.88rem;color:var(--soft);max-width:80ch}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:12px;font-weight:800;z-index:20;max-width:calc(100% - 32px);text-align:center}
 
+.spot{position:relative;z-index:5;outline:4px solid var(--marker);outline-offset:4px;border-radius:12px;animation:spot 1.2s ease-in-out infinite}
+@keyframes spot{50%{outline-color:transparent}}
+.tour-actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.tour-actions:empty{display:none}
+.step{font-family:var(--f-num);font-size:.75rem;color:var(--accent);font-weight:700}
 @media (max-width:900px){
   .learn,.sim,.below{grid-template-columns:1fr}
   .path{position:static;flex-direction:row;flex-wrap:wrap}
@@ -216,7 +221,7 @@ td.num{text-align:right} th.r{text-align:right}
         <polygon points="29,40 35,40 32,46" fill="var(--marker)"/>
         <ellipse cx="32" cy="52" rx="10" ry="6" fill="var(--sheet)" opacity=".55"/>
       </svg>
-      <div class="bubble" id="bubble"><small>Profª Coruja</small><span id="bubbleText">Olá! Este é um mercado de mentirinha. O preço anda sozinho. Escolha quantas cotas quer, ajuste o stop e o alvo, e aperte <b>Comprar</b>.</span></div>
+      <div class="bubble" id="bubble"><small>Profª Coruja</small><span id="bubbleText">Olá! Este é um mercado de mentirinha. O preço anda sozinho. Escolha quantas cotas quer, ajuste o stop e o alvo, e aperte <b>Comprar</b>.</span><div class="tour-actions" id="tourActions"></div></div>
     </div>
 
     <div class="sim">
@@ -233,6 +238,7 @@ td.num{text-align:right} th.r{text-align:right}
             <span class="chg" id="chg">0,00%</span>
           </div>
           <div class="row">
+            <button class="btn small primary" id="tourBtn">Me guie passo a passo</button>
             <span style="font-size:.82rem;font-weight:800;color:var(--soft)">Velocidade</span>
             <div class="seg" id="speed">
               <button data-s="0" aria-pressed="false">Pausar</button>
@@ -434,7 +440,7 @@ const DICT=[
 /* ---------------- ESTADO ---------------- */
 let S={cash:START,trades:[],lessons:{},missions:{},fees:0,cur:0};
 try{const raw=localStorage.getItem(KEY); if(raw){S=Object.assign(S,JSON.parse(raw));}}catch(e){}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({cash:S.cash,trades:S.trades,lessons:S.lessons,missions:S.missions,fees:S.fees,cur:S.cur}))}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({cash:S.cash,trades:S.trades,lessons:S.lessons,missions:S.missions,fees:S.fees,cur:S.cur,tourSeen:S.tourSeen}))}catch(e){}}
 let pos=null;
 
 /* ---------------- TOAST / CORUJA ---------------- */
@@ -448,7 +454,7 @@ let activeTab="aprender";
 function show(tab){if(!TABS.includes(tab))tab="aprender";activeTab=tab;
   TABS.forEach(n=>{$("#tab-"+n).hidden=n!==tab});
   $$("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab));
-  if(tab==="simular"){resize();}
+  if(tab==="simular"){resize();if(!S.tourSeen&&!S.trades.length&&tour<0)setTimeout(startTour,300);}
 }
 $$("nav.tabs button").forEach(b=>b.addEventListener("click",()=>{location.hash=b.dataset.tab}));
 window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
@@ -572,7 +578,7 @@ function open(side){
   if(!sp)say("Ops! Você entrou <b>sem stop</b>. Se o preço andar contra você, não tem cinto de segurança. Fique de olho e saia se precisar.","alerta");
   else if(rp>5)say(`Você está arriscando <b>${rp.toFixed(1).replace(".",",")}%</b> do cofrinho. Profissionais arriscam 1% a 2%. Tente o botão <b>Arriscar 1%</b> na próxima.`,"alerta");
   else say(side===1?`Comprado! Você ganha se o preço subir. A linha vermelha é seu stop e a verde é seu alvo. Agora deixe o plano trabalhar.`:`Vendido! Agora você ganha se o preço <b>cair</b>. Se subir até a linha vermelha, o stop te tira.`,"bom");
-  render();
+  render();tourEvent("buy");
 }
 function pnlNow(){return pos?pos.side*pos.qty*(M.price-pos.entry):0}
 function close(reason,px){
@@ -627,7 +633,7 @@ function renderJournal(){
   $("#sBest").textContent=n?brl(Math.max(...S.trades.map(t=>t.net))):"–";$("#sWorst").textContent=n?brl(Math.min(...S.trades.map(t=>t.net))):"–";
   $("#sFees").textContent=brl(S.fees);$("#sStop").textContent=n?Math.round(S.trades.filter(t=>t.hadStop).length/n*100)+"%":"–";
 }
-const _close=close;close=function(r,p){_close(r,p);renderJournal();};
+const _close=close;close=function(r,p){_close(r,p);renderJournal();tourEvent("close");};
 
 /* ---------------- CONTROLES ---------------- */
 $("#buyBtn").onclick=()=>open(1);
@@ -636,12 +642,51 @@ $("#closeBtn").onclick=()=>close("manual");
 ["#qty","#stopPct","#alvoPct"].forEach(s=>$(s).addEventListener("input",updateRisk));
 $("#sizeBtn").onclick=()=>{const s=stopPct();if(!s){say("Para calcular o tamanho certo, primeiro escolha um stop. Sem stop não dá para saber quanto você arrisca.","alerta");return}
   const q=Math.max(1,Math.floor((S.cash*.01-2*FEE)/(M.price*s)));$("#qty").value=Math.min(q,Math.floor(S.cash/M.price));updateRisk();
-  say(`Calculei: com stop de ${(s*100)}%, <b>${$("#qty").value} cotas</b> arriscam mais ou menos 1% do cofrinho. É assim que os profissionais escolhem o tamanho.`,"bom");};
+  say(`Calculei: com stop de ${(s*100)}%, <b>${$("#qty").value} cotas</b> arriscam mais ou menos 1% do cofrinho. É assim que os profissionais escolhem o tamanho.`,"bom");tourEvent("size");};
 $("#asset").onchange=e=>{M=markets[e.target.value];say(e.target.value==="FOGT3"?"O Foguetinho chacoalha bem mais. Velas maiores, sustos maiores. Use stops um pouco mais largos e menos cotas.":"Voltamos ao Pomar das Maçãs, um ativo mais calminho para treinar.");render();};
-$$("#speed button").forEach(b=>b.onclick=()=>{speed=+b.dataset.s;$$("#speed button").forEach(x=>x.setAttribute("aria-pressed",x===b));});
+function setSpeed(s){speed=s;$$("#speed button").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.s===s));}
+$$("#speed button").forEach(b=>b.onclick=()=>setSpeed(+b.dataset.s));
 let armed=false;
 $("#resetBtn").onclick=e=>{const b=e.currentTarget;if(!armed){armed=true;b.textContent="Tem certeza? Clique de novo";b.classList.add("down");setTimeout(()=>{armed=false;b.textContent="Recomeçar cofrinho";b.classList.remove("down")},3000);return}
   armed=false;pos=null;S.cash=START;S.trades=[];S.fees=0;save();b.textContent="Recomeçar cofrinho";b.classList.remove("down");renderJournal();render();say("Cofrinho de volta para R$ 1.000. Suas lições e missões continuam guardadas.");};
+
+/* ---------------- GUIA PASSO A PASSO ---------------- */
+const TOUR=[
+ {sel:".ticker",txt:"Este é o <b>preço</b> de uma cota da empresa Pomar das Maçãs. Pausei o mercado para você olhar com calma. O número ao lado mostra quanto o preço já mudou: verde subiu, vermelho caiu.",next:true},
+ {sel:".canvas-box",txt:"Cada <b>velinha</b> mostra o que o preço fez num pedacinho de tempo. <b style='color:var(--up)'>Verde</b> = subiu. <b style='color:var(--down)'>Vermelha</b> = caiu. Olhando várias juntas, você vê se a escada está subindo ou descendo.",next:true},
+ {sel:"#qty",txt:"Agora escolha <b>quantas cotas</b> comprar. Não precisa fazer conta: aperte o botão <b>Arriscar 1%</b> e eu calculo uma quantidade segura para você.",wait:"size"},
+ {sel:".two",txt:"Aqui ficam suas duas regras. O <b>stop</b> é o cinto de segurança: se o preço cair 2%, você sai. O <b>alvo</b> é onde você guarda o lucro: se subir 4%. Deixe assim por enquanto.",next:true},
+ {sel:"#riskbox",txt:"Este quadro mostra, <b>antes de entrar</b>, quanto você pode perder e quanto pode ganhar. Repare que o risco é pequenininho perto do seu cofrinho. É assim que se começa.",next:true},
+ {sel:"#buyBtn",txt:"Tudo pronto! Aperte <b>Comprar</b>. Você vai ganhar se o preço subir. Quando apertar, eu ligo o mercado de novo.",wait:"buy"},
+ {sel:"#posCard",txt:"Pronto, você está <b>comprado</b>! Agora é só esperar. Se o preço tocar a linha verde, você ganha. Se tocar a vermelha, o stop te tira com uma perdinha. Você não precisa fazer nada. Quer ir mais rápido? Aperte <b>3x</b> lá em cima.",wait:"close"}
+];
+let tour=-1;
+function clearSpot(){$$(".spot").forEach(e=>e.classList.remove("spot"))}
+function tourShow(){
+  clearSpot();const st=TOUR[tour];let el=$(st.sel);if(el&&el.tagName==="INPUT")el=el.closest(".field");
+  if(el){el.classList.add("spot");try{el.scrollIntoView({block:"nearest",behavior:"smooth"})}catch(e){}}
+  say(`<span class="step">Passo ${tour+1} de ${TOUR.length}</span><br>${st.txt}`);
+  $("#tourActions").innerHTML=(st.next?`<button class="btn small primary" id="tNext">Entendi →</button>`:"")+`<button class="btn small ghost" id="tSkip">Sair do guia</button>`;
+  const n=$("#tNext");if(n)n.onclick=()=>{tour++;tourShow()};
+  $("#tSkip").onclick=()=>{endTour();setSpeed(1);say("Tudo bem! Quando quiser, aperte <b>Me guie passo a passo</b> de novo.")};
+}
+function startTour(){
+  if(pos){say("Encerre a operação aberta primeiro. Depois eu te guio desde o começo.","alerta");return}
+  S.tourSeen=1;save();
+  if($("#asset").value!=="POMR3"){$("#asset").value="POMR3";M=markets.POMR3}
+  $("#stopPct").value="2";$("#alvoPct").value="4";$("#qty").value="1";
+  setSpeed(0);tour=0;render();tourShow();
+}
+function endTour(){tour=-1;clearSpot();$("#tourActions").innerHTML="";}
+function tourEvent(ev){
+  if(tour<0||TOUR[tour].wait!==ev)return;
+  if(ev==="buy")setSpeed(1);
+  if(ev==="close"){endTour();
+    $("#bubbleText").insertAdjacentHTML("beforeend",`<br><br><b>Parabéns! Você fez sua primeira operação completa.</b> Ela está anotada no diário aqui embaixo. Agora repita algumas vezes sem o guia. Quando quiser entender o porquê de cada coisa, vá para a aba <b>Aprender</b>.`);
+    return;}
+  tour++;tourShow();
+}
+$("#tourBtn").onclick=startTour;
 
 /* ---------------- LOOP ---------------- */
 setInterval(()=>{
